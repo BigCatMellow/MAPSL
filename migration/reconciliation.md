@@ -1,7 +1,7 @@
 # Migration reconciliation evidence
 
 **In progress — not acceptance or a second roadmap.** 2026-11-24.
-Parent: [authorized migration](../README.md); current direction:
+Parent: [authorized migration](PLAN.md); current direction:
 [master roadmap](../work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md).
 The source stays read-only. This record tracks remaining M0/M1 evidence;
 the file-level ledger is [source inventory](source-inventory.tsv).
@@ -61,6 +61,35 @@ dependency order; verify actual wiring, not just unit-test existence. External
 target state, old local .maps databases and uncommitted files remain UNKNOWN.
 Recover through the owner's environment if needed; no transfer of credentials,
 live databases or paid execution is authorized.
+
+## Idea and insight dispositions (candidate, source evidence inspected)
+
+All 20 current source records were read at their disposition sections. These routes preserve open issues and prior closure decisions without treating the successor as verified. Promoted-but-unverified items require direct evidence, and open candidates do not become new tasks automatically.
+
+| Source record | Proposed disposition / owning concern |
+| --- | --- |
+| [IDEA-582cc671](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-08-19-name-a-low-effort-zero-diff-re-review-tier-in-model-capabili-IDEA-582cc671.md) | Source stale/implemented #297, residual #345. Preserve review revalidation regression, no duplicate task. |
+| [IDEA-20615e4d](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-08-19-standardize-per-agent-isolated-git-worktrees-as-the-default--IDEA-20615e4d.md) | Source superseded by worktree method plus #350 contract link. Preserve isolation rule and executed guard tests. |
+| [IDEA-bc6cd243](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-03-a-stale-worktree-prune-report-step-in-coordination-housekeep-IDEA-bc6cd243.md) | Promoted in coordination tooling branch; verify landed prune/report behavior. Reliability; no destructive prune without boundary. |
+| [IDEA-968eb261](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-03-check-review-evidence-py-should-tolerate-a-pure-rebase-onto--IDEA-968eb261.md) | Source stale/implemented #297; #345 resolves rebase residual. Safety/evidence regression. |
+| [IDEA-a134ad7c](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-03-exclude-claude-worktrees-from-check-spiderweb-py-by-default-IDEA-a134ad7c.md) | Promoted in tooling fixes; verify scanner excludes transient worktrees without hiding actual source. Continuity. |
+| [IDEA-9e7014fa](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-03-fix-coordination-housekeeping-py-it-crashes-on-gh-pr-list-IDEA-9e7014fa.md) | Promoted in tooling fixes; reproduce actual housekeeping call on successor with no external effects. Reliability. |
+| [IDEA-fe6c0f0f](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-05-revalidation-review-tier-s-ancestor-check-never-fires-on-a-p-IDEA-fe6c0f0f.md) | Source implemented and reviewed #345; preserve diff-equivalence acceptance tests. Safety/evidence. |
+| [IDEA-497fca2f](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-10-track-rows-awaiting-a-first-exposure-exercise-in-a-standing--IDEA-497fca2f.md) | Open first-exposure tracking idea: use existing capability evidence row and tests, not another standing list. Reliability and continuity. |
+| [INSIGHT-29a10ad4](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-08-19-check-review-evidence-py-s-head-sha-walk-back-stops-silently-INSIGHT-29a10ad4.md) | Known merge-commit review-evidence walkback constraint; retain provenance/verification tests and document limits, not weaken gate. |
+| [INSIGHT-e0b448a6](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-08-19-recoverysupervisor-tick-has-zero-production-invocation-anywh-INSIGHT-e0b448a6.md) | Source resolved trigger #165; preserve recovery-tick and claim behavior tests, recheck HCOM optionality. |
+| [INSIGHT-75785aae](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-08-19-the-harness-layer-h4-h5-l6-sec4-waves-has-zero-production-ca-INSIGHT-75785aae.md) | Source resolved production caller #277, actual default/guard coverage still separate H4/SEC3. Reliability. |
+| [INSIGHT-102296b5](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-03-maps-recovery-tick-enforce-canonical-run-may-be-structurally-INSIGHT-102296b5.md) | Source resolved real-stall exercise DEC-003/#298; no automatic repetition, preserve regression evidence. |
+| [INSIGHT-651d8c62](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-03-the-7-row-security-cluster-has-been-one-step-from-done-for-1-INSIGHT-651d8c62.md) | Source resolved specific seven-row stall; original L6 status contradiction and guard coverage remain evidence questions. |
+| [INSIGHT-45727354](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-03-the-friction-log-behavioral-entry-path-lets-repeat-failures--INSIGHT-45727354.md) | Owner KEEP; no automatic task. Repeated drift must have mechanical safeguard; existing triage/repair owner. |
+| [INSIGHT-68a53a28](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-03-the-roadmap-trajectory-check-has-become-part-of-the-developm-INSIGHT-68a53a28.md) | Owner KEEP; trajectory cadence should track meaningful arcs, avoid constant checklist bureaucracy. |
+| [INSIGHT-ab696436](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-04-design-decision-notes-carry-stale-forward-references-to-work-INSIGHT-ab696436.md) | Specific DEC-003 resolved #284; general stale prerequisite references remain continuity gap, check actual accepted head before claiming blocked. |
+| [INSIGHT-a6406800](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-04-triage-status-py-earned-its-keep-on-its-first-real-trajector-INSIGHT-a6406800.md) | Retain existing triage_status.py and tests; confirms mechanical check caught omission. Learning/continuity. |
+| [INSIGHT-f095b669](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-10-outward-facing-representations-have-no-reconciliation-cadenc-INSIGHT-f095b669.md) | Open: reconcile wiki/README outward projections at meaningful arc, no parallel status tracker. Usability. |
+| [INSIGHT-2b8b9a4b](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-12-gh-cli-merge-authorship-cannot-distinguish-an-agent-from-the-INSIGHT-2b8b9a4b.md) | Promoted native review protection candidate; no settings mutation authorized. Verify successor exact-head independence and identity governance before activation. |
+| [INSIGHT-bbb3b845](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-12-new-standing-registers-created-without-a-named-reconciliatio-INSIGHT-bbb3b845.md) | Open: every standing register must have reconciliation owner/cadence. Use existing trajectory check. |
+
+Tool/environment friction this arc: local clone failed DNS; connector has bounded call count and one remote disconnect. Recovery: pinned-tree batches limited to 8–12 reads, source/destination SHA+mode checks before atomic ref update. No credentials moved; one pattern match in redaction test was an explicit synthetic fixture. Record remaining local state UNKNOWN. Future recurring tool friction belongs in existing repair/learning flow, not a new tracker.
 
 ## Source branch inventory
 

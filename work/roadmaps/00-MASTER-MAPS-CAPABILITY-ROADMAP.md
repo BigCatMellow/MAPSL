@@ -1,6 +1,6 @@
 # MAPSL master roadmap
 
-**Migration candidate — not accepted on main.** The [authorized migration plan](../../README.md) owns the current M0–M6 sequence. This document owns long-term outcome priorities, capability relationships and conditional triggers; [capability evidence](CAPABILITY_CHECKLIST.md) owns implementation/verification status. No second development queue.
+**Migration candidate — not accepted on main.** The [authorized migration plan](../../migration/PLAN.md) owns the current M0–M6 sequence. This document owns long-term outcome priorities, capability relationships and conditional triggers; [capability evidence](CAPABILITY_CHECKLIST.md) owns implementation/verification status. No second development queue.
 
 ## Permanent objective
 
@@ -20,6 +20,25 @@ Evaluate each change by autonomy, reliability, reasoning/planning quality, conti
 | Usability and portability | Easy to install, use and maintain across appropriate contexts | Verify #378 target preflight and init, documentation and method-only operation; external task or comparative test only when useful and separately authorized. |
 
 Direction and continuity are the immediate cross-program priority during migration. Safety/reliability are mandatory constraints, not optional later phases. Prioritize actual unresolved problems and dependency gates over historical feature order. Continue only until the relevant outcome is met.
+
+## Full-system acceptance dimensions
+
+Preserve the original [ten program definitions of DONE](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md#15-program-definitions-of-done) and [six end-state scenarios](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md#16-end-state-scenarios). The recovered [Harada candidate](https://github.com/BigCatMellow/MAPS_Lean/tree/f5f2e21bb0cfa5872d86baaafc1f8c89378e0a7c/work/roadmaps/harada-full-map) reinforces full-system acceptance, not another competing planning tree.
+
+| Dimension | Observable proof |
+| --- | --- |
+| Control | Provider-neutral start/inspect/communicate/recover/stop for supported workers without authority expansion. |
+| Context | Minimal trustworthy, progressively loaded procedures and evidence with explicit authority. |
+| Reproducibility | Environment/context/revision lineage sufficient to explain differences and decide recovery compatibility. |
+| Safety | Actual consequential call paths enforce deterministic least-privilege checks; untrusted content cannot ratify policy. |
+| Coordination | Parallel/helper ownership, isolation and continuity remain correlated. |
+| Evidence | Task/run/session/helper/recovery/submission/exact review/outcome reconstructable. |
+| Review integrity | Approval bound to actual artifact/revision/evidence. |
+| Learning | Real failure becomes a frozen case and reviewed candidate comparison. |
+| Human authority | No self-authorization of consequential policy, safety or scope. |
+| Complexity control | Method-only default; orchestration and infrastructure earn their cost through observed needs. |
+
+Representative proofs: ordinary coding, prompt injection denial, interrupted worker, concurrent writable workers, imported Skill quarantine/activation, repeated real-world failure. Exercise relevant scenarios at risk-appropriate scope; a successful isolated component or one happy-path pilot cannot establish all ten properties. No mandatory paid/benchmark/external runs are implied.
 
 ## Complete capability ownership
 

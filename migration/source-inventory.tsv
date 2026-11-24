@@ -1,31 +1,31 @@
 source_path	blob_sha	git_mode	bytes	disposition	destination_or_source_pointer	rationale	evidence
-.claude/skills/pilot/SKILL.md	aa22eb3924434226f50fee5fbefbddfc1a733043	100644	8449	PENDING			
+.claude/skills/pilot/SKILL.md	aa22eb3924434226f50fee5fbefbddfc1a733043	100644	8449	PENDING	.claude/skills/pilot/SKILL.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:c47e696af0cc904723eafb31f391bcba5fba1cd7
 .github/workflows/coordination-housekeeping.yml	d8ceacf3a137c0b736a8a54892720bdacc6b104d	100644	831	PENDING			
 .github/workflows/direct-push-alert.yml	552521ac1696d89440b887f38bc8b7f15e39dcbb	100644	1708	PENDING			
-.github/workflows/opcmd-merge.yml	ab37a8e3457035fd8c57f0ca58a2dd1a8989c2b9	100644	2911	PENDING			
+.github/workflows/opcmd-merge.yml	ab37a8e3457035fd8c57f0ca58a2dd1a8989c2b9	100644	2911	PENDING	.github/workflows/opcmd-merge.yml	Source-exact candidate; independent acceptance pending	staged-exact:ab37a8e3457035fd8c57f0ca58a2dd1a8989c2b9
 .github/workflows/review-evidence.yml	cf012ba586e86b83d39995c9b0e3e62d240c43e5	100644	1976	PENDING			
 .github/workflows/runtime-stack-tests.yml	3e51d231dabdee826401640587f94df0aa278629	100644	1878	PENDING			
 .github/workflows/semantic-eval-tests.yml	5a1844ce92a0809896d37432b2fef01f4fec7fe5	100644	2224	PENDING			
-.github/workflows/sync-wiki.yml	d87acacec51e221dea5ed58d57e70201c7bc5d04	100644	1271	PENDING			
+.github/workflows/sync-wiki.yml	d87acacec51e221dea5ed58d57e70201c7bc5d04	100644	1271	PENDING	.github/workflows/sync-wiki.yml	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:c602ea4989924481dce6a0736263a2ae6c418225
 .gitignore	cda9135dbdb23302e9bf79bffdd0bc57db296bfb	100644	334	PENDING	.gitignore	Source-exact candidate; independent acceptance pending	staged-exact:cda9135dbdb23302e9bf79bffdd0bc57db296bfb
 AGENTS.md	b53b5446ce4932c2b7e66d71f3b1b208547c60fa	100644	14782	PENDING	AGENTS.md	Source-exact candidate; independent acceptance pending	staged-exact:b53b5446ce4932c2b7e66d71f3b1b208547c60fa
 docs/CHECKS_AND_BALANCES.md	87a571c29af078f9639a43748867702e4279187b	100644	5633	PENDING	docs/CHECKS_AND_BALANCES.md	Source-exact candidate; independent acceptance pending	staged-exact:87a571c29af078f9639a43748867702e4279187b
 docs/CONTROL_PLANE_SETUP.md	b1e9d6dcde190aacd4d3f6f59262f4bd652d810f	100644	19075	PENDING	docs/CONTROL_PLANE_SETUP.md	Source-exact candidate; independent acceptance pending	staged-exact:b1e9d6dcde190aacd4d3f6f59262f4bd652d810f
 docs/FIRST_RUN.md	27c977135efed8f080c0614af393953a0f2a87f6	100644	2608	PENDING	docs/FIRST_RUN.md	Source-exact candidate; independent acceptance pending	staged-exact:27c977135efed8f080c0614af393953a0f2a87f6
 docs/FRESH_INSTALL.md	dd3a9981834338747899b4c0006672c9310f98ae	100644	3928	PENDING	docs/FRESH_INSTALL.md	Source-exact candidate; independent acceptance pending	staged-exact:dd3a9981834338747899b4c0006672c9310f98ae
-docs/wiki/_Sidebar.md	26d5ba2f5429770103b79d8a2f7f56952f09a823	100644	484	PENDING			
-docs/wiki/Capability-Status.md	d70faaccbca53b6b1b7f9ab991d382fb92aa042f	100644	6430	PENDING			
-docs/wiki/Context,-Memory,-Skills-and-Capabilities.md	bbf08d922ad1285788adada9699cd1efc9810c5a	100644	8017	PENDING			
-docs/wiki/Development.md	ab90c7143f98a194c5edba2839400aa87acdddb3	100644	6673	PENDING			
-docs/wiki/Emergence,-Triage-and-Learning.md	268182d6ebd7f266dce7bf851d55a61a43ea81ab	100644	6056	PENDING			
-docs/wiki/Execution,-Recovery-and-Worktrees.md	bfb9b286520517130fb28960790ceb23a7e2910d	100644	6480	PENDING			
-docs/wiki/First-Task-Walkthrough.md	63564e173892babcb7584c9d0c036224e4cc1368	100644	9122	PENDING			
-docs/wiki/Home.md	129e1ea8e32c7e2d5c22e3b14f735b5cc1c90d05	100644	4894	PENDING			
-docs/wiki/Methods-and-Protocols.md	5f32752d160424873dcf1a748732a0684237ed0d	100644	5663	PENDING			
-docs/wiki/Operator-and-Developer-Tools.md	a90ee14e25e0d5106c7e2ebf3e7df9be067982dd	100644	5795	PENDING			
-docs/wiki/Review,-Authority-and-Merge-Safety.md	71824c0a3b1a4e4b4a1990f9fec4296b1bde1fc3	100644	5983	PENDING			
-docs/wiki/Task,-Run-and-Flow-Lifecycle.md	8da0a6dbaedb47904ca8392a8a0f5566468ad57f	100644	6423	PENDING			
-docs/wiki/What-MAPS_L-Is.md	35e99af8cb24f0d83f847bb2ceeeff8eac0b5678	100644	5659	PENDING			
+docs/wiki/_Sidebar.md	26d5ba2f5429770103b79d8a2f7f56952f09a823	100644	484	PENDING	docs/wiki/_Sidebar.md	Source-exact candidate; independent acceptance pending	staged-exact:26d5ba2f5429770103b79d8a2f7f56952f09a823
+docs/wiki/Capability-Status.md	d70faaccbca53b6b1b7f9ab991d382fb92aa042f	100644	6430	PENDING	docs/wiki/Capability-Status.md	Source-exact candidate; independent acceptance pending	staged-exact:d70faaccbca53b6b1b7f9ab991d382fb92aa042f
+docs/wiki/Context,-Memory,-Skills-and-Capabilities.md	bbf08d922ad1285788adada9699cd1efc9810c5a	100644	8017	PENDING	docs/wiki/Context,-Memory,-Skills-and-Capabilities.md	Source-exact candidate; independent acceptance pending	staged-exact:bbf08d922ad1285788adada9699cd1efc9810c5a
+docs/wiki/Development.md	ab90c7143f98a194c5edba2839400aa87acdddb3	100644	6673	PENDING	docs/wiki/Development.md	Source-exact candidate; independent acceptance pending	staged-exact:ab90c7143f98a194c5edba2839400aa87acdddb3
+docs/wiki/Emergence,-Triage-and-Learning.md	268182d6ebd7f266dce7bf851d55a61a43ea81ab	100644	6056	PENDING	docs/wiki/Emergence,-Triage-and-Learning.md	Source-exact candidate; independent acceptance pending	staged-exact:268182d6ebd7f266dce7bf851d55a61a43ea81ab
+docs/wiki/Execution,-Recovery-and-Worktrees.md	bfb9b286520517130fb28960790ceb23a7e2910d	100644	6480	PENDING	docs/wiki/Execution,-Recovery-and-Worktrees.md	Source-exact candidate; independent acceptance pending	staged-exact:bfb9b286520517130fb28960790ceb23a7e2910d
+docs/wiki/First-Task-Walkthrough.md	63564e173892babcb7584c9d0c036224e4cc1368	100644	9122	PENDING	docs/wiki/First-Task-Walkthrough.md	Source-exact candidate; independent acceptance pending	staged-exact:63564e173892babcb7584c9d0c036224e4cc1368
+docs/wiki/Home.md	129e1ea8e32c7e2d5c22e3b14f735b5cc1c90d05	100644	4894	PENDING	docs/wiki/Home.md	Source-exact candidate; independent acceptance pending	staged-exact:129e1ea8e32c7e2d5c22e3b14f735b5cc1c90d05
+docs/wiki/Methods-and-Protocols.md	5f32752d160424873dcf1a748732a0684237ed0d	100644	5663	PENDING	docs/wiki/Methods-and-Protocols.md	Source-exact candidate; independent acceptance pending	staged-exact:5f32752d160424873dcf1a748732a0684237ed0d
+docs/wiki/Operator-and-Developer-Tools.md	a90ee14e25e0d5106c7e2ebf3e7df9be067982dd	100644	5795	PENDING	docs/wiki/Operator-and-Developer-Tools.md	Source-exact candidate; independent acceptance pending	staged-exact:a90ee14e25e0d5106c7e2ebf3e7df9be067982dd
+docs/wiki/Review,-Authority-and-Merge-Safety.md	71824c0a3b1a4e4b4a1990f9fec4296b1bde1fc3	100644	5983	PENDING	docs/wiki/Review,-Authority-and-Merge-Safety.md	Source-exact candidate; independent acceptance pending	staged-exact:71824c0a3b1a4e4b4a1990f9fec4296b1bde1fc3
+docs/wiki/Task,-Run-and-Flow-Lifecycle.md	8da0a6dbaedb47904ca8392a8a0f5566468ad57f	100644	6423	PENDING	docs/wiki/Task,-Run-and-Flow-Lifecycle.md	Source-exact candidate; independent acceptance pending	staged-exact:8da0a6dbaedb47904ca8392a8a0f5566468ad57f
+docs/wiki/What-MAPS_L-Is.md	35e99af8cb24f0d83f847bb2ceeeff8eac0b5678	100644	5659	PENDING	docs/wiki/What-MAPS_L-Is.md	Source-exact candidate; independent acceptance pending	staged-exact:35e99af8cb24f0d83f847bb2ceeeff8eac0b5678
 legacy/directory-tree.md	e4ea4f950efc6b96d9951a758a1c02b3b59632ce	100644	180226	PENDING			
 legacy/Installer/install.sh	fa83b86740d81131a453189def24ff773c2eed8d	100755	2607	PENDING			
 legacy/Installer/README.md	fa6d2ea77dec902ab15c2540560be66f9dc66907	100644	1247	PENDING			
@@ -2508,7 +2508,7 @@ migration/legacy-runtime-source/workflow/README.md	aeb25fe11d91a8c5d5a5edd3b7589
 migration/legacy-runtime-source/workflow/role_registry.yaml	144138190bca30affe457beb8d0c4661746c5857	100644	6008	PENDING			
 migration/legacy-runtime-source/workflow/runtime_policy.yaml	8e8647fa39585f7533261afe482554313e2ec225	100644	3615	PENDING			
 migration/PRESERVATION_PRIVACY_SWEEP.md	987314ac9c42eed054943c12187d9462d5786982	100644	3541	PENDING			
-migration/README.md	706380c7799b85c7616193d17307808a05960031	100644	2239	PENDING	migration/README.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:c705ec5eb15d274e8d4248eb283b308072d6cf96
+migration/README.md	706380c7799b85c7616193d17307808a05960031	100644	2239	PENDING	migration/README.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:1ff008d78812ff146667a99156330c6fad4748a6
 obsidian/README.md	c8c1f31a81dd79cc7e25161d311e1f3ea5d24c04	100644	1538	PENDING			
 playbook/AGI_STANDARD.md	a250247ab23c4de3e6829113e32b232900668a9a	100644	10222	PENDING	playbook/AGI_STANDARD.md	Source-exact candidate; independent acceptance pending	staged-exact:a250247ab23c4de3e6829113e32b232900668a9a
 playbook/CONTROL_PLANE.md	ed1192d4590efcc43668f3ab1c407876d5ce0088	100644	4341	PENDING	playbook/CONTROL_PLANE.md	Source-exact candidate; independent acceptance pending	staged-exact:ed1192d4590efcc43668f3ab1c407876d5ce0088
@@ -2535,7 +2535,7 @@ playbook/SPIDERWEB_AUDIT.md	3920de2b9dedff134d092d8a1c3d90b52b06cef7	100644	8921
 playbook/TASK_LIFECYCLE.md	5d05595e1aa2bc5f26261edf96d6bc21cd91f413	100644	10344	PENDING	playbook/TASK_LIFECYCLE.md	Source-exact candidate; independent acceptance pending	staged-exact:5d05595e1aa2bc5f26261edf96d6bc21cd91f413
 playbook/TENTH_SEAT_REVIEW.md	0783b68da5f30e65098421c6d7e98cee1cbf9d2c	100644	15282	PENDING	playbook/TENTH_SEAT_REVIEW.md	Source-exact candidate; independent acceptance pending	staged-exact:0783b68da5f30e65098421c6d7e98cee1cbf9d2c
 playbook/WORKTREE_ISOLATION.md	29088a686cd12d60c90f21c7943435c4021e1b7a	100644	6969	PENDING	playbook/WORKTREE_ISOLATION.md	Source-exact candidate; independent acceptance pending	staged-exact:29088a686cd12d60c90f21c7943435c4021e1b7a
-README.md	ebd1c53cdc06d7c4d6777f684b37d2982bc47bc6	100644	3944	PENDING			
+README.md	ebd1c53cdc06d7c4d6777f684b37d2982bc47bc6	100644	3944	PENDING	README.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:cb97b2e2b8ac7e2caeca55d784ec89f24b6dd954
 runtime/__init__.py	9b47a01e2795bfba827409b571155c09e23c6bdc	100644	32	PENDING	runtime/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:9b47a01e2795bfba827409b571155c09e23c6bdc
 runtime/acquisition_evidence.py	009b7fc1fe74511da727b2a148286f27345791ce	100644	16885	PENDING	runtime/acquisition_evidence.py	Source-exact candidate; independent acceptance pending	staged-exact:009b7fc1fe74511da727b2a148286f27345791ce
 runtime/benchmark_results.py	ee8e5d14e7de105788f378fbe2808e8c8575c753	100644	18800	PENDING	runtime/benchmark_results.py	Source-exact candidate; independent acceptance pending	staged-exact:ee8e5d14e7de105788f378fbe2808e8c8575c753
@@ -2676,7 +2676,7 @@ scripts/opcmd_merge.py	797a3f01eb9b54def8ca17980a92defcb0542d69	100644	28760	PEN
 scripts/portable_target_init.py	0744c7aa81ce953410b9a4fc0963d8d58fc89a1a	100644	4870	PENDING	scripts/portable_target_init.py	Source-exact candidate; independent acceptance pending	staged-exact:0744c7aa81ce953410b9a4fc0963d8d58fc89a1a
 scripts/portable_target_preflight.py	bb34d239d87f0ce01999f70ad23add58cd0f86f0	100644	4296	PENDING	scripts/portable_target_preflight.py	Source-exact candidate; independent acceptance pending	staged-exact:bb34d239d87f0ce01999f70ad23add58cd0f86f0
 scripts/run_tests_sharded.py	1ed84edccc534b304d6e1a9cd30b505ef0ca08fd	100644	9401	PENDING	scripts/run_tests_sharded.py	Source-exact candidate; independent acceptance pending	staged-exact:1ed84edccc534b304d6e1a9cd30b505ef0ca08fd
-state/CURRENT.md	05b68a5d184599dcf00372a9db42d3854a75ed76	100644	3924	PENDING	state/CURRENT.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:56eb4a9a30523d78661be8d6a538cbb4be805914
+state/CURRENT.md	05b68a5d184599dcf00372a9db42d3854a75ed76	100644	3924	PENDING	state/CURRENT.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:d9a2e79474d3d920f8c69e1fbdd50e470a375db7
 templates/agi-check.md	ba321cc523cf12df16ca739aeb415a889aaccfa4	100644	2235	PENDING	templates/agi-check.md	Source-exact candidate; independent acceptance pending	staged-exact:ba321cc523cf12df16ca739aeb415a889aaccfa4
 templates/context-packet.md	96d5eabeb3f298bba1299fb312d7a5cee085adb4	100644	757	PENDING	templates/context-packet.md	Source-exact candidate; independent acceptance pending	staged-exact:96d5eabeb3f298bba1299fb312d7a5cee085adb4
 templates/decision.md	38a264554a21f608c074b0b362368416ed9e3092	100644	437	PENDING	templates/decision.md	Source-exact candidate; independent acceptance pending	staged-exact:38a264554a21f608c074b0b362368416ed9e3092
@@ -2823,12 +2823,12 @@ work/coordination/agents/SWITCHYARD.md	87ceefba8956245db8af95fffd96251de69ad075	
 work/coordination/agents/TOWER-DISPATCH-2026-08-16.md	3c24acbc3b210db4d213adaf1b59c725a29d12ec	100644	6210	PENDING			
 work/coordination/agents/TOWER.md	28bb9e72d17752b9370272f21885ed19b109a7f9	100644	6106	PENDING			
 work/coordination/BACKLOG_RECOVERY.md	07b24ee85597bb8950117d1229694df184251a59	100644	12563	PENDING			
-work/coordination/FRICTION_LOG.md	c2c9298fef0930b6d3bf0a2ee919bb1544cab417	100644	49477	PENDING			
+work/coordination/FRICTION_LOG.md	c2c9298fef0930b6d3bf0a2ee919bb1544cab417	100644	49477	PENDING	work/coordination/FRICTION_LOG.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:358a673eff73c5b9f6ede42294b67d4cf4ebd19f
 work/coordination/GITHUB_ASYNC_WORK_PULL.md	7eab5475c74e35ccfadc79c2f2a6df407d505afc	100644	14854	PENDING			
-work/coordination/README.md	2eb2c881495346e9b1f9cf9f5eb311fde7a8481f	100644	6147	PENDING	work/coordination/README.md	Source-exact candidate; independent acceptance pending	staged-exact:2eb2c881495346e9b1f9cf9f5eb311fde7a8481f
+work/coordination/README.md	2eb2c881495346e9b1f9cf9f5eb311fde7a8481f	100644	6147	PENDING	work/coordination/README.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:1e0af621e741e6148e48e4763ab9e8d68645cab3
 work/coordination/RESET_DESK_LOG.md	97df8a98e6dea64e01420f09fce11dc5c3e01142	100644	1273	PENDING			
 work/coordination/ROADMAP_PARTICIPATION.md	b01387fc547dd01eed77ae91c45c7867484cd9ed	100644	10481	PENDING			
-work/coordination/standing-merge-authorization.md	d2f5d25c3dcb216da9cb7839715b3e7ee59c5c2a	100644	1941	PENDING			
+work/coordination/standing-merge-authorization.md	d2f5d25c3dcb216da9cb7839715b3e7ee59c5c2a	100644	1941	PENDING	work/coordination/standing-merge-authorization.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:bfacc4556b5f08526d15787aadc350bbd06fe97a
 work/decisions/.gitkeep	8b137891791fe96927ad78e64b0aad7bded08bdc	100644	1	PENDING			
 work/decisions/2026-09-09-recovery-unknown-same-tick-fallback.md	4c1f9fa961aa0a2932e07ae9c9d5c7f2e58d190c	100644	3305	PENDING			
 work/decisions/DEC-001-target-operating-model-and-wezterm-decoupling.md	02a48848884ce47a846c92e83d4c5e33b6846b74	100644	6014	PENDING			
@@ -2842,7 +2842,7 @@ work/handoffs/.gitkeep	8b137891791fe96927ad78e64b0aad7bded08bdc	100644	1	PENDING
 work/handoffs/2026-08-13-lean-navigation-and-simulation-tuning.md	6bec5e4a5583821cd1ec859fb75e9091a949823e	100644	4616	PENDING			
 work/handoffs/2026-08-20-session-portable-and-roadmap-progress.md	875a0c23e8342c009162b704d31f92f143f11618	100644	4644	PENDING			
 work/handoffs/2026-08-21-roadmap-progress-and-handoff.md	b18054429cb9e07f7158abb12269449a833efe29	100644	6878	PENDING			
-work/handoffs/README.md	55e8b7587711f56eb81d935893e9b68bff244887	100644	21854	PENDING			
+work/handoffs/README.md	55e8b7587711f56eb81d935893e9b68bff244887	100644	21854	PENDING	work/handoffs/README.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:e155099f213841afa81950ade88450830ae487d2
 work/handoffs/TASK-001-onboarding-handoff.md	52d1179e983937ebc0f4595b762388ae4f29ab15	100644	1257	PENDING			
 work/handoffs/TASK-002-question-led-onboarding-handoff.md	2b10dc65ff3797623fb74b082c3c3e0aac14526b	100644	1370	PENDING			
 work/handoffs/TASK-005-linked-route-selection-handoff.md	e19e85a5c85e8a1940d6cd11be78103c5f1e54fb	100644	1442	PENDING			
@@ -3028,10 +3028,10 @@ work/notes/2026-09-15-6.4-write-scope-binding-flag-design.md	f31710b0a13ba684392
 work/notes/2026-09-15-6.4-write-scope-enforcement-wiring.md	26570d434861f51cae6dc5da36fea14e645519b2	100644	6377	PENDING			
 work/notes/2026-09-15-opcmd-merge-evidence-gate-hardening-design.md	8cee924745bf341554c4e7d915d54e7639727b8d	100644	15641	PENDING			
 work/notes/2026-09-15-roadmap-trajectory-check-31.md	15a814cee29cb05eb7764157f8371e106b849c0f	100644	19457	PENDING			
-work/notes/2026-10-20-github-native-opcmd-merge.md	bfd0ad7da4f78b664b7eeed9f8408c514a190972	100644	9725	PENDING			
+work/notes/2026-10-20-github-native-opcmd-merge.md	bfd0ad7da4f78b664b7eeed9f8408c514a190972	100644	9725	PENDING	work/notes/2026-10-20-github-native-opcmd-merge.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:550d0405cf1f029598dd9b6cdee46e6179c5ec21
 work/notes/OPERATOR_ASK_2026-08-31-session13.md	f6cd7777907d2ef7a6637def42c89858e600fffe	100644	10057	PENDING			
 work/notes/OPERATOR_DECISION_BATCH_2026-09-02.md	5bb2cbacf7b0ee23a76680feba7250b47d02702f	100644	14490	PENDING			
-work/README.md	a00bbcefeb02f45af546dbe5e8af1346f2bde1ce	100644	4476	PENDING	work/README.md	Source-exact candidate; independent acceptance pending	staged-exact:a00bbcefeb02f45af546dbe5e8af1346f2bde1ce
+work/README.md	a00bbcefeb02f45af546dbe5e8af1346f2bde1ce	100644	4476	PENDING	work/README.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:c60bc764bc17353f8aefefa054b3b1469b9b9052
 work/regression-cases/CASE-378fb326d2aceaa0cd3ceeb5ce314f8dba541a234a7331d86e6d31f24663e5c9.json	e8105a37d16e371b347b93d24eee8ebeb31599bc	100644	13980	PENDING	work/regression-cases/CASE-378fb326d2aceaa0cd3ceeb5ce314f8dba541a234a7331d86e6d31f24663e5c9.json	Source-exact candidate; independent acceptance pending	staged-exact:e8105a37d16e371b347b93d24eee8ebeb31599bc
 work/regression-cases/CASE-3da6464c1565c1b56915c181301cf57ec24c40253e6a2fe426843ee0276ad924.json	1906503b666fb08e613d9d21f8ec60cc05d31aa7	100644	16087	PENDING	work/regression-cases/CASE-3da6464c1565c1b56915c181301cf57ec24c40253e6a2fe426843ee0276ad924.json	Source-exact candidate; independent acceptance pending	staged-exact:1906503b666fb08e613d9d21f8ec60cc05d31aa7
 work/regression-cases/CASE-559ff1df61eb6c829b55c641b3ae0a4450f8dca9bfcc218e76df84fd53332a22.json	2e6679e621e1b3bef80ed324fd118b47da46faf1	100644	17937	PENDING	work/regression-cases/CASE-559ff1df61eb6c829b55c641b3ae0a4450f8dca9bfcc218e76df84fd53332a22.json	Source-exact candidate; independent acceptance pending	staged-exact:2e6679e621e1b3bef80ed324fd118b47da46faf1
@@ -3071,7 +3071,7 @@ work/research/evaluation-and-reliability/2026-10-20-maps-remap/REVIEW.md	68347d4
 work/research/evaluation-and-reliability/2026-10-20-think-plan-maps-goal-remap.md	e91857dc08ad6b4f5bb91ecaddf7912133b12d11	100644	7219	PENDING			
 work/research/evaluation-and-reliability/2026-11-04-community-evaluation-mechanisms.md	ab882bc183287eba133c292fc7df2d61995b3a46	100644	4966	PENDING			
 work/research/evaluation-and-reliability/2026-11-04-think-grow-self-improvement-mechanisms.md	5a74e93df52333ad342f41eea9db8a6d4b7460ba	100644	16518	PENDING			
-work/research/README.md	5d592016c2cd2d9c75330abb2f1d98af73c901c4	100644	6409	PENDING			
+work/research/README.md	5d592016c2cd2d9c75330abb2f1d98af73c901c4	100644	6409	PENDING	work/research/README.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:832c9a526a4ed741bd62933b48be4c838ef25841
 work/research/security-and-authority/2026-08-27-to-2026-09-03-claude-codex-mechanisms.md	4018812b6979c9ca67b49ebe34efd72f36af132d	100644	10638	PENDING			
 work/research/security-and-authority/2026-09-04-to-2026-09-09-competitive-systems-mechanisms.md	983028ff6affb4c6a218edf2ef9d7d0eca349edb	100644	8782	PENDING			
 work/research/security-and-authority/2026-11-04-community-security-mechanisms.md	ebf05116a1cd47dfbc4cd77c1bb4a37dbbc729b4	100644	3529	PENDING			
@@ -3362,7 +3362,7 @@ work/reviews/TASK-007-repair-record-link-report.md	3f886910d73ff5fb10957787ad303
 work/reviews/TASK-008-independent-review.md	23f637691d9a9505b10b71962f96c37b38ca0fa2	100644	1667	PENDING			
 work/reviews/TASK-008-returning-agent-report.md	5f5149cc0bca7e834224995c6cd2cdb4469c9600	100644	4306	PENDING			
 work/reviews/trajectory-27-minority-report.md	8b204232030a36ce175ce87753e4127b65f6d1e4	100644	12247	PENDING			
-work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md	a8eab6393228388fc1759ddbaec96e93cef41f7f	100644	59655	PENDING	work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:59847750d6b45e69a66bef10431017672e7d8f29
+work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md	a8eab6393228388fc1759ddbaec96e93cef41f7f	100644	59655	PENDING	work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:9881e5a6ab91a94dbebb00df5a7f6d4d513ec94c
 work/roadmaps/agent-harness-capabilities/01-harness-mechanics.md	0621aa4a915b07266f61068425aea5cb45b7d334	100644	16952	PENDING			
 work/roadmaps/agent-harness-capabilities/02-procedural-knowledge-and-skills.md	3ca5a93265c0b1ff1e519cc42de68e939d7bbf52	100644	17577	PENDING			
 work/roadmaps/agent-harness-capabilities/03-environment-and-reproducibility.md	e1484aacf013903bbf44947cc7c618b0635842e4	100644	15948	PENDING			
@@ -3370,12 +3370,12 @@ work/roadmaps/agent-harness-capabilities/04-agentic-security.md	1130401ed6d724a8
 work/roadmaps/agent-harness-capabilities/05-learning-and-evaluation.md	352585b745cfc5318eee12962e9250b7805bcb48	100644	23221	PENDING			
 work/roadmaps/agent-harness-capabilities/06-portable-deployment.md	a4b53659079e1c903f024d34aca14524c4897b2e	100644	25111	PENDING			
 work/roadmaps/agent-harness-capabilities/README.md	9cdcbdbf80df8e5e5ce48cb85fb7d7a8060f70bf	100644	12126	PENDING			
-work/roadmaps/CAPABILITY_CHECKLIST.md	e11baad28758b6cf01955214c5ccd66922ec5269	100644	109299	PENDING	work/roadmaps/CAPABILITY_CHECKLIST.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:1e4267b90bd18494ddceb7de98ad37378694fadd
+work/roadmaps/CAPABILITY_CHECKLIST.md	e11baad28758b6cf01955214c5ccd66922ec5269	100644	109299	PENDING	work/roadmaps/CAPABILITY_CHECKLIST.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:1e4267b90bd18494ddceb7de98ad37378694fadd
 work/roadmaps/current-capability-reconciliation-2026-08-16.md	85b070e702497354cbd9c7f984b2bf604a42b143	100644	20117	PENDING			
 work/roadmaps/github-async-work-pull.md	eda17bd09c4602595d91216371999764ed49453c	100644	8657	PENDING			
 work/roadmaps/operator-intent-compiler.md	d270b1a20fa9272d07c92e95818e5e9bc2ef7ada	100644	8772	PENDING			
 work/roadmaps/prime-agent-capability-roadmap.md	f9b5f2bfe45955fdefb6b769abfa82ad101c202b	100644	65366	PENDING			
-work/roadmaps/README.md	346c0c6ce0cf58640231ef2b46fb7ec52abefc5f	100644	2324	PENDING	work/roadmaps/README.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:4580474abae6e7ad34085065719b6e08a0e2fb54
+work/roadmaps/README.md	346c0c6ce0cf58640231ef2b46fb7ec52abefc5f	100644	2324	PENDING	work/roadmaps/README.md	Candidate consolidation or target-specific adaptation; source pinned; review pending	staged-adapted:5bafa0d5957390f42404ae6d920db87862f50895
 work/roadmaps/tower-current-dispatch-2026-08-16.md	e29a7ee27de3fb1b93d79002c511c4bf79ba2b17	100644	6563	PENDING			
 work/security/AGENTIC_THREAT_MODEL.md	57410e5dd5925a16c3b838c9192a37600fac1e18	100644	7949	PENDING	work/security/AGENTIC_THREAT_MODEL.md	Source-exact candidate; independent acceptance pending	staged-exact:57410e5dd5925a16c3b838c9192a37600fac1e18
 work/tasks/.gitkeep	8b137891791fe96927ad78e64b0aad7bded08bdc	100644	1	PENDING			

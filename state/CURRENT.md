@@ -1,12 +1,12 @@
 # Current state
 
-Migration authorized 2026-11-24. Original MAPS_Lean remains untouched.
+Parent outcome: [reversible migration](../migration/PLAN.md) from MAPS_Lean, preserving working behavior and creating one clear, outcome-oriented roadmap.
 
-- Parent: [migration plan](../README.md).
-- Current outcome: reconcile source and prepare the operating foundation for review.
-- Current candidate: [master roadmap](../work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md); [80-ID evidence view](../work/roadmaps/CAPABILITY_CHECKLIST.md).
-- Evidence: [source inventory](../migration/source-inventory.tsv), [reconciliation](../migration/reconciliation.md).
-- Next eligible work: resolve source-specific authority/merge and link assumptions; migrate dependency-complete runtime/test slices and verify; continue semantic reconciliation.
-- Blockers to acceptance: fresh independent review unavailable; successor merge gate not established; local source checkout and external records inaccessible. Do not self-approve, declare source proof successor proof, or change original repo.
+- Source baseline: `605ce610e0be3334d1da7af2a7c6f5912b6cc05f`; original repository untouched.
+- [Foundation PR #1](https://github.com/BigCatMellow/MAPSL/pull/1) and [stacked integration PR #2](https://github.com/BigCatMellow/MAPSL/pull/2) are review candidates, not accepted migration.
+- All 124 runtime files, 114 original test files, and 18 scripts/tools staged byte- and mode-exact. All 80 source capability IDs routed; 102 source branch heads preserved in [reconciliation](../migration/reconciliation.md).
+- [First integrated CI](https://github.com/BigCatMellow/MAPSL/actions/runs/45417993224): compilation, dependency checks, security lint, inventory coverage and runtime smoke passed; 1,502 tests, 12 documentation/workflow failures/errors and 5 skips. Candidate fixes restore missing routes and workflow owners without deleting tests. Verify exact new head in Actions.
+- Next: reconcile remaining source obligations, resolve CI findings, independently review staged changes, and verify governance prerequisites before acceptance. Do not activate standing merge authority or publish the wiki until separately authorized.
+- [Inventory](../migration/source-inventory.tsv) is exhaustive for the pinned tree; staging is not final disposition. External local handoffs remain unavailable. No cutover authorized.
 
-This is a restart pointer, not a second status database.
+Live PR/CI evidence takes precedence over this checkpoint.

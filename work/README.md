@@ -1,70 +1,22 @@
-# Work routing index
+# Work records
 
-This is **navigation, not authority and not a live status database**. Start with
-[`docs/FIRST_RUN.md`](../docs/FIRST_RUN.md); use this page only when you need a
-durable record under `work/` and do not already know its path.
+Navigation, not authority or live status. Open [current state](../state/CURRENT.md)
+for continuation, [master roadmap](roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md)
+for direction, and [live GitHub](https://github.com/BigCatMellow/MAPSL/pulls) for PR/CI/review.
 
-Live PR/CI/review/ownership facts belong on GitHub. Repository-wide rules belong
-in [`AGENTS.md`](../AGENTS.md). Reusable procedures belong in the
-[playbook index](../playbook/INDEX.md).
+| Need | Owner |
+| --- | --- |
+| Roadmaps and capability evidence | [roadmaps](roadmaps/) |
+| Task contract | [tasks](tasks/) |
+| Coordination and friction | [coordination](coordination/) |
+| Handoff receipts | [handoffs](handoffs/) |
+| Supporting research | [research](research/) |
+| Evaluation evidence | [evals](evals/) |
+| Frozen cases | [regression cases](regression-cases/) |
+| Threat model | [security](security/) |
+| Design notes | [notes](notes/) |
 
-The one narrow handoff-lifecycle index is
-[`handoffs/README.md`](handoffs/README.md). It tracks whether durable handoff
-files were reviewed and where their work continued; it must not copy volatile
-PR/CI/review/ownership state from GitHub.
-
-## Volume rule
-
-The large `tasks/`, `reviews/`, and `notes/` collections are intentionally
-retained provenance/evidence, not browsing surfaces. A record becomes relevant
-because the current task, roadmap, PR, handoff, decision, or focused retrieval
-question points to it. Do not scan these directories to infer current work, and
-do not treat an old "next action", status, or review disposition as live state.
-
-For cross-session recovery, start at [`../state/CURRENT.md`](../state/CURRENT.md)
-and then verify volatile facts on GitHub.
-
-## Fast route
-
-| Need | Go to | Read rule |
-| --- | --- | --- |
-| Current browser-agent coordination / live GitHub recovery | [`coordination/README.md`](coordination/README.md) | Read only for role-bound or coordination-sensitive work; then recover live GitHub. |
-| Program roadmap / capability planning | [`roadmaps/README.md`](roadmaps/README.md) | Use this router before opening a large roadmap. |
-| Exact task contract | [`tasks/`](tasks/) | Prefer the task path supplied by roadmap/PR/handoff; do not scan the directory by default. |
-| Durable decision/rationale | [`decisions/`](decisions/) | Follow a link from the task/roadmap when possible. |
-| Cross-session continuation | [`handoffs/README.md`](handoffs/README.md) → named handoff | Check the register first; directory-wide search is only for legacy recovery. |
-| Independent review evidence | [`reviews/`](reviews/) | Open the review linked by the task/PR; do not treat old reviews as current disposition. |
-| Review-queue records | [`review_queue/`](review_queue/) | Coordination aid only; live GitHub remains current. |
-| Research / source investigation | [`research/`](research/) | Open from the task/research brief that owns the question. |
-| Evaluation / simulation evidence | [`evals/`](evals/) | Evidence, not authority. |
-| Generated or preserved reports | [`reports/`](reports/) | Read only when an active record links the report as evidence. |
-| Security-specific work records | [`security/`](security/) | Use when the active task/risk route points here. |
-| Candidate ideas | [`ideas/`](ideas/) | Discovery backlog; not active work merely because it exists. |
-| Reusable observations | [`insights/`](insights/) | Evidence/learning; follow current disposition links before acting. |
-| Design/working notes | [`notes/`](notes/) | Supporting context only; prefer current owner documents. |
-| Frozen regression cases | [`regression-cases/`](regression-cases/) | Evidence artifacts per [`playbook/REPAIR_AND_LEARNING.md`](../playbook/REPAIR_AND_LEARNING.md); not authority on its own. |
-| Context packets / imported context | [`context/`](context/) | Bounded context, not global authority. |
-
-## Relationship rule
-
-A forward-relevant durable record should normally have a deliberate route to the
-record that gives it meaning: parent roadmap/task, source, decision, evidence,
-review, handoff, implementation, successor, or disposition.
-
-Use **standard relative Markdown links** in repository files. They work on
-GitHub, Obsidian, and ordinary agent tooling. Prefer one useful outbound link to
-the canonical owner over copied explanation or many weak topical links.
-
-Do not optimize for graph density. A useful graph behaves like a road network:
-small hubs, clear destinations, and short paths.
-
-## Record templates
-
-- Task: [`../templates/task.md`](../templates/task.md)
-- Decision: [`../templates/decision.md`](../templates/decision.md)
-- Handoff: [`../templates/handoff.md`](../templates/handoff.md)
-- Review: [`../templates/review.md`](../templates/review.md)
-- Research brief: [`../templates/research-brief.md`](../templates/research-brief.md)
-- Roadmap: [`../templates/roadmap.md`](../templates/roadmap.md)
-
-Do not create a new record class or index when an existing owner/path is adequate.
+Historical task, review, decision, idea and insight records remain accessible
+from the [pinned original work router](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/README.md).
+Migrate only forward-relevant records once assessed; no broad history scan
+for routine startup. One concept, one owner; prefer direct links to sources.
