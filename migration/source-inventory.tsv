@@ -8,11 +8,11 @@ source_path	blob_sha	git_mode	bytes	disposition	destination_or_source_pointer	ra
 .github/workflows/semantic-eval-tests.yml	5a1844ce92a0809896d37432b2fef01f4fec7fe5	100644	2224	PENDING			
 .github/workflows/sync-wiki.yml	d87acacec51e221dea5ed58d57e70201c7bc5d04	100644	1271	PENDING			
 .gitignore	cda9135dbdb23302e9bf79bffdd0bc57db296bfb	100644	334	PENDING			
-AGENTS.md	b53b5446ce4932c2b7e66d71f3b1b208547c60fa	100644	14782	PENDING			
-docs/CHECKS_AND_BALANCES.md	87a571c29af078f9639a43748867702e4279187b	100644	5633	PENDING			
-docs/CONTROL_PLANE_SETUP.md	b1e9d6dcde190aacd4d3f6f59262f4bd652d810f	100644	19075	PENDING			
-docs/FIRST_RUN.md	27c977135efed8f080c0614af393953a0f2a87f6	100644	2608	PENDING			
-docs/FRESH_INSTALL.md	dd3a9981834338747899b4c0006672c9310f98ae	100644	3928	PENDING			
+AGENTS.md	b53b5446ce4932c2b7e66d71f3b1b208547c60fa	100644	14782	PENDING	AGENTS.md	Source-exact staging; independent acceptance pending	staged-exact:b53b5446ce4932c2b7e66d71f3b1b208547c60fa
+docs/CHECKS_AND_BALANCES.md	87a571c29af078f9639a43748867702e4279187b	100644	5633	PENDING	docs/CHECKS_AND_BALANCES.md	Source-exact staging; independent acceptance pending	staged-exact:87a571c29af078f9639a43748867702e4279187b
+docs/CONTROL_PLANE_SETUP.md	b1e9d6dcde190aacd4d3f6f59262f4bd652d810f	100644	19075	PENDING	docs/CONTROL_PLANE_SETUP.md	Source-exact staging; independent acceptance pending	staged-exact:b1e9d6dcde190aacd4d3f6f59262f4bd652d810f
+docs/FIRST_RUN.md	27c977135efed8f080c0614af393953a0f2a87f6	100644	2608	PENDING	docs/FIRST_RUN.md	Source-exact staging; independent acceptance pending	staged-exact:27c977135efed8f080c0614af393953a0f2a87f6
+docs/FRESH_INSTALL.md	dd3a9981834338747899b4c0006672c9310f98ae	100644	3928	PENDING	docs/FRESH_INSTALL.md	Source-exact staging; independent acceptance pending	staged-exact:dd3a9981834338747899b4c0006672c9310f98ae
 docs/wiki/_Sidebar.md	26d5ba2f5429770103b79d8a2f7f56952f09a823	100644	484	PENDING			
 docs/wiki/Capability-Status.md	d70faaccbca53b6b1b7f9ab991d382fb92aa042f	100644	6430	PENDING			
 docs/wiki/Context,-Memory,-Skills-and-Capabilities.md	bbf08d922ad1285788adada9699cd1efc9810c5a	100644	8017	PENDING			
@@ -2508,33 +2508,33 @@ migration/legacy-runtime-source/workflow/README.md	aeb25fe11d91a8c5d5a5edd3b7589
 migration/legacy-runtime-source/workflow/role_registry.yaml	144138190bca30affe457beb8d0c4661746c5857	100644	6008	PENDING			
 migration/legacy-runtime-source/workflow/runtime_policy.yaml	8e8647fa39585f7533261afe482554313e2ec225	100644	3615	PENDING			
 migration/PRESERVATION_PRIVACY_SWEEP.md	987314ac9c42eed054943c12187d9462d5786982	100644	3541	PENDING			
-migration/README.md	706380c7799b85c7616193d17307808a05960031	100644	2239	PENDING			
+migration/README.md	706380c7799b85c7616193d17307808a05960031	100644	2239	PENDING	migration/README.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:c705ec5eb15d274e8d4248eb283b308072d6cf96
 obsidian/README.md	c8c1f31a81dd79cc7e25161d311e1f3ea5d24c04	100644	1538	PENDING			
-playbook/AGI_STANDARD.md	a250247ab23c4de3e6829113e32b232900668a9a	100644	10222	PENDING			
-playbook/CONTROL_PLANE.md	ed1192d4590efcc43668f3ab1c407876d5ce0088	100644	4341	PENDING			
-playbook/DECISIONS_AND_SAFETY.md	4d62059b2746d3470b6157227e8254ad0254dc3b	100644	6142	PENDING			
-playbook/EMERGENCE.md	dd5979a71ec9fd498529290a75f1cba374817ba8	100644	7772	PENDING			
-playbook/EXECUTION_INTEGRITY.md	0c8d177a91c836970b0f153de3f219b9607dff62	100644	5156	PENDING			
-playbook/HELPERS_AND_COMMUNICATION.md	17070c03c15cda9a74d11a04dd17ece842508a9d	100644	4356	PENDING			
-playbook/INDEX.md	08c3aee82b95e55e1cab51ac45009ab187939d6b	100644	8213	PENDING			
-playbook/INFORMATION_CLASSES.md	8bc82fa4dfe7cd4d87c0401323a212aa73faae22	100644	4848	PENDING			
-playbook/INFORMATION_LIFECYCLE.md	45d99e32f707d51be7a779da281320c2525ea242	100644	7136	PENDING			
-playbook/MODEL_CAPABILITY_ROUTING.md	2391292ae39b0783900bb4d68a42902afdd950d6	100644	8190	PENDING			
-playbook/PROGRAM_STEERING.md	2ab5781527e3d2f8ff1614023ea0bac9ba135855	100644	5060	PENDING			
-playbook/PROJECT_BOOTSTRAP.md	5f641ed85b20645fdef80b7c369877cd97d468e3	100644	6480	PENDING			
-playbook/PROVIDER_AND_TOOL_GUIDANCE.md	6b0ed8380fa4debf124cef80bc981d12cadd048d	100644	10579	PENDING			
-playbook/REPAIR_AND_LEARNING.md	aa6b9315948ed92a0e5a1a8f2eed01a47c38af63	100644	11461	PENDING			
-playbook/REQUEST_COMPILATION.md	4d1440962a79f5cede1bd61c72da3ee381ac7492	100644	5791	PENDING			
-playbook/RESEARCH.md	c9160312a0c7ba32d475a1cdcf18b46a9dd2d276	100644	1180	PENDING			
-playbook/RISK_AND_CHANGE.md	6199280a2fb4cd19ab72a3804b16cd6171fe125c	100644	1003	PENDING			
-playbook/ROADMAP_AND_PROJECTUPDATER.md	ae8f42937d8a9dd539b5b984b09a573f5102f92f	100644	6309	PENDING			
-playbook/ROADMAP_TRAJECTORY_CHECK.md	a3f11cbce702ca1ed6909eb5cc0ebdd1c6183730	100644	10436	PENDING			
-playbook/SIMULATION_DESIGN.md	ff6d8c92b899f98b9ea14f8cbdfa2bce7d9fa1b5	100644	2867	PENDING			
-playbook/SOURCE_CATALOG.md	db48c5ab303706a64d112ed93a694335ea86f0aa	100644	4533	PENDING			
-playbook/SPIDERWEB_AUDIT.md	3920de2b9dedff134d092d8a1c3d90b52b06cef7	100644	8921	PENDING			
-playbook/TASK_LIFECYCLE.md	5d05595e1aa2bc5f26261edf96d6bc21cd91f413	100644	10344	PENDING			
-playbook/TENTH_SEAT_REVIEW.md	0783b68da5f30e65098421c6d7e98cee1cbf9d2c	100644	15282	PENDING			
-playbook/WORKTREE_ISOLATION.md	29088a686cd12d60c90f21c7943435c4021e1b7a	100644	6969	PENDING			
+playbook/AGI_STANDARD.md	a250247ab23c4de3e6829113e32b232900668a9a	100644	10222	PENDING	playbook/AGI_STANDARD.md	Source-exact staging; independent acceptance pending	staged-exact:a250247ab23c4de3e6829113e32b232900668a9a
+playbook/CONTROL_PLANE.md	ed1192d4590efcc43668f3ab1c407876d5ce0088	100644	4341	PENDING	playbook/CONTROL_PLANE.md	Source-exact staging; independent acceptance pending	staged-exact:ed1192d4590efcc43668f3ab1c407876d5ce0088
+playbook/DECISIONS_AND_SAFETY.md	4d62059b2746d3470b6157227e8254ad0254dc3b	100644	6142	PENDING	playbook/DECISIONS_AND_SAFETY.md	Source-exact staging; independent acceptance pending	staged-exact:4d62059b2746d3470b6157227e8254ad0254dc3b
+playbook/EMERGENCE.md	dd5979a71ec9fd498529290a75f1cba374817ba8	100644	7772	PENDING	playbook/EMERGENCE.md	Source-exact staging; independent acceptance pending	staged-exact:dd5979a71ec9fd498529290a75f1cba374817ba8
+playbook/EXECUTION_INTEGRITY.md	0c8d177a91c836970b0f153de3f219b9607dff62	100644	5156	PENDING	playbook/EXECUTION_INTEGRITY.md	Source-exact staging; independent acceptance pending	staged-exact:0c8d177a91c836970b0f153de3f219b9607dff62
+playbook/HELPERS_AND_COMMUNICATION.md	17070c03c15cda9a74d11a04dd17ece842508a9d	100644	4356	PENDING	playbook/HELPERS_AND_COMMUNICATION.md	Source-exact staging; independent acceptance pending	staged-exact:17070c03c15cda9a74d11a04dd17ece842508a9d
+playbook/INDEX.md	08c3aee82b95e55e1cab51ac45009ab187939d6b	100644	8213	PENDING	playbook/INDEX.md	Source-exact staging; independent acceptance pending	staged-exact:08c3aee82b95e55e1cab51ac45009ab187939d6b
+playbook/INFORMATION_CLASSES.md	8bc82fa4dfe7cd4d87c0401323a212aa73faae22	100644	4848	PENDING	playbook/INFORMATION_CLASSES.md	Source-exact staging; independent acceptance pending	staged-exact:8bc82fa4dfe7cd4d87c0401323a212aa73faae22
+playbook/INFORMATION_LIFECYCLE.md	45d99e32f707d51be7a779da281320c2525ea242	100644	7136	PENDING	playbook/INFORMATION_LIFECYCLE.md	Source-exact staging; independent acceptance pending	staged-exact:45d99e32f707d51be7a779da281320c2525ea242
+playbook/MODEL_CAPABILITY_ROUTING.md	2391292ae39b0783900bb4d68a42902afdd950d6	100644	8190	PENDING	playbook/MODEL_CAPABILITY_ROUTING.md	Source-exact staging; independent acceptance pending	staged-exact:2391292ae39b0783900bb4d68a42902afdd950d6
+playbook/PROGRAM_STEERING.md	2ab5781527e3d2f8ff1614023ea0bac9ba135855	100644	5060	PENDING	playbook/PROGRAM_STEERING.md	Source-exact staging; independent acceptance pending	staged-exact:2ab5781527e3d2f8ff1614023ea0bac9ba135855
+playbook/PROJECT_BOOTSTRAP.md	5f641ed85b20645fdef80b7c369877cd97d468e3	100644	6480	PENDING	playbook/PROJECT_BOOTSTRAP.md	Source-exact staging; independent acceptance pending	staged-exact:5f641ed85b20645fdef80b7c369877cd97d468e3
+playbook/PROVIDER_AND_TOOL_GUIDANCE.md	6b0ed8380fa4debf124cef80bc981d12cadd048d	100644	10579	PENDING	playbook/PROVIDER_AND_TOOL_GUIDANCE.md	Source-exact staging; independent acceptance pending	staged-exact:6b0ed8380fa4debf124cef80bc981d12cadd048d
+playbook/REPAIR_AND_LEARNING.md	aa6b9315948ed92a0e5a1a8f2eed01a47c38af63	100644	11461	PENDING	playbook/REPAIR_AND_LEARNING.md	Source-exact staging; independent acceptance pending	staged-exact:aa6b9315948ed92a0e5a1a8f2eed01a47c38af63
+playbook/REQUEST_COMPILATION.md	4d1440962a79f5cede1bd61c72da3ee381ac7492	100644	5791	PENDING	playbook/REQUEST_COMPILATION.md	Source-exact staging; independent acceptance pending	staged-exact:4d1440962a79f5cede1bd61c72da3ee381ac7492
+playbook/RESEARCH.md	c9160312a0c7ba32d475a1cdcf18b46a9dd2d276	100644	1180	PENDING	playbook/RESEARCH.md	Source-exact staging; independent acceptance pending	staged-exact:c9160312a0c7ba32d475a1cdcf18b46a9dd2d276
+playbook/RISK_AND_CHANGE.md	6199280a2fb4cd19ab72a3804b16cd6171fe125c	100644	1003	PENDING	playbook/RISK_AND_CHANGE.md	Source-exact staging; independent acceptance pending	staged-exact:6199280a2fb4cd19ab72a3804b16cd6171fe125c
+playbook/ROADMAP_AND_PROJECTUPDATER.md	ae8f42937d8a9dd539b5b984b09a573f5102f92f	100644	6309	PENDING	playbook/ROADMAP_AND_PROJECTUPDATER.md	Source-exact staging; independent acceptance pending	staged-exact:ae8f42937d8a9dd539b5b984b09a573f5102f92f
+playbook/ROADMAP_TRAJECTORY_CHECK.md	a3f11cbce702ca1ed6909eb5cc0ebdd1c6183730	100644	10436	PENDING	playbook/ROADMAP_TRAJECTORY_CHECK.md	Source-exact staging; independent acceptance pending	staged-exact:a3f11cbce702ca1ed6909eb5cc0ebdd1c6183730
+playbook/SIMULATION_DESIGN.md	ff6d8c92b899f98b9ea14f8cbdfa2bce7d9fa1b5	100644	2867	PENDING	playbook/SIMULATION_DESIGN.md	Source-exact staging; independent acceptance pending	staged-exact:ff6d8c92b899f98b9ea14f8cbdfa2bce7d9fa1b5
+playbook/SOURCE_CATALOG.md	db48c5ab303706a64d112ed93a694335ea86f0aa	100644	4533	PENDING	playbook/SOURCE_CATALOG.md	Source-exact staging; independent acceptance pending	staged-exact:db48c5ab303706a64d112ed93a694335ea86f0aa
+playbook/SPIDERWEB_AUDIT.md	3920de2b9dedff134d092d8a1c3d90b52b06cef7	100644	8921	PENDING	playbook/SPIDERWEB_AUDIT.md	Source-exact staging; independent acceptance pending	staged-exact:3920de2b9dedff134d092d8a1c3d90b52b06cef7
+playbook/TASK_LIFECYCLE.md	5d05595e1aa2bc5f26261edf96d6bc21cd91f413	100644	10344	PENDING	playbook/TASK_LIFECYCLE.md	Source-exact staging; independent acceptance pending	staged-exact:5d05595e1aa2bc5f26261edf96d6bc21cd91f413
+playbook/TENTH_SEAT_REVIEW.md	0783b68da5f30e65098421c6d7e98cee1cbf9d2c	100644	15282	PENDING	playbook/TENTH_SEAT_REVIEW.md	Source-exact staging; independent acceptance pending	staged-exact:0783b68da5f30e65098421c6d7e98cee1cbf9d2c
+playbook/WORKTREE_ISOLATION.md	29088a686cd12d60c90f21c7943435c4021e1b7a	100644	6969	PENDING	playbook/WORKTREE_ISOLATION.md	Source-exact staging; independent acceptance pending	staged-exact:29088a686cd12d60c90f21c7943435c4021e1b7a
 README.md	ebd1c53cdc06d7c4d6777f684b37d2982bc47bc6	100644	3944	PENDING			
 runtime/__init__.py	9b47a01e2795bfba827409b571155c09e23c6bdc	100644	32	PENDING			
 runtime/acquisition_evidence.py	009b7fc1fe74511da727b2a148286f27345791ce	100644	16885	PENDING			
@@ -2676,25 +2676,25 @@ scripts/opcmd_merge.py	797a3f01eb9b54def8ca17980a92defcb0542d69	100644	28760	PEN
 scripts/portable_target_init.py	0744c7aa81ce953410b9a4fc0963d8d58fc89a1a	100644	4870	PENDING			
 scripts/portable_target_preflight.py	bb34d239d87f0ce01999f70ad23add58cd0f86f0	100644	4296	PENDING			
 scripts/run_tests_sharded.py	1ed84edccc534b304d6e1a9cd30b505ef0ca08fd	100644	9401	PENDING			
-state/CURRENT.md	05b68a5d184599dcf00372a9db42d3854a75ed76	100644	3924	PENDING			
-templates/agi-check.md	ba321cc523cf12df16ca739aeb415a889aaccfa4	100644	2235	PENDING			
-templates/context-packet.md	96d5eabeb3f298bba1299fb312d7a5cee085adb4	100644	757	PENDING			
-templates/decision.md	38a264554a21f608c074b0b362368416ed9e3092	100644	437	PENDING			
-templates/handoff.md	bf8a6895c218d75e29b876aa895859ff9c87bca4	100644	3273	PENDING			
-templates/portable-deployment/target-review-evidence.md	0433c8a5b3106758a26635b69886a796a140a0d8	100644	601	PENDING			
-templates/portable-deployment/target-roadmap.md	609ca2fb38897cc70dec8aa32b20bd56974128b3	100644	544	PENDING			
-templates/portable-deployment/target-task.md	06098e5b9a3a465425937acdc8aed769f1f8cbef	100644	1575	PENDING			
-templates/project-brief.md	6e19d3688e86c133846391d55d9e1b2276ed5ee7	100644	1400	PENDING			
-templates/repair-record.md	36d826409bbe2412ecd617e9ed28d52f92e7841b	100644	475	PENDING			
-templates/research-brief.md	bf8c446fa0f696cbb636f7547c9aa36485bb9786	100644	647	PENDING			
-templates/retrospective.md	1d2ea1defe3bd249b3477335a5670ff4d3000c32	100644	319	PENDING			
-templates/review-evidence.md	d31810cfe452b363e868b4b8935ed895e362f1dc	100644	215	PENDING			
-templates/review.md	9dd877399a07cae4784f27c164f3e04219a7ef4b	100644	2307	PENDING			
-templates/risk-register.md	0d85c1e5e329a887f0ab93dea1e3b90f3459384c	100644	294	PENDING			
-templates/roadmap.md	5909330b93ec6a16b28b0e95454c88d8989388b0	100644	4551	PENDING			
-templates/task-contract.example.json	9cdaa2a565d45e203861b4b3848d1ec3f0225cd1	100644	1038	PENDING			
-templates/task.md	bf1d0f79f4db9a52dd5561000d912bccefd9e20e	100644	5786	PENDING			
-templates/worker-profiles.example.json	85dd28efc263d3f59ae5326c854af525a404706e	100644	811	PENDING			
+state/CURRENT.md	05b68a5d184599dcf00372a9db42d3854a75ed76	100644	3924	PENDING	state/CURRENT.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:56eb4a9a30523d78661be8d6a538cbb4be805914
+templates/agi-check.md	ba321cc523cf12df16ca739aeb415a889aaccfa4	100644	2235	PENDING	templates/agi-check.md	Source-exact staging; independent acceptance pending	staged-exact:ba321cc523cf12df16ca739aeb415a889aaccfa4
+templates/context-packet.md	96d5eabeb3f298bba1299fb312d7a5cee085adb4	100644	757	PENDING	templates/context-packet.md	Source-exact staging; independent acceptance pending	staged-exact:96d5eabeb3f298bba1299fb312d7a5cee085adb4
+templates/decision.md	38a264554a21f608c074b0b362368416ed9e3092	100644	437	PENDING	templates/decision.md	Source-exact staging; independent acceptance pending	staged-exact:38a264554a21f608c074b0b362368416ed9e3092
+templates/handoff.md	bf8a6895c218d75e29b876aa895859ff9c87bca4	100644	3273	PENDING	templates/handoff.md	Source-exact staging; independent acceptance pending	staged-exact:bf8a6895c218d75e29b876aa895859ff9c87bca4
+templates/portable-deployment/target-review-evidence.md	0433c8a5b3106758a26635b69886a796a140a0d8	100644	601	PENDING	templates/portable-deployment/target-review-evidence.md	Source-exact staging; independent acceptance pending	staged-exact:0433c8a5b3106758a26635b69886a796a140a0d8
+templates/portable-deployment/target-roadmap.md	609ca2fb38897cc70dec8aa32b20bd56974128b3	100644	544	PENDING	templates/portable-deployment/target-roadmap.md	Source-exact staging; independent acceptance pending	staged-exact:609ca2fb38897cc70dec8aa32b20bd56974128b3
+templates/portable-deployment/target-task.md	06098e5b9a3a465425937acdc8aed769f1f8cbef	100644	1575	PENDING	templates/portable-deployment/target-task.md	Source-exact staging; independent acceptance pending	staged-exact:06098e5b9a3a465425937acdc8aed769f1f8cbef
+templates/project-brief.md	6e19d3688e86c133846391d55d9e1b2276ed5ee7	100644	1400	PENDING	templates/project-brief.md	Source-exact staging; independent acceptance pending	staged-exact:6e19d3688e86c133846391d55d9e1b2276ed5ee7
+templates/repair-record.md	36d826409bbe2412ecd617e9ed28d52f92e7841b	100644	475	PENDING	templates/repair-record.md	Source-exact staging; independent acceptance pending	staged-exact:36d826409bbe2412ecd617e9ed28d52f92e7841b
+templates/research-brief.md	bf8c446fa0f696cbb636f7547c9aa36485bb9786	100644	647	PENDING	templates/research-brief.md	Source-exact staging; independent acceptance pending	staged-exact:bf8c446fa0f696cbb636f7547c9aa36485bb9786
+templates/retrospective.md	1d2ea1defe3bd249b3477335a5670ff4d3000c32	100644	319	PENDING	templates/retrospective.md	Source-exact staging; independent acceptance pending	staged-exact:1d2ea1defe3bd249b3477335a5670ff4d3000c32
+templates/review-evidence.md	d31810cfe452b363e868b4b8935ed895e362f1dc	100644	215	PENDING	templates/review-evidence.md	Source-exact staging; independent acceptance pending	staged-exact:d31810cfe452b363e868b4b8935ed895e362f1dc
+templates/review.md	9dd877399a07cae4784f27c164f3e04219a7ef4b	100644	2307	PENDING	templates/review.md	Source-exact staging; independent acceptance pending	staged-exact:9dd877399a07cae4784f27c164f3e04219a7ef4b
+templates/risk-register.md	0d85c1e5e329a887f0ab93dea1e3b90f3459384c	100644	294	PENDING	templates/risk-register.md	Source-exact staging; independent acceptance pending	staged-exact:0d85c1e5e329a887f0ab93dea1e3b90f3459384c
+templates/roadmap.md	5909330b93ec6a16b28b0e95454c88d8989388b0	100644	4551	PENDING	templates/roadmap.md	Source-exact staging; independent acceptance pending	staged-exact:5909330b93ec6a16b28b0e95454c88d8989388b0
+templates/task-contract.example.json	9cdaa2a565d45e203861b4b3848d1ec3f0225cd1	100644	1038	PENDING	templates/task-contract.example.json	Source-exact staging; independent acceptance pending	staged-exact:9cdaa2a565d45e203861b4b3848d1ec3f0225cd1
+templates/task.md	bf1d0f79f4db9a52dd5561000d912bccefd9e20e	100644	5786	PENDING	templates/task.md	Source-exact staging; independent acceptance pending	staged-exact:bf1d0f79f4db9a52dd5561000d912bccefd9e20e
+templates/worker-profiles.example.json	85dd28efc263d3f59ae5326c854af525a404706e	100644	811	PENDING	templates/worker-profiles.example.json	Source-exact staging; independent acceptance pending	staged-exact:85dd28efc263d3f59ae5326c854af525a404706e
 tests/test_acquisition_evidence.py	7cd6e3f07b028e887941b2083b71d5d741ce1162	100644	13205	PENDING			
 tests/test_agentic_security_baseline.py	5a0438e7703eb91340f95823a30015dfb8d3ac0b	100644	12102	PENDING			
 tests/test_agentic_security_hook_context.py	d513e15346ad2e864849e2258a6cbfa826ce1075	100644	3927	PENDING			
@@ -2825,7 +2825,7 @@ work/coordination/agents/TOWER.md	28bb9e72d17752b9370272f21885ed19b109a7f9	10064
 work/coordination/BACKLOG_RECOVERY.md	07b24ee85597bb8950117d1229694df184251a59	100644	12563	PENDING			
 work/coordination/FRICTION_LOG.md	c2c9298fef0930b6d3bf0a2ee919bb1544cab417	100644	49477	PENDING			
 work/coordination/GITHUB_ASYNC_WORK_PULL.md	7eab5475c74e35ccfadc79c2f2a6df407d505afc	100644	14854	PENDING			
-work/coordination/README.md	2eb2c881495346e9b1f9cf9f5eb311fde7a8481f	100644	6147	PENDING			
+work/coordination/README.md	2eb2c881495346e9b1f9cf9f5eb311fde7a8481f	100644	6147	PENDING	work/coordination/README.md	Source-exact staging; independent acceptance pending	staged-exact:2eb2c881495346e9b1f9cf9f5eb311fde7a8481f
 work/coordination/RESET_DESK_LOG.md	97df8a98e6dea64e01420f09fce11dc5c3e01142	100644	1273	PENDING			
 work/coordination/ROADMAP_PARTICIPATION.md	b01387fc547dd01eed77ae91c45c7867484cd9ed	100644	10481	PENDING			
 work/coordination/standing-merge-authorization.md	d2f5d25c3dcb216da9cb7839715b3e7ee59c5c2a	100644	1941	PENDING			
@@ -3031,7 +3031,7 @@ work/notes/2026-09-15-roadmap-trajectory-check-31.md	15a814cee29cb05eb7764157f83
 work/notes/2026-10-20-github-native-opcmd-merge.md	bfd0ad7da4f78b664b7eeed9f8408c514a190972	100644	9725	PENDING			
 work/notes/OPERATOR_ASK_2026-08-31-session13.md	f6cd7777907d2ef7a6637def42c89858e600fffe	100644	10057	PENDING			
 work/notes/OPERATOR_DECISION_BATCH_2026-09-02.md	5bb2cbacf7b0ee23a76680feba7250b47d02702f	100644	14490	PENDING			
-work/README.md	a00bbcefeb02f45af546dbe5e8af1346f2bde1ce	100644	4476	PENDING			
+work/README.md	a00bbcefeb02f45af546dbe5e8af1346f2bde1ce	100644	4476	PENDING	work/README.md	Source-exact staging; independent acceptance pending	staged-exact:a00bbcefeb02f45af546dbe5e8af1346f2bde1ce
 work/regression-cases/CASE-378fb326d2aceaa0cd3ceeb5ce314f8dba541a234a7331d86e6d31f24663e5c9.json	e8105a37d16e371b347b93d24eee8ebeb31599bc	100644	13980	PENDING			
 work/regression-cases/CASE-3da6464c1565c1b56915c181301cf57ec24c40253e6a2fe426843ee0276ad924.json	1906503b666fb08e613d9d21f8ec60cc05d31aa7	100644	16087	PENDING			
 work/regression-cases/CASE-559ff1df61eb6c829b55c641b3ae0a4450f8dca9bfcc218e76df84fd53332a22.json	2e6679e621e1b3bef80ed324fd118b47da46faf1	100644	17937	PENDING			
@@ -3362,7 +3362,7 @@ work/reviews/TASK-007-repair-record-link-report.md	3f886910d73ff5fb10957787ad303
 work/reviews/TASK-008-independent-review.md	23f637691d9a9505b10b71962f96c37b38ca0fa2	100644	1667	PENDING			
 work/reviews/TASK-008-returning-agent-report.md	5f5149cc0bca7e834224995c6cd2cdb4469c9600	100644	4306	PENDING			
 work/reviews/trajectory-27-minority-report.md	8b204232030a36ce175ce87753e4127b65f6d1e4	100644	12247	PENDING			
-work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md	a8eab6393228388fc1759ddbaec96e93cef41f7f	100644	59655	PENDING			
+work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md	a8eab6393228388fc1759ddbaec96e93cef41f7f	100644	59655	PENDING	work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:59847750d6b45e69a66bef10431017672e7d8f29
 work/roadmaps/agent-harness-capabilities/01-harness-mechanics.md	0621aa4a915b07266f61068425aea5cb45b7d334	100644	16952	PENDING			
 work/roadmaps/agent-harness-capabilities/02-procedural-knowledge-and-skills.md	3ca5a93265c0b1ff1e519cc42de68e939d7bbf52	100644	17577	PENDING			
 work/roadmaps/agent-harness-capabilities/03-environment-and-reproducibility.md	e1484aacf013903bbf44947cc7c618b0635842e4	100644	15948	PENDING			
@@ -3370,12 +3370,12 @@ work/roadmaps/agent-harness-capabilities/04-agentic-security.md	1130401ed6d724a8
 work/roadmaps/agent-harness-capabilities/05-learning-and-evaluation.md	352585b745cfc5318eee12962e9250b7805bcb48	100644	23221	PENDING			
 work/roadmaps/agent-harness-capabilities/06-portable-deployment.md	a4b53659079e1c903f024d34aca14524c4897b2e	100644	25111	PENDING			
 work/roadmaps/agent-harness-capabilities/README.md	9cdcbdbf80df8e5e5ce48cb85fb7d7a8060f70bf	100644	12126	PENDING			
-work/roadmaps/CAPABILITY_CHECKLIST.md	e11baad28758b6cf01955214c5ccd66922ec5269	100644	109299	PENDING			
+work/roadmaps/CAPABILITY_CHECKLIST.md	e11baad28758b6cf01955214c5ccd66922ec5269	100644	109299	PENDING	work/roadmaps/CAPABILITY_CHECKLIST.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:1e4267b90bd18494ddceb7de98ad37378694fadd
 work/roadmaps/current-capability-reconciliation-2026-08-16.md	85b070e702497354cbd9c7f984b2bf604a42b143	100644	20117	PENDING			
 work/roadmaps/github-async-work-pull.md	eda17bd09c4602595d91216371999764ed49453c	100644	8657	PENDING			
 work/roadmaps/operator-intent-compiler.md	d270b1a20fa9272d07c92e95818e5e9bc2ef7ada	100644	8772	PENDING			
 work/roadmaps/prime-agent-capability-roadmap.md	f9b5f2bfe45955fdefb6b769abfa82ad101c202b	100644	65366	PENDING			
-work/roadmaps/README.md	346c0c6ce0cf58640231ef2b46fb7ec52abefc5f	100644	2324	PENDING			
+work/roadmaps/README.md	346c0c6ce0cf58640231ef2b46fb7ec52abefc5f	100644	2324	PENDING	work/roadmaps/README.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:4580474abae6e7ad34085065719b6e08a0e2fb54
 work/roadmaps/tower-current-dispatch-2026-08-16.md	e29a7ee27de3fb1b93d79002c511c4bf79ba2b17	100644	6563	PENDING			
 work/security/AGENTIC_THREAT_MODEL.md	57410e5dd5925a16c3b838c9192a37600fac1e18	100644	7949	PENDING			
 work/tasks/.gitkeep	8b137891791fe96927ad78e64b0aad7bded08bdc	100644	1	PENDING			
