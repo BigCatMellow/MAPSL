@@ -134,6 +134,32 @@ These are proposed semantic dispositions within the existing roadmap programs. C
 
 Migration friction: [CI run 45423585107](https://github.com/BigCatMellow/MAPSL/actions/runs/45423585107) caught a stale staged-adapted hash for state/CURRENT.md after the previous checkpoint edit. The ledger was repaired using the actual destination blob in commit 33e203673a5516f5561b860f496dfc23c7a1bece. Keep the existing fail-closed check. Future edits to staged destinations must reconcile the ledger in the same change; prefer atomic tree commits. Fresh CI remains required.
 
+## Branch comparison checkpoint — 2026-11-24
+
+[CI run 45423873562](https://github.com/BigCatMellow/MAPSL/actions/runs/45423873562) passed runtime and coverage after the ledger repair. The following comparisons were made against pinned source main, not against moving branch heads. All 17 checked branches diverge; divergence alone is not proof of unmerged functionality.
+
+| Branch | Ahead/behind | Observed disposition evidence |
+| --- | --- | --- |
+| agent/operational-learning-authority1-wave4 | 2/515 | Storage code contains all old lines and newer active-lesson read projection; preserve newer source, check schema/tests/brief before closing. |
+| agent/recovery-stage2-run-id-wiring | 1/515 | run_lineage.py exact; supervisor newer harness integration; check regression tests before closing. |
+| agent/repo-cleanup-status-fix | 1/519 | Sole changed async-work-pull document blob identical; no unique file content. |
+| agent/repair-record-stalled-worker | 1/513 | Sole changed note now includes explicit operator closure and sharded-test regression evidence; retain closed disposition, not new work. |
+| agent/pin-hcom-fork-source | 1/518 | Installer exact; install docs contain old lines plus portable-target guidance; retain optional HCOM, no installation/external action. |
+| agent/review-enforcement-design | 1/517 | Sole design note adds recorded Option B choice and limitation: evidence file cannot prove identity independence. Old standing authority does not transfer. |
+| agent/task-briefs-authority1-recovery2 | 1/516 | Two task briefs; compare current dispositions before closure. |
+| agent/stalled-work-triage-protocol | 1/514 | Coordination README; compare actual current guidance. |
+| ask1-control-plane-runbook | 3/276 | Runbook and review evidence; inspect current version and avoid activating old setup. |
+| agent/runtime-readme-refresh | 6/510 | Runtime README and review evidence; compare current version. |
+| agent/review-evidence-check | 5/511 | Newer script adds content-equivalent rebase validation; preserve newer safety tests; other changed files pending. |
+| canonical-denied-tick-state | 2/332 | Recovery store/supervisor/test, setup, review and checklist; compare current guarded denial behavior. |
+| ci/handoff-receipt-registration-check | 2/142 | Script and original test exact; workflow, trajectory and evidence remain to reconcile. |
+| chore/friction-log-triage-loop-20260831 | 6/343 | Legacy rotation plus active repair/trajectory/handoff/friction; distinguish obsolete code from lessons. |
+| chore/repository-organization-2026-10-06 | 20/122 | Organization, legacy retention and navigation; preserve source decisions, inspect remaining differences. |
+| chore/friction-rotation-followup-20260831 | 3/341 | Friction record and evidence; check later dispositions. |
+| canonical-enforcement-first-exposure-design | 4/339 | Design note exact; review evidence pending. |
+
+No older branch was merged. Remaining branch-only changes and semantic obligations stay pending. See the pinned refs below.
+
 ## Source branch inventory
 
 All 102 observed branch refs are pinned here for later unique-content
