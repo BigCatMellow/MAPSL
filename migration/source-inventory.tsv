@@ -7,12 +7,12 @@ source_path	blob_sha	git_mode	bytes	disposition	destination_or_source_pointer	ra
 .github/workflows/runtime-stack-tests.yml	3e51d231dabdee826401640587f94df0aa278629	100644	1878	PENDING			
 .github/workflows/semantic-eval-tests.yml	5a1844ce92a0809896d37432b2fef01f4fec7fe5	100644	2224	PENDING			
 .github/workflows/sync-wiki.yml	d87acacec51e221dea5ed58d57e70201c7bc5d04	100644	1271	PENDING			
-.gitignore	cda9135dbdb23302e9bf79bffdd0bc57db296bfb	100644	334	PENDING			
-AGENTS.md	b53b5446ce4932c2b7e66d71f3b1b208547c60fa	100644	14782	PENDING	AGENTS.md	Source-exact staging; independent acceptance pending	staged-exact:b53b5446ce4932c2b7e66d71f3b1b208547c60fa
-docs/CHECKS_AND_BALANCES.md	87a571c29af078f9639a43748867702e4279187b	100644	5633	PENDING	docs/CHECKS_AND_BALANCES.md	Source-exact staging; independent acceptance pending	staged-exact:87a571c29af078f9639a43748867702e4279187b
-docs/CONTROL_PLANE_SETUP.md	b1e9d6dcde190aacd4d3f6f59262f4bd652d810f	100644	19075	PENDING	docs/CONTROL_PLANE_SETUP.md	Source-exact staging; independent acceptance pending	staged-exact:b1e9d6dcde190aacd4d3f6f59262f4bd652d810f
-docs/FIRST_RUN.md	27c977135efed8f080c0614af393953a0f2a87f6	100644	2608	PENDING	docs/FIRST_RUN.md	Source-exact staging; independent acceptance pending	staged-exact:27c977135efed8f080c0614af393953a0f2a87f6
-docs/FRESH_INSTALL.md	dd3a9981834338747899b4c0006672c9310f98ae	100644	3928	PENDING	docs/FRESH_INSTALL.md	Source-exact staging; independent acceptance pending	staged-exact:dd3a9981834338747899b4c0006672c9310f98ae
+.gitignore	cda9135dbdb23302e9bf79bffdd0bc57db296bfb	100644	334	PENDING	.gitignore	Source-exact candidate; independent acceptance pending	staged-exact:cda9135dbdb23302e9bf79bffdd0bc57db296bfb
+AGENTS.md	b53b5446ce4932c2b7e66d71f3b1b208547c60fa	100644	14782	PENDING	AGENTS.md	Source-exact candidate; independent acceptance pending	staged-exact:b53b5446ce4932c2b7e66d71f3b1b208547c60fa
+docs/CHECKS_AND_BALANCES.md	87a571c29af078f9639a43748867702e4279187b	100644	5633	PENDING	docs/CHECKS_AND_BALANCES.md	Source-exact candidate; independent acceptance pending	staged-exact:87a571c29af078f9639a43748867702e4279187b
+docs/CONTROL_PLANE_SETUP.md	b1e9d6dcde190aacd4d3f6f59262f4bd652d810f	100644	19075	PENDING	docs/CONTROL_PLANE_SETUP.md	Source-exact candidate; independent acceptance pending	staged-exact:b1e9d6dcde190aacd4d3f6f59262f4bd652d810f
+docs/FIRST_RUN.md	27c977135efed8f080c0614af393953a0f2a87f6	100644	2608	PENDING	docs/FIRST_RUN.md	Source-exact candidate; independent acceptance pending	staged-exact:27c977135efed8f080c0614af393953a0f2a87f6
+docs/FRESH_INSTALL.md	dd3a9981834338747899b4c0006672c9310f98ae	100644	3928	PENDING	docs/FRESH_INSTALL.md	Source-exact candidate; independent acceptance pending	staged-exact:dd3a9981834338747899b4c0006672c9310f98ae
 docs/wiki/_Sidebar.md	26d5ba2f5429770103b79d8a2f7f56952f09a823	100644	484	PENDING			
 docs/wiki/Capability-Status.md	d70faaccbca53b6b1b7f9ab991d382fb92aa042f	100644	6430	PENDING			
 docs/wiki/Context,-Memory,-Skills-and-Capabilities.md	bbf08d922ad1285788adada9699cd1efc9810c5a	100644	8017	PENDING			
@@ -2510,307 +2510,307 @@ migration/legacy-runtime-source/workflow/runtime_policy.yaml	8e8647fa39585f75332
 migration/PRESERVATION_PRIVACY_SWEEP.md	987314ac9c42eed054943c12187d9462d5786982	100644	3541	PENDING			
 migration/README.md	706380c7799b85c7616193d17307808a05960031	100644	2239	PENDING	migration/README.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:c705ec5eb15d274e8d4248eb283b308072d6cf96
 obsidian/README.md	c8c1f31a81dd79cc7e25161d311e1f3ea5d24c04	100644	1538	PENDING			
-playbook/AGI_STANDARD.md	a250247ab23c4de3e6829113e32b232900668a9a	100644	10222	PENDING	playbook/AGI_STANDARD.md	Source-exact staging; independent acceptance pending	staged-exact:a250247ab23c4de3e6829113e32b232900668a9a
-playbook/CONTROL_PLANE.md	ed1192d4590efcc43668f3ab1c407876d5ce0088	100644	4341	PENDING	playbook/CONTROL_PLANE.md	Source-exact staging; independent acceptance pending	staged-exact:ed1192d4590efcc43668f3ab1c407876d5ce0088
-playbook/DECISIONS_AND_SAFETY.md	4d62059b2746d3470b6157227e8254ad0254dc3b	100644	6142	PENDING	playbook/DECISIONS_AND_SAFETY.md	Source-exact staging; independent acceptance pending	staged-exact:4d62059b2746d3470b6157227e8254ad0254dc3b
-playbook/EMERGENCE.md	dd5979a71ec9fd498529290a75f1cba374817ba8	100644	7772	PENDING	playbook/EMERGENCE.md	Source-exact staging; independent acceptance pending	staged-exact:dd5979a71ec9fd498529290a75f1cba374817ba8
-playbook/EXECUTION_INTEGRITY.md	0c8d177a91c836970b0f153de3f219b9607dff62	100644	5156	PENDING	playbook/EXECUTION_INTEGRITY.md	Source-exact staging; independent acceptance pending	staged-exact:0c8d177a91c836970b0f153de3f219b9607dff62
-playbook/HELPERS_AND_COMMUNICATION.md	17070c03c15cda9a74d11a04dd17ece842508a9d	100644	4356	PENDING	playbook/HELPERS_AND_COMMUNICATION.md	Source-exact staging; independent acceptance pending	staged-exact:17070c03c15cda9a74d11a04dd17ece842508a9d
-playbook/INDEX.md	08c3aee82b95e55e1cab51ac45009ab187939d6b	100644	8213	PENDING	playbook/INDEX.md	Source-exact staging; independent acceptance pending	staged-exact:08c3aee82b95e55e1cab51ac45009ab187939d6b
-playbook/INFORMATION_CLASSES.md	8bc82fa4dfe7cd4d87c0401323a212aa73faae22	100644	4848	PENDING	playbook/INFORMATION_CLASSES.md	Source-exact staging; independent acceptance pending	staged-exact:8bc82fa4dfe7cd4d87c0401323a212aa73faae22
-playbook/INFORMATION_LIFECYCLE.md	45d99e32f707d51be7a779da281320c2525ea242	100644	7136	PENDING	playbook/INFORMATION_LIFECYCLE.md	Source-exact staging; independent acceptance pending	staged-exact:45d99e32f707d51be7a779da281320c2525ea242
-playbook/MODEL_CAPABILITY_ROUTING.md	2391292ae39b0783900bb4d68a42902afdd950d6	100644	8190	PENDING	playbook/MODEL_CAPABILITY_ROUTING.md	Source-exact staging; independent acceptance pending	staged-exact:2391292ae39b0783900bb4d68a42902afdd950d6
-playbook/PROGRAM_STEERING.md	2ab5781527e3d2f8ff1614023ea0bac9ba135855	100644	5060	PENDING	playbook/PROGRAM_STEERING.md	Source-exact staging; independent acceptance pending	staged-exact:2ab5781527e3d2f8ff1614023ea0bac9ba135855
-playbook/PROJECT_BOOTSTRAP.md	5f641ed85b20645fdef80b7c369877cd97d468e3	100644	6480	PENDING	playbook/PROJECT_BOOTSTRAP.md	Source-exact staging; independent acceptance pending	staged-exact:5f641ed85b20645fdef80b7c369877cd97d468e3
-playbook/PROVIDER_AND_TOOL_GUIDANCE.md	6b0ed8380fa4debf124cef80bc981d12cadd048d	100644	10579	PENDING	playbook/PROVIDER_AND_TOOL_GUIDANCE.md	Source-exact staging; independent acceptance pending	staged-exact:6b0ed8380fa4debf124cef80bc981d12cadd048d
-playbook/REPAIR_AND_LEARNING.md	aa6b9315948ed92a0e5a1a8f2eed01a47c38af63	100644	11461	PENDING	playbook/REPAIR_AND_LEARNING.md	Source-exact staging; independent acceptance pending	staged-exact:aa6b9315948ed92a0e5a1a8f2eed01a47c38af63
-playbook/REQUEST_COMPILATION.md	4d1440962a79f5cede1bd61c72da3ee381ac7492	100644	5791	PENDING	playbook/REQUEST_COMPILATION.md	Source-exact staging; independent acceptance pending	staged-exact:4d1440962a79f5cede1bd61c72da3ee381ac7492
-playbook/RESEARCH.md	c9160312a0c7ba32d475a1cdcf18b46a9dd2d276	100644	1180	PENDING	playbook/RESEARCH.md	Source-exact staging; independent acceptance pending	staged-exact:c9160312a0c7ba32d475a1cdcf18b46a9dd2d276
-playbook/RISK_AND_CHANGE.md	6199280a2fb4cd19ab72a3804b16cd6171fe125c	100644	1003	PENDING	playbook/RISK_AND_CHANGE.md	Source-exact staging; independent acceptance pending	staged-exact:6199280a2fb4cd19ab72a3804b16cd6171fe125c
-playbook/ROADMAP_AND_PROJECTUPDATER.md	ae8f42937d8a9dd539b5b984b09a573f5102f92f	100644	6309	PENDING	playbook/ROADMAP_AND_PROJECTUPDATER.md	Source-exact staging; independent acceptance pending	staged-exact:ae8f42937d8a9dd539b5b984b09a573f5102f92f
-playbook/ROADMAP_TRAJECTORY_CHECK.md	a3f11cbce702ca1ed6909eb5cc0ebdd1c6183730	100644	10436	PENDING	playbook/ROADMAP_TRAJECTORY_CHECK.md	Source-exact staging; independent acceptance pending	staged-exact:a3f11cbce702ca1ed6909eb5cc0ebdd1c6183730
-playbook/SIMULATION_DESIGN.md	ff6d8c92b899f98b9ea14f8cbdfa2bce7d9fa1b5	100644	2867	PENDING	playbook/SIMULATION_DESIGN.md	Source-exact staging; independent acceptance pending	staged-exact:ff6d8c92b899f98b9ea14f8cbdfa2bce7d9fa1b5
-playbook/SOURCE_CATALOG.md	db48c5ab303706a64d112ed93a694335ea86f0aa	100644	4533	PENDING	playbook/SOURCE_CATALOG.md	Source-exact staging; independent acceptance pending	staged-exact:db48c5ab303706a64d112ed93a694335ea86f0aa
-playbook/SPIDERWEB_AUDIT.md	3920de2b9dedff134d092d8a1c3d90b52b06cef7	100644	8921	PENDING	playbook/SPIDERWEB_AUDIT.md	Source-exact staging; independent acceptance pending	staged-exact:3920de2b9dedff134d092d8a1c3d90b52b06cef7
-playbook/TASK_LIFECYCLE.md	5d05595e1aa2bc5f26261edf96d6bc21cd91f413	100644	10344	PENDING	playbook/TASK_LIFECYCLE.md	Source-exact staging; independent acceptance pending	staged-exact:5d05595e1aa2bc5f26261edf96d6bc21cd91f413
-playbook/TENTH_SEAT_REVIEW.md	0783b68da5f30e65098421c6d7e98cee1cbf9d2c	100644	15282	PENDING	playbook/TENTH_SEAT_REVIEW.md	Source-exact staging; independent acceptance pending	staged-exact:0783b68da5f30e65098421c6d7e98cee1cbf9d2c
-playbook/WORKTREE_ISOLATION.md	29088a686cd12d60c90f21c7943435c4021e1b7a	100644	6969	PENDING	playbook/WORKTREE_ISOLATION.md	Source-exact staging; independent acceptance pending	staged-exact:29088a686cd12d60c90f21c7943435c4021e1b7a
+playbook/AGI_STANDARD.md	a250247ab23c4de3e6829113e32b232900668a9a	100644	10222	PENDING	playbook/AGI_STANDARD.md	Source-exact candidate; independent acceptance pending	staged-exact:a250247ab23c4de3e6829113e32b232900668a9a
+playbook/CONTROL_PLANE.md	ed1192d4590efcc43668f3ab1c407876d5ce0088	100644	4341	PENDING	playbook/CONTROL_PLANE.md	Source-exact candidate; independent acceptance pending	staged-exact:ed1192d4590efcc43668f3ab1c407876d5ce0088
+playbook/DECISIONS_AND_SAFETY.md	4d62059b2746d3470b6157227e8254ad0254dc3b	100644	6142	PENDING	playbook/DECISIONS_AND_SAFETY.md	Source-exact candidate; independent acceptance pending	staged-exact:4d62059b2746d3470b6157227e8254ad0254dc3b
+playbook/EMERGENCE.md	dd5979a71ec9fd498529290a75f1cba374817ba8	100644	7772	PENDING	playbook/EMERGENCE.md	Source-exact candidate; independent acceptance pending	staged-exact:dd5979a71ec9fd498529290a75f1cba374817ba8
+playbook/EXECUTION_INTEGRITY.md	0c8d177a91c836970b0f153de3f219b9607dff62	100644	5156	PENDING	playbook/EXECUTION_INTEGRITY.md	Source-exact candidate; independent acceptance pending	staged-exact:0c8d177a91c836970b0f153de3f219b9607dff62
+playbook/HELPERS_AND_COMMUNICATION.md	17070c03c15cda9a74d11a04dd17ece842508a9d	100644	4356	PENDING	playbook/HELPERS_AND_COMMUNICATION.md	Source-exact candidate; independent acceptance pending	staged-exact:17070c03c15cda9a74d11a04dd17ece842508a9d
+playbook/INDEX.md	08c3aee82b95e55e1cab51ac45009ab187939d6b	100644	8213	PENDING	playbook/INDEX.md	Source-exact candidate; independent acceptance pending	staged-exact:08c3aee82b95e55e1cab51ac45009ab187939d6b
+playbook/INFORMATION_CLASSES.md	8bc82fa4dfe7cd4d87c0401323a212aa73faae22	100644	4848	PENDING	playbook/INFORMATION_CLASSES.md	Source-exact candidate; independent acceptance pending	staged-exact:8bc82fa4dfe7cd4d87c0401323a212aa73faae22
+playbook/INFORMATION_LIFECYCLE.md	45d99e32f707d51be7a779da281320c2525ea242	100644	7136	PENDING	playbook/INFORMATION_LIFECYCLE.md	Source-exact candidate; independent acceptance pending	staged-exact:45d99e32f707d51be7a779da281320c2525ea242
+playbook/MODEL_CAPABILITY_ROUTING.md	2391292ae39b0783900bb4d68a42902afdd950d6	100644	8190	PENDING	playbook/MODEL_CAPABILITY_ROUTING.md	Source-exact candidate; independent acceptance pending	staged-exact:2391292ae39b0783900bb4d68a42902afdd950d6
+playbook/PROGRAM_STEERING.md	2ab5781527e3d2f8ff1614023ea0bac9ba135855	100644	5060	PENDING	playbook/PROGRAM_STEERING.md	Source-exact candidate; independent acceptance pending	staged-exact:2ab5781527e3d2f8ff1614023ea0bac9ba135855
+playbook/PROJECT_BOOTSTRAP.md	5f641ed85b20645fdef80b7c369877cd97d468e3	100644	6480	PENDING	playbook/PROJECT_BOOTSTRAP.md	Source-exact candidate; independent acceptance pending	staged-exact:5f641ed85b20645fdef80b7c369877cd97d468e3
+playbook/PROVIDER_AND_TOOL_GUIDANCE.md	6b0ed8380fa4debf124cef80bc981d12cadd048d	100644	10579	PENDING	playbook/PROVIDER_AND_TOOL_GUIDANCE.md	Source-exact candidate; independent acceptance pending	staged-exact:6b0ed8380fa4debf124cef80bc981d12cadd048d
+playbook/REPAIR_AND_LEARNING.md	aa6b9315948ed92a0e5a1a8f2eed01a47c38af63	100644	11461	PENDING	playbook/REPAIR_AND_LEARNING.md	Source-exact candidate; independent acceptance pending	staged-exact:aa6b9315948ed92a0e5a1a8f2eed01a47c38af63
+playbook/REQUEST_COMPILATION.md	4d1440962a79f5cede1bd61c72da3ee381ac7492	100644	5791	PENDING	playbook/REQUEST_COMPILATION.md	Source-exact candidate; independent acceptance pending	staged-exact:4d1440962a79f5cede1bd61c72da3ee381ac7492
+playbook/RESEARCH.md	c9160312a0c7ba32d475a1cdcf18b46a9dd2d276	100644	1180	PENDING	playbook/RESEARCH.md	Source-exact candidate; independent acceptance pending	staged-exact:c9160312a0c7ba32d475a1cdcf18b46a9dd2d276
+playbook/RISK_AND_CHANGE.md	6199280a2fb4cd19ab72a3804b16cd6171fe125c	100644	1003	PENDING	playbook/RISK_AND_CHANGE.md	Source-exact candidate; independent acceptance pending	staged-exact:6199280a2fb4cd19ab72a3804b16cd6171fe125c
+playbook/ROADMAP_AND_PROJECTUPDATER.md	ae8f42937d8a9dd539b5b984b09a573f5102f92f	100644	6309	PENDING	playbook/ROADMAP_AND_PROJECTUPDATER.md	Source-exact candidate; independent acceptance pending	staged-exact:ae8f42937d8a9dd539b5b984b09a573f5102f92f
+playbook/ROADMAP_TRAJECTORY_CHECK.md	a3f11cbce702ca1ed6909eb5cc0ebdd1c6183730	100644	10436	PENDING	playbook/ROADMAP_TRAJECTORY_CHECK.md	Source-exact candidate; independent acceptance pending	staged-exact:a3f11cbce702ca1ed6909eb5cc0ebdd1c6183730
+playbook/SIMULATION_DESIGN.md	ff6d8c92b899f98b9ea14f8cbdfa2bce7d9fa1b5	100644	2867	PENDING	playbook/SIMULATION_DESIGN.md	Source-exact candidate; independent acceptance pending	staged-exact:ff6d8c92b899f98b9ea14f8cbdfa2bce7d9fa1b5
+playbook/SOURCE_CATALOG.md	db48c5ab303706a64d112ed93a694335ea86f0aa	100644	4533	PENDING	playbook/SOURCE_CATALOG.md	Source-exact candidate; independent acceptance pending	staged-exact:db48c5ab303706a64d112ed93a694335ea86f0aa
+playbook/SPIDERWEB_AUDIT.md	3920de2b9dedff134d092d8a1c3d90b52b06cef7	100644	8921	PENDING	playbook/SPIDERWEB_AUDIT.md	Source-exact candidate; independent acceptance pending	staged-exact:3920de2b9dedff134d092d8a1c3d90b52b06cef7
+playbook/TASK_LIFECYCLE.md	5d05595e1aa2bc5f26261edf96d6bc21cd91f413	100644	10344	PENDING	playbook/TASK_LIFECYCLE.md	Source-exact candidate; independent acceptance pending	staged-exact:5d05595e1aa2bc5f26261edf96d6bc21cd91f413
+playbook/TENTH_SEAT_REVIEW.md	0783b68da5f30e65098421c6d7e98cee1cbf9d2c	100644	15282	PENDING	playbook/TENTH_SEAT_REVIEW.md	Source-exact candidate; independent acceptance pending	staged-exact:0783b68da5f30e65098421c6d7e98cee1cbf9d2c
+playbook/WORKTREE_ISOLATION.md	29088a686cd12d60c90f21c7943435c4021e1b7a	100644	6969	PENDING	playbook/WORKTREE_ISOLATION.md	Source-exact candidate; independent acceptance pending	staged-exact:29088a686cd12d60c90f21c7943435c4021e1b7a
 README.md	ebd1c53cdc06d7c4d6777f684b37d2982bc47bc6	100644	3944	PENDING			
-runtime/__init__.py	9b47a01e2795bfba827409b571155c09e23c6bdc	100644	32	PENDING	runtime/__init__.py	Source-exact runtime/portable staging; independent acceptance pending	staged-exact:9b47a01e2795bfba827409b571155c09e23c6bdc
-runtime/acquisition_evidence.py	009b7fc1fe74511da727b2a148286f27345791ce	100644	16885	PENDING			
-runtime/benchmark_results.py	ee8e5d14e7de105788f378fbe2808e8c8575c753	100644	18800	PENDING			
-runtime/cli.py	d2b9f62bf8cc8d0a6f865290b3ad54251bba365c	100644	47992	PENDING			
-runtime/communication/__init__.py	745da04307476fd75e0b443898a13e9e0696bf35	100644	255	PENDING			
-runtime/communication/hcom_adapter.py	90287c3e02fa511d56368a314fc070eaa61fa5ec	100644	20831	PENDING			
-runtime/communication/hcom_lineage.py	b8d6d6712cef342deeba1215aa709f0bd5b4df0d	100644	11314	PENDING			
-runtime/communication/message_lineage.py	010b8086077e6fe53f4de96defc2d049dd87706a	100644	10132	PENDING			
-runtime/communication/README.md	19a0cba338a45695a31f0e44ce02efe8f1ac4549	100644	3136	PENDING			
-runtime/context_builder.py	927d09900843b63f6e634dfbbe735f105104a559	100644	34430	PENDING			
-runtime/context_delivery.py	88581c0c8968aabd65d57f8b73dddcbb5effe641	100644	9769	PENDING			
-runtime/context_evidence.py	3abbee99f96ddddb25a8f663320413814505fb47	100644	18972	PENDING			
-runtime/context_retrieval_eval.py	fd8c1123057dae9f3e8c67d6a78967e3fd5bec69	100644	22323	PENDING			
-runtime/context_retrieval_jev.py	3461ce1ac24c08a0ff81d8cd1c2ff940a47e2b5c	100644	2744	PENDING			
-runtime/context_retrieval_semantic.py	24e9259712c1bf08c9842118a606ca0548d1ed3f	100644	5651	PENDING			
-runtime/decision/__init__.py	0432f3b065d47019f36daa226dad50d3c61fc35b	100644	860	PENDING			
-runtime/decision/broker.py	6eded85e3fc9d7b6c96c40215f6bab763c0243bc	100644	6851	PENDING			
-runtime/decision/config.py	25707754c14c4138a605afe32144042516279294	100644	3155	PENDING			
-runtime/decision/jev.py	d1d539a05c4bc04630bba87ee45e689d412ed441	100644	1474	PENDING			
-runtime/decision/judgments.py	c01ac38fe43a068a7ae06f56fd5bc411f90ee448	100644	9990	PENDING			
-runtime/decision/provider.py	826909ebc3aed69276c7cc89f302a4d9fc9315b3	100644	790	PENDING			
-runtime/decision/README.md	feba5492a725a460e1a282b257c90ae0a48cb510	100644	4004	PENDING			
-runtime/decision/selection.py	efd3915adb390f3f27565d2b3758098f316f4f33	100644	4263	PENDING			
-runtime/environment/__init__.py	5b285ffb66bc658636a0f7b49a81513b79c831cf	100644	1311	PENDING			
-runtime/environment/fingerprint.py	ede7b6179b0f97d2f1cd066abd5fabb48f038226	100644	19387	PENDING			
-runtime/environment/safety.py	75862298395761a78c18b245cbcc211a77d7e404	100644	6133	PENDING			
-runtime/environment/spec.py	4f8629ee842d4e02fded7493c8d2aabd4a5bb33f	100644	12491	PENDING			
-runtime/environment/specs/maps-runtime-ci.json	c79c08dfed766ecb798c7cc8b9d3b463cfcc0984	100644	1242	PENDING			
-runtime/environment/validation.py	4e4c06b0dbbd427bd5e24f9897049a34c619a7c2	100644	6921	PENDING			
-runtime/evaluation/__init__.py	ad676457dc52eb49ec6081056482e8a5f9d9fa8d	100644	753	PENDING			
-runtime/evaluation/evaluator.py	e7d134e0b0e1902b170fa5d850528fc7b56aa7e8	100644	17762	PENDING			
-runtime/evaluation/regression_case.py	500cbd0dfbed8663a50d9e8318386e191ab2928b	100644	10899	PENDING			
-runtime/flow_handoff.py	133f9e675eacdcf54a12017c48ee2102c5dc516d	100644	4954	PENDING			
-runtime/flow_release_check.py	0ac4e2a2a282e931413bfd7a71728b5c63f364c2	100644	9149	PENDING			
-runtime/flow_review.py	967141e927285b3134cccb43b655b5dc227bd5fd	100644	9314	PENDING			
-runtime/flow_start.py	6a8c524eb9667f4a88c127ef34c0725ab89d94bc	100644	8191	PENDING			
-runtime/harness/__init__.py	a0aab7cf6f2ae930a527b7e8e1839fc881170c01	100644	1267	PENDING			
-runtime/harness/adapters/__init__.py	b95a0d112e29f777b3799d0d70b8a389cb01715a	100644	71	PENDING			
-runtime/harness/adapters/hcom.py	ce4ac965db547ccaf597a597375bcdfd88852779	100644	16587	PENDING			
-runtime/harness/binding_resolution.py	0f6f1e34b9c50d5ede421816525c8089a660f58a	100644	4031	PENDING			
-runtime/harness/config_ref.py	8d8287752a2e7c51e0def6ef9dd4d735fc74d9df	100644	3367	PENDING			
-runtime/harness/contract.py	117271e1f3407fd69db1d21cdbb2879b78228d1e	100644	3249	PENDING			
-runtime/harness/hooks.py	b3216fb43cd0bcc1826d0456fbe0fb704a54a54d	100644	10193	PENDING			
-runtime/harness/protocol.py	8d6791b774555fb3f45aff4ccda95954b0814cc3	100644	1288	PENDING			
-runtime/harness/service.py	5084be3b2b709578dde0d040713786b5731a9880	100644	14128	PENDING			
-runtime/harness/types.py	c2d3f4502e5a26c4fa8033e1882e96f7ca034b4f	100644	10662	PENDING			
-runtime/helpers/__init__.py	6a7aee752840716aaec73ecfc671396536120ec2	100644	534	PENDING			
-runtime/helpers/aider.py	60056dd16a03fba218fcc92a6574e3145fc1aacb	100644	5854	PENDING			
-runtime/helpers/common.py	d6a88893d8210bdad17361e97b4e3cbd68fcce04	100644	13031	PENDING			
-runtime/helpers/ollama.py	5627e0c9d848189c456a7dfdb0fd9cec4f5e7762	100644	3625	PENDING			
-runtime/helpers/README.md	d1638f0348a0d22ba1027490723f3c159e91fefd	100644	2239	PENDING			
-runtime/incident_taxonomy.py	93386106cd390b39014e8b89a1c6b5d14f7f8771	100644	3709	PENDING	runtime/incident_taxonomy.py	Source-exact runtime/portable staging; independent acceptance pending	staged-exact:93386106cd390b39014e8b89a1c6b5d14f7f8771
-runtime/integrity/__init__.py	91852d71b3deb0dbb8f29d40ee45165638668339	100644	451	PENDING			
-runtime/integrity/budget.py	f7393ccdd4117c8f7ab3e673371fb85c9b462577	100644	3743	PENDING			
-runtime/integrity/cli.py	9218ac606f227e2066e5ef1fbd34a2c690209796	100644	7799	PENDING			
-runtime/integrity/git_scope.py	5402dcd5f408126b24c8c7df980ecb26ade15083	100644	6987	PENDING			
-runtime/integrity/README.md	eef4c852e1f85d53ff0ab85a6255d535a7ec7f2b	100644	6286	PENDING			
-runtime/no_progress.py	9277d15e6503c5e8c8f5de16fefc36d8762691bb	100644	4245	PENDING	runtime/no_progress.py	Source-exact runtime/portable staging; independent acceptance pending	staged-exact:9277d15e6503c5e8c8f5de16fefc36d8762691bb
-runtime/operational_learning.py	9071998bb63e911ce5e2672d964e7243a81c5de7	100644	15956	PENDING			
-runtime/outcome_lesson_candidate.py	9d4ed9e8c1bf7a3b534ef07f27aa7071c9932371	100644	6202	PENDING			
-runtime/policy/__init__.py	d22e099b273145b757d8eb95f2276333892bfdec	100644	1475	PENDING			
-runtime/policy/destructive_action_guard.py	fdb976c2a853bd836c6ee568a67afad81377ebf6	100644	9991	PENDING			
-runtime/policy/evaluator.py	ce70a38901054948546035f1b261bc7877deb0f9	100644	4734	PENDING			
-runtime/policy/halt.py	2b838711d30d08769ccf8929fdc5ed40d01b7d0e	100644	5678	PENDING			
-runtime/policy/harness_guard.py	31fb9c5b76b2c8b8e334932d0ae1667dd5460dec	100644	14749	PENDING			
-runtime/policy/memory_provenance_guard.py	d6166d4eb5c9be74135deb08088271ddb94169e4	100644	10734	PENDING			
-runtime/policy/memory_trust_gate.py	4a55abde115fe7f45ffe9e06b31c24c7ee76f084	100644	7568	PENDING			
-runtime/policy/models.py	ffb510701fc5279be5842586f84c1d5b13d5bc40	100644	3269	PENDING			
-runtime/policy/write_scope_guard.py	50fb9e08573ded5ed74b27840efd5115a8dfe257	100644	8411	PENDING			
-runtime/README.md	f939172f58eab72b1535432c6060ed02cc99427f	100644	13516	PENDING			
-runtime/recovery/__init__.py	7e4ffb72d5d0e66b19ea2a04bd7a1346521ff4d1	100644	201	PENDING			
-runtime/recovery/production.py	da9863ebec1a1423e9ad457b0ec05ccbb63d26f8	100644	33283	PENDING			
-runtime/recovery/README.md	a12f6f4887a15fda786013ac712d6a8ea305f2c2	100644	2310	PENDING			
-runtime/recovery/store.py	80740b96c2fbf5f721b9763eaf6e9242b600cccc	100644	4672	PENDING			
-runtime/recovery/supervisor.py	cad91b9f562dd7921b2a62f4df4e5592d18515e9	100644	39160	PENDING			
-runtime/requirements-context-eval.txt	eacc732c08ee77be06901bf493a9a5ea751e11cc	100644	1305	PENDING			
-runtime/requirements-jev.txt	4e0b77ed804e4ffc091c5b48d5e5c54d02c5cd40	100644	121	PENDING			
-runtime/requirements.txt	e4b48059e60b4d90fa8e0fa265a00bc24a3570e0	100644	619	PENDING			
-runtime/routing/__init__.py	96c12c8dcbdf7ced788127efeb2aa8e6c6ed8c2d	100644	163	PENDING			
-runtime/routing/cli.py	2b7344c4626ed034645ae970c5bc8dfc92c83a59	100644	7776	PENDING			
-runtime/routing/environment_reports.py	bda2fa041ed96a45416f046dce59b5caf41e87ca	100644	11235	PENDING			
-runtime/routing/langgraph_runtime.py	69b36883da2cc1eb21ee101f59a6d2dc4b12c57d	100644	6104	PENDING			
-runtime/routing/router.py	a1b8d90170e5bf65c64e0cc575c163cfd944f1d4	100644	8881	PENDING			
-runtime/routing/service.py	f1b12c44de850d32fb49bd980578c3e02ac82a45	100644	1706	PENDING			
-runtime/run_record.py	185cd3d8191ee604c78b58e3415465fdda5788d0	100644	18932	PENDING			
-runtime/skills/__init__.py	df3fb346fa8af597715da8463fdc14b1dfe03346	100644	2283	PENDING			
-runtime/skills/capability_policy.py	7e2130da127eed9d4f3bb3bd5fbf34b7bad5015c	100644	4016	PENDING			
-runtime/skills/catalog.py	4ae2071294319d3a4c790c9548ab2e0b0192297b	100644	12338	PENDING			
-runtime/skills/eval_corpora/exp_a_skill_routing_v1.json	520ceacd8ed9a099e2bdf01a582393ccfbdfe823	100644	8701	PENDING			
-runtime/skills/eval_corpora/exp_a_skill_routing_v2.json	4dad4de054b26aacb14726a8f045febcccfb9de1	100644	20150	PENDING			
-runtime/skills/evaluation.py	85f527ad82d0446e1ecc69ce71ff501035e56abd	100644	15635	PENDING			
-runtime/skills/format.py	d366d71bb6dc5514cf1544cccc65b2fa09eba8b1	100644	19241	PENDING			
-runtime/skills/gate_hardened.py	403f0519457232da84bfbb5cf93c385165d367cc	100644	799	PENDING			
-runtime/skills/gate.py	c36725cf02687113d9fe37143684e817e6122cc1	100644	18624	PENDING			
-runtime/skills/lifecycle.py	5029272de64ae212758256868eff7d988051da7a	100644	7653	PENDING			
-runtime/smoke.py	67cba8f1b50851784aac5cfaf623b037aec2432e	100644	5453	PENDING			
-runtime/state/__init__.py	963d88c45ed9e6a2c56e4a1bdac629a8cfbd2a8f	100644	126	PENDING			
-runtime/state/authorized_operator_storage.py	4c81b2625e36a2e418db731302503ea0e03bf211	100644	11126	PENDING			
-runtime/state/base.py	8c58379f5476d9b03474325318baec79eee9fdd4	100644	12286	PENDING			
-runtime/state/common.py	448033c3f41f6ee6b2419321347c879d91d06bf7	100644	1085	PENDING			
-runtime/state/environment_contract.py	604639604e664712851234252c05e40749e1d0fa	100644	6362	PENDING			
-runtime/state/environment.py	cecf8d68871e971d7b8246df1803a589ba12dea0	100644	6913	PENDING			
-runtime/state/execution.py	131db26c264d1c57a3f01e5ee45ccdcb8bf5f7b1	100644	13219	PENDING			
-runtime/state/helper_recovery_lineage.py	aeb4b5d10492c372b93d242b3372f95911983b35	100644	16515	PENDING			
-runtime/state/integrity_scope.py	8d1cf7d13edc419cf16595746e2fc0cd87df982b	100644	3004	PENDING			
-runtime/state/integrity.py	31791e849e7b1c100985b36b7298d249856e534c	100644	33879	PENDING			
-runtime/state/observability.py	b47224a86579a6e2c3552141a05eacfdd500aade	100644	9073	PENDING			
-runtime/state/operational_learning_storage.py	a4ca2ed8ede32e321579955d8890a4e356a9fe3b	100644	16846	PENDING			
-runtime/state/outcomes.py	785caec194bd77282f4ec992cbdd3bb94cb7d4d7	100644	7659	PENDING			
-runtime/state/policy.py	4619a056297c9d81b4c026cd011644253562ee41	100644	9395	PENDING			
-runtime/state/readiness.py	54867e05f34e33696c67e630a4a2931c3061f44d	100644	12713	PENDING			
-runtime/state/release_check.py	132786c2c9fad8ee3f3ba6feaca509c93cbf693a	100644	8297	PENDING			
-runtime/state/review_binding.py	98db310fdfff84465b1e742b69afd98102e0fe63	100644	25262	PENDING			
-runtime/state/review.py	64adb1f1f3b9ee483765cc2039c041b253628d91	100644	8850	PENDING			
-runtime/state/run_lineage_trace.py	774eba26aba92dd11a2c02549cbc62b570ed6d96	100644	2887	PENDING			
-runtime/state/run_lineage.py	97927f0ca6cdb600bb3db0118fc281425c60ac4b	100644	18660	PENDING			
-runtime/state/schema.sql	6b16da2ec9ff9591f19092fe55ceac128e064590	100644	39716	PENDING			
-runtime/state/skill_lifecycle_storage.py	29bdd795f6565974005afc496805df9c7c521f45	100644	19612	PENDING			
-runtime/state/store.py	d3eda5b74c46b0cdf76d88f7ae43983a71873496	100644	1717	PENDING			
-runtime/state/submission_lineage.py	e93ca1b2eff45f42a27f55e3b291813a1db40541	100644	4138	PENDING			
-runtime/status.py	d9b2c4cb41dd73066c947e14348c948c2d398842	100644	5052	PENDING			
-runtime/text_redaction.py	ca3216aafa289648cc756952ccd5f5f0c2d45ac6	100644	1562	PENDING	runtime/text_redaction.py	Source-exact runtime/portable staging; independent acceptance pending	staged-exact:ca3216aafa289648cc756952ccd5f5f0c2d45ac6
-runtime/trust.py	3f63542b84a6ae3fd327451a35c36ff779d511f4	100644	8203	PENDING			
-runtime/wait_projection.py	cabf62d62e91dc8673572c0b53fb49ea793a13e6	100644	11276	PENDING			
-scripts/check_coverage_note_pins.py	6a6994806e6b7a479620b874eceb955629d079a3	100644	5692	PENDING			
-scripts/check_direct_push.py	6c60ab8d99a34a5c28f6e934bbc6ecbe62a531e6	100644	6480	PENDING			
-scripts/check_dispatch_freshness.py	d632fd41977bc1da0766ae49c9d313d367037414	100755	4393	PENDING			
-scripts/check_handoff_receipts.py	dabb61eda411616cec9aec4494995e3e7b4bbc78	100644	6921	PENDING			
-scripts/check_legacy_removal_readiness.py	ee47010252da7292d2f9052a91eeb1c49f9a7d48	100644	7101	PENDING			
-scripts/check_review_evidence.py	bd1a67b7146923d81397622161ee4ce386532050	100644	9089	PENDING			
-scripts/check_spiderweb.py	e83eac6e8d4141172c0db27f6b381b3fd65d7c3b	100644	13875	PENDING			
-scripts/check_stale_no_caller_docstrings.py	37714d5f589527c9cd1c27842381f542cbf95ef0	100644	11456	PENDING			
-scripts/coordination_housekeeping.py	5978b1153802a04f6fb7d8cd2d59742858075bfc	100644	13689	PENDING			
-scripts/emergence.py	17a3ad48989cefddf9b759c3ba59cf1111494235	100644	6100	PENDING			
-scripts/hooks/block-monitor-on-tests.example.json	c2cbe966df94d3c7ea614c20d1668b6c121e9658	100644	1812	PENDING			
-scripts/install_maps.sh	7a5299b4be153ba6b97d53c1fe1151959b6ea65e	100644	3699	PENDING			
-scripts/opcmd_merge.py	797a3f01eb9b54def8ca17980a92defcb0542d69	100644	28760	PENDING			
-scripts/portable_target_init.py	0744c7aa81ce953410b9a4fc0963d8d58fc89a1a	100644	4870	PENDING	scripts/portable_target_init.py	Source-exact runtime/portable staging; independent acceptance pending	staged-exact:0744c7aa81ce953410b9a4fc0963d8d58fc89a1a
-scripts/portable_target_preflight.py	bb34d239d87f0ce01999f70ad23add58cd0f86f0	100644	4296	PENDING	scripts/portable_target_preflight.py	Source-exact runtime/portable staging; independent acceptance pending	staged-exact:bb34d239d87f0ce01999f70ad23add58cd0f86f0
-scripts/run_tests_sharded.py	1ed84edccc534b304d6e1a9cd30b505ef0ca08fd	100644	9401	PENDING			
+runtime/__init__.py	9b47a01e2795bfba827409b571155c09e23c6bdc	100644	32	PENDING	runtime/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:9b47a01e2795bfba827409b571155c09e23c6bdc
+runtime/acquisition_evidence.py	009b7fc1fe74511da727b2a148286f27345791ce	100644	16885	PENDING	runtime/acquisition_evidence.py	Source-exact candidate; independent acceptance pending	staged-exact:009b7fc1fe74511da727b2a148286f27345791ce
+runtime/benchmark_results.py	ee8e5d14e7de105788f378fbe2808e8c8575c753	100644	18800	PENDING	runtime/benchmark_results.py	Source-exact candidate; independent acceptance pending	staged-exact:ee8e5d14e7de105788f378fbe2808e8c8575c753
+runtime/cli.py	d2b9f62bf8cc8d0a6f865290b3ad54251bba365c	100644	47992	PENDING	runtime/cli.py	Source-exact candidate; independent acceptance pending	staged-exact:d2b9f62bf8cc8d0a6f865290b3ad54251bba365c
+runtime/communication/__init__.py	745da04307476fd75e0b443898a13e9e0696bf35	100644	255	PENDING	runtime/communication/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:745da04307476fd75e0b443898a13e9e0696bf35
+runtime/communication/hcom_adapter.py	90287c3e02fa511d56368a314fc070eaa61fa5ec	100644	20831	PENDING	runtime/communication/hcom_adapter.py	Source-exact candidate; independent acceptance pending	staged-exact:90287c3e02fa511d56368a314fc070eaa61fa5ec
+runtime/communication/hcom_lineage.py	b8d6d6712cef342deeba1215aa709f0bd5b4df0d	100644	11314	PENDING	runtime/communication/hcom_lineage.py	Source-exact candidate; independent acceptance pending	staged-exact:b8d6d6712cef342deeba1215aa709f0bd5b4df0d
+runtime/communication/message_lineage.py	010b8086077e6fe53f4de96defc2d049dd87706a	100644	10132	PENDING	runtime/communication/message_lineage.py	Source-exact candidate; independent acceptance pending	staged-exact:010b8086077e6fe53f4de96defc2d049dd87706a
+runtime/communication/README.md	19a0cba338a45695a31f0e44ce02efe8f1ac4549	100644	3136	PENDING	runtime/communication/README.md	Source-exact candidate; independent acceptance pending	staged-exact:19a0cba338a45695a31f0e44ce02efe8f1ac4549
+runtime/context_builder.py	927d09900843b63f6e634dfbbe735f105104a559	100644	34430	PENDING	runtime/context_builder.py	Source-exact candidate; independent acceptance pending	staged-exact:927d09900843b63f6e634dfbbe735f105104a559
+runtime/context_delivery.py	88581c0c8968aabd65d57f8b73dddcbb5effe641	100644	9769	PENDING	runtime/context_delivery.py	Source-exact candidate; independent acceptance pending	staged-exact:88581c0c8968aabd65d57f8b73dddcbb5effe641
+runtime/context_evidence.py	3abbee99f96ddddb25a8f663320413814505fb47	100644	18972	PENDING	runtime/context_evidence.py	Source-exact candidate; independent acceptance pending	staged-exact:3abbee99f96ddddb25a8f663320413814505fb47
+runtime/context_retrieval_eval.py	fd8c1123057dae9f3e8c67d6a78967e3fd5bec69	100644	22323	PENDING	runtime/context_retrieval_eval.py	Source-exact candidate; independent acceptance pending	staged-exact:fd8c1123057dae9f3e8c67d6a78967e3fd5bec69
+runtime/context_retrieval_jev.py	3461ce1ac24c08a0ff81d8cd1c2ff940a47e2b5c	100644	2744	PENDING	runtime/context_retrieval_jev.py	Source-exact candidate; independent acceptance pending	staged-exact:3461ce1ac24c08a0ff81d8cd1c2ff940a47e2b5c
+runtime/context_retrieval_semantic.py	24e9259712c1bf08c9842118a606ca0548d1ed3f	100644	5651	PENDING	runtime/context_retrieval_semantic.py	Source-exact candidate; independent acceptance pending	staged-exact:24e9259712c1bf08c9842118a606ca0548d1ed3f
+runtime/decision/__init__.py	0432f3b065d47019f36daa226dad50d3c61fc35b	100644	860	PENDING	runtime/decision/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:0432f3b065d47019f36daa226dad50d3c61fc35b
+runtime/decision/broker.py	6eded85e3fc9d7b6c96c40215f6bab763c0243bc	100644	6851	PENDING	runtime/decision/broker.py	Source-exact candidate; independent acceptance pending	staged-exact:6eded85e3fc9d7b6c96c40215f6bab763c0243bc
+runtime/decision/config.py	25707754c14c4138a605afe32144042516279294	100644	3155	PENDING	runtime/decision/config.py	Source-exact candidate; independent acceptance pending	staged-exact:25707754c14c4138a605afe32144042516279294
+runtime/decision/jev.py	d1d539a05c4bc04630bba87ee45e689d412ed441	100644	1474	PENDING	runtime/decision/jev.py	Source-exact candidate; independent acceptance pending	staged-exact:d1d539a05c4bc04630bba87ee45e689d412ed441
+runtime/decision/judgments.py	c01ac38fe43a068a7ae06f56fd5bc411f90ee448	100644	9990	PENDING	runtime/decision/judgments.py	Source-exact candidate; independent acceptance pending	staged-exact:c01ac38fe43a068a7ae06f56fd5bc411f90ee448
+runtime/decision/provider.py	826909ebc3aed69276c7cc89f302a4d9fc9315b3	100644	790	PENDING	runtime/decision/provider.py	Source-exact candidate; independent acceptance pending	staged-exact:826909ebc3aed69276c7cc89f302a4d9fc9315b3
+runtime/decision/README.md	feba5492a725a460e1a282b257c90ae0a48cb510	100644	4004	PENDING	runtime/decision/README.md	Source-exact candidate; independent acceptance pending	staged-exact:feba5492a725a460e1a282b257c90ae0a48cb510
+runtime/decision/selection.py	efd3915adb390f3f27565d2b3758098f316f4f33	100644	4263	PENDING	runtime/decision/selection.py	Source-exact candidate; independent acceptance pending	staged-exact:efd3915adb390f3f27565d2b3758098f316f4f33
+runtime/environment/__init__.py	5b285ffb66bc658636a0f7b49a81513b79c831cf	100644	1311	PENDING	runtime/environment/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:5b285ffb66bc658636a0f7b49a81513b79c831cf
+runtime/environment/fingerprint.py	ede7b6179b0f97d2f1cd066abd5fabb48f038226	100644	19387	PENDING	runtime/environment/fingerprint.py	Source-exact candidate; independent acceptance pending	staged-exact:ede7b6179b0f97d2f1cd066abd5fabb48f038226
+runtime/environment/safety.py	75862298395761a78c18b245cbcc211a77d7e404	100644	6133	PENDING	runtime/environment/safety.py	Source-exact candidate; independent acceptance pending	staged-exact:75862298395761a78c18b245cbcc211a77d7e404
+runtime/environment/spec.py	4f8629ee842d4e02fded7493c8d2aabd4a5bb33f	100644	12491	PENDING	runtime/environment/spec.py	Source-exact candidate; independent acceptance pending	staged-exact:4f8629ee842d4e02fded7493c8d2aabd4a5bb33f
+runtime/environment/specs/maps-runtime-ci.json	c79c08dfed766ecb798c7cc8b9d3b463cfcc0984	100644	1242	PENDING	runtime/environment/specs/maps-runtime-ci.json	Source-exact candidate; independent acceptance pending	staged-exact:c79c08dfed766ecb798c7cc8b9d3b463cfcc0984
+runtime/environment/validation.py	4e4c06b0dbbd427bd5e24f9897049a34c619a7c2	100644	6921	PENDING	runtime/environment/validation.py	Source-exact candidate; independent acceptance pending	staged-exact:4e4c06b0dbbd427bd5e24f9897049a34c619a7c2
+runtime/evaluation/__init__.py	ad676457dc52eb49ec6081056482e8a5f9d9fa8d	100644	753	PENDING	runtime/evaluation/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:ad676457dc52eb49ec6081056482e8a5f9d9fa8d
+runtime/evaluation/evaluator.py	e7d134e0b0e1902b170fa5d850528fc7b56aa7e8	100644	17762	PENDING	runtime/evaluation/evaluator.py	Source-exact candidate; independent acceptance pending	staged-exact:e7d134e0b0e1902b170fa5d850528fc7b56aa7e8
+runtime/evaluation/regression_case.py	500cbd0dfbed8663a50d9e8318386e191ab2928b	100644	10899	PENDING	runtime/evaluation/regression_case.py	Source-exact candidate; independent acceptance pending	staged-exact:500cbd0dfbed8663a50d9e8318386e191ab2928b
+runtime/flow_handoff.py	133f9e675eacdcf54a12017c48ee2102c5dc516d	100644	4954	PENDING	runtime/flow_handoff.py	Source-exact candidate; independent acceptance pending	staged-exact:133f9e675eacdcf54a12017c48ee2102c5dc516d
+runtime/flow_release_check.py	0ac4e2a2a282e931413bfd7a71728b5c63f364c2	100644	9149	PENDING	runtime/flow_release_check.py	Source-exact candidate; independent acceptance pending	staged-exact:0ac4e2a2a282e931413bfd7a71728b5c63f364c2
+runtime/flow_review.py	967141e927285b3134cccb43b655b5dc227bd5fd	100644	9314	PENDING	runtime/flow_review.py	Source-exact candidate; independent acceptance pending	staged-exact:967141e927285b3134cccb43b655b5dc227bd5fd
+runtime/flow_start.py	6a8c524eb9667f4a88c127ef34c0725ab89d94bc	100644	8191	PENDING	runtime/flow_start.py	Source-exact candidate; independent acceptance pending	staged-exact:6a8c524eb9667f4a88c127ef34c0725ab89d94bc
+runtime/harness/__init__.py	a0aab7cf6f2ae930a527b7e8e1839fc881170c01	100644	1267	PENDING	runtime/harness/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:a0aab7cf6f2ae930a527b7e8e1839fc881170c01
+runtime/harness/adapters/__init__.py	b95a0d112e29f777b3799d0d70b8a389cb01715a	100644	71	PENDING	runtime/harness/adapters/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:b95a0d112e29f777b3799d0d70b8a389cb01715a
+runtime/harness/adapters/hcom.py	ce4ac965db547ccaf597a597375bcdfd88852779	100644	16587	PENDING	runtime/harness/adapters/hcom.py	Source-exact candidate; independent acceptance pending	staged-exact:ce4ac965db547ccaf597a597375bcdfd88852779
+runtime/harness/binding_resolution.py	0f6f1e34b9c50d5ede421816525c8089a660f58a	100644	4031	PENDING	runtime/harness/binding_resolution.py	Source-exact candidate; independent acceptance pending	staged-exact:0f6f1e34b9c50d5ede421816525c8089a660f58a
+runtime/harness/config_ref.py	8d8287752a2e7c51e0def6ef9dd4d735fc74d9df	100644	3367	PENDING	runtime/harness/config_ref.py	Source-exact candidate; independent acceptance pending	staged-exact:8d8287752a2e7c51e0def6ef9dd4d735fc74d9df
+runtime/harness/contract.py	117271e1f3407fd69db1d21cdbb2879b78228d1e	100644	3249	PENDING	runtime/harness/contract.py	Source-exact candidate; independent acceptance pending	staged-exact:117271e1f3407fd69db1d21cdbb2879b78228d1e
+runtime/harness/hooks.py	b3216fb43cd0bcc1826d0456fbe0fb704a54a54d	100644	10193	PENDING	runtime/harness/hooks.py	Source-exact candidate; independent acceptance pending	staged-exact:b3216fb43cd0bcc1826d0456fbe0fb704a54a54d
+runtime/harness/protocol.py	8d6791b774555fb3f45aff4ccda95954b0814cc3	100644	1288	PENDING	runtime/harness/protocol.py	Source-exact candidate; independent acceptance pending	staged-exact:8d6791b774555fb3f45aff4ccda95954b0814cc3
+runtime/harness/service.py	5084be3b2b709578dde0d040713786b5731a9880	100644	14128	PENDING	runtime/harness/service.py	Source-exact candidate; independent acceptance pending	staged-exact:5084be3b2b709578dde0d040713786b5731a9880
+runtime/harness/types.py	c2d3f4502e5a26c4fa8033e1882e96f7ca034b4f	100644	10662	PENDING	runtime/harness/types.py	Source-exact candidate; independent acceptance pending	staged-exact:c2d3f4502e5a26c4fa8033e1882e96f7ca034b4f
+runtime/helpers/__init__.py	6a7aee752840716aaec73ecfc671396536120ec2	100644	534	PENDING	runtime/helpers/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:6a7aee752840716aaec73ecfc671396536120ec2
+runtime/helpers/aider.py	60056dd16a03fba218fcc92a6574e3145fc1aacb	100644	5854	PENDING	runtime/helpers/aider.py	Source-exact candidate; independent acceptance pending	staged-exact:60056dd16a03fba218fcc92a6574e3145fc1aacb
+runtime/helpers/common.py	d6a88893d8210bdad17361e97b4e3cbd68fcce04	100644	13031	PENDING	runtime/helpers/common.py	Source-exact candidate; independent acceptance pending	staged-exact:d6a88893d8210bdad17361e97b4e3cbd68fcce04
+runtime/helpers/ollama.py	5627e0c9d848189c456a7dfdb0fd9cec4f5e7762	100644	3625	PENDING	runtime/helpers/ollama.py	Source-exact candidate; independent acceptance pending	staged-exact:5627e0c9d848189c456a7dfdb0fd9cec4f5e7762
+runtime/helpers/README.md	d1638f0348a0d22ba1027490723f3c159e91fefd	100644	2239	PENDING	runtime/helpers/README.md	Source-exact candidate; independent acceptance pending	staged-exact:d1638f0348a0d22ba1027490723f3c159e91fefd
+runtime/incident_taxonomy.py	93386106cd390b39014e8b89a1c6b5d14f7f8771	100644	3709	PENDING	runtime/incident_taxonomy.py	Source-exact candidate; independent acceptance pending	staged-exact:93386106cd390b39014e8b89a1c6b5d14f7f8771
+runtime/integrity/__init__.py	91852d71b3deb0dbb8f29d40ee45165638668339	100644	451	PENDING	runtime/integrity/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:91852d71b3deb0dbb8f29d40ee45165638668339
+runtime/integrity/budget.py	f7393ccdd4117c8f7ab3e673371fb85c9b462577	100644	3743	PENDING	runtime/integrity/budget.py	Source-exact candidate; independent acceptance pending	staged-exact:f7393ccdd4117c8f7ab3e673371fb85c9b462577
+runtime/integrity/cli.py	9218ac606f227e2066e5ef1fbd34a2c690209796	100644	7799	PENDING	runtime/integrity/cli.py	Source-exact candidate; independent acceptance pending	staged-exact:9218ac606f227e2066e5ef1fbd34a2c690209796
+runtime/integrity/git_scope.py	5402dcd5f408126b24c8c7df980ecb26ade15083	100644	6987	PENDING	runtime/integrity/git_scope.py	Source-exact candidate; independent acceptance pending	staged-exact:5402dcd5f408126b24c8c7df980ecb26ade15083
+runtime/integrity/README.md	eef4c852e1f85d53ff0ab85a6255d535a7ec7f2b	100644	6286	PENDING	runtime/integrity/README.md	Source-exact candidate; independent acceptance pending	staged-exact:eef4c852e1f85d53ff0ab85a6255d535a7ec7f2b
+runtime/no_progress.py	9277d15e6503c5e8c8f5de16fefc36d8762691bb	100644	4245	PENDING	runtime/no_progress.py	Source-exact candidate; independent acceptance pending	staged-exact:9277d15e6503c5e8c8f5de16fefc36d8762691bb
+runtime/operational_learning.py	9071998bb63e911ce5e2672d964e7243a81c5de7	100644	15956	PENDING	runtime/operational_learning.py	Source-exact candidate; independent acceptance pending	staged-exact:9071998bb63e911ce5e2672d964e7243a81c5de7
+runtime/outcome_lesson_candidate.py	9d4ed9e8c1bf7a3b534ef07f27aa7071c9932371	100644	6202	PENDING	runtime/outcome_lesson_candidate.py	Source-exact candidate; independent acceptance pending	staged-exact:9d4ed9e8c1bf7a3b534ef07f27aa7071c9932371
+runtime/policy/__init__.py	d22e099b273145b757d8eb95f2276333892bfdec	100644	1475	PENDING	runtime/policy/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:d22e099b273145b757d8eb95f2276333892bfdec
+runtime/policy/destructive_action_guard.py	fdb976c2a853bd836c6ee568a67afad81377ebf6	100644	9991	PENDING	runtime/policy/destructive_action_guard.py	Source-exact candidate; independent acceptance pending	staged-exact:fdb976c2a853bd836c6ee568a67afad81377ebf6
+runtime/policy/evaluator.py	ce70a38901054948546035f1b261bc7877deb0f9	100644	4734	PENDING	runtime/policy/evaluator.py	Source-exact candidate; independent acceptance pending	staged-exact:ce70a38901054948546035f1b261bc7877deb0f9
+runtime/policy/halt.py	2b838711d30d08769ccf8929fdc5ed40d01b7d0e	100644	5678	PENDING	runtime/policy/halt.py	Source-exact candidate; independent acceptance pending	staged-exact:2b838711d30d08769ccf8929fdc5ed40d01b7d0e
+runtime/policy/harness_guard.py	31fb9c5b76b2c8b8e334932d0ae1667dd5460dec	100644	14749	PENDING	runtime/policy/harness_guard.py	Source-exact candidate; independent acceptance pending	staged-exact:31fb9c5b76b2c8b8e334932d0ae1667dd5460dec
+runtime/policy/memory_provenance_guard.py	d6166d4eb5c9be74135deb08088271ddb94169e4	100644	10734	PENDING	runtime/policy/memory_provenance_guard.py	Source-exact candidate; independent acceptance pending	staged-exact:d6166d4eb5c9be74135deb08088271ddb94169e4
+runtime/policy/memory_trust_gate.py	4a55abde115fe7f45ffe9e06b31c24c7ee76f084	100644	7568	PENDING	runtime/policy/memory_trust_gate.py	Source-exact candidate; independent acceptance pending	staged-exact:4a55abde115fe7f45ffe9e06b31c24c7ee76f084
+runtime/policy/models.py	ffb510701fc5279be5842586f84c1d5b13d5bc40	100644	3269	PENDING	runtime/policy/models.py	Source-exact candidate; independent acceptance pending	staged-exact:ffb510701fc5279be5842586f84c1d5b13d5bc40
+runtime/policy/write_scope_guard.py	50fb9e08573ded5ed74b27840efd5115a8dfe257	100644	8411	PENDING	runtime/policy/write_scope_guard.py	Source-exact candidate; independent acceptance pending	staged-exact:50fb9e08573ded5ed74b27840efd5115a8dfe257
+runtime/README.md	f939172f58eab72b1535432c6060ed02cc99427f	100644	13516	PENDING	runtime/README.md	Source-exact candidate; independent acceptance pending	staged-exact:f939172f58eab72b1535432c6060ed02cc99427f
+runtime/recovery/__init__.py	7e4ffb72d5d0e66b19ea2a04bd7a1346521ff4d1	100644	201	PENDING	runtime/recovery/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:7e4ffb72d5d0e66b19ea2a04bd7a1346521ff4d1
+runtime/recovery/production.py	da9863ebec1a1423e9ad457b0ec05ccbb63d26f8	100644	33283	PENDING	runtime/recovery/production.py	Source-exact candidate; independent acceptance pending	staged-exact:da9863ebec1a1423e9ad457b0ec05ccbb63d26f8
+runtime/recovery/README.md	a12f6f4887a15fda786013ac712d6a8ea305f2c2	100644	2310	PENDING	runtime/recovery/README.md	Source-exact candidate; independent acceptance pending	staged-exact:a12f6f4887a15fda786013ac712d6a8ea305f2c2
+runtime/recovery/store.py	80740b96c2fbf5f721b9763eaf6e9242b600cccc	100644	4672	PENDING	runtime/recovery/store.py	Source-exact candidate; independent acceptance pending	staged-exact:80740b96c2fbf5f721b9763eaf6e9242b600cccc
+runtime/recovery/supervisor.py	cad91b9f562dd7921b2a62f4df4e5592d18515e9	100644	39160	PENDING	runtime/recovery/supervisor.py	Source-exact candidate; independent acceptance pending	staged-exact:cad91b9f562dd7921b2a62f4df4e5592d18515e9
+runtime/requirements-context-eval.txt	eacc732c08ee77be06901bf493a9a5ea751e11cc	100644	1305	PENDING	runtime/requirements-context-eval.txt	Source-exact candidate; independent acceptance pending	staged-exact:eacc732c08ee77be06901bf493a9a5ea751e11cc
+runtime/requirements-jev.txt	4e0b77ed804e4ffc091c5b48d5e5c54d02c5cd40	100644	121	PENDING	runtime/requirements-jev.txt	Source-exact candidate; independent acceptance pending	staged-exact:4e0b77ed804e4ffc091c5b48d5e5c54d02c5cd40
+runtime/requirements.txt	e4b48059e60b4d90fa8e0fa265a00bc24a3570e0	100644	619	PENDING	runtime/requirements.txt	Source-exact candidate; independent acceptance pending	staged-exact:e4b48059e60b4d90fa8e0fa265a00bc24a3570e0
+runtime/routing/__init__.py	96c12c8dcbdf7ced788127efeb2aa8e6c6ed8c2d	100644	163	PENDING	runtime/routing/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:96c12c8dcbdf7ced788127efeb2aa8e6c6ed8c2d
+runtime/routing/cli.py	2b7344c4626ed034645ae970c5bc8dfc92c83a59	100644	7776	PENDING	runtime/routing/cli.py	Source-exact candidate; independent acceptance pending	staged-exact:2b7344c4626ed034645ae970c5bc8dfc92c83a59
+runtime/routing/environment_reports.py	bda2fa041ed96a45416f046dce59b5caf41e87ca	100644	11235	PENDING	runtime/routing/environment_reports.py	Source-exact candidate; independent acceptance pending	staged-exact:bda2fa041ed96a45416f046dce59b5caf41e87ca
+runtime/routing/langgraph_runtime.py	69b36883da2cc1eb21ee101f59a6d2dc4b12c57d	100644	6104	PENDING	runtime/routing/langgraph_runtime.py	Source-exact candidate; independent acceptance pending	staged-exact:69b36883da2cc1eb21ee101f59a6d2dc4b12c57d
+runtime/routing/router.py	a1b8d90170e5bf65c64e0cc575c163cfd944f1d4	100644	8881	PENDING	runtime/routing/router.py	Source-exact candidate; independent acceptance pending	staged-exact:a1b8d90170e5bf65c64e0cc575c163cfd944f1d4
+runtime/routing/service.py	f1b12c44de850d32fb49bd980578c3e02ac82a45	100644	1706	PENDING	runtime/routing/service.py	Source-exact candidate; independent acceptance pending	staged-exact:f1b12c44de850d32fb49bd980578c3e02ac82a45
+runtime/run_record.py	185cd3d8191ee604c78b58e3415465fdda5788d0	100644	18932	PENDING	runtime/run_record.py	Source-exact candidate; independent acceptance pending	staged-exact:185cd3d8191ee604c78b58e3415465fdda5788d0
+runtime/skills/__init__.py	df3fb346fa8af597715da8463fdc14b1dfe03346	100644	2283	PENDING	runtime/skills/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:df3fb346fa8af597715da8463fdc14b1dfe03346
+runtime/skills/capability_policy.py	7e2130da127eed9d4f3bb3bd5fbf34b7bad5015c	100644	4016	PENDING	runtime/skills/capability_policy.py	Source-exact candidate; independent acceptance pending	staged-exact:7e2130da127eed9d4f3bb3bd5fbf34b7bad5015c
+runtime/skills/catalog.py	4ae2071294319d3a4c790c9548ab2e0b0192297b	100644	12338	PENDING	runtime/skills/catalog.py	Source-exact candidate; independent acceptance pending	staged-exact:4ae2071294319d3a4c790c9548ab2e0b0192297b
+runtime/skills/eval_corpora/exp_a_skill_routing_v1.json	520ceacd8ed9a099e2bdf01a582393ccfbdfe823	100644	8701	PENDING	runtime/skills/eval_corpora/exp_a_skill_routing_v1.json	Source-exact candidate; independent acceptance pending	staged-exact:520ceacd8ed9a099e2bdf01a582393ccfbdfe823
+runtime/skills/eval_corpora/exp_a_skill_routing_v2.json	4dad4de054b26aacb14726a8f045febcccfb9de1	100644	20150	PENDING	runtime/skills/eval_corpora/exp_a_skill_routing_v2.json	Source-exact candidate; independent acceptance pending	staged-exact:4dad4de054b26aacb14726a8f045febcccfb9de1
+runtime/skills/evaluation.py	85f527ad82d0446e1ecc69ce71ff501035e56abd	100644	15635	PENDING	runtime/skills/evaluation.py	Source-exact candidate; independent acceptance pending	staged-exact:85f527ad82d0446e1ecc69ce71ff501035e56abd
+runtime/skills/format.py	d366d71bb6dc5514cf1544cccc65b2fa09eba8b1	100644	19241	PENDING	runtime/skills/format.py	Source-exact candidate; independent acceptance pending	staged-exact:d366d71bb6dc5514cf1544cccc65b2fa09eba8b1
+runtime/skills/gate_hardened.py	403f0519457232da84bfbb5cf93c385165d367cc	100644	799	PENDING	runtime/skills/gate_hardened.py	Source-exact candidate; independent acceptance pending	staged-exact:403f0519457232da84bfbb5cf93c385165d367cc
+runtime/skills/gate.py	c36725cf02687113d9fe37143684e817e6122cc1	100644	18624	PENDING	runtime/skills/gate.py	Source-exact candidate; independent acceptance pending	staged-exact:c36725cf02687113d9fe37143684e817e6122cc1
+runtime/skills/lifecycle.py	5029272de64ae212758256868eff7d988051da7a	100644	7653	PENDING	runtime/skills/lifecycle.py	Source-exact candidate; independent acceptance pending	staged-exact:5029272de64ae212758256868eff7d988051da7a
+runtime/smoke.py	67cba8f1b50851784aac5cfaf623b037aec2432e	100644	5453	PENDING	runtime/smoke.py	Source-exact candidate; independent acceptance pending	staged-exact:67cba8f1b50851784aac5cfaf623b037aec2432e
+runtime/state/__init__.py	963d88c45ed9e6a2c56e4a1bdac629a8cfbd2a8f	100644	126	PENDING	runtime/state/__init__.py	Source-exact candidate; independent acceptance pending	staged-exact:963d88c45ed9e6a2c56e4a1bdac629a8cfbd2a8f
+runtime/state/authorized_operator_storage.py	4c81b2625e36a2e418db731302503ea0e03bf211	100644	11126	PENDING	runtime/state/authorized_operator_storage.py	Source-exact candidate; independent acceptance pending	staged-exact:4c81b2625e36a2e418db731302503ea0e03bf211
+runtime/state/base.py	8c58379f5476d9b03474325318baec79eee9fdd4	100644	12286	PENDING	runtime/state/base.py	Source-exact candidate; independent acceptance pending	staged-exact:8c58379f5476d9b03474325318baec79eee9fdd4
+runtime/state/common.py	448033c3f41f6ee6b2419321347c879d91d06bf7	100644	1085	PENDING	runtime/state/common.py	Source-exact candidate; independent acceptance pending	staged-exact:448033c3f41f6ee6b2419321347c879d91d06bf7
+runtime/state/environment_contract.py	604639604e664712851234252c05e40749e1d0fa	100644	6362	PENDING	runtime/state/environment_contract.py	Source-exact candidate; independent acceptance pending	staged-exact:604639604e664712851234252c05e40749e1d0fa
+runtime/state/environment.py	cecf8d68871e971d7b8246df1803a589ba12dea0	100644	6913	PENDING	runtime/state/environment.py	Source-exact candidate; independent acceptance pending	staged-exact:cecf8d68871e971d7b8246df1803a589ba12dea0
+runtime/state/execution.py	131db26c264d1c57a3f01e5ee45ccdcb8bf5f7b1	100644	13219	PENDING	runtime/state/execution.py	Source-exact candidate; independent acceptance pending	staged-exact:131db26c264d1c57a3f01e5ee45ccdcb8bf5f7b1
+runtime/state/helper_recovery_lineage.py	aeb4b5d10492c372b93d242b3372f95911983b35	100644	16515	PENDING	runtime/state/helper_recovery_lineage.py	Source-exact candidate; independent acceptance pending	staged-exact:aeb4b5d10492c372b93d242b3372f95911983b35
+runtime/state/integrity_scope.py	8d1cf7d13edc419cf16595746e2fc0cd87df982b	100644	3004	PENDING	runtime/state/integrity_scope.py	Source-exact candidate; independent acceptance pending	staged-exact:8d1cf7d13edc419cf16595746e2fc0cd87df982b
+runtime/state/integrity.py	31791e849e7b1c100985b36b7298d249856e534c	100644	33879	PENDING	runtime/state/integrity.py	Source-exact candidate; independent acceptance pending	staged-exact:31791e849e7b1c100985b36b7298d249856e534c
+runtime/state/observability.py	b47224a86579a6e2c3552141a05eacfdd500aade	100644	9073	PENDING	runtime/state/observability.py	Source-exact candidate; independent acceptance pending	staged-exact:b47224a86579a6e2c3552141a05eacfdd500aade
+runtime/state/operational_learning_storage.py	a4ca2ed8ede32e321579955d8890a4e356a9fe3b	100644	16846	PENDING	runtime/state/operational_learning_storage.py	Source-exact candidate; independent acceptance pending	staged-exact:a4ca2ed8ede32e321579955d8890a4e356a9fe3b
+runtime/state/outcomes.py	785caec194bd77282f4ec992cbdd3bb94cb7d4d7	100644	7659	PENDING	runtime/state/outcomes.py	Source-exact candidate; independent acceptance pending	staged-exact:785caec194bd77282f4ec992cbdd3bb94cb7d4d7
+runtime/state/policy.py	4619a056297c9d81b4c026cd011644253562ee41	100644	9395	PENDING	runtime/state/policy.py	Source-exact candidate; independent acceptance pending	staged-exact:4619a056297c9d81b4c026cd011644253562ee41
+runtime/state/readiness.py	54867e05f34e33696c67e630a4a2931c3061f44d	100644	12713	PENDING	runtime/state/readiness.py	Source-exact candidate; independent acceptance pending	staged-exact:54867e05f34e33696c67e630a4a2931c3061f44d
+runtime/state/release_check.py	132786c2c9fad8ee3f3ba6feaca509c93cbf693a	100644	8297	PENDING	runtime/state/release_check.py	Source-exact candidate; independent acceptance pending	staged-exact:132786c2c9fad8ee3f3ba6feaca509c93cbf693a
+runtime/state/review_binding.py	98db310fdfff84465b1e742b69afd98102e0fe63	100644	25262	PENDING	runtime/state/review_binding.py	Source-exact candidate; independent acceptance pending	staged-exact:98db310fdfff84465b1e742b69afd98102e0fe63
+runtime/state/review.py	64adb1f1f3b9ee483765cc2039c041b253628d91	100644	8850	PENDING	runtime/state/review.py	Source-exact candidate; independent acceptance pending	staged-exact:64adb1f1f3b9ee483765cc2039c041b253628d91
+runtime/state/run_lineage_trace.py	774eba26aba92dd11a2c02549cbc62b570ed6d96	100644	2887	PENDING	runtime/state/run_lineage_trace.py	Source-exact candidate; independent acceptance pending	staged-exact:774eba26aba92dd11a2c02549cbc62b570ed6d96
+runtime/state/run_lineage.py	97927f0ca6cdb600bb3db0118fc281425c60ac4b	100644	18660	PENDING	runtime/state/run_lineage.py	Source-exact candidate; independent acceptance pending	staged-exact:97927f0ca6cdb600bb3db0118fc281425c60ac4b
+runtime/state/schema.sql	6b16da2ec9ff9591f19092fe55ceac128e064590	100644	39716	PENDING	runtime/state/schema.sql	Source-exact candidate; independent acceptance pending	staged-exact:6b16da2ec9ff9591f19092fe55ceac128e064590
+runtime/state/skill_lifecycle_storage.py	29bdd795f6565974005afc496805df9c7c521f45	100644	19612	PENDING	runtime/state/skill_lifecycle_storage.py	Source-exact candidate; independent acceptance pending	staged-exact:29bdd795f6565974005afc496805df9c7c521f45
+runtime/state/store.py	d3eda5b74c46b0cdf76d88f7ae43983a71873496	100644	1717	PENDING	runtime/state/store.py	Source-exact candidate; independent acceptance pending	staged-exact:d3eda5b74c46b0cdf76d88f7ae43983a71873496
+runtime/state/submission_lineage.py	e93ca1b2eff45f42a27f55e3b291813a1db40541	100644	4138	PENDING	runtime/state/submission_lineage.py	Source-exact candidate; independent acceptance pending	staged-exact:e93ca1b2eff45f42a27f55e3b291813a1db40541
+runtime/status.py	d9b2c4cb41dd73066c947e14348c948c2d398842	100644	5052	PENDING	runtime/status.py	Source-exact candidate; independent acceptance pending	staged-exact:d9b2c4cb41dd73066c947e14348c948c2d398842
+runtime/text_redaction.py	ca3216aafa289648cc756952ccd5f5f0c2d45ac6	100644	1562	PENDING	runtime/text_redaction.py	Source-exact candidate; independent acceptance pending	staged-exact:ca3216aafa289648cc756952ccd5f5f0c2d45ac6
+runtime/trust.py	3f63542b84a6ae3fd327451a35c36ff779d511f4	100644	8203	PENDING	runtime/trust.py	Source-exact candidate; independent acceptance pending	staged-exact:3f63542b84a6ae3fd327451a35c36ff779d511f4
+runtime/wait_projection.py	cabf62d62e91dc8673572c0b53fb49ea793a13e6	100644	11276	PENDING	runtime/wait_projection.py	Source-exact candidate; independent acceptance pending	staged-exact:cabf62d62e91dc8673572c0b53fb49ea793a13e6
+scripts/check_coverage_note_pins.py	6a6994806e6b7a479620b874eceb955629d079a3	100644	5692	PENDING	scripts/check_coverage_note_pins.py	Source-exact candidate; independent acceptance pending	staged-exact:6a6994806e6b7a479620b874eceb955629d079a3
+scripts/check_direct_push.py	6c60ab8d99a34a5c28f6e934bbc6ecbe62a531e6	100644	6480	PENDING	scripts/check_direct_push.py	Source-exact candidate; independent acceptance pending	staged-exact:6c60ab8d99a34a5c28f6e934bbc6ecbe62a531e6
+scripts/check_dispatch_freshness.py	d632fd41977bc1da0766ae49c9d313d367037414	100755	4393	PENDING	scripts/check_dispatch_freshness.py	Source-exact candidate; independent acceptance pending	staged-exact:d632fd41977bc1da0766ae49c9d313d367037414
+scripts/check_handoff_receipts.py	dabb61eda411616cec9aec4494995e3e7b4bbc78	100644	6921	PENDING	scripts/check_handoff_receipts.py	Source-exact candidate; independent acceptance pending	staged-exact:dabb61eda411616cec9aec4494995e3e7b4bbc78
+scripts/check_legacy_removal_readiness.py	ee47010252da7292d2f9052a91eeb1c49f9a7d48	100644	7101	PENDING	scripts/check_legacy_removal_readiness.py	Source-exact candidate; independent acceptance pending	staged-exact:ee47010252da7292d2f9052a91eeb1c49f9a7d48
+scripts/check_review_evidence.py	bd1a67b7146923d81397622161ee4ce386532050	100644	9089	PENDING	scripts/check_review_evidence.py	Source-exact candidate; independent acceptance pending	staged-exact:bd1a67b7146923d81397622161ee4ce386532050
+scripts/check_spiderweb.py	e83eac6e8d4141172c0db27f6b381b3fd65d7c3b	100644	13875	PENDING	scripts/check_spiderweb.py	Source-exact candidate; independent acceptance pending	staged-exact:e83eac6e8d4141172c0db27f6b381b3fd65d7c3b
+scripts/check_stale_no_caller_docstrings.py	37714d5f589527c9cd1c27842381f542cbf95ef0	100644	11456	PENDING	scripts/check_stale_no_caller_docstrings.py	Source-exact candidate; independent acceptance pending	staged-exact:37714d5f589527c9cd1c27842381f542cbf95ef0
+scripts/coordination_housekeeping.py	5978b1153802a04f6fb7d8cd2d59742858075bfc	100644	13689	PENDING	scripts/coordination_housekeeping.py	Source-exact candidate; independent acceptance pending	staged-exact:5978b1153802a04f6fb7d8cd2d59742858075bfc
+scripts/emergence.py	17a3ad48989cefddf9b759c3ba59cf1111494235	100644	6100	PENDING	scripts/emergence.py	Source-exact candidate; independent acceptance pending	staged-exact:17a3ad48989cefddf9b759c3ba59cf1111494235
+scripts/hooks/block-monitor-on-tests.example.json	c2cbe966df94d3c7ea614c20d1668b6c121e9658	100644	1812	PENDING	scripts/hooks/block-monitor-on-tests.example.json	Source-exact candidate; independent acceptance pending	staged-exact:c2cbe966df94d3c7ea614c20d1668b6c121e9658
+scripts/install_maps.sh	7a5299b4be153ba6b97d53c1fe1151959b6ea65e	100644	3699	PENDING	scripts/install_maps.sh	Source-exact candidate; independent acceptance pending	staged-exact:7a5299b4be153ba6b97d53c1fe1151959b6ea65e
+scripts/opcmd_merge.py	797a3f01eb9b54def8ca17980a92defcb0542d69	100644	28760	PENDING	scripts/opcmd_merge.py	Source-exact candidate; independent acceptance pending	staged-exact:797a3f01eb9b54def8ca17980a92defcb0542d69
+scripts/portable_target_init.py	0744c7aa81ce953410b9a4fc0963d8d58fc89a1a	100644	4870	PENDING	scripts/portable_target_init.py	Source-exact candidate; independent acceptance pending	staged-exact:0744c7aa81ce953410b9a4fc0963d8d58fc89a1a
+scripts/portable_target_preflight.py	bb34d239d87f0ce01999f70ad23add58cd0f86f0	100644	4296	PENDING	scripts/portable_target_preflight.py	Source-exact candidate; independent acceptance pending	staged-exact:bb34d239d87f0ce01999f70ad23add58cd0f86f0
+scripts/run_tests_sharded.py	1ed84edccc534b304d6e1a9cd30b505ef0ca08fd	100644	9401	PENDING	scripts/run_tests_sharded.py	Source-exact candidate; independent acceptance pending	staged-exact:1ed84edccc534b304d6e1a9cd30b505ef0ca08fd
 state/CURRENT.md	05b68a5d184599dcf00372a9db42d3854a75ed76	100644	3924	PENDING	state/CURRENT.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:56eb4a9a30523d78661be8d6a538cbb4be805914
-templates/agi-check.md	ba321cc523cf12df16ca739aeb415a889aaccfa4	100644	2235	PENDING	templates/agi-check.md	Source-exact staging; independent acceptance pending	staged-exact:ba321cc523cf12df16ca739aeb415a889aaccfa4
-templates/context-packet.md	96d5eabeb3f298bba1299fb312d7a5cee085adb4	100644	757	PENDING	templates/context-packet.md	Source-exact staging; independent acceptance pending	staged-exact:96d5eabeb3f298bba1299fb312d7a5cee085adb4
-templates/decision.md	38a264554a21f608c074b0b362368416ed9e3092	100644	437	PENDING	templates/decision.md	Source-exact staging; independent acceptance pending	staged-exact:38a264554a21f608c074b0b362368416ed9e3092
-templates/handoff.md	bf8a6895c218d75e29b876aa895859ff9c87bca4	100644	3273	PENDING	templates/handoff.md	Source-exact staging; independent acceptance pending	staged-exact:bf8a6895c218d75e29b876aa895859ff9c87bca4
-templates/portable-deployment/target-review-evidence.md	0433c8a5b3106758a26635b69886a796a140a0d8	100644	601	PENDING	templates/portable-deployment/target-review-evidence.md	Source-exact staging; independent acceptance pending	staged-exact:0433c8a5b3106758a26635b69886a796a140a0d8
-templates/portable-deployment/target-roadmap.md	609ca2fb38897cc70dec8aa32b20bd56974128b3	100644	544	PENDING	templates/portable-deployment/target-roadmap.md	Source-exact staging; independent acceptance pending	staged-exact:609ca2fb38897cc70dec8aa32b20bd56974128b3
-templates/portable-deployment/target-task.md	06098e5b9a3a465425937acdc8aed769f1f8cbef	100644	1575	PENDING	templates/portable-deployment/target-task.md	Source-exact staging; independent acceptance pending	staged-exact:06098e5b9a3a465425937acdc8aed769f1f8cbef
-templates/project-brief.md	6e19d3688e86c133846391d55d9e1b2276ed5ee7	100644	1400	PENDING	templates/project-brief.md	Source-exact staging; independent acceptance pending	staged-exact:6e19d3688e86c133846391d55d9e1b2276ed5ee7
-templates/repair-record.md	36d826409bbe2412ecd617e9ed28d52f92e7841b	100644	475	PENDING	templates/repair-record.md	Source-exact staging; independent acceptance pending	staged-exact:36d826409bbe2412ecd617e9ed28d52f92e7841b
-templates/research-brief.md	bf8c446fa0f696cbb636f7547c9aa36485bb9786	100644	647	PENDING	templates/research-brief.md	Source-exact staging; independent acceptance pending	staged-exact:bf8c446fa0f696cbb636f7547c9aa36485bb9786
-templates/retrospective.md	1d2ea1defe3bd249b3477335a5670ff4d3000c32	100644	319	PENDING	templates/retrospective.md	Source-exact staging; independent acceptance pending	staged-exact:1d2ea1defe3bd249b3477335a5670ff4d3000c32
-templates/review-evidence.md	d31810cfe452b363e868b4b8935ed895e362f1dc	100644	215	PENDING	templates/review-evidence.md	Source-exact staging; independent acceptance pending	staged-exact:d31810cfe452b363e868b4b8935ed895e362f1dc
-templates/review.md	9dd877399a07cae4784f27c164f3e04219a7ef4b	100644	2307	PENDING	templates/review.md	Source-exact staging; independent acceptance pending	staged-exact:9dd877399a07cae4784f27c164f3e04219a7ef4b
-templates/risk-register.md	0d85c1e5e329a887f0ab93dea1e3b90f3459384c	100644	294	PENDING	templates/risk-register.md	Source-exact staging; independent acceptance pending	staged-exact:0d85c1e5e329a887f0ab93dea1e3b90f3459384c
-templates/roadmap.md	5909330b93ec6a16b28b0e95454c88d8989388b0	100644	4551	PENDING	templates/roadmap.md	Source-exact staging; independent acceptance pending	staged-exact:5909330b93ec6a16b28b0e95454c88d8989388b0
-templates/task-contract.example.json	9cdaa2a565d45e203861b4b3848d1ec3f0225cd1	100644	1038	PENDING	templates/task-contract.example.json	Source-exact staging; independent acceptance pending	staged-exact:9cdaa2a565d45e203861b4b3848d1ec3f0225cd1
-templates/task.md	bf1d0f79f4db9a52dd5561000d912bccefd9e20e	100644	5786	PENDING	templates/task.md	Source-exact staging; independent acceptance pending	staged-exact:bf1d0f79f4db9a52dd5561000d912bccefd9e20e
-templates/worker-profiles.example.json	85dd28efc263d3f59ae5326c854af525a404706e	100644	811	PENDING	templates/worker-profiles.example.json	Source-exact staging; independent acceptance pending	staged-exact:85dd28efc263d3f59ae5326c854af525a404706e
-tests/test_acquisition_evidence.py	7cd6e3f07b028e887941b2083b71d5d741ce1162	100644	13205	PENDING			
-tests/test_agentic_security_baseline.py	5a0438e7703eb91340f95823a30015dfb8d3ac0b	100644	12102	PENDING			
-tests/test_agentic_security_hook_context.py	d513e15346ad2e864849e2258a6cbfa826ce1075	100644	3927	PENDING			
-tests/test_agents_contract_protection.py	da2ca16b7b83e9170848cdc92ce33a1818e53fa7	100644	3614	PENDING			
-tests/test_authorized_operator_storage.py	87e6d527ad53ae0f9f71dbbc08cba3963f59cc53	100644	9296	PENDING			
-tests/test_benchmark_result_evidence_binding.py	898da08b0a4b77de5778905d0e71acdfa910b0bd	100644	6486	PENDING			
-tests/test_benchmark_result_measurements.py	b8d114560db99f8772f38c550c0a4f905d531b39	100644	2595	PENDING			
-tests/test_benchmark_results.py	1cf633d6112aa07f3da019a6d805d1a9570edefd	100644	12202	PENDING			
-tests/test_bounded_helpers.py	44a1ed20a20f82d8adb814b8eb8dff43c6b56e65	100644	11404	PENDING			
-tests/test_budget_artifact_safety.py	4320e20abd2cef11e636299de9e8ed6f5b65254b	100644	957	PENDING			
-tests/test_check_coverage_note_pins.py	e133f9f2c94a0225ddd6ec2f802a0430ded04a6b	100644	3679	PENDING			
-tests/test_check_direct_push.py	56c0a669480de36dabc018a929c75b76406376c2	100644	6321	PENDING			
-tests/test_check_handoff_receipts.py	2877247ffe3d056ad10a68061ed064c51d9018a9	100644	5576	PENDING			
-tests/test_check_review_evidence.py	6960d3e57a7b99363394ebdc69cfdda4da60dd86	100644	15322	PENDING			
-tests/test_check_stale_no_caller_docstrings.py	5787b99eae1f6f3bd57f4a44d6e2a212665d05b2	100644	13168	PENDING			
-tests/test_cli_run.py	cd69143bbdb050f2798537055e06e169e442bac3	100644	10123	PENDING			
-tests/test_cli_skill.py	2dd29a8e74e8dc05ee58bdd26226aba1aa8112a1	100644	16892	PENDING			
-tests/test_context_builder_evidence_integrity_fixture.py	0e1a16afbf41e25036f3ffbb1d3a4da191012b90	100644	6159	PENDING			
-tests/test_context_builder.py	f99ccf669451e0d6b10a1ffdb008be2d911a3385	100644	53515	PENDING			
-tests/test_context_delivery.py	5ec46c6dbf3f9256521510c5e1ed9f8a39e38200	100644	14661	PENDING			
-tests/test_context_evidence_hardening.py	c47c2106abc474ba020743acf5278ead6d1f0b67	100644	3575	PENDING			
-tests/test_context_evidence.py	b33c8177656763c0c2bf823a9443ecf51f5b5c03	100644	11375	PENDING			
-tests/test_context_retrieval_jev.py	13e0ef2d54e09d4ec2117c048d9d326c64fc597c	100644	2386	PENDING			
-tests/test_context_retrieval_semantic.py	b29d9ddf3f5a3185d143d094a8327d52bc854a9a	100644	6026	PENDING			
-tests/test_context_retrieval_stage2.py	23c115746d0328fe0f3cbb054c2a8e53a19d0703	100644	10182	PENDING			
-tests/test_coordination_housekeeping.py	9f7846b4de6ffce78bb7fca05bda547149bfa7dd	100644	8680	PENDING			
-tests/test_decision_judgments.py	999e88d6bb13f501dbd3865f225dc6ef33b48286	100644	5157	PENDING			
-tests/test_decision_provider.py	5ff639acdaed48405203099b9472f6a958ad31ce	100644	8232	PENDING			
-tests/test_dependency_cycle_readiness.py	10188bf6a3965a4bb3c561cf33a013fc072a217a	100644	5355	PENDING			
-tests/test_destructive_external_action_guard.py	854a204b4ad373fb9b2d7be5c5ee824628f529a2	100644	13275	PENDING			
-tests/test_digital_fungus_routes.py	1970c22995846241145ca3e93f939dc1372e6a0e	100644	3141	PENDING			
-tests/test_documentation_sprawl.py	d665d2d4f698e41da340217ccd3f372ab212e470	100644	16601	PENDING			
-tests/test_emergence_capture.py	aebcfdd5bb79a1cce81c65cb4851f9e568c5ff47	100644	3685	PENDING			
-tests/test_environment_fingerprint_safety.py	228a665d889fbe580475efdea7f1483e6b87167c	100644	4929	PENDING			
-tests/test_environment_fingerprint.py	467dfcfb696a17384b2915861a430d17d4efe3d6	100644	10751	PENDING			
-tests/test_environment_spec.py	7ebaa53af9383c4bcfd03b0d11bcdc9808a0446b	100644	6458	PENDING			
-tests/test_environment_state_import_isolation.py	212e3ebb51dc7fff2829d96573e0d59be6cf2edc	100644	1632	PENDING			
-tests/test_environment_validation.py	f5a514cab62600fdb474cba6ee7bb6f12a3c9d9f	100644	5786	PENDING			
-tests/test_execution_integrity.py	67b0fdadbcf7eb34452fa175f3ebe81e71dd7fe0	100644	26770	PENDING			
-tests/test_exp_a_skill_routing.py	03cf7fa1ba2dc46a975a725aed878741b4dc2ac5	100644	9557	PENDING			
-tests/test_exp_b_skill_routing.py	ac9d18f45bfb36955313eea41df9f59ebb7e6372	100644	9266	PENDING			
-tests/test_flow_handoff.py	d6ceaba8e6ab06c24b08708c662e3ff9f113672b	100644	11348	PENDING			
-tests/test_flow_release_check.py	c20c72d01d5849046ecf23f154e6b4a110e2c1df	100644	24922	PENDING			
-tests/test_flow_review.py	5880080545f3accbf08fb489d9898d1cb9d95b1e	100644	27112	PENDING			
-tests/test_flow_start.py	2fb5181f302c00f37e9d8c51c62e4714d9a7d08e	100644	15330	PENDING			
-tests/test_frozen_regression_case_taxonomy.py	2d932b04e5d8d31bfb3e3cea5a7bd63a30efd41b	100644	1099	PENDING			
-tests/test_frozen_regression_case.py	1c02326556af119550e8236f227a6a0a437af862	100644	9882	PENDING			
-tests/test_harness_adapter_contract.py	eecb0cc1bcc8e28b9706f0ce7a17aa6e0f02e350	100644	2322	PENDING			
-tests/test_harness_canonical_guard.py	4def7b7fcca8882d0e2575de36bfb9650842be4c	100644	17246	PENDING			
-tests/test_harness_config_ref.py	c07366e915444a51ef2106ba8fc291ed56c49c0a	100644	4995	PENDING			
-tests/test_harness_hcom_adapter.py	12f157702fe577f151a2b6ee96da92a1e72cafe6	100644	16465	PENDING			
-tests/test_harness_hooks.py	126803aff0c4e81e59996046c9485b40addd7227	100644	10164	PENDING			
-tests/test_harness_service.py	e879428b84b8b698cc84036bcdcca4b35e065623	100644	14422	PENDING			
-tests/test_harness_types.py	49d807084191e510b06f37496bbb27a69cb64c75	100644	7540	PENDING			
-tests/test_hcom_adapter.py	40e64e3aba97816a234a492fc79f0542964f0497	100644	20637	PENDING			
-tests/test_hcom_lineage.py	8f3e456485b2556755dbb15d2cc0abbda9e80d58	100644	8204	PENDING			
-tests/test_helper_recovery_lineage_sql.py	f5c9a7c848e37d483b8e3104f98aa3886a1be5fe	100644	1866	PENDING			
-tests/test_helper_recovery_lineage.py	d20142a1d6dddb98bd7390a7834942218520c310	100644	19472	PENDING			
-tests/test_incident_taxonomy.py	b7e22fa4e0ec56cd94749551c2be8cfb39b2b887	100644	2915	PENDING	tests/test_incident_taxonomy.py	Source-exact runtime/portable staging; independent acceptance pending	staged-exact:b7e22fa4e0ec56cd94749551c2be8cfb39b2b887
-tests/test_langgraph_routing.py	9c151e57f5e7a3feeee959be1131c020fc013096	100644	2954	PENDING			
-tests/test_legacy_removal_readiness.py	aa2d52a78193ce70c4bb8675c9006ec6a78e31ab	100644	1569	PENDING			
-tests/test_maps_end_to_end_benchmark_fixture.py	b6c196a6198b4163a8bcb8cbe7b57b32a1821269	100644	6425	PENDING			
-tests/test_memory_provenance_guard.py	aed474352b9849fc38862c798606d47b0a1499d1	100644	11005	PENDING			
-tests/test_memory_trust_gate.py	af4cbb3469ea528e4bb37635f6eacc86de50539f	100644	11518	PENDING			
-tests/test_message_lineage.py	cbb47e378df7e7482bc68353562c4707c7ba6409	100644	11651	PENDING			
-tests/test_no_progress.py	91b47297690b5ea0b2418debbf5b9ca5e68fcf89	100644	4079	PENDING	tests/test_no_progress.py	Source-exact runtime/portable staging; independent acceptance pending	staged-exact:91b47297690b5ea0b2418debbf5b9ca5e68fcf89
-tests/test_opcmd_merge.py	7e508a1a20c045344b771ced11ca9cd0cfa7ddbf	100644	35222	PENDING			
-tests/test_operational_learning_schema.py	236d4ad57cde78b08f9b97042aed50d928f0a29b	100644	1943	PENDING			
-tests/test_operational_learning_storage.py	3a3d304418baadc39c677e477df94e095392cf18	100644	20295	PENDING			
-tests/test_operational_learning.py	be5a8f75b4df5affa7971fd8e3ab811a21e73fde	100644	11104	PENDING			
-tests/test_outcome_lesson_candidate.py	c77f339b14e02572624ce3e109a7607d8abdaf26	100644	9390	PENDING			
-tests/test_outcomes.py	9deabc8c688b2f26ae13d9e82afbb04900ea31ba	100644	11055	PENDING			
-tests/test_policy_state.py	9c65f0d5c3d694316bbc7de921fa3e9d65c0773f	100644	7203	PENDING			
-tests/test_portable_target_init.py	ee1638b1324048eaff2e4d14186d469902fa1b3d	100644	5378	PENDING	tests/test_portable_target_init.py	Source-exact runtime/portable staging; independent acceptance pending	staged-exact:ee1638b1324048eaff2e4d14186d469902fa1b3d
-tests/test_portable_target_preflight.py	ff14afd12d02eeac2fc39a6dca31f577d734cc8e	100644	4740	PENDING	tests/test_portable_target_preflight.py	Source-exact runtime/portable staging; independent acceptance pending	staged-exact:ff14afd12d02eeac2fc39a6dca31f577d734cc8e
-tests/test_protocol_discoverability.py	a2cc50243bbdf10b0de992969d8a2d5a8c2f30e1	100644	4598	PENDING			
-tests/test_recovery_composition_root.py	bac0e6df93d1dff6be5a63d9de2aa98054f473d3	100644	22361	PENDING			
-tests/test_recovery_external_effect_ambiguity.py	d3423f99b572b25836c19d7611ef549b94dd8504	100644	10625	PENDING			
-tests/test_recovery_production_trigger.py	d00f7fa9076c298831929efed6376d2bd30a4cd8	100644	50555	PENDING			
-tests/test_recovery_supervisor.py	279d163eda279a7d7e9980bf82c2397a4acf0e67	100644	76220	PENDING			
-tests/test_regression_evaluator.py	718467bfe374e11f4a214128312db0ae4c8768ab	100644	11216	PENDING			
-tests/test_review_subject_binding.py	0da7e260bfc17eabbef6eba0aca9af6c20a62c33	100644	14675	PENDING			
-tests/test_routing_cli.py	65554c0cf4f1b2f7f2c0acf0529693399e0ee3bd	100644	14804	PENDING			
-tests/test_routing_environment_reports.py	3c75e3e84bd40f3d85835fee5562b44f309e6b5b	100644	15626	PENDING			
-tests/test_routing_policy.py	f8553986f3e66dd4a759be5b5581ae203d14d6b2	100644	14010	PENDING			
-tests/test_run_environment_evidence.py	3fdb0251996b5c469b64ffdf05b240966c7469a4	100644	12741	PENDING			
-tests/test_run_manifest_immutability.py	7a25c4b90a9471e6cd3dc8686f5a3c02562a109d	100644	4373	PENDING			
-tests/test_run_record.py	0f38c0ed78d764fe36c1f73ca7f149ff673597ef	100644	14755	PENDING			
-tests/test_run_session_lineage.py	b701dcda3fe0845f763eb983a2b362b7ed8ca36b	100644	16666	PENDING			
-tests/test_run_tests_sharded.py	8dc45966683f625fa2c9b4641874f408e2dbd164	100644	6022	PENDING			
-tests/test_runtime_review_hardening.py	74d4988adafafa3d91c6a6ec3ef3bc6666d9829f	100644	15947	PENDING			
-tests/test_scope_symlink_containment.py	509c79aebe2c4d6c1c83ea118e582fb490c554a7	100644	3035	PENDING			
-tests/test_skill_capability_manifest.py	462e8a726a3c9a2d8a8c3a27a2131c74e141c4d7	100644	23453	PENDING			
-tests/test_skill_lifecycle_storage.py	37ad673ea6620353ed5f27d2f6dbb784db4eb978	100644	33302	PENDING			
-tests/test_skill_lifecycle.py	a40a47e4c877e37982a2e61aaa4e2405471c735f	100644	7239	PENDING			
-tests/test_skills_catalog.py	0632d635915eaead04b78c41b7897c9641d4d0ed	100644	13162	PENDING			
-tests/test_skills_format.py	43b50eb317fd1281c8e5796409f181e59044f261	100644	14119	PENDING			
-tests/test_skills_quality_gate_metadata.py	bb6d21dd55ab93780716c4289252e8939291dec1	100644	2161	PENDING			
-tests/test_skills_quality_gate.py	d787720f936dd79c22fed71ef2e940defd7a3d0d	100644	8602	PENDING			
-tests/test_skills_selection_evaluation.py	f487b2892d461699d1fb09b66bac77ce5a13795a	100644	7773	PENDING			
-tests/test_smoke_install.py	6a8d365c3b54f30ea113d5b7c5708e3982208fef	100644	1817	PENDING			
-tests/test_spiderweb_audit.py	3c24259ab1fdde04d97767c001bd8c38d1e207fb	100644	9424	PENDING			
-tests/test_state_store.py	82fb45719da0020363364424ce0d609f9b15a7d7	100644	13117	PENDING			
-tests/test_status.py	3b54190e167fa65cbdb5fdb93161764769cc0159	100644	6713	PENDING			
-tests/test_submission_run_lineage_sql.py	35f3e872ecff883ae42fa6d17bf1e447cb61c6f0	100644	2926	PENDING			
-tests/test_submission_run_lineage.py	d1e24704f42f2907b23c92547b7f9018fa39e892	100644	11740	PENDING			
-tests/test_task_environment_contract.py	920f730d025d8c6702d0cf1bd982c49536897e8a	100644	9248	PENDING			
-tests/test_task_event_atomicity.py	a29cf6c4646f3350554f6cadbf42d0a05f69a814	100644	3290	PENDING			
-tests/test_task_history_retention.py	3e85d255911bd90c39c4961e43cb449772e81503	100644	3881	PENDING			
-tests/test_trace_and_redaction.py	b0d24f0a5dee5dcd9a7226d30edce36e5d74ebfe	100644	7626	PENDING			
-tests/test_triage_status.py	871aae570374484c33bcbcdc7e64aaaea2e1168f	100644	6703	PENDING			
-tests/test_trust.py	1740b7635050c8abf807905d86d2ed0c67ee42b2	100644	3494	PENDING			
-tests/test_wait_projection.py	1ed517b67a3741003277857a8f5743c366b0d36f	100644	15338	PENDING			
-tests/test_write_scope_guard.py	478feb37c7d0e90f51bd355a0da50562d773dae8	100644	10492	PENDING			
-tools/digital_fungus.py	e5df59745c69dde5b1c69a9f186e40970d06da3f	100644	19540	PENDING			
-tools/triage_status.py	d48aa44694ad8ee4cc18fce2ac3797682a0f46a5	100644	9892	PENDING			
+templates/agi-check.md	ba321cc523cf12df16ca739aeb415a889aaccfa4	100644	2235	PENDING	templates/agi-check.md	Source-exact candidate; independent acceptance pending	staged-exact:ba321cc523cf12df16ca739aeb415a889aaccfa4
+templates/context-packet.md	96d5eabeb3f298bba1299fb312d7a5cee085adb4	100644	757	PENDING	templates/context-packet.md	Source-exact candidate; independent acceptance pending	staged-exact:96d5eabeb3f298bba1299fb312d7a5cee085adb4
+templates/decision.md	38a264554a21f608c074b0b362368416ed9e3092	100644	437	PENDING	templates/decision.md	Source-exact candidate; independent acceptance pending	staged-exact:38a264554a21f608c074b0b362368416ed9e3092
+templates/handoff.md	bf8a6895c218d75e29b876aa895859ff9c87bca4	100644	3273	PENDING	templates/handoff.md	Source-exact candidate; independent acceptance pending	staged-exact:bf8a6895c218d75e29b876aa895859ff9c87bca4
+templates/portable-deployment/target-review-evidence.md	0433c8a5b3106758a26635b69886a796a140a0d8	100644	601	PENDING	templates/portable-deployment/target-review-evidence.md	Source-exact candidate; independent acceptance pending	staged-exact:0433c8a5b3106758a26635b69886a796a140a0d8
+templates/portable-deployment/target-roadmap.md	609ca2fb38897cc70dec8aa32b20bd56974128b3	100644	544	PENDING	templates/portable-deployment/target-roadmap.md	Source-exact candidate; independent acceptance pending	staged-exact:609ca2fb38897cc70dec8aa32b20bd56974128b3
+templates/portable-deployment/target-task.md	06098e5b9a3a465425937acdc8aed769f1f8cbef	100644	1575	PENDING	templates/portable-deployment/target-task.md	Source-exact candidate; independent acceptance pending	staged-exact:06098e5b9a3a465425937acdc8aed769f1f8cbef
+templates/project-brief.md	6e19d3688e86c133846391d55d9e1b2276ed5ee7	100644	1400	PENDING	templates/project-brief.md	Source-exact candidate; independent acceptance pending	staged-exact:6e19d3688e86c133846391d55d9e1b2276ed5ee7
+templates/repair-record.md	36d826409bbe2412ecd617e9ed28d52f92e7841b	100644	475	PENDING	templates/repair-record.md	Source-exact candidate; independent acceptance pending	staged-exact:36d826409bbe2412ecd617e9ed28d52f92e7841b
+templates/research-brief.md	bf8c446fa0f696cbb636f7547c9aa36485bb9786	100644	647	PENDING	templates/research-brief.md	Source-exact candidate; independent acceptance pending	staged-exact:bf8c446fa0f696cbb636f7547c9aa36485bb9786
+templates/retrospective.md	1d2ea1defe3bd249b3477335a5670ff4d3000c32	100644	319	PENDING	templates/retrospective.md	Source-exact candidate; independent acceptance pending	staged-exact:1d2ea1defe3bd249b3477335a5670ff4d3000c32
+templates/review-evidence.md	d31810cfe452b363e868b4b8935ed895e362f1dc	100644	215	PENDING	templates/review-evidence.md	Source-exact candidate; independent acceptance pending	staged-exact:d31810cfe452b363e868b4b8935ed895e362f1dc
+templates/review.md	9dd877399a07cae4784f27c164f3e04219a7ef4b	100644	2307	PENDING	templates/review.md	Source-exact candidate; independent acceptance pending	staged-exact:9dd877399a07cae4784f27c164f3e04219a7ef4b
+templates/risk-register.md	0d85c1e5e329a887f0ab93dea1e3b90f3459384c	100644	294	PENDING	templates/risk-register.md	Source-exact candidate; independent acceptance pending	staged-exact:0d85c1e5e329a887f0ab93dea1e3b90f3459384c
+templates/roadmap.md	5909330b93ec6a16b28b0e95454c88d8989388b0	100644	4551	PENDING	templates/roadmap.md	Source-exact candidate; independent acceptance pending	staged-exact:5909330b93ec6a16b28b0e95454c88d8989388b0
+templates/task-contract.example.json	9cdaa2a565d45e203861b4b3848d1ec3f0225cd1	100644	1038	PENDING	templates/task-contract.example.json	Source-exact candidate; independent acceptance pending	staged-exact:9cdaa2a565d45e203861b4b3848d1ec3f0225cd1
+templates/task.md	bf1d0f79f4db9a52dd5561000d912bccefd9e20e	100644	5786	PENDING	templates/task.md	Source-exact candidate; independent acceptance pending	staged-exact:bf1d0f79f4db9a52dd5561000d912bccefd9e20e
+templates/worker-profiles.example.json	85dd28efc263d3f59ae5326c854af525a404706e	100644	811	PENDING	templates/worker-profiles.example.json	Source-exact candidate; independent acceptance pending	staged-exact:85dd28efc263d3f59ae5326c854af525a404706e
+tests/test_acquisition_evidence.py	7cd6e3f07b028e887941b2083b71d5d741ce1162	100644	13205	PENDING	tests/test_acquisition_evidence.py	Source-exact candidate; independent acceptance pending	staged-exact:7cd6e3f07b028e887941b2083b71d5d741ce1162
+tests/test_agentic_security_baseline.py	5a0438e7703eb91340f95823a30015dfb8d3ac0b	100644	12102	PENDING	tests/test_agentic_security_baseline.py	Source-exact candidate; independent acceptance pending	staged-exact:5a0438e7703eb91340f95823a30015dfb8d3ac0b
+tests/test_agentic_security_hook_context.py	d513e15346ad2e864849e2258a6cbfa826ce1075	100644	3927	PENDING	tests/test_agentic_security_hook_context.py	Source-exact candidate; independent acceptance pending	staged-exact:d513e15346ad2e864849e2258a6cbfa826ce1075
+tests/test_agents_contract_protection.py	da2ca16b7b83e9170848cdc92ce33a1818e53fa7	100644	3614	PENDING	tests/test_agents_contract_protection.py	Source-exact candidate; independent acceptance pending	staged-exact:da2ca16b7b83e9170848cdc92ce33a1818e53fa7
+tests/test_authorized_operator_storage.py	87e6d527ad53ae0f9f71dbbc08cba3963f59cc53	100644	9296	PENDING	tests/test_authorized_operator_storage.py	Source-exact candidate; independent acceptance pending	staged-exact:87e6d527ad53ae0f9f71dbbc08cba3963f59cc53
+tests/test_benchmark_result_evidence_binding.py	898da08b0a4b77de5778905d0e71acdfa910b0bd	100644	6486	PENDING	tests/test_benchmark_result_evidence_binding.py	Source-exact candidate; independent acceptance pending	staged-exact:898da08b0a4b77de5778905d0e71acdfa910b0bd
+tests/test_benchmark_result_measurements.py	b8d114560db99f8772f38c550c0a4f905d531b39	100644	2595	PENDING	tests/test_benchmark_result_measurements.py	Source-exact candidate; independent acceptance pending	staged-exact:b8d114560db99f8772f38c550c0a4f905d531b39
+tests/test_benchmark_results.py	1cf633d6112aa07f3da019a6d805d1a9570edefd	100644	12202	PENDING	tests/test_benchmark_results.py	Source-exact candidate; independent acceptance pending	staged-exact:1cf633d6112aa07f3da019a6d805d1a9570edefd
+tests/test_bounded_helpers.py	44a1ed20a20f82d8adb814b8eb8dff43c6b56e65	100644	11404	PENDING	tests/test_bounded_helpers.py	Source-exact candidate; independent acceptance pending	staged-exact:44a1ed20a20f82d8adb814b8eb8dff43c6b56e65
+tests/test_budget_artifact_safety.py	4320e20abd2cef11e636299de9e8ed6f5b65254b	100644	957	PENDING	tests/test_budget_artifact_safety.py	Source-exact candidate; independent acceptance pending	staged-exact:4320e20abd2cef11e636299de9e8ed6f5b65254b
+tests/test_check_coverage_note_pins.py	e133f9f2c94a0225ddd6ec2f802a0430ded04a6b	100644	3679	PENDING	tests/test_check_coverage_note_pins.py	Source-exact candidate; independent acceptance pending	staged-exact:e133f9f2c94a0225ddd6ec2f802a0430ded04a6b
+tests/test_check_direct_push.py	56c0a669480de36dabc018a929c75b76406376c2	100644	6321	PENDING	tests/test_check_direct_push.py	Source-exact candidate; independent acceptance pending	staged-exact:56c0a669480de36dabc018a929c75b76406376c2
+tests/test_check_handoff_receipts.py	2877247ffe3d056ad10a68061ed064c51d9018a9	100644	5576	PENDING	tests/test_check_handoff_receipts.py	Source-exact candidate; independent acceptance pending	staged-exact:2877247ffe3d056ad10a68061ed064c51d9018a9
+tests/test_check_review_evidence.py	6960d3e57a7b99363394ebdc69cfdda4da60dd86	100644	15322	PENDING	tests/test_check_review_evidence.py	Source-exact candidate; independent acceptance pending	staged-exact:6960d3e57a7b99363394ebdc69cfdda4da60dd86
+tests/test_check_stale_no_caller_docstrings.py	5787b99eae1f6f3bd57f4a44d6e2a212665d05b2	100644	13168	PENDING	tests/test_check_stale_no_caller_docstrings.py	Source-exact candidate; independent acceptance pending	staged-exact:5787b99eae1f6f3bd57f4a44d6e2a212665d05b2
+tests/test_cli_run.py	cd69143bbdb050f2798537055e06e169e442bac3	100644	10123	PENDING	tests/test_cli_run.py	Source-exact candidate; independent acceptance pending	staged-exact:cd69143bbdb050f2798537055e06e169e442bac3
+tests/test_cli_skill.py	2dd29a8e74e8dc05ee58bdd26226aba1aa8112a1	100644	16892	PENDING	tests/test_cli_skill.py	Source-exact candidate; independent acceptance pending	staged-exact:2dd29a8e74e8dc05ee58bdd26226aba1aa8112a1
+tests/test_context_builder_evidence_integrity_fixture.py	0e1a16afbf41e25036f3ffbb1d3a4da191012b90	100644	6159	PENDING	tests/test_context_builder_evidence_integrity_fixture.py	Source-exact candidate; independent acceptance pending	staged-exact:0e1a16afbf41e25036f3ffbb1d3a4da191012b90
+tests/test_context_builder.py	f99ccf669451e0d6b10a1ffdb008be2d911a3385	100644	53515	PENDING	tests/test_context_builder.py	Source-exact candidate; independent acceptance pending	staged-exact:f99ccf669451e0d6b10a1ffdb008be2d911a3385
+tests/test_context_delivery.py	5ec46c6dbf3f9256521510c5e1ed9f8a39e38200	100644	14661	PENDING	tests/test_context_delivery.py	Source-exact candidate; independent acceptance pending	staged-exact:5ec46c6dbf3f9256521510c5e1ed9f8a39e38200
+tests/test_context_evidence_hardening.py	c47c2106abc474ba020743acf5278ead6d1f0b67	100644	3575	PENDING	tests/test_context_evidence_hardening.py	Source-exact candidate; independent acceptance pending	staged-exact:c47c2106abc474ba020743acf5278ead6d1f0b67
+tests/test_context_evidence.py	b33c8177656763c0c2bf823a9443ecf51f5b5c03	100644	11375	PENDING	tests/test_context_evidence.py	Source-exact candidate; independent acceptance pending	staged-exact:b33c8177656763c0c2bf823a9443ecf51f5b5c03
+tests/test_context_retrieval_jev.py	13e0ef2d54e09d4ec2117c048d9d326c64fc597c	100644	2386	PENDING	tests/test_context_retrieval_jev.py	Source-exact candidate; independent acceptance pending	staged-exact:13e0ef2d54e09d4ec2117c048d9d326c64fc597c
+tests/test_context_retrieval_semantic.py	b29d9ddf3f5a3185d143d094a8327d52bc854a9a	100644	6026	PENDING	tests/test_context_retrieval_semantic.py	Source-exact candidate; independent acceptance pending	staged-exact:b29d9ddf3f5a3185d143d094a8327d52bc854a9a
+tests/test_context_retrieval_stage2.py	23c115746d0328fe0f3cbb054c2a8e53a19d0703	100644	10182	PENDING	tests/test_context_retrieval_stage2.py	Source-exact candidate; independent acceptance pending	staged-exact:23c115746d0328fe0f3cbb054c2a8e53a19d0703
+tests/test_coordination_housekeeping.py	9f7846b4de6ffce78bb7fca05bda547149bfa7dd	100644	8680	PENDING	tests/test_coordination_housekeeping.py	Source-exact candidate; independent acceptance pending	staged-exact:9f7846b4de6ffce78bb7fca05bda547149bfa7dd
+tests/test_decision_judgments.py	999e88d6bb13f501dbd3865f225dc6ef33b48286	100644	5157	PENDING	tests/test_decision_judgments.py	Source-exact candidate; independent acceptance pending	staged-exact:999e88d6bb13f501dbd3865f225dc6ef33b48286
+tests/test_decision_provider.py	5ff639acdaed48405203099b9472f6a958ad31ce	100644	8232	PENDING	tests/test_decision_provider.py	Source-exact candidate; independent acceptance pending	staged-exact:5ff639acdaed48405203099b9472f6a958ad31ce
+tests/test_dependency_cycle_readiness.py	10188bf6a3965a4bb3c561cf33a013fc072a217a	100644	5355	PENDING	tests/test_dependency_cycle_readiness.py	Source-exact candidate; independent acceptance pending	staged-exact:10188bf6a3965a4bb3c561cf33a013fc072a217a
+tests/test_destructive_external_action_guard.py	854a204b4ad373fb9b2d7be5c5ee824628f529a2	100644	13275	PENDING	tests/test_destructive_external_action_guard.py	Source-exact candidate; independent acceptance pending	staged-exact:854a204b4ad373fb9b2d7be5c5ee824628f529a2
+tests/test_digital_fungus_routes.py	1970c22995846241145ca3e93f939dc1372e6a0e	100644	3141	PENDING	tests/test_digital_fungus_routes.py	Source-exact candidate; independent acceptance pending	staged-exact:1970c22995846241145ca3e93f939dc1372e6a0e
+tests/test_documentation_sprawl.py	d665d2d4f698e41da340217ccd3f372ab212e470	100644	16601	PENDING	tests/test_documentation_sprawl.py	Source-exact candidate; independent acceptance pending	staged-exact:d665d2d4f698e41da340217ccd3f372ab212e470
+tests/test_emergence_capture.py	aebcfdd5bb79a1cce81c65cb4851f9e568c5ff47	100644	3685	PENDING	tests/test_emergence_capture.py	Source-exact candidate; independent acceptance pending	staged-exact:aebcfdd5bb79a1cce81c65cb4851f9e568c5ff47
+tests/test_environment_fingerprint_safety.py	228a665d889fbe580475efdea7f1483e6b87167c	100644	4929	PENDING	tests/test_environment_fingerprint_safety.py	Source-exact candidate; independent acceptance pending	staged-exact:228a665d889fbe580475efdea7f1483e6b87167c
+tests/test_environment_fingerprint.py	467dfcfb696a17384b2915861a430d17d4efe3d6	100644	10751	PENDING	tests/test_environment_fingerprint.py	Source-exact candidate; independent acceptance pending	staged-exact:467dfcfb696a17384b2915861a430d17d4efe3d6
+tests/test_environment_spec.py	7ebaa53af9383c4bcfd03b0d11bcdc9808a0446b	100644	6458	PENDING	tests/test_environment_spec.py	Source-exact candidate; independent acceptance pending	staged-exact:7ebaa53af9383c4bcfd03b0d11bcdc9808a0446b
+tests/test_environment_state_import_isolation.py	212e3ebb51dc7fff2829d96573e0d59be6cf2edc	100644	1632	PENDING	tests/test_environment_state_import_isolation.py	Source-exact candidate; independent acceptance pending	staged-exact:212e3ebb51dc7fff2829d96573e0d59be6cf2edc
+tests/test_environment_validation.py	f5a514cab62600fdb474cba6ee7bb6f12a3c9d9f	100644	5786	PENDING	tests/test_environment_validation.py	Source-exact candidate; independent acceptance pending	staged-exact:f5a514cab62600fdb474cba6ee7bb6f12a3c9d9f
+tests/test_execution_integrity.py	67b0fdadbcf7eb34452fa175f3ebe81e71dd7fe0	100644	26770	PENDING	tests/test_execution_integrity.py	Source-exact candidate; independent acceptance pending	staged-exact:67b0fdadbcf7eb34452fa175f3ebe81e71dd7fe0
+tests/test_exp_a_skill_routing.py	03cf7fa1ba2dc46a975a725aed878741b4dc2ac5	100644	9557	PENDING	tests/test_exp_a_skill_routing.py	Source-exact candidate; independent acceptance pending	staged-exact:03cf7fa1ba2dc46a975a725aed878741b4dc2ac5
+tests/test_exp_b_skill_routing.py	ac9d18f45bfb36955313eea41df9f59ebb7e6372	100644	9266	PENDING	tests/test_exp_b_skill_routing.py	Source-exact candidate; independent acceptance pending	staged-exact:ac9d18f45bfb36955313eea41df9f59ebb7e6372
+tests/test_flow_handoff.py	d6ceaba8e6ab06c24b08708c662e3ff9f113672b	100644	11348	PENDING	tests/test_flow_handoff.py	Source-exact candidate; independent acceptance pending	staged-exact:d6ceaba8e6ab06c24b08708c662e3ff9f113672b
+tests/test_flow_release_check.py	c20c72d01d5849046ecf23f154e6b4a110e2c1df	100644	24922	PENDING	tests/test_flow_release_check.py	Source-exact candidate; independent acceptance pending	staged-exact:c20c72d01d5849046ecf23f154e6b4a110e2c1df
+tests/test_flow_review.py	5880080545f3accbf08fb489d9898d1cb9d95b1e	100644	27112	PENDING	tests/test_flow_review.py	Source-exact candidate; independent acceptance pending	staged-exact:5880080545f3accbf08fb489d9898d1cb9d95b1e
+tests/test_flow_start.py	2fb5181f302c00f37e9d8c51c62e4714d9a7d08e	100644	15330	PENDING	tests/test_flow_start.py	Source-exact candidate; independent acceptance pending	staged-exact:2fb5181f302c00f37e9d8c51c62e4714d9a7d08e
+tests/test_frozen_regression_case_taxonomy.py	2d932b04e5d8d31bfb3e3cea5a7bd63a30efd41b	100644	1099	PENDING	tests/test_frozen_regression_case_taxonomy.py	Source-exact candidate; independent acceptance pending	staged-exact:2d932b04e5d8d31bfb3e3cea5a7bd63a30efd41b
+tests/test_frozen_regression_case.py	1c02326556af119550e8236f227a6a0a437af862	100644	9882	PENDING	tests/test_frozen_regression_case.py	Source-exact candidate; independent acceptance pending	staged-exact:1c02326556af119550e8236f227a6a0a437af862
+tests/test_harness_adapter_contract.py	eecb0cc1bcc8e28b9706f0ce7a17aa6e0f02e350	100644	2322	PENDING	tests/test_harness_adapter_contract.py	Source-exact candidate; independent acceptance pending	staged-exact:eecb0cc1bcc8e28b9706f0ce7a17aa6e0f02e350
+tests/test_harness_canonical_guard.py	4def7b7fcca8882d0e2575de36bfb9650842be4c	100644	17246	PENDING	tests/test_harness_canonical_guard.py	Source-exact candidate; independent acceptance pending	staged-exact:4def7b7fcca8882d0e2575de36bfb9650842be4c
+tests/test_harness_config_ref.py	c07366e915444a51ef2106ba8fc291ed56c49c0a	100644	4995	PENDING	tests/test_harness_config_ref.py	Source-exact candidate; independent acceptance pending	staged-exact:c07366e915444a51ef2106ba8fc291ed56c49c0a
+tests/test_harness_hcom_adapter.py	12f157702fe577f151a2b6ee96da92a1e72cafe6	100644	16465	PENDING	tests/test_harness_hcom_adapter.py	Source-exact candidate; independent acceptance pending	staged-exact:12f157702fe577f151a2b6ee96da92a1e72cafe6
+tests/test_harness_hooks.py	126803aff0c4e81e59996046c9485b40addd7227	100644	10164	PENDING	tests/test_harness_hooks.py	Source-exact candidate; independent acceptance pending	staged-exact:126803aff0c4e81e59996046c9485b40addd7227
+tests/test_harness_service.py	e879428b84b8b698cc84036bcdcca4b35e065623	100644	14422	PENDING	tests/test_harness_service.py	Source-exact candidate; independent acceptance pending	staged-exact:e879428b84b8b698cc84036bcdcca4b35e065623
+tests/test_harness_types.py	49d807084191e510b06f37496bbb27a69cb64c75	100644	7540	PENDING	tests/test_harness_types.py	Source-exact candidate; independent acceptance pending	staged-exact:49d807084191e510b06f37496bbb27a69cb64c75
+tests/test_hcom_adapter.py	40e64e3aba97816a234a492fc79f0542964f0497	100644	20637	PENDING	tests/test_hcom_adapter.py	Source-exact candidate; independent acceptance pending	staged-exact:40e64e3aba97816a234a492fc79f0542964f0497
+tests/test_hcom_lineage.py	8f3e456485b2556755dbb15d2cc0abbda9e80d58	100644	8204	PENDING	tests/test_hcom_lineage.py	Source-exact candidate; independent acceptance pending	staged-exact:8f3e456485b2556755dbb15d2cc0abbda9e80d58
+tests/test_helper_recovery_lineage_sql.py	f5c9a7c848e37d483b8e3104f98aa3886a1be5fe	100644	1866	PENDING	tests/test_helper_recovery_lineage_sql.py	Source-exact candidate; independent acceptance pending	staged-exact:f5c9a7c848e37d483b8e3104f98aa3886a1be5fe
+tests/test_helper_recovery_lineage.py	d20142a1d6dddb98bd7390a7834942218520c310	100644	19472	PENDING	tests/test_helper_recovery_lineage.py	Source-exact candidate; independent acceptance pending	staged-exact:d20142a1d6dddb98bd7390a7834942218520c310
+tests/test_incident_taxonomy.py	b7e22fa4e0ec56cd94749551c2be8cfb39b2b887	100644	2915	PENDING	tests/test_incident_taxonomy.py	Source-exact candidate; independent acceptance pending	staged-exact:b7e22fa4e0ec56cd94749551c2be8cfb39b2b887
+tests/test_langgraph_routing.py	9c151e57f5e7a3feeee959be1131c020fc013096	100644	2954	PENDING	tests/test_langgraph_routing.py	Source-exact candidate; independent acceptance pending	staged-exact:9c151e57f5e7a3feeee959be1131c020fc013096
+tests/test_legacy_removal_readiness.py	aa2d52a78193ce70c4bb8675c9006ec6a78e31ab	100644	1569	PENDING	tests/test_legacy_removal_readiness.py	Source-exact candidate; independent acceptance pending	staged-exact:aa2d52a78193ce70c4bb8675c9006ec6a78e31ab
+tests/test_maps_end_to_end_benchmark_fixture.py	b6c196a6198b4163a8bcb8cbe7b57b32a1821269	100644	6425	PENDING	tests/test_maps_end_to_end_benchmark_fixture.py	Source-exact candidate; independent acceptance pending	staged-exact:b6c196a6198b4163a8bcb8cbe7b57b32a1821269
+tests/test_memory_provenance_guard.py	aed474352b9849fc38862c798606d47b0a1499d1	100644	11005	PENDING	tests/test_memory_provenance_guard.py	Source-exact candidate; independent acceptance pending	staged-exact:aed474352b9849fc38862c798606d47b0a1499d1
+tests/test_memory_trust_gate.py	af4cbb3469ea528e4bb37635f6eacc86de50539f	100644	11518	PENDING	tests/test_memory_trust_gate.py	Source-exact candidate; independent acceptance pending	staged-exact:af4cbb3469ea528e4bb37635f6eacc86de50539f
+tests/test_message_lineage.py	cbb47e378df7e7482bc68353562c4707c7ba6409	100644	11651	PENDING	tests/test_message_lineage.py	Source-exact candidate; independent acceptance pending	staged-exact:cbb47e378df7e7482bc68353562c4707c7ba6409
+tests/test_no_progress.py	91b47297690b5ea0b2418debbf5b9ca5e68fcf89	100644	4079	PENDING	tests/test_no_progress.py	Source-exact candidate; independent acceptance pending	staged-exact:91b47297690b5ea0b2418debbf5b9ca5e68fcf89
+tests/test_opcmd_merge.py	7e508a1a20c045344b771ced11ca9cd0cfa7ddbf	100644	35222	PENDING	tests/test_opcmd_merge.py	Source-exact candidate; independent acceptance pending	staged-exact:7e508a1a20c045344b771ced11ca9cd0cfa7ddbf
+tests/test_operational_learning_schema.py	236d4ad57cde78b08f9b97042aed50d928f0a29b	100644	1943	PENDING	tests/test_operational_learning_schema.py	Source-exact candidate; independent acceptance pending	staged-exact:236d4ad57cde78b08f9b97042aed50d928f0a29b
+tests/test_operational_learning_storage.py	3a3d304418baadc39c677e477df94e095392cf18	100644	20295	PENDING	tests/test_operational_learning_storage.py	Source-exact candidate; independent acceptance pending	staged-exact:3a3d304418baadc39c677e477df94e095392cf18
+tests/test_operational_learning.py	be5a8f75b4df5affa7971fd8e3ab811a21e73fde	100644	11104	PENDING	tests/test_operational_learning.py	Source-exact candidate; independent acceptance pending	staged-exact:be5a8f75b4df5affa7971fd8e3ab811a21e73fde
+tests/test_outcome_lesson_candidate.py	c77f339b14e02572624ce3e109a7607d8abdaf26	100644	9390	PENDING	tests/test_outcome_lesson_candidate.py	Source-exact candidate; independent acceptance pending	staged-exact:c77f339b14e02572624ce3e109a7607d8abdaf26
+tests/test_outcomes.py	9deabc8c688b2f26ae13d9e82afbb04900ea31ba	100644	11055	PENDING	tests/test_outcomes.py	Source-exact candidate; independent acceptance pending	staged-exact:9deabc8c688b2f26ae13d9e82afbb04900ea31ba
+tests/test_policy_state.py	9c65f0d5c3d694316bbc7de921fa3e9d65c0773f	100644	7203	PENDING	tests/test_policy_state.py	Source-exact candidate; independent acceptance pending	staged-exact:9c65f0d5c3d694316bbc7de921fa3e9d65c0773f
+tests/test_portable_target_init.py	ee1638b1324048eaff2e4d14186d469902fa1b3d	100644	5378	PENDING	tests/test_portable_target_init.py	Source-exact candidate; independent acceptance pending	staged-exact:ee1638b1324048eaff2e4d14186d469902fa1b3d
+tests/test_portable_target_preflight.py	ff14afd12d02eeac2fc39a6dca31f577d734cc8e	100644	4740	PENDING	tests/test_portable_target_preflight.py	Source-exact candidate; independent acceptance pending	staged-exact:ff14afd12d02eeac2fc39a6dca31f577d734cc8e
+tests/test_protocol_discoverability.py	a2cc50243bbdf10b0de992969d8a2d5a8c2f30e1	100644	4598	PENDING	tests/test_protocol_discoverability.py	Source-exact candidate; independent acceptance pending	staged-exact:a2cc50243bbdf10b0de992969d8a2d5a8c2f30e1
+tests/test_recovery_composition_root.py	bac0e6df93d1dff6be5a63d9de2aa98054f473d3	100644	22361	PENDING	tests/test_recovery_composition_root.py	Source-exact candidate; independent acceptance pending	staged-exact:bac0e6df93d1dff6be5a63d9de2aa98054f473d3
+tests/test_recovery_external_effect_ambiguity.py	d3423f99b572b25836c19d7611ef549b94dd8504	100644	10625	PENDING	tests/test_recovery_external_effect_ambiguity.py	Source-exact candidate; independent acceptance pending	staged-exact:d3423f99b572b25836c19d7611ef549b94dd8504
+tests/test_recovery_production_trigger.py	d00f7fa9076c298831929efed6376d2bd30a4cd8	100644	50555	PENDING	tests/test_recovery_production_trigger.py	Source-exact candidate; independent acceptance pending	staged-exact:d00f7fa9076c298831929efed6376d2bd30a4cd8
+tests/test_recovery_supervisor.py	279d163eda279a7d7e9980bf82c2397a4acf0e67	100644	76220	PENDING	tests/test_recovery_supervisor.py	Source-exact candidate; independent acceptance pending	staged-exact:279d163eda279a7d7e9980bf82c2397a4acf0e67
+tests/test_regression_evaluator.py	718467bfe374e11f4a214128312db0ae4c8768ab	100644	11216	PENDING	tests/test_regression_evaluator.py	Source-exact candidate; independent acceptance pending	staged-exact:718467bfe374e11f4a214128312db0ae4c8768ab
+tests/test_review_subject_binding.py	0da7e260bfc17eabbef6eba0aca9af6c20a62c33	100644	14675	PENDING	tests/test_review_subject_binding.py	Source-exact candidate; independent acceptance pending	staged-exact:0da7e260bfc17eabbef6eba0aca9af6c20a62c33
+tests/test_routing_cli.py	65554c0cf4f1b2f7f2c0acf0529693399e0ee3bd	100644	14804	PENDING	tests/test_routing_cli.py	Source-exact candidate; independent acceptance pending	staged-exact:65554c0cf4f1b2f7f2c0acf0529693399e0ee3bd
+tests/test_routing_environment_reports.py	3c75e3e84bd40f3d85835fee5562b44f309e6b5b	100644	15626	PENDING	tests/test_routing_environment_reports.py	Source-exact candidate; independent acceptance pending	staged-exact:3c75e3e84bd40f3d85835fee5562b44f309e6b5b
+tests/test_routing_policy.py	f8553986f3e66dd4a759be5b5581ae203d14d6b2	100644	14010	PENDING	tests/test_routing_policy.py	Source-exact candidate; independent acceptance pending	staged-exact:f8553986f3e66dd4a759be5b5581ae203d14d6b2
+tests/test_run_environment_evidence.py	3fdb0251996b5c469b64ffdf05b240966c7469a4	100644	12741	PENDING	tests/test_run_environment_evidence.py	Source-exact candidate; independent acceptance pending	staged-exact:3fdb0251996b5c469b64ffdf05b240966c7469a4
+tests/test_run_manifest_immutability.py	7a25c4b90a9471e6cd3dc8686f5a3c02562a109d	100644	4373	PENDING	tests/test_run_manifest_immutability.py	Source-exact candidate; independent acceptance pending	staged-exact:7a25c4b90a9471e6cd3dc8686f5a3c02562a109d
+tests/test_run_record.py	0f38c0ed78d764fe36c1f73ca7f149ff673597ef	100644	14755	PENDING	tests/test_run_record.py	Source-exact candidate; independent acceptance pending	staged-exact:0f38c0ed78d764fe36c1f73ca7f149ff673597ef
+tests/test_run_session_lineage.py	b701dcda3fe0845f763eb983a2b362b7ed8ca36b	100644	16666	PENDING	tests/test_run_session_lineage.py	Source-exact candidate; independent acceptance pending	staged-exact:b701dcda3fe0845f763eb983a2b362b7ed8ca36b
+tests/test_run_tests_sharded.py	8dc45966683f625fa2c9b4641874f408e2dbd164	100644	6022	PENDING	tests/test_run_tests_sharded.py	Source-exact candidate; independent acceptance pending	staged-exact:8dc45966683f625fa2c9b4641874f408e2dbd164
+tests/test_runtime_review_hardening.py	74d4988adafafa3d91c6a6ec3ef3bc6666d9829f	100644	15947	PENDING	tests/test_runtime_review_hardening.py	Source-exact candidate; independent acceptance pending	staged-exact:74d4988adafafa3d91c6a6ec3ef3bc6666d9829f
+tests/test_scope_symlink_containment.py	509c79aebe2c4d6c1c83ea118e582fb490c554a7	100644	3035	PENDING	tests/test_scope_symlink_containment.py	Source-exact candidate; independent acceptance pending	staged-exact:509c79aebe2c4d6c1c83ea118e582fb490c554a7
+tests/test_skill_capability_manifest.py	462e8a726a3c9a2d8a8c3a27a2131c74e141c4d7	100644	23453	PENDING	tests/test_skill_capability_manifest.py	Source-exact candidate; independent acceptance pending	staged-exact:462e8a726a3c9a2d8a8c3a27a2131c74e141c4d7
+tests/test_skill_lifecycle_storage.py	37ad673ea6620353ed5f27d2f6dbb784db4eb978	100644	33302	PENDING	tests/test_skill_lifecycle_storage.py	Source-exact candidate; independent acceptance pending	staged-exact:37ad673ea6620353ed5f27d2f6dbb784db4eb978
+tests/test_skill_lifecycle.py	a40a47e4c877e37982a2e61aaa4e2405471c735f	100644	7239	PENDING	tests/test_skill_lifecycle.py	Source-exact candidate; independent acceptance pending	staged-exact:a40a47e4c877e37982a2e61aaa4e2405471c735f
+tests/test_skills_catalog.py	0632d635915eaead04b78c41b7897c9641d4d0ed	100644	13162	PENDING	tests/test_skills_catalog.py	Source-exact candidate; independent acceptance pending	staged-exact:0632d635915eaead04b78c41b7897c9641d4d0ed
+tests/test_skills_format.py	43b50eb317fd1281c8e5796409f181e59044f261	100644	14119	PENDING	tests/test_skills_format.py	Source-exact candidate; independent acceptance pending	staged-exact:43b50eb317fd1281c8e5796409f181e59044f261
+tests/test_skills_quality_gate_metadata.py	bb6d21dd55ab93780716c4289252e8939291dec1	100644	2161	PENDING	tests/test_skills_quality_gate_metadata.py	Source-exact candidate; independent acceptance pending	staged-exact:bb6d21dd55ab93780716c4289252e8939291dec1
+tests/test_skills_quality_gate.py	d787720f936dd79c22fed71ef2e940defd7a3d0d	100644	8602	PENDING	tests/test_skills_quality_gate.py	Source-exact candidate; independent acceptance pending	staged-exact:d787720f936dd79c22fed71ef2e940defd7a3d0d
+tests/test_skills_selection_evaluation.py	f487b2892d461699d1fb09b66bac77ce5a13795a	100644	7773	PENDING	tests/test_skills_selection_evaluation.py	Source-exact candidate; independent acceptance pending	staged-exact:f487b2892d461699d1fb09b66bac77ce5a13795a
+tests/test_smoke_install.py	6a8d365c3b54f30ea113d5b7c5708e3982208fef	100644	1817	PENDING	tests/test_smoke_install.py	Source-exact candidate; independent acceptance pending	staged-exact:6a8d365c3b54f30ea113d5b7c5708e3982208fef
+tests/test_spiderweb_audit.py	3c24259ab1fdde04d97767c001bd8c38d1e207fb	100644	9424	PENDING	tests/test_spiderweb_audit.py	Source-exact candidate; independent acceptance pending	staged-exact:3c24259ab1fdde04d97767c001bd8c38d1e207fb
+tests/test_state_store.py	82fb45719da0020363364424ce0d609f9b15a7d7	100644	13117	PENDING	tests/test_state_store.py	Source-exact candidate; independent acceptance pending	staged-exact:82fb45719da0020363364424ce0d609f9b15a7d7
+tests/test_status.py	3b54190e167fa65cbdb5fdb93161764769cc0159	100644	6713	PENDING	tests/test_status.py	Source-exact candidate; independent acceptance pending	staged-exact:3b54190e167fa65cbdb5fdb93161764769cc0159
+tests/test_submission_run_lineage_sql.py	35f3e872ecff883ae42fa6d17bf1e447cb61c6f0	100644	2926	PENDING	tests/test_submission_run_lineage_sql.py	Source-exact candidate; independent acceptance pending	staged-exact:35f3e872ecff883ae42fa6d17bf1e447cb61c6f0
+tests/test_submission_run_lineage.py	d1e24704f42f2907b23c92547b7f9018fa39e892	100644	11740	PENDING	tests/test_submission_run_lineage.py	Source-exact candidate; independent acceptance pending	staged-exact:d1e24704f42f2907b23c92547b7f9018fa39e892
+tests/test_task_environment_contract.py	920f730d025d8c6702d0cf1bd982c49536897e8a	100644	9248	PENDING	tests/test_task_environment_contract.py	Source-exact candidate; independent acceptance pending	staged-exact:920f730d025d8c6702d0cf1bd982c49536897e8a
+tests/test_task_event_atomicity.py	a29cf6c4646f3350554f6cadbf42d0a05f69a814	100644	3290	PENDING	tests/test_task_event_atomicity.py	Source-exact candidate; independent acceptance pending	staged-exact:a29cf6c4646f3350554f6cadbf42d0a05f69a814
+tests/test_task_history_retention.py	3e85d255911bd90c39c4961e43cb449772e81503	100644	3881	PENDING	tests/test_task_history_retention.py	Source-exact candidate; independent acceptance pending	staged-exact:3e85d255911bd90c39c4961e43cb449772e81503
+tests/test_trace_and_redaction.py	b0d24f0a5dee5dcd9a7226d30edce36e5d74ebfe	100644	7626	PENDING	tests/test_trace_and_redaction.py	Source-exact candidate; independent acceptance pending	staged-exact:b0d24f0a5dee5dcd9a7226d30edce36e5d74ebfe
+tests/test_triage_status.py	871aae570374484c33bcbcdc7e64aaaea2e1168f	100644	6703	PENDING	tests/test_triage_status.py	Source-exact candidate; independent acceptance pending	staged-exact:871aae570374484c33bcbcdc7e64aaaea2e1168f
+tests/test_trust.py	1740b7635050c8abf807905d86d2ed0c67ee42b2	100644	3494	PENDING	tests/test_trust.py	Source-exact candidate; independent acceptance pending	staged-exact:1740b7635050c8abf807905d86d2ed0c67ee42b2
+tests/test_wait_projection.py	1ed517b67a3741003277857a8f5743c366b0d36f	100644	15338	PENDING	tests/test_wait_projection.py	Source-exact candidate; independent acceptance pending	staged-exact:1ed517b67a3741003277857a8f5743c366b0d36f
+tests/test_write_scope_guard.py	478feb37c7d0e90f51bd355a0da50562d773dae8	100644	10492	PENDING	tests/test_write_scope_guard.py	Source-exact candidate; independent acceptance pending	staged-exact:478feb37c7d0e90f51bd355a0da50562d773dae8
+tools/digital_fungus.py	e5df59745c69dde5b1c69a9f186e40970d06da3f	100644	19540	PENDING	tools/digital_fungus.py	Source-exact candidate; independent acceptance pending	staged-exact:e5df59745c69dde5b1c69a9f186e40970d06da3f
+tools/triage_status.py	d48aa44694ad8ee4cc18fce2ac3797682a0f46a5	100644	9892	PENDING	tools/triage_status.py	Source-exact candidate; independent acceptance pending	staged-exact:d48aa44694ad8ee4cc18fce2ac3797682a0f46a5
 work/context/agent-handoff-current-state.md	e8ca2851e79e3cd14cf0166d64096896ebeb79e1	100644	11053	PENDING			
 work/context/conversation-history-2026-08-15.md	332629ce0f97ec67f6fa021d65e391f29a49659f	100644	20509	PENDING			
 work/context/design-decisions-and-rationale.md	72319581aff38664fa096e050802ac83f2097809	100644	18539	PENDING			
@@ -2825,7 +2825,7 @@ work/coordination/agents/TOWER.md	28bb9e72d17752b9370272f21885ed19b109a7f9	10064
 work/coordination/BACKLOG_RECOVERY.md	07b24ee85597bb8950117d1229694df184251a59	100644	12563	PENDING			
 work/coordination/FRICTION_LOG.md	c2c9298fef0930b6d3bf0a2ee919bb1544cab417	100644	49477	PENDING			
 work/coordination/GITHUB_ASYNC_WORK_PULL.md	7eab5475c74e35ccfadc79c2f2a6df407d505afc	100644	14854	PENDING			
-work/coordination/README.md	2eb2c881495346e9b1f9cf9f5eb311fde7a8481f	100644	6147	PENDING	work/coordination/README.md	Source-exact staging; independent acceptance pending	staged-exact:2eb2c881495346e9b1f9cf9f5eb311fde7a8481f
+work/coordination/README.md	2eb2c881495346e9b1f9cf9f5eb311fde7a8481f	100644	6147	PENDING	work/coordination/README.md	Source-exact candidate; independent acceptance pending	staged-exact:2eb2c881495346e9b1f9cf9f5eb311fde7a8481f
 work/coordination/RESET_DESK_LOG.md	97df8a98e6dea64e01420f09fce11dc5c3e01142	100644	1273	PENDING			
 work/coordination/ROADMAP_PARTICIPATION.md	b01387fc547dd01eed77ae91c45c7867484cd9ed	100644	10481	PENDING			
 work/coordination/standing-merge-authorization.md	d2f5d25c3dcb216da9cb7839715b3e7ee59c5c2a	100644	1941	PENDING			
@@ -2834,10 +2834,10 @@ work/decisions/2026-09-09-recovery-unknown-same-tick-fallback.md	4c1f9fa961aa0a2
 work/decisions/DEC-001-target-operating-model-and-wezterm-decoupling.md	02a48848884ce47a846c92e83d4c5e33b6846b74	100644	6014	PENDING			
 work/decisions/DEC-002-6.9-s6-promotion-to-done-17.3-signoff.md	ec3e5ab42b091463466eec6da18f9db0b507ad73	100644	7566	PENDING			
 work/decisions/DEC-003-harness-enforcement-cluster-exit-criterion.md	01e5029deddda54ccd8a81c9eea31be8d5240d7e	100644	8788	PENDING			
-work/evals/context-builder-evidence-integrity-v1.json	04be9e9c2729d0ab22e7f754e7610a771835bd62	100644	18165	PENDING			
-work/evals/context-builder-retrieval-stage2-v1.json	749681a95c44a57826fb9c68daeb17f386adb9ec	100644	2213	PENDING			
-work/evals/maps-end-to-end-benchmark-v1.json	1de87962caa9f66319dbb9f6f192254569ab0cd3	100644	15062	PENDING			
-work/evals/skill-selection-v1.json	71a500d6ac21792b3b5ab5f9cd6a82c6324d4b38	100644	8078	PENDING			
+work/evals/context-builder-evidence-integrity-v1.json	04be9e9c2729d0ab22e7f754e7610a771835bd62	100644	18165	PENDING	work/evals/context-builder-evidence-integrity-v1.json	Source-exact candidate; independent acceptance pending	staged-exact:04be9e9c2729d0ab22e7f754e7610a771835bd62
+work/evals/context-builder-retrieval-stage2-v1.json	749681a95c44a57826fb9c68daeb17f386adb9ec	100644	2213	PENDING	work/evals/context-builder-retrieval-stage2-v1.json	Source-exact candidate; independent acceptance pending	staged-exact:749681a95c44a57826fb9c68daeb17f386adb9ec
+work/evals/maps-end-to-end-benchmark-v1.json	1de87962caa9f66319dbb9f6f192254569ab0cd3	100644	15062	PENDING	work/evals/maps-end-to-end-benchmark-v1.json	Source-exact candidate; independent acceptance pending	staged-exact:1de87962caa9f66319dbb9f6f192254569ab0cd3
+work/evals/skill-selection-v1.json	71a500d6ac21792b3b5ab5f9cd6a82c6324d4b38	100644	8078	PENDING	work/evals/skill-selection-v1.json	Source-exact candidate; independent acceptance pending	staged-exact:71a500d6ac21792b3b5ab5f9cd6a82c6324d4b38
 work/handoffs/.gitkeep	8b137891791fe96927ad78e64b0aad7bded08bdc	100644	1	PENDING			
 work/handoffs/2026-08-13-lean-navigation-and-simulation-tuning.md	6bec5e4a5583821cd1ec859fb75e9091a949823e	100644	4616	PENDING			
 work/handoffs/2026-08-20-session-portable-and-roadmap-progress.md	875a0c23e8342c009162b704d31f92f143f11618	100644	4644	PENDING			
@@ -3031,11 +3031,11 @@ work/notes/2026-09-15-roadmap-trajectory-check-31.md	15a814cee29cb05eb7764157f83
 work/notes/2026-10-20-github-native-opcmd-merge.md	bfd0ad7da4f78b664b7eeed9f8408c514a190972	100644	9725	PENDING			
 work/notes/OPERATOR_ASK_2026-08-31-session13.md	f6cd7777907d2ef7a6637def42c89858e600fffe	100644	10057	PENDING			
 work/notes/OPERATOR_DECISION_BATCH_2026-09-02.md	5bb2cbacf7b0ee23a76680feba7250b47d02702f	100644	14490	PENDING			
-work/README.md	a00bbcefeb02f45af546dbe5e8af1346f2bde1ce	100644	4476	PENDING	work/README.md	Source-exact staging; independent acceptance pending	staged-exact:a00bbcefeb02f45af546dbe5e8af1346f2bde1ce
-work/regression-cases/CASE-378fb326d2aceaa0cd3ceeb5ce314f8dba541a234a7331d86e6d31f24663e5c9.json	e8105a37d16e371b347b93d24eee8ebeb31599bc	100644	13980	PENDING			
-work/regression-cases/CASE-3da6464c1565c1b56915c181301cf57ec24c40253e6a2fe426843ee0276ad924.json	1906503b666fb08e613d9d21f8ec60cc05d31aa7	100644	16087	PENDING			
-work/regression-cases/CASE-559ff1df61eb6c829b55c641b3ae0a4450f8dca9bfcc218e76df84fd53332a22.json	2e6679e621e1b3bef80ed324fd118b47da46faf1	100644	17937	PENDING			
-work/regression-cases/CASE-db2717314e8ec548dcac167e88a27c2282dd1be66ef6b0a8023de5931456e813.json	15c36837c7b688e9de041d5343a6c026930ccb75	100644	14421	PENDING			
+work/README.md	a00bbcefeb02f45af546dbe5e8af1346f2bde1ce	100644	4476	PENDING	work/README.md	Source-exact candidate; independent acceptance pending	staged-exact:a00bbcefeb02f45af546dbe5e8af1346f2bde1ce
+work/regression-cases/CASE-378fb326d2aceaa0cd3ceeb5ce314f8dba541a234a7331d86e6d31f24663e5c9.json	e8105a37d16e371b347b93d24eee8ebeb31599bc	100644	13980	PENDING	work/regression-cases/CASE-378fb326d2aceaa0cd3ceeb5ce314f8dba541a234a7331d86e6d31f24663e5c9.json	Source-exact candidate; independent acceptance pending	staged-exact:e8105a37d16e371b347b93d24eee8ebeb31599bc
+work/regression-cases/CASE-3da6464c1565c1b56915c181301cf57ec24c40253e6a2fe426843ee0276ad924.json	1906503b666fb08e613d9d21f8ec60cc05d31aa7	100644	16087	PENDING	work/regression-cases/CASE-3da6464c1565c1b56915c181301cf57ec24c40253e6a2fe426843ee0276ad924.json	Source-exact candidate; independent acceptance pending	staged-exact:1906503b666fb08e613d9d21f8ec60cc05d31aa7
+work/regression-cases/CASE-559ff1df61eb6c829b55c641b3ae0a4450f8dca9bfcc218e76df84fd53332a22.json	2e6679e621e1b3bef80ed324fd118b47da46faf1	100644	17937	PENDING	work/regression-cases/CASE-559ff1df61eb6c829b55c641b3ae0a4450f8dca9bfcc218e76df84fd53332a22.json	Source-exact candidate; independent acceptance pending	staged-exact:2e6679e621e1b3bef80ed324fd118b47da46faf1
+work/regression-cases/CASE-db2717314e8ec548dcac167e88a27c2282dd1be66ef6b0a8023de5931456e813.json	15c36837c7b688e9de041d5343a6c026930ccb75	100644	14421	PENDING	work/regression-cases/CASE-db2717314e8ec548dcac167e88a27c2282dd1be66ef6b0a8023de5931456e813.json	Source-exact candidate; independent acceptance pending	staged-exact:15c36837c7b688e9de041d5343a6c026930ccb75
 work/reports/TASK-003-digital-fungus-findings.json	7d2727b4346167ffb25505affb5d0a320d0c1ef2	100644	132657	PENDING			
 work/reports/TASK-003-digital-fungus-report.md	e38a3bcb16ffad841ebdedd4f803b8cc74e76533	100644	5340	PENDING			
 work/reports/TASK-004-digital-fungus-after-linking-findings.json	43f7068901edd58a39b3e32980032dd995fe382f	100644	130576	PENDING			
@@ -3377,7 +3377,7 @@ work/roadmaps/operator-intent-compiler.md	d270b1a20fa9272d07c92e95818e5e9bc2ef7a
 work/roadmaps/prime-agent-capability-roadmap.md	f9b5f2bfe45955fdefb6b769abfa82ad101c202b	100644	65366	PENDING			
 work/roadmaps/README.md	346c0c6ce0cf58640231ef2b46fb7ec52abefc5f	100644	2324	PENDING	work/roadmaps/README.md	Candidate consolidation or restart/reference adaptation; compare against source and review	staged-adapted:4580474abae6e7ad34085065719b6e08a0e2fb54
 work/roadmaps/tower-current-dispatch-2026-08-16.md	e29a7ee27de3fb1b93d79002c511c4bf79ba2b17	100644	6563	PENDING			
-work/security/AGENTIC_THREAT_MODEL.md	57410e5dd5925a16c3b838c9192a37600fac1e18	100644	7949	PENDING			
+work/security/AGENTIC_THREAT_MODEL.md	57410e5dd5925a16c3b838c9192a37600fac1e18	100644	7949	PENDING	work/security/AGENTIC_THREAT_MODEL.md	Source-exact candidate; independent acceptance pending	staged-exact:57410e5dd5925a16c3b838c9192a37600fac1e18
 work/tasks/.gitkeep	8b137891791fe96927ad78e64b0aad7bded08bdc	100644	1	PENDING			
 work/tasks/acquisition-path-evidence-wave3.md	bf424581d11464b0d67086f6366860e156274b6e	100644	6172	PENDING			
 work/tasks/agent-roadmap-guidance-upgrade.md	a8a54eeee0a16af7160b3cb5de993fe64ce49fa5	100644	8410	PENDING			

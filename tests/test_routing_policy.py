@@ -1,0 +1,344 @@
+import tempfile
+import unittest
+from pathlib import Path
+
+from runtime.policy import HaltRecord, HaltStore, WorkerProfile, evaluate_assignment
+from runtime.routing import recommend_route
+from runtime.environment.fingerprint import CompatibilityReport, CompatibilityState
+
+
+def compatibility_report(state: CompatibilityState) -> CompatibilityReport:
+    return CompatibilityReport(
+        state=state,
+        reasons=(),
+        warnings=(),
+        environment_spec_hash="spec-hash",
+        fingerprint_sha256="fingerprint-hash",
+    )
+
+
+def task(task_id="TASK-1", **changes):
+    value = {
+        "task_id": task_id,
+        "project_id": "default",
+        "status": "READY",
+        "agi_status": "AGI READY",
+        "task_type": "IMPLEMENTATION",
+        "risk": "MEDIUM",
+        "output_paths": ["runtime/example.py"],
+        "policy": {
+            "requires_operator_approval": False,
+            "destructive_action": False,
+            "external_side_effect": False,
+            "security_sensitive": False,
+            "broad_architecture": False,
+            "paid_execution": True,
+            "approved_by": None,
+            "approved_at": None,
+        },
+    }
+    value.update(changes)
+    return value
+
+
+class PolicyRoutingTests(unittest.TestCase):
+    def test_worker_selection_uses_explicit_profile_not_name(self):
+        cheap = WorkerProfile(
+            "anything-called-claude",
+            "bounded",
+            supported_task_types=("IMPLEMENTATION",),
+            max_risk="MEDIUM",
+            cost_rank=5,
+        )
+        expensive = WorkerProfile(
+            "qwen-that-is-core",
+            "core",
+            supported_task_types=("*",),
+            max_risk="HIGH",
+            cost_rank=20,
+        )
+        result = recommend_route([task()], [expensive, cheap])
+        self.assertEqual(result.route, "claim_or_assign")
+        self.assertEqual(result.worker_id, cheap.worker_id)
+
+    def test_helper_is_proposed_not_auto_assigned(self):
+        helper = WorkerProfile(
+            "local-helper",
+            "helper",
+            supported_task_types=("MAINTENANCE",),
+            max_risk="LOW",
+            cost_rank=1,
+        )
+        result = recommend_route(
+            [task(task_type="MAINTENANCE", risk="LOW")], [helper]
+        )
+        self.assertEqual(result.route, "propose_helper")
+
+    def test_explicit_reauthorization_boundary_routes_to_gate(self):
+        core = WorkerProfile("core", "core", can_review=True)
+        gated = task(
+            policy={
+                **task()["policy"],
+                "requires_operator_approval": True,
+                "destructive_action": True,
+            }
+        )
+        result = recommend_route([gated], [core])
+        self.assertEqual(result.route, "policy_gate")
+        self.assertEqual(result.reasons, ("human_reauthorization_required",))
+
+    def test_consequential_flags_do_not_create_routine_human_gate(self):
+        core = WorkerProfile("core", "core")
+        for flag in (
+            "destructive_action",
+            "external_side_effect",
+            "security_sensitive",
+            "broad_architecture",
+        ):
+            with self.subTest(flag=flag):
+                flagged = task(policy={**task()["policy"], flag: True})
+                result = recommend_route([flagged], [core])
+                self.assertEqual(result.route, "claim_or_assign")
+
+    def test_recorded_reauthorization_allows_route(self):
+        core = WorkerProfile("core", "core")
+        gated = task(
+            policy={
+                **task()["policy"],
+                "requires_operator_approval": True,
+                "destructive_action": True,
+                "approved_by": "operator",
+                "approved_at": "2026-08-14T20:00:00Z",
+            }
+        )
+        result = recommend_route([gated], [core])
+        self.assertEqual(result.route, "claim_or_assign")
+
+    def test_high_risk_narrow_worker_rejected(self):
+        helper = WorkerProfile("helper", "helper", max_risk="HIGH")
+        decision = evaluate_assignment(task(risk="HIGH"), helper)
+        self.assertFalse(decision.allowed)
+        self.assertIn("narrow_worker_high_risk", decision.reasons)
+
+    def test_no_environment_report_is_unchanged_behavior(self):
+        core = WorkerProfile("core", "core")
+        decision = evaluate_assignment(task(), core)
+        self.assertTrue(decision.allowed)
+
+    def test_incompatible_environment_report_rejects(self):
+        core = WorkerProfile("core", "core")
+        report = compatibility_report(CompatibilityState.INCOMPATIBLE)
+        decision = evaluate_assignment(task(), core, environment_report=report)
+        self.assertFalse(decision.allowed)
+        self.assertIn("environment_incompatible", decision.reasons)
+
+    def test_drifted_environment_report_does_not_reject_on_environment(self):
+        core = WorkerProfile("core", "core")
+        report = compatibility_report(CompatibilityState.DRIFTED)
+        decision = evaluate_assignment(task(), core, environment_report=report)
+        self.assertNotIn("environment_incompatible", decision.reasons)
+        self.assertTrue(decision.allowed)
+
+    def test_unknown_environment_report_does_not_reject_on_environment(self):
+        core = WorkerProfile("core", "core")
+        report = compatibility_report(CompatibilityState.UNKNOWN)
+        decision = evaluate_assignment(task(), core, environment_report=report)
+        self.assertNotIn("environment_incompatible", decision.reasons)
+        self.assertTrue(decision.allowed)
+
+    def test_compatible_environment_report_does_not_reject(self):
+        core = WorkerProfile("core", "core")
+        for state in (
+            CompatibilityState.COMPATIBLE,
+            CompatibilityState.COMPATIBLE_WITH_WARNINGS,
+        ):
+            report = compatibility_report(state)
+            decision = evaluate_assignment(task(), core, environment_report=report)
+            self.assertNotIn("environment_incompatible", decision.reasons)
+            self.assertTrue(decision.allowed)
+
+    def test_router_gates_explicitly_incompatible_environment(self):
+        core = WorkerProfile("core", "core")
+        result = recommend_route(
+            [task()],
+            [core],
+            environment_reports={
+                "TASK-1": compatibility_report(CompatibilityState.INCOMPATIBLE)
+            },
+        )
+        self.assertEqual(result.route, "policy_gate")
+        self.assertEqual(result.task_id, "TASK-1")
+        self.assertEqual(result.reasons, ("environment_incompatible",))
+
+    def test_router_gates_incompatible_environment_without_workers(self):
+        result = recommend_route(
+            [task()],
+            [],
+            environment_reports={
+                "TASK-1": compatibility_report(CompatibilityState.INCOMPATIBLE)
+            },
+        )
+        self.assertEqual(result.route, "policy_gate")
+        self.assertEqual(result.reasons, ("environment_incompatible",))
+
+    def test_router_gates_incompatible_environment_with_unavailable_worker(self):
+        unavailable = WorkerProfile("core", "core", available=False)
+        result = recommend_route(
+            [task()],
+            [unavailable],
+            environment_reports={
+                "TASK-1": compatibility_report(CompatibilityState.INCOMPATIBLE)
+            },
+        )
+        self.assertEqual(result.route, "policy_gate")
+        self.assertEqual(result.reasons, ("environment_incompatible",))
+
+    def test_router_skips_incompatible_task_for_compatible_task(self):
+        core = WorkerProfile("core", "core")
+        result = recommend_route(
+            [task("TASK-1"), task("TASK-2")],
+            [core],
+            environment_reports={
+                "TASK-1": compatibility_report(CompatibilityState.INCOMPATIBLE),
+                "TASK-2": compatibility_report(CompatibilityState.COMPATIBLE),
+            },
+        )
+        self.assertEqual(result.route, "claim_or_assign")
+        self.assertEqual(result.task_id, "TASK-2")
+
+    def test_router_unknown_environment_report_preserves_assignment(self):
+        core = WorkerProfile("core", "core")
+        result = recommend_route(
+            [task()],
+            [core],
+            environment_reports={"TASK-1": compatibility_report(CompatibilityState.UNKNOWN)},
+        )
+        self.assertEqual(result.route, "claim_or_assign")
+        self.assertEqual(result.task_id, "TASK-1")
+
+    def test_router_holds_required_task_with_no_report(self):
+        core = WorkerProfile("core", "core")
+        required = task(environment={"required_for_routing": True})
+        result = recommend_route([required], [core], environment_reports={})
+        self.assertEqual(result.route, "policy_gate")
+        self.assertEqual(result.task_id, "TASK-1")
+        self.assertEqual(result.reasons, ("environment_report_required",))
+
+    def test_router_holds_required_task_before_first_flow_start(self):
+        # required_for_routing task whose first flow_start has not run yet must
+        # HOLD, not raise, when the report mapping is absent entirely.
+        core = WorkerProfile("core", "core")
+        required = task(environment={"required_for_routing": True})
+        result = recommend_route([required], [core], environment_reports=None)
+        self.assertEqual(result.route, "policy_gate")
+        self.assertEqual(result.reasons, ("environment_report_required",))
+
+    def test_router_required_task_routes_once_fresh_report_exists(self):
+        core = WorkerProfile("core", "core")
+        required = task(environment={"required_for_routing": True})
+        for state in (CompatibilityState.COMPATIBLE, CompatibilityState.DRIFTED):
+            with self.subTest(state=state):
+                result = recommend_route(
+                    [required],
+                    [core],
+                    environment_reports={"TASK-1": compatibility_report(state)},
+                )
+                self.assertEqual(result.route, "claim_or_assign")
+                self.assertEqual(result.task_id, "TASK-1")
+
+    def test_router_required_task_still_gated_on_incompatible_report(self):
+        core = WorkerProfile("core", "core")
+        required = task(environment={"required_for_routing": True})
+        result = recommend_route(
+            [required],
+            [core],
+            environment_reports={
+                "TASK-1": compatibility_report(CompatibilityState.INCOMPATIBLE)
+            },
+        )
+        self.assertEqual(result.route, "policy_gate")
+        self.assertEqual(result.reasons, ("environment_incompatible",))
+
+    def test_router_missing_report_not_blocking_when_not_required(self):
+        core = WorkerProfile("core", "core")
+        not_required = task(environment={"required_for_routing": False})
+        result = recommend_route([not_required], [core], environment_reports={})
+        self.assertEqual(result.route, "claim_or_assign")
+        self.assertEqual(result.task_id, "TASK-1")
+
+    def test_review_prefers_eligible_independent_reviewer(self):
+        review_task = task(
+            status="READY_FOR_REVIEW", submission={"author_id": "author"}
+        )
+        author = WorkerProfile("author", "core", can_review=True, cost_rank=1)
+        reviewer = WorkerProfile(
+            "reviewer", "helper", can_review=True, max_risk="MEDIUM", cost_rank=2
+        )
+        result = recommend_route([review_task], [author, reviewer])
+        self.assertEqual(result.route, "review")
+        self.assertEqual(result.worker_id, "reviewer")
+
+    def test_review_waits_if_only_author_available(self):
+        review_task = task(
+            status="READY_FOR_REVIEW", submission={"author_id": "author"}
+        )
+        author = WorkerProfile("author", "core", can_review=True)
+        result = recommend_route([review_task], [author])
+        self.assertEqual(result.route, "wait_for_agent")
+
+    def test_halt_paid_dispatch_still_allows_review(self):
+        halt = HaltRecord(
+            halt_id="h",
+            state="halt_paid_dispatch",
+            reason="budget",
+            set_by="core",
+            set_at="now",
+        )
+        core = WorkerProfile("core", "core")
+        self.assertEqual(recommend_route([task()], [core], halt).route, "policy_gate")
+        review_task = task(
+            "TASK-2", status="READY_FOR_REVIEW", submission={"author_id": "author"}
+        )
+        reviewer = WorkerProfile("reviewer", "core", can_review=True)
+        self.assertEqual(
+            recommend_route([review_task], [reviewer], halt).route, "review"
+        )
+
+    def test_repair_only_blocks_non_repair(self):
+        halt = HaltRecord(
+            halt_id="h",
+            state="repair_only",
+            reason="incident",
+            set_by="operator",
+            set_at="now",
+        )
+        core = WorkerProfile("core", "core")
+        self.assertEqual(recommend_route([task()], [core], halt).route, "policy_gate")
+        repair = task(task_type="REPAIR")
+        self.assertEqual(
+            recommend_route([repair], [core], halt).route, "claim_or_assign"
+        )
+
+    def test_halt_store_is_durable_and_clear_requires_authority(self):
+        with tempfile.TemporaryDirectory() as td:
+            store = HaltStore(Path(td) / "halt.json")
+            record = store.set(
+                state="halt_paid_dispatch",
+                reason="budget",
+                actor="core-1",
+                authority="core",
+                clear_requires="operator",
+            )
+            self.assertEqual(store.load().halt_id, record.halt_id)
+            with self.assertRaises(PermissionError):
+                store.clear(actor="core-1", authority="core", reason="fixed")
+            cleared = store.clear(actor="human", authority="operator", reason="fixed")
+            self.assertEqual(cleared.state, "clear")
+
+    def test_idle_route(self):
+        worker = WorkerProfile("core", "core")
+        self.assertEqual(recommend_route([], [worker]).route, "wait_or_reconcile")
+
+
+if __name__ == "__main__":
+    unittest.main()

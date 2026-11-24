@@ -1,0 +1,22 @@
+# Optional, evaluation-only dependency for the Context Builder Stage 2
+# semantic-embedding retrieval candidate (runtime/context_retrieval_semantic.py).
+#
+# This is deliberately NOT part of runtime/requirements.txt: it is not a core
+# runtime/production dependency, only tooling used to score one candidate
+# retrieval method against the frozen, evaluation-only Stage 2 harness in
+# runtime/context_retrieval_eval.py. CI for the core runtime stack
+# (.github/workflows/runtime-stack-tests.yml) does not install this file, so
+# tests/test_context_retrieval_semantic.py skips itself cleanly when this
+# dependency is absent.
+#
+# fastembed is CPU-only (ONNX Runtime backed) and has no torch/GPU dependency,
+# keeping install size and CI time small relative to sentence-transformers.
+#
+# Pinned to an exact version: fastembed's TextEmbedding does not expose a
+# model-revision/hash parameter, so the only mechanical reproducibility
+# lever available here is pinning the package version itself (its model
+# registry -- which HuggingFace files/URLs "BAAI/bge-small-en-v1.5" resolves
+# to -- is baked into the fastembed release, not resolved dynamically at
+# runtime). This does not cryptographically pin the model weights
+# themselves; it pins which fastembed release's model registry is used.
+fastembed==0.8.0

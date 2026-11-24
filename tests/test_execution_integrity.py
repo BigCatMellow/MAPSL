@@ -1,0 +1,632 @@
+from __future__ import annotations
+
+from pathlib import Path
+import subprocess
+import tempfile
+import unittest
+
+from runtime.harness import HookDirective
+from runtime.integrity import verify_git_run
+from runtime.policy import CanonicalRunGuard, WorkerProfile
+from runtime.routing import recommend_route
+from runtime.state import TaskStore
+
+
+def contract(*, outputs=None, criteria=None):
+    return {
+        "title": "Integrity task",
+        "outcome": "Execution remains bound to approved contract and scope",
+        "task_type": "IMPLEMENTATION",
+        "owner": "owner",
+        "risk": "HIGH",
+        "decision_authority": "bounded implementation only",
+        "verification": "run integrity tests",
+        "evidence_expected": "test output and evidence files",
+        "review_required": "INDEPENDENT_REVIEW",
+        "escalation": "operator on authority/scope conflict",
+        "inputs": ["input"],
+        "sources": ["source"],
+        "dependencies": [],
+        "output_paths": outputs or ["src"],
+        "non_goals": ["no unrelated changes"],
+        "acceptance_criteria": criteria or ["criterion one", "criterion two"],
+        "stop_conditions": ["stop on stale contract"],
+        "policy": {
+            "requires_operator_approval": False,
+            "destructive_action": False,
+            "external_side_effect": False,
+            "security_sensitive": False,
+            "broad_architecture": False,
+            "paid_execution": False,
+        },
+    }
+
+
+class IntegrityTests(unittest.TestCase):
+    def setUp(self):
+        self.td = tempfile.TemporaryDirectory()
+        self.addCleanup(self.td.cleanup)
+        self.root = Path(self.td.name)
+        self.repo = self.root / "repo"
+        self.repo.mkdir()
+        (self.repo / "src").mkdir()
+        (self.repo / "docs").mkdir()
+        (self.repo / "context.md").write_text("context v1\n", encoding="utf-8")
+        (self.repo / "src" / "evidence-one.txt").write_text("proof 1\n", encoding="utf-8")
+        (self.repo / "src" / "evidence-two.txt").write_text("proof 2\n", encoding="utf-8")
+        self.store = TaskStore(self.root / "maps.db")
+
+    def make_active(self, *, worker="worker", outputs=None, criteria=None):
+        created = self.store.create_task(title="x")
+        self.assertTrue(created.ok)
+        task_id = created.task["task_id"]
+        self.assertTrue(
+            self.store.update_contract(
+                task_id, contract(outputs=outputs, criteria=criteria)
+            ).ok
+        )
+        self.assertTrue(self.store.promote_ready(task_id).ok)
+        self.assertTrue(self.store.claim_task(task_id, worker, lease_seconds=600).ok)
+        return task_id
+
+    def make_run(self, task_id, *, worker="worker", repo_root=None, **kwargs):
+        result = self.store.create_run_manifest(
+            task_id,
+            worker,
+            repo_root=repo_root or self.repo,
+            created_by="dispatcher",
+            context_paths=["context.md"],
+            readable_paths=["."],
+            base_revision=kwargs.pop("base_revision", None),
+            **kwargs,
+        )
+        self.assertTrue(result.ok, result.message)
+        return result.task
+
+    def test_run_requires_active_current_claimant(self):
+        created = self.store.create_task(title="x")
+        task_id = created.task["task_id"]
+        self.store.update_contract(task_id, contract())
+        self.store.promote_ready(task_id)
+        result = self.store.create_run_manifest(
+            task_id,
+            "worker",
+            repo_root=self.repo,
+            created_by="dispatcher",
+        )
+        self.assertFalse(result.ok)
+        self.assertEqual(result.code, "RUN_NOT_OWNED")
+
+    def test_run_freezes_revision_context_and_scope(self):
+        task_id = self.make_active()
+        manifest = self.make_run(
+            task_id,
+            writable_paths=["src"],
+            forbidden_paths=["docs"],
+            runtime_limits={"runtime_seconds": 300, "max_tool_failures": 2},
+        )
+        self.assertEqual(manifest["worker_id"], "worker")
+        self.assertEqual(manifest["writable_scope"], ["src"])
+        self.assertEqual(manifest["forbidden_scope"], ["docs"])
+        self.assertEqual(manifest["runtime_limits"]["runtime_seconds"], 300)
+        self.assertEqual(manifest["task_revision"], self.store.compute_task_revision(task_id))
+        self.assertEqual(manifest["context_refs"][0]["path"], "context.md")
+        self.assertEqual(len(manifest["context_refs"][0]["sha256"]), 64)
+        self.assertIsNone(manifest["worktree"])
+        self.assertIs(manifest["write_scope_binding_required"], False)
+
+    def test_non_git_placeholder_base_revision_remains_unbound(self):
+        task_id = self.make_active()
+        manifest = self.make_run(
+            task_id,
+            writable_paths=["src"],
+            base_revision="placeholder",
+        )
+
+        self.assertEqual(manifest["base_revision"], "placeholder")
+        self.assertIsNone(manifest["worktree"])
+
+    def test_required_worktree_binding_rejects_non_git_repo(self):
+        task_id = self.make_active()
+        result = self.store.create_run_manifest(
+            task_id,
+            "worker",
+            repo_root=self.repo,
+            created_by="dispatcher",
+            context_paths=["context.md"],
+            readable_paths=["."],
+            writable_paths=["src"],
+            base_revision="placeholder",
+            require_worktree_binding=True,
+        )
+
+        self.assertFalse(result.ok)
+        self.assertEqual(result.code, "WORKTREE_BINDING_REQUIRED")
+        self.assertEqual(
+            [
+                run
+                for run in self.store.trace_task(task_id)["runs"]
+                if run["task_id"] == task_id
+            ],
+            [],
+        )
+
+    def test_require_worktree_binding_without_base_revision_fails_loud(self):
+        # Regression: `--require-worktree-binding` alone used to be a silent
+        # no-op (run succeeded with `worktree: null`) because the whole
+        # worktree-identity block is gated on `base_revision is not None`.
+        task_id = self.make_active(outputs=["src"])
+        result = self.store.create_run_manifest(
+            task_id,
+            "worker",
+            repo_root=self.repo,
+            created_by="dispatcher",
+            context_paths=["context.md"],
+            readable_paths=["."],
+            writable_paths=["src"],
+            require_worktree_binding=True,
+        )
+
+        self.assertFalse(result.ok)
+        self.assertEqual(result.code, "WORKTREE_BINDING_REQUIRES_BASE_REVISION")
+        self.assertIn("base_revision", result.message)
+        self.assertEqual(
+            [
+                run
+                for run in self.store.trace_task(task_id)["runs"]
+                if run["task_id"] == task_id
+            ],
+            [],
+        )
+
+    def test_write_scope_binding_defaults_false(self):
+        task_id = self.make_active()
+        manifest = self.make_run(task_id, writable_paths=["src"])
+        self.assertIs(manifest["write_scope_binding_required"], False)
+
+    def test_write_scope_binding_persists_true_and_round_trips(self):
+        task_id = self.make_active()
+        manifest = self.make_run(
+            task_id, writable_paths=["src"], require_write_scope_binding=True
+        )
+        self.assertIs(manifest["write_scope_binding_required"], True)
+        fetched = self.store.get_run_manifest(manifest["run_id"])
+        self.assertIs(fetched["write_scope_binding_required"], True)
+
+    def test_write_scope_binding_needs_no_companion_flag(self):
+        # Unlike require_worktree_binding, this flag has nothing to fail
+        # loudly about: readable/writable/forbidden scope is already always
+        # computed regardless. Opting in with only the (also default)
+        # writable_paths succeeds.
+        task_id = self.make_active(outputs=["src"])
+        result = self.store.create_run_manifest(
+            task_id,
+            "worker",
+            repo_root=self.repo,
+            created_by="dispatcher",
+            context_paths=["context.md"],
+            readable_paths=["."],
+            require_write_scope_binding=True,
+        )
+        self.assertTrue(result.ok, result.message)
+        self.assertIs(result.task["write_scope_binding_required"], True)
+        self.assertEqual(result.task["writable_scope"], ["src"])
+
+    def test_no_worktree_flag_without_base_revision_still_succeeds_unbound(self):
+        # No `--require-worktree-binding`: absent `base_revision` stays a
+        # legitimate unbound run, unchanged by the loud-failure branch above.
+        task_id = self.make_active()
+        manifest = self.make_run(task_id, writable_paths=["src"])
+
+        self.assertIsNone(manifest["base_revision"])
+        self.assertIsNone(manifest["worktree"])
+
+    def test_writable_scope_cannot_exceed_task_outputs(self):
+        task_id = self.make_active(outputs=["src"])
+        result = self.store.create_run_manifest(
+            task_id,
+            "worker",
+            repo_root=self.repo,
+            created_by="dispatcher",
+            writable_paths=["docs"],
+        )
+        self.assertFalse(result.ok)
+        self.assertEqual(result.code, "WRITE_SCOPE_EXCEEDS_TASK")
+
+    def test_context_change_makes_run_stale(self):
+        task_id = self.make_active()
+        manifest = self.make_run(task_id)
+        self.assertFalse(
+            self.store.check_run_stale(manifest["run_id"], repo_root=self.repo)["stale"]
+        )
+        (self.repo / "context.md").write_text("context v2\n", encoding="utf-8")
+        stale = self.store.check_run_stale(manifest["run_id"], repo_root=self.repo)
+        self.assertTrue(stale["stale"])
+        self.assertEqual(stale["stale_context"][0]["reason"], "changed")
+
+    def test_task_definition_change_makes_run_stale(self):
+        task_id = self.make_active()
+        manifest = self.make_run(task_id)
+        with self.store._connect() as conn:
+            conn.execute("UPDATE tasks SET outcome = 'changed contract' WHERE task_id = ?", (task_id,))
+        stale = self.store.check_run_stale(manifest["run_id"], repo_root=self.repo)
+        self.assertTrue(stale["task_stale"])
+
+    def test_verify_run_changes_reports_out_of_scope_without_repair(self):
+        task_id = self.make_active(outputs=["src"])
+        manifest = self.make_run(task_id, writable_paths=["src"])
+        result = self.store.verify_run_changes(
+            manifest["run_id"],
+            ["src/a.py", "README.md"],
+            repo_root=self.repo,
+        )
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["out_of_scope"], ["README.md"])
+
+    def init_git_repo(self):
+        def git(*args):
+            subprocess.run(
+                ["git", "-C", str(self.repo), *args],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+
+        git("init")
+        git("config", "user.email", "maps@example.invalid")
+        git("config", "user.name", "MAPS Test")
+        (self.repo / "src" / "a.py").write_text("x = 1\n", encoding="utf-8")
+        (self.repo / "README.md").write_text("base\n", encoding="utf-8")
+        git("add", ".")
+        git("commit", "-m", "base")
+        base = subprocess.run(
+            ["git", "-C", str(self.repo), "rev-parse", "HEAD"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        return base
+
+    def test_git_scope_verifier_reports_real_worktree_changes(self):
+        base = self.init_git_repo()
+        task_id = self.make_active(outputs=["src"])
+        manifest = self.make_run(task_id, writable_paths=["src"], base_revision=base)
+        self.assertEqual(manifest["worktree"]["repo_root"], str(self.repo.resolve()))
+        self.assertEqual(len(manifest["worktree"]["head_revision"]), 40)
+        (self.repo / "src" / "a.py").write_text("x = 2\n", encoding="utf-8")
+        (self.repo / "README.md").write_text("changed\n", encoding="utf-8")
+        result = verify_git_run(self.store, manifest["run_id"], repo_root=self.repo)
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["worktree_binding"], "verified")
+        self.assertIn("README.md", result["out_of_scope"])
+        self.assertIn("src/a.py", result["changed_paths"])
+        self.assertEqual((self.repo / "README.md").read_text(), "changed\n")
+
+    def _write_scope_context(self, task_id, manifest, *, operation="start"):
+        return {
+            "operation": operation,
+            "binding": {
+                "task_id": task_id,
+                "run_id": manifest["run_id"],
+                "worker_id": "worker",
+                "task_revision": manifest["task_revision"],
+                "project_id": "default",
+            },
+        }
+
+    def test_canonical_run_guard_denies_real_out_of_scope_write(self):
+        # End-to-end, no mocks: real TaskStore, real git repo, real
+        # CanonicalRunGuard consulting the real write_scope_binding_required
+        # flag (PR #362) and the real verify_run_changes()/collect_git_changes
+        # path (roadmap 6.4 guard wiring).
+        base = self.init_git_repo()
+        task_id = self.make_active(outputs=["src"])
+        manifest = self.make_run(
+            task_id,
+            writable_paths=["src"],
+            base_revision=base,
+            require_write_scope_binding=True,
+        )
+        self.assertIs(manifest["write_scope_binding_required"], True)
+        (self.repo / "README.md").write_text("changed\n", encoding="utf-8")
+
+        guard = CanonicalRunGuard(self.store, repo_root=self.repo)
+        outcome = guard(self._write_scope_context(task_id, manifest))
+
+        self.assertEqual(outcome.directive, HookDirective.DENY)
+        self.assertEqual(outcome.annotations["guard_code"], "RUN_WRITE_SCOPE_VIOLATION")
+        self.assertIn("README.md", outcome.reason)
+
+    def test_canonical_run_guard_allows_real_in_scope_write(self):
+        base = self.init_git_repo()
+        task_id = self.make_active(outputs=["src"])
+        manifest = self.make_run(
+            task_id,
+            writable_paths=["src"],
+            base_revision=base,
+            require_write_scope_binding=True,
+        )
+        (self.repo / "src" / "a.py").write_text("x = 2\n", encoding="utf-8")
+
+        guard = CanonicalRunGuard(self.store, repo_root=self.repo)
+        outcome = guard(self._write_scope_context(task_id, manifest))
+
+        self.assertEqual(outcome.directive, HookDirective.ANNOTATE)
+        self.assertEqual(outcome.annotations["guard_code"], "CANONICAL_RUN_VERIFIED")
+
+    def test_canonical_run_guard_ignores_write_scope_when_not_bound(self):
+        # No require_write_scope_binding=True -- an out-of-scope change on an
+        # otherwise-ordinary run must not be denied (opt-in only, PR #362's
+        # whole point).
+        base = self.init_git_repo()
+        task_id = self.make_active(outputs=["src"])
+        manifest = self.make_run(task_id, writable_paths=["src"], base_revision=base)
+        self.assertIs(manifest["write_scope_binding_required"], False)
+        (self.repo / "README.md").write_text("changed\n", encoding="utf-8")
+
+        guard = CanonicalRunGuard(self.store, repo_root=self.repo)
+        outcome = guard(self._write_scope_context(task_id, manifest))
+
+        self.assertEqual(outcome.directive, HookDirective.ANNOTATE)
+        self.assertEqual(outcome.annotations["guard_code"], "CANONICAL_RUN_VERIFIED")
+
+    def test_required_worktree_binding_accepts_git_repo(self):
+        base = self.init_git_repo()
+        task_id = self.make_active(outputs=["src"])
+        result = self.store.create_run_manifest(
+            task_id,
+            "worker",
+            repo_root=self.repo,
+            created_by="dispatcher",
+            context_paths=["context.md"],
+            readable_paths=["."],
+            writable_paths=["src"],
+            base_revision=base,
+            require_worktree_binding=True,
+        )
+
+        self.assertTrue(result.ok, result.message)
+        self.assertEqual(result.task["worktree"]["repo_root"], str(self.repo.resolve()))
+
+    def test_git_scope_verifier_rejects_different_clone_before_scope_check(self):
+        base = self.init_git_repo()
+        task_id = self.make_active(outputs=["src"])
+        manifest = self.make_run(task_id, writable_paths=["src"], base_revision=base)
+        clone = self.root / "clone"
+        subprocess.run(
+            ["git", "clone", str(self.repo), str(clone)],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+
+        result = verify_git_run(self.store, manifest["run_id"], repo_root=clone)
+
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["reason"], "worktree_mismatch")
+        self.assertEqual(result["changed_paths"], [])
+        mismatch = result["worktree_mismatch"]
+        self.assertEqual(mismatch["expected_repo_root"], str(self.repo.resolve()))
+        self.assertEqual(mismatch["actual_repo_root"], str(clone.resolve()))
+        self.assertNotEqual(mismatch["expected_git_dir"], mismatch["actual_git_dir"])
+
+    def test_linked_worktree_identity_shares_common_dir_but_not_git_dir(self):
+        base = self.init_git_repo()
+        linked = self.root / "linked"
+        subprocess.run(
+            ["git", "-C", str(self.repo), "worktree", "add", str(linked), "HEAD"],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        task_id = self.make_active(outputs=["src"])
+        manifest = self.make_run(
+            task_id,
+            repo_root=linked,
+            writable_paths=["src"],
+            base_revision=base,
+        )
+        original_task = self.make_active(worker="other", outputs=["docs"])
+        original = self.make_run(
+            original_task,
+            worker="other",
+            repo_root=self.repo,
+            writable_paths=["docs"],
+            base_revision=base,
+        )
+
+        self.assertEqual(
+            manifest["worktree"]["git_common_dir"],
+            original["worktree"]["git_common_dir"],
+        )
+        self.assertNotEqual(manifest["worktree"]["git_dir"], original["worktree"]["git_dir"])
+        self.assertNotEqual(manifest["worktree"]["repo_root"], original["worktree"]["repo_root"])
+
+    def test_continuity_component_is_transitive(self):
+        self.assertTrue(
+            self.store.record_continuity_link("author", "replacement-1", reason="rotation").ok
+        )
+        self.assertTrue(
+            self.store.record_continuity_link("replacement-1", "replacement-2", reason="rotation").ok
+        )
+        self.assertEqual(
+            self.store.continuity_component("author"),
+            {"author", "replacement-1", "replacement-2"},
+        )
+        self.assertTrue(self.store.same_continuity_lineage("replacement-2", "author"))
+
+    def submit_as(self, author="author"):
+        task_id = self.make_active(worker=author)
+        self.assertTrue(self.store.submit_task(task_id, author, "general evidence").ok)
+        return task_id
+
+    def test_continuation_identity_cannot_claim_review(self):
+        task_id = self.submit_as("author")
+        self.store.record_continuity_link("author", "replacement", reason="rotation")
+        result = self.store.claim_review(task_id, "replacement")
+        self.assertFalse(result.ok)
+        self.assertEqual(result.code, "CONTINUITY_REVIEW_FORBIDDEN")
+        self.assertIn("replacement", self.store.get_task(task_id)["review_disqualified_ids"])
+        self.assertTrue(self.store.claim_review(task_id, "independent").ok)
+
+    def test_router_avoids_continuity_disqualified_reviewer(self):
+        task_id = self.submit_as("author")
+        self.store.record_continuity_link("author", "replacement", reason="rotation")
+        snapshot = self.store.get_task(task_id)
+        replacement = WorkerProfile(
+            "replacement", "core", can_review=True, cost_rank=1
+        )
+        independent = WorkerProfile(
+            "independent", "core", can_review=True, cost_rank=2
+        )
+        route = recommend_route([snapshot], [replacement, independent])
+        self.assertEqual(route.route, "review")
+        self.assertEqual(route.worker_id, "independent")
+
+    def test_final_review_rechecks_continuity_added_after_claim(self):
+        task_id = self.submit_as("author")
+        self.assertTrue(self.store.claim_review(task_id, "reviewer").ok)
+        self.store.record_continuity_link("author", "reviewer", reason="late rotation evidence")
+        result = self.store.record_review(task_id, "reviewer", "APPROVED", "looks good")
+        self.assertFalse(result.ok)
+        self.assertEqual(result.code, "CONTINUITY_REVIEW_FORBIDDEN")
+
+    def test_criterion_claim_and_verdict_remain_separate(self):
+        task_id = self.make_active(worker="author")
+        run = self.make_run(task_id, worker="author")
+        self.assertTrue(self.store.submit_task(task_id, "author", "general evidence").ok)
+        criterion_id = self.store.list_acceptance_criteria(task_id)[0]["id"]
+        claim = self.store.record_criterion_claim(
+            task_id,
+            criterion_id,
+            "complete",
+            author_id="author",
+            evidence_refs=["src/evidence-one.txt"],
+            repo_root=self.repo,
+            run_id=run["run_id"],
+        )
+        self.assertTrue(claim.ok, claim.message)
+        claim_id = claim.task["claim_id"]
+        self.assertTrue(self.store.claim_review(task_id, "reviewer").ok)
+        self.assertTrue(
+            self.store.record_criterion_verdict(
+                claim_id, "confirmed", reviewer_id="reviewer", notes="verified"
+            ).ok
+        )
+        record = self.store.get_criterion_claims(task_id)[0]
+        self.assertEqual(record["claimed_status"], "complete")
+        self.assertEqual(record["author_id"], "author")
+        self.assertEqual(record["verdicts"][0]["verified_status"], "confirmed")
+        self.assertEqual(record["verdicts"][0]["reviewer_id"], "reviewer")
+
+    def test_criterion_mode_blocks_approval_until_every_criterion_confirmed(self):
+        task_id = self.make_active(worker="author")
+        run = self.make_run(task_id, worker="author")
+        self.assertTrue(self.store.submit_task(task_id, "author", "general evidence").ok)
+        criteria = self.store.list_acceptance_criteria(task_id)
+        first = self.store.record_criterion_claim(
+            task_id,
+            criteria[0]["id"],
+            "complete",
+            author_id="author",
+            evidence_refs=["src/evidence-one.txt"],
+            repo_root=self.repo,
+            run_id=run["run_id"],
+        )
+        self.assertTrue(self.store.claim_review(task_id, "reviewer").ok)
+        self.assertTrue(
+            self.store.record_criterion_verdict(
+                first.task["claim_id"], "confirmed", reviewer_id="reviewer"
+            ).ok
+        )
+        blocked = self.store.record_review(
+            task_id, "reviewer", "APPROVED", "first criterion confirmed"
+        )
+        self.assertFalse(blocked.ok)
+        self.assertEqual(blocked.code, "CRITERION_VERIFICATION_INCOMPLETE")
+
+        second = self.store.record_criterion_claim(
+            task_id,
+            criteria[1]["id"],
+            "complete",
+            author_id="author",
+            evidence_refs=["src/evidence-two.txt"],
+            repo_root=self.repo,
+            run_id=run["run_id"],
+        )
+        self.assertTrue(
+            self.store.record_criterion_verdict(
+                second.task["claim_id"], "confirmed", reviewer_id="reviewer"
+            ).ok
+        )
+        missing_subject = self.store.record_review(
+            task_id, "reviewer", "APPROVED", "all criteria confirmed"
+        )
+        self.assertFalse(missing_subject.ok)
+        self.assertEqual(missing_subject.code, "REVIEW_SUBJECT_REQUIRED")
+        bound = self.store.bind_review_subject(
+            task_id,
+            "reviewer",
+            freshness_mode="REVISION_BOUND",
+            run_id=run["run_id"],
+            artifact_refs=("sha256:" + "d" * 64,),
+        )
+        self.assertTrue(bound.ok, bound.message)
+        approved = self.store.record_review(
+            task_id, "reviewer", "APPROVED", "all criteria and exact output reviewed"
+        )
+        self.assertTrue(approved.ok, approved.message)
+        self.assertEqual(self.store.get_task(task_id)["status"], "DONE")
+
+    def test_criterion_verdict_rechecks_continuity(self):
+        task_id = self.make_active(worker="author", criteria=["only"])
+        self.assertTrue(self.store.submit_task(task_id, "author", "general evidence").ok)
+        criterion_id = self.store.list_acceptance_criteria(task_id)[0]["id"]
+        claim = self.store.record_criterion_claim(
+            task_id,
+            criterion_id,
+            "complete",
+            author_id="author",
+            evidence_refs=["src/evidence-one.txt"],
+            repo_root=self.repo,
+        )
+        self.assertTrue(self.store.claim_review(task_id, "reviewer").ok)
+        self.store.record_continuity_link("author", "reviewer", reason="late rotation evidence")
+        verdict = self.store.record_criterion_verdict(
+            claim.task["claim_id"], "confirmed", reviewer_id="reviewer"
+        )
+        self.assertFalse(verdict.ok)
+        self.assertEqual(verdict.code, "CONTINUITY_REVIEW_FORBIDDEN")
+
+
+class WriteScopeBindingFlagIsolationTest(unittest.TestCase):
+    """Roadmap 6.4: `write_scope_binding_required`/`require_write_scope_binding`
+    (PR #362, schema + API) is now consulted by exactly one guard --
+    `runtime/policy/harness_guard.py::CanonicalRunGuard._require_write_scope`
+    -- and nowhere else. Confirms that boundary: no other `runtime/policy/`
+    file and nothing under `runtime/recovery/` references the flag or its
+    persisted column name (`runtime/recovery/production.py` needs no change
+    for this wiring -- `CanonicalRunGuard`'s new capability is opt-in via a
+    constructor default, not a new composition-root call).
+    """
+
+    def test_only_the_canonical_run_guard_references_the_flag(self):
+        root = Path(__file__).resolve().parents[1]
+        allowed = {root / "runtime" / "policy" / "harness_guard.py"}
+        sources = sorted((root / "runtime" / "policy").rglob("*.py")) + sorted(
+            (root / "runtime" / "recovery").rglob("*.py")
+        )
+        offenders = [
+            str(path.relative_to(root))
+            for path in sources
+            if path not in allowed
+            and (
+                "write_scope_binding_required" in path.read_text(encoding="utf-8")
+                or "require_write_scope_binding" in path.read_text(encoding="utf-8")
+            )
+        ]
+        self.assertEqual(offenders, [])
+
+
+if __name__ == "__main__":
+    unittest.main()
