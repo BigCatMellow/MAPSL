@@ -160,6 +160,12 @@ Migration friction: [CI run 45423585107](https://github.com/BigCatMellow/MAPSL/a
 
 No older branch was merged. Remaining branch-only changes and semantic obligations stay pending. See the pinned refs below.
 
+## Reference dispositions and portability checkpoint — 2026-11-24
+
+The inventory now records 139 REFERENCE dispositions: 104 historical YAML handoff snapshots, one historical event dataset, six old review-queue documents, 20 already-reconciled current-source idea/insight records, and eight inspected legacy insight records. Each row points to its exact pinned original, rationale and evidence. Source legacy handoff/event/inbox indexes and the earlier audit were inspected; historical data must not become live state. This classifies file custody, not the completeness of all semantic obligations; unresolved retired task chains, promotions, current handoffs and other unique lessons remain PENDING. 343 files remain staged but not accepted; 3,033 additional source paths lack staging/disposition. See commit 5a729da8e1db794ff1d20849b7be7b9e1a7d0ec2.
+
+The [green integration run](https://github.com/BigCatMellow/MAPSL/actions/runs/45423873562) reports all 21 portable-target preflight/init tests passing, including explicit roots, wrong types, self-targets, symlink boundaries, preview nonmutation, idempotency and non-overwrite. The smoke test also passed its no-legacy-execution-dependency assertion. Comparing the original runtime-stack workflow with successor migration coverage revealed two missing explicit steps: the full active legacy-dependency scanner and installer syntax/preview. Restored both in commit 33b02fb2a3c6d9dff80655d03e605841793746a7, with preview checks for absent .venv/.maps/.hcom and clean tracked status. This is read-only CI verification; no external installation or target project mutation. Fresh CI for these changes and a disposable full fresh-install exercise remain required.
+
 ## Source branch inventory
 
 All 102 observed branch refs are pinned here for later unique-content
