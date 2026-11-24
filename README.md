@@ -1,10 +1,11 @@
 # MAPSL — controlled successor migration
 
-**Status: proposed migration plan; implementation has not started.**
+**Status: authorized migration in progress (2026-11-24).**
 This is the single migration plan and restart entry until cutover. It is not yet
-the successor operating contract. No migration or new authority is granted by
-this draft. The owner approves the overall scope once; routine authorized
-implementation proceeds without per-stage human permission.
+the successor operating contract. The owner authorized the reversible migration on 2026-11-24, with the original
+MAPS_Lean repository preserved. Routine authorized implementation proceeds
+without per-stage human permission. This does not waive independent review,
+authority boundaries, or the final cutover decision.
 
 ## 1. Outcome and boundaries
 
@@ -170,10 +171,12 @@ unchanged old repository.
 
 ## 7. Current checkpoint
 
-- M0 planning: source pinned, new repository verified empty before bootstrap.
-- No implementation migration, no runtime test rerun, no fresh independent
-  review. Inventory classifications remain pending.
-- Next action after plan approval: complete M0 dependency and semantic inventory,
-  including non-main/externally held records; prioritize M1 and establish the
-  successor's review/merge path. If evidence cannot be accessed, continue
-  independent in-scope work and explicitly escalate the missing source.
+- M0 active: source pinned, exact 3,515-file inventory verified; source untouched.
+- M1 preparation: isolated branch `migration/foundation`; no successor operating
+  contract or implementation accepted on main yet.
+- Next: reconcile outstanding sources, stage the operating foundation and its
+  dependencies; retain historical source pointers, verify and review before
+  acceptance. Local GitHub clone is unavailable in the execution environment
+  (DNS/network); use connected GitHub and successor CI where available.
+- No independent reviewer has been established. Do not self-approve or treat
+  staged work as accepted. Continue independent preparation inside scope.
