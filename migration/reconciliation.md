@@ -108,6 +108,32 @@ The pinned legacy idea-recovery audit and promotion ledger were inspected again.
 
 Source promotion ledger explicitly classifies old task/event/handoff/review datasets as historical and rejects obsolete presentation implementations. Preserve pinned originals; do not copy live state or restart old tasks by default. The curated snapshots remain in the source. The legacy audit explicitly leaves unresolved MAP-relevant Insights, unfinished promotions, retired task chains and referenced research unexamined. These remain PENDING; this checkpoint does not establish semantic coverage of all 2,474 historical files. Next pass should screen those targeted records and check the current runtime before closing each group.
 
+## Review queue and targeted insight reconciliation — 2026-11-24
+
+All five source review packets were read. They refer to [PR #19](https://github.com/BigCatMellow/MAPS_Lean/pull/19), now closed with zero recorded GitHub reviews. Its implementation commit 0776a6b45490d85487c725474e9d3bbf600524da is an ancestor of the pinned main (936 commits ahead, zero behind). The candidate ledger records exact staging of the four runtime surfaces and corresponding original tests. Preserve packets as historical review inputs; do not manufacture approval or restart five implementation tasks.
+
+| Packet | Successor review focus |
+| --- | --- |
+| Priority observability | Trace remains read-only, secret-safe boundaries and explicit coverage gaps; retain authority and risk-specific review rules. |
+| Outcome feedback | DONE-only observations, immutable supersession and task/run provenance; no task authority mutation. |
+| Context Builder v1 | Explicit input relationships, path confinement, hashes and coverage limits; no implicit retrieval authority. |
+| Status surface | Canonical read-only attention projection, correct outcome supersession, explicit gaps. |
+| PR CI | Read-only PR verification; confirm required checks and installer/legacy independence coverage before acceptance. |
+
+Eight targeted historical insights were read in full from the pinned source:
+
+- INS-0023 (RAW): inward infrastructure repeatedly displaced useful outcomes. Fold into Direction and continuity; current master outcome and actual-use acceptance address the concern in intent, not yet proven in practice. Do not impose an external pilot.
+- INS-0032 (OPEN), INS-0053 (OPEN): rules buried in prose were repeatedly missed. Fold into controlled learning and behavioral enforcement; prove applicable guidance actually reaches agents and consequential guards execute. No duplicate global rules.
+- INS-0054 (PROMOTED): remote authority network denial differs from local SQL denial; preserve explicit failure reasons, no classifier exemptions or automatic policy-denial retries. Old remote architecture remains historical.
+- INS-0055 (PROMOTED): a checked discovery box did not establish useful discovery. Preserve bounded event-triggered, proposal-only discovery; no automatic model invocation or blanket release ritual.
+- INS-0056 (PROMOTED): lessons from authorized method-only work can be lost without a formal task. Preserve opt-in learning without importing work into governance or expanding authority.
+- INS-0059 (RAW): privileged mutation review caught arbitrary restore and transactional snapshot races. Preserve adversarial security and concurrency review for applicable paths, not old cross-host implementation.
+- INS-0061 (RAW): scanner evidence pointed at unrelated events; separate uncommitted curation also caused duplicate processing. Preserve exact event attribution, source freshness and canonical reconciliation tests when implementing learning/eval signals; do not revive the legacy scanner.
+
+These are proposed semantic dispositions within the existing roadmap programs. Current runtime behavior beyond the staged tests still requires direct verification; other Insights, promotions and retired task chains remain pending.
+
+Migration friction: [CI run 45423585107](https://github.com/BigCatMellow/MAPSL/actions/runs/45423585107) caught a stale staged-adapted hash for state/CURRENT.md after the previous checkpoint edit. The ledger was repaired using the actual destination blob in commit 33e203673a5516f5561b860f496dfc23c7a1bece. Keep the existing fail-closed check. Future edits to staged destinations must reconcile the ledger in the same change; prefer atomic tree commits. Fresh CI remains required.
+
 ## Source branch inventory
 
 All 102 observed branch refs are pinned here for later unique-content
