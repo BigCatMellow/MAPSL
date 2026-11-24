@@ -171,12 +171,10 @@ unchanged old repository.
 
 ## 7. Current checkpoint
 
-- M0 active: source pinned, exact 3,515-file inventory verified; source untouched.
-- M1 preparation: isolated branch `migration/foundation`; no successor operating
-  contract or implementation accepted on main yet.
-- Next: reconcile outstanding sources, stage the operating foundation and its
-  dependencies; retain historical source pointers, verify and review before
-  acceptance. Local GitHub clone is unavailable in the execution environment
-  (DNS/network); use connected GitHub and successor CI where available.
-- No independent reviewer has been established. Do not self-approve or treat
-  staged work as accepted. Continue independent preparation inside scope.
+- Source pinned at `605ce610e0be3334d1da7af2a7c6f5912b6cc05f`; original repository unchanged.
+- [Foundation PR #1](https://github.com/BigCatMellow/MAPSL/pull/1) and [integration PR #2](https://github.com/BigCatMellow/MAPSL/pull/2) are staged drafts, not accepted on main.
+- 3,515 source files inventoried: 328 exact staged, 15 adapted staged, 3,172 remaining. All 124 runtime, 114 original test and 18 script/tool files staged exact. 80 capability IDs mapped; 102 branch references recorded; 20 idea/insight records reconciled.
+- [Initial integrated CI](https://github.com/BigCatMellow/MAPSL/actions/runs/45417993224): compilation, dependencies, security lint, inventory and smoke passed; 1,502 tests, 12 failures/errors, 5 skips. Documentation/workflow fixes staged; [fresh CI](https://github.com/BigCatMellow/MAPSL/actions/runs/45419052227) is authoritative for the corrected candidate.
+- Restart from the [candidate state](https://github.com/BigCatMellow/MAPSL/blob/migration/runtime-core/state/CURRENT.md) and [canonical roadmap](https://github.com/BigCatMellow/MAPSL/tree/migration/runtime-core/work/roadmaps), with remaining obligations tracked in [reconciliation](https://github.com/BigCatMellow/MAPSL/blob/migration/runtime-core/migration/reconciliation.md).
+- Next: resolve integrated CI findings; reconcile remaining source obligations, including deferred branches and historical material; independently review before accepting. Local source checkout is unavailable (DNS/network); GitHub connector and CI available. External local records remain unavailable.
+- No independent reviewer established. Do not self-approve, enable standing merge authority, publish the wiki or cut over. No routine human reauthorization is needed for reversible preparation within the agreed envelope.
