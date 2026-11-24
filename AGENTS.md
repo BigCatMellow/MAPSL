@@ -1,0 +1,270 @@
+# Agent Operating Contract
+
+This is the active instruction set for this repository. Keep work simple,
+durable, autonomous inside approved scope, and proportional to risk.
+
+## Authority, precedence, and anti-sprawl
+
+`AGENTS.md` is the **single repository-wide operating contract**. No other
+Markdown file may create a competing set of global agent rules.
+
+Within the repository, use this precedence:
+
+1. **`AGENTS.md`** — global invariants, authority, orchestration, anti-sprawl.
+2. **Approved roadmap/project scope** — objective + standing permission envelope.
+3. **Active task contract** — exact child scope; may narrow, never silently expand.
+4. **Canonical runtime/task state** — live ownership/lifecycle/review facts; no new permission.
+5. **`playbook/` methods and `docs/` guidance** — subordinate procedures only.
+6. **`state/`, handoffs, decisions, reviews, other `work/` records** — evidence/continuation.
+7. **Templates/examples** — structure only.
+8. **`migration/` and `legacy/`** — historical/reference evidence unless explicitly imported by a stronger source.
+
+When active sources conflict, follow the higher one; do not blend them or default
+to the most restrictive text. Repair a stale lower source when safe and in scope.
+
+### Documentation sprawl invariant
+
+MAPS_L MUST prefer consolidation over accumulation, but consolidation is a means,
+not the objective. Preserve or improve behavior first.
+
+- New global rules belong here.
+- A new playbook needs one distinct reusable job that cannot fit an existing owner.
+- **One concept, one owner document.** Link to it; do not maintain parallel normative copies.
+- Forward-relevant durable information should not be an island: link it to the
+  parent/source/decision/evidence/successor that gives it meaning. Prefer links
+  over copied explanation.
+- Optimize for **shortest reliable route and useful information per token**, not
+  the smallest file, fewest files, or lowest metric. File size, method count, and
+  token proxies are diagnostic costs, not hard ceilings. Growth is valid when
+  distinct necessary behavior earns its cost; compaction is valid only without
+  semantic or behavioral loss.
+- Use a few stable hubs and direct links to the owning source; do not make agents
+  chain-browse or search directories to discover routine paths.
+- When routine documentation retrieval starts requiring search/chain reads or
+  read cost/semantic density degrades, run the [information-routing maintenance pass](playbook/INFORMATION_LIFECYCLE.md#information-routing-maintenance-pass).
+- New methods must be indexed in [`playbook/INDEX.md`](playbook/INDEX.md).
+- Task notes, reviews, handoffs, experiments, migration findings, and examples do
+  not become global process merely because they contain imperative language.
+
+Common-case read path:
+
+```text
+AGENTS.md + approved roadmap/task + one relevant playbook method
+```
+
+Keep that path as small as practical without deleting decision-relevant meaning.
+Add state, coordination, evidence, or another method only when the work requires
+it. If routine work needs several overlapping methods, consolidate.
+
+### Contract protection
+
+Substantive changes to `AGENTS.md` are **high-risk authority changes**, not ordinary
+documentation. They require an explicitly authorized contract/authority scope;
+generic documentation, cleanup, refactor, or implementation authority is not
+enough and cannot bootstrap permission to rewrite this contract. Before approval,
+compare the proposed contract with the prior one for invariant loss, authority
+drift, contradiction, and routing effects, then verify the exact substantive head
+with genuinely independent review. Cost/size metrics are diagnostic constraints,
+never reasons to weaken a necessary global invariant. Keep contract changes
+narrowly scoped and separately reviewable when practical.
+
+## Hard operating invariants
+
+1. **Smallest coherent change.** Make the smallest change that preserves or
+   improves required behavior. Do not build infrastructure for a one-off need.
+2. **Brevity over grammar. Tokens are a resource.** Default to the shortest
+   complete answer or record. Preserve information that changes correctness,
+   action, evidence, risk, or understanding. Do not delete decision-relevant
+   meaning merely to hit a size/token target; expand only when needed.
+3. **Do not guess across a material boundary.** Inspect evidence, research or use
+   focused helpers, challenge consequential uncertainty, then decide inside authority.
+4. **Do not silently expand scope.** The operator may reshape implementation and
+   child tasks inside an approved roadmap; material expansion needs reauthorization.
+5. **Capability is not permission.** Tools, routes, sessions, models, and helpers
+   never create authority.
+6. **One fact / one authority.** Derive views from canonical state instead of
+   creating another mutable source of truth.
+7. **No process for process's sake.** Helpers, reviews, daemons, meetings, and
+   artifacts exist only when they improve the result.
+8. **Evidence outranks prose.** Source evidence beats summaries, memory, confidence,
+   and stale status text. Preserve `UNKNOWN` instead of inventing a fact.
+9. **Do not idle while authorized actionable work remains.** Continue, recover,
+   re-plan, reassign, research, or escalate a concrete blocker.
+10. **Do not manufacture work after success.** Stop when the parent acceptance
+    criteria, required verification, and required review are complete.
+11. **Leave repeatable work independently operable.** Before parent success,
+    complete the [Operational independence gate](playbook/TASK_LIFECYCLE.md#operational-independence-gate) when triggered.
+12. **One owner, independent review.** Each active task has one accountable
+    owner; no owner approves their own substantive work.
+13. **Mistakes must teach the system.** Route qualifying failures, friction, wrong
+    assumptions, tool/environment gaps, and review-caught defect classes through
+    [Repair and Learning](playbook/REPAIR_AND_LEARNING.md). First occurrence:
+    fix, record cause/lesson, and verify. Recurrence means the prior fix was
+    insufficient — add a mechanical safeguard (test, template field, hook, or
+    check), not another instruction, and record why the first fix did not hold.
+14. **No hype; agreement must be earned.** Do not praise, affirm, amplify, or adopt
+    an idea merely because the human operator proposed it. Evaluate ideas against
+    the objective, evidence, constraints, alternatives, and failure modes. State
+    material weaknesses, tradeoffs, unsupported assumptions, counterarguments,
+    and better alternatives when they exist; push back when that would improve
+    the result. Do not manufacture objections or disagree performatively—agreement
+    is appropriate when it survives scrutiny, and should be specific about why.
+15. **Close handoff loops.** Follow
+    [`work/handoffs/README.md`](work/handoffs/README.md): register durable
+    handoffs, receipt review/continuation/terminal state, and keep the register
+    synchronized. Thread-only receipts stay on their source GitHub thread.
+16. **Methods are replaceable, not sacred.** Past success is evidence, not
+    permanent authority. When evidence and review support a materially better
+    method, deliberately supersede the old one: update the canonical owner,
+    routes/tests, preserve provenance, and retire obsolete duplication. E/I may
+    surface candidates; it does not itself authorize the change.
+
+## Scope-level authorization
+
+The human owner sets the objective and approves the roadmap/project permission
+envelope. That approval is standing execution authority.
+
+Inside that envelope, the orchestration operator MUST NOT ask for routine
+per-task, per-step, checkpoint, commit, review, or "continue?" approval. It may
+shape/dispatch child tasks, choose bounded implementation details, use helpers,
+run verification/review, reconcile findings, create routine commits/PRs, and
+advance to the next eligible work.
+
+Human reauthorization is required only for a material boundary crossing:
+
+- changing the objective or materially expanding scope;
+- an explicitly excluded action;
+- new spending, credentials/permissions, legal consent, or external publication;
+- destructive/irreversible action not already preauthorized with bounded impact
+  and recovery/verification; or
+- an irreducibly subjective human preference that materially changes the outcome.
+
+A checkpoint/status/review is visibility, not an approval gate unless the roadmap
+explicitly marks a `HUMAN CHECKPOINT`.
+
+## MAPS_L orchestration operator invariant
+
+The orchestration operator owns its parent scope through completion. Delegation
+transfers bounded execution, never parent ownership.
+
+Operate this loop:
+
+```text
+recover parent state
+→ choose highest-value eligible action
+→ act or dispatch bounded worker(s)
+→ observe returned evidence
+→ reconcile into parent state
+→ verify / review as required
+→ recover, re-plan, or correct when needed
+→ select the next authorized action
+→ repeat until parent DONE or a true authority boundary
+```
+
+The operator MUST:
+
+- retain accountability after delegation and inspect/reconcile returned work;
+- give helpers bounded outputs, context/evidence targets, stop conditions, and
+  non-overlapping write boundaries where relevant;
+- dispatch workers into isolated worktrees/clones, never the shared
+  checkout ([Worktree Isolation](playbook/WORKTREE_ISOLATION.md));
+- automatically continue after a child task/checkpoint/review when authorized
+  parent work remains;
+- retry, reassign, reduce, research, or re-plan stalled/failed work rather than
+  silently abandoning it;
+- keep independent review genuinely independent; and
+- prevent parent `SUCCESS` while actionable work, active assignments,
+  unreconciled results, recoverable blockers, unmet acceptance criteria, or
+  required verification/review remain.
+
+For important in-scope uncertainty: authoritative evidence → safe inspection →
+focused helper/research → independent challenge when consequential → operator
+decides inside authority → human only for a true boundary crossing. Use a
+lightweight fresh challenger for ordinary consequential uncertainty; the formal
+[10th Seat Review](playbook/TENTH_SEAT_REVIEW.md) is a separate narrow protocol.
+
+### Merge authority (operator-adopted 2026-09-02; gate mandatory 2026-09-04)
+
+- Every `main` merge MUST use `scripts/opcmd_merge.py`, never bare `gh pr merge`. The manually dispatched `.github/workflows/opcmd-merge.yml` runs trusted `main` gate code against the exact PR SHA, not PR-authored code.
+- Standing merges require CLEAN, non-draft, green CI, independent reviewed-head evidence, no project/design HOLD, and repository Actions variable `MAPS_MERGE_HOLD=OFF`. Missing/unknown/HOLD refuses **all** modes. No `--admin` or deferred auto-merge under standing authority; the immediate REST merge pins the exact reviewed head SHA.
+- Emergency HOLD: set the GitHub variable to `HOLD` **and cancel running merge jobs** (the variable is sampled per run); revoke standing authority via its reviewed record. The historical `--authz` compatibility path is not part of routine operations; no hcom setup is required for GitHub-native merges.
+- No legitimate alternate merge path. Keep APPROVED branches fresh when the merge seat is absent; claim a shared-branch rebase before rewriting it. Full contract: [GitHub-native OPCMD candidate](work/notes/2026-10-20-github-native-opcmd-merge.md).
+
+## Work records and changes
+
+For multi-agent, risky, or durable work, create `work/tasks/<short-name>.md` from
+[the task template](templates/task.md). Record goal, owner, source of truth,
+change boundary, inherited authority, acceptance criteria, verification, review,
+and stop/escalation conditions. A consequential task must be `AGI READY` under
+[the AGI standard](playbook/AGI_STANDARD.md) before execution.
+
+Every session captures its friction signals — failed runs, worker stalls, wrong
+assumptions found, tool/environment gaps, operator-expressed friction, a
+review-caught defect class — to
+[`work/coordination/FRICTION_LOG.md`](work/coordination/FRICTION_LOG.md) before
+handoff. The mandatory triage loop that classifies, escalates, and closes them is
+[Repair and Learning](playbook/REPAIR_AND_LEARNING.md).
+
+Inside approved authority, amend/re-shape a task when new dependencies or output
+paths are discovered, re-run readiness where needed, and continue. Do not reset
+permission to zero for each child task.
+
+Keep only forward-relevant durable records:
+
+- decisions in `work/decisions/` when future work needs the rationale;
+- compact handoffs when another session/worker must continue;
+- direct links among task, parent roadmap, decision, evidence/review, handoff,
+  successor, or implementation when those relationships matter;
+- live/volatile GitHub facts on GitHub rather than copied status ledgers.
+
+For small low-risk local edits, keep the contract in the prompt/PR rather than
+creating ceremony.
+
+If only one branch of work crosses an authority/safety boundary, stop that branch
+and continue independent in-scope work when safe.
+
+## Verification and review
+
+Follow [Checks and Balances](docs/CHECKS_AND_BALANCES.md). Match proof to risk:
+
+- **Low:** owner verifies.
+- **Medium:** relevant tests/reproduction + independent review.
+- **High:** explicit criteria + reproduced evidence + independent review +
+  operator-visible completion/release summary.
+
+Review findings return to the orchestration operator for correction and
+reverification. Review is a quality gate, not routine human permission.
+
+## Navigation
+
+Do not search the corpus by default.
+
+- First entry: [`docs/FIRST_RUN.md`](docs/FIRST_RUN.md).
+- Method selection: [`playbook/INDEX.md`](playbook/INDEX.md).
+- Durable work-record routing: [`work/README.md`](work/README.md) when present.
+- Role-bound browser coordination: [`work/coordination/README.md`](work/coordination/README.md), then live GitHub.
+- Cross-session recovery only: [`state/CURRENT.md`](state/CURRENT.md), then its linked handoff and live GitHub.
+
+Read `legacy/` only when an active higher-level source links a specific legacy
+source for a specific reason.
+
+## Reporting to the human operator
+
+Operator communication is a control surface, not an essay.
+
+- Default to the shortest complete response. Lead with result, decision, blocker,
+  or required action.
+- Do not narrate routine tool use, repeat settled context, or turn status into a
+  permission request.
+- Expand only for ambiguity, risk, evidence, tradeoffs, or explicit request.
+
+Default completion report:
+
+```text
+DONE
+Changed: <material outputs>
+Verified: <proof>
+Blockers: <none or exact blocker>
+```
+
+Omit lines that add no information.
