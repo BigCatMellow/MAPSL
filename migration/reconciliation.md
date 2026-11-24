@@ -91,6 +91,23 @@ All 20 current source records were read at their disposition sections. These rou
 
 Tool/environment friction this arc: local clone failed DNS; connector has bounded call count and one remote disconnect. Recovery: pinned-tree batches limited to 8–12 reads, source/destination SHA+mode checks before atomic ref update. No credentials moved; one pattern match in redaction test was an explicit synthetic fixture. Record remaining local state UNKNOWN. Future recurring tool friction belongs in existing repair/learning flow, not a new tracker.
 
+## Historical audit reconciliation checkpoint — 2026-11-24
+
+Corrected integration [CI run 45419052227](https://github.com/BigCatMellow/MAPSL/actions/runs/45419052227) completed successfully in both runtime and coverage jobs. Runtime log reports 1,502 tests, OK (5 skipped); compilation, lint, security analysis, dependencies, smoke and inventory checks passed. This is CI evidence, not independent review. Source main comparison against the pinned baseline returned identical (zero ahead/behind).
+
+The pinned legacy idea-recovery audit and promotion ledger were inspected again. Preserve their distinctions rather than resurrecting historical implementations. Route the recovered obligations into existing master roadmap programs:
+
+| Program | Historical evidence and required disposition |
+| --- | --- |
+| Direction and continuity | Audit items 8, 9, 11, 18: actual-use checks, single state authority, derived wait visibility, reachable/correctable state transitions. Preserve bounded audit practice; no permanent watcher or duplicate state. |
+| Reasoning and context | Items 4–6: frozen end-to-end context rubric, explicit authority boundaries, exact anchors, paraphrase and hard-negative tests. EXP-0006 was REVISE, not a successful retrieval implementation. |
+| Execution and reliability | Item 12: no-progress advisory only when measured need exists; no automatic kill or naive timeout. Preserve source atomic claim, isolation and terminal recovery regressions. |
+| Safety and evidence | Items 1, 13–17: durable write-surface secret safety, fresh/revision-bound evidence, behavioral security tests, risk-specific review, explicit ratification and prerequisite ordering. No proposal becomes authority by citation. |
+| Learning and evaluation | Items 2, 3, 7, 10, 19: three-layer evaluation, scoped lessons with expiry, bounded proposal-only discovery, end-to-end scenarios, measured review changes. No continuous discovery loop. |
+| Usability and portability | Preserve read-only status/replay concepts with completeness and provenance; old desktop/TUI/launchers and fixed rosters remain historical, not required infrastructure. |
+
+Source promotion ledger explicitly classifies old task/event/handoff/review datasets as historical and rejects obsolete presentation implementations. Preserve pinned originals; do not copy live state or restart old tasks by default. The curated snapshots remain in the source. The legacy audit explicitly leaves unresolved MAP-relevant Insights, unfinished promotions, retired task chains and referenced research unexamined. These remain PENDING; this checkpoint does not establish semantic coverage of all 2,474 historical files. Next pass should screen those targeted records and check the current runtime before closing each group.
+
 ## Source branch inventory
 
 All 102 observed branch refs are pinned here for later unique-content
