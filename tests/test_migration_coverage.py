@@ -32,6 +32,21 @@ class MigrationCoverageTests(unittest.TestCase):
         self.assertEqual([], checker.verify(self.baseline, {"a.py": row}, {"a.py": ("100644", "a" * 40)}, cutover=True))
         self.assertTrue(checker.verify(self.baseline, {"a.py": row}, {}, cutover=True))
 
+    def test_terminal_adaptation_requires_bound_content_and_mode(self):
+        row = dict(self.row, disposition="IMPROVE", destination_or_source_pointer="a.py",
+                   rationale="verified change", evidence="adapted:" + "b" * 40)
+        current = {"a.py": row}
+        self.assertEqual([], checker.verify(self.baseline, current, {"a.py": ("100644", "b" * 40)}))
+        for mode, blob in [("100755", "b" * 40), ("100644", "c" * 40)]:
+            self.assertTrue(checker.verify(self.baseline, current, {"a.py": (mode, blob)}))
+
+    def test_reference_requires_exact_pinned_path(self):
+        row = dict(self.row, disposition="REFERENCE", rationale="historical",
+                   evidence="inspection", destination_or_source_pointer=checker.source_url("a.py"))
+        self.assertEqual([], checker.verify(self.baseline, {"a.py": row}, {}))
+        row["destination_or_source_pointer"] = checker.source_url("wrong.py")
+        self.assertTrue(checker.verify(self.baseline, {"a.py": row}, {}))
+
     def test_duplicate_inventory_row_rejected(self):
         header = "\t".join(checker.FIELDS)
         line = "\t".join(self.row[k] for k in checker.FIELDS)

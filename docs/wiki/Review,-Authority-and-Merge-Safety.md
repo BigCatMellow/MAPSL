@@ -9,7 +9,7 @@ MAPS_L keeps three questions separate:
 A passing review does not create permission, and permission does not remove the
 need for verification.
 
-Back to [[Home]].
+Back to [Home](Home.md).
 
 ## Proportional review
 
@@ -48,7 +48,7 @@ requires proof that:
 
 If anything relevant changed, a full review is required. This exception does
 not apply to an ordinary author-fix/review round. The repository check
-[`scripts/check_review_evidence.py`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/scripts/check_review_evidence.py)
+[`scripts/check_review_evidence.py`](../../scripts/check_review_evidence.py)
 implements the exact-head/evidence-only and tree-equality rules used by CI.
 
 ## Authorized operators
@@ -83,29 +83,11 @@ operator-shaped action in the runtime.
 
 ## Repository merge authority
 
-Every merge to repository `main` must use
-[`scripts/opcmd_merge.py`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/scripts/opcmd_merge.py),
-not ordinary `gh pr merge` by an arbitrary coordinator.
-
-The wrapper fails closed unless it can:
-
-1. resolve a concrete operator-authored hcom authorization message;
-2. confirm the sender is a configured operator identity;
-3. confirm the message authorizes that PR or gives the caller a fresh batch
-   merge-seat designation;
-4. confirm the authorization itself does not contain a HOLD/STOP;
-5. find no later operator HOLD/STOP for the merge;
-6. append an audit entry to the merge ledger; and
-7. print the authorization quote before running the squash merge.
-
-A coordinator's claim that it is the merge seat is insufficient. A PR-scoped
-authorization covers only that PR; a batch designation is currently limited to
-12 hours. If no authorized merge seat is active, peers may keep approved PRs
-rebased and evidence-bound but must not merge them.
-
-The ledger is local, append-only execution evidence and is Git-ignored. The
-merge runner also posts the printed authorization quote in-channel so later
-trajectory review can audit it.
+The [repository contract](../../AGENTS.md)
+owns the merge route. Check the [successor authorization record](../../work/coordination/standing-merge-authorization.md)
+and [current review guidance](../../docs/CHECKS_AND_BALANCES.md) before considering a merge.
+A source-repository authorization or hcom message cannot authorize successor cutover.
+The owner decides cutover separately.
 
 ## Branch protection and review evidence
 
@@ -119,14 +101,14 @@ the operating process must still ensure the reviewer is genuinely separate.
 
 These mechanisms solve different problems:
 
-- An hcom HOLD/STOP after merge authorization blocks the merge wrapper.
+- The GitHub merge workflow requires the repository hold variable to be explicitly OFF. The operating contract describes emergency cancellation of running jobs.
 - A release-check `BLOCKED` composite blocks an `APPROVED` review unless the
   latest check records a non-empty `operator_ack_ref`.
 - An operator acknowledgement is durable evidence of an override; it is not a
   general `--force` escape hatch and does not grant unrelated authority.
 
 Sources:
-[`AGENTS.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/AGENTS.md),
-[`docs/CHECKS_AND_BALANCES.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/docs/CHECKS_AND_BALANCES.md),
+[`AGENTS.md`](../../AGENTS.md),
+[`docs/CHECKS_AND_BALANCES.md`](../../docs/CHECKS_AND_BALANCES.md),
 and
-[`playbook/EXECUTION_INTEGRITY.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/EXECUTION_INTEGRITY.md).
+[`playbook/EXECUTION_INTEGRITY.md`](../../playbook/EXECUTION_INTEGRITY.md).

@@ -11,12 +11,12 @@ metadata:
 `pilot` is a **thin invocation adapter** for MAPS_L. It does not define a second
 MAPS_L operating contract and must not become one.
 
-When current repository/web access is available, use the live MAPS_L sources:
-
-- `https://github.com/BigCatMellow/MAPSL/blob/main/AGENTS.md`
-- `https://github.com/BigCatMellow/MAPSL/blob/main/docs/FIRST_RUN.md`
-- `https://github.com/BigCatMellow/MAPSL/blob/main/playbook/INDEX.md`
-- `https://github.com/BigCatMellow/MAPSL/wiki`
+In a MAPSL checkout, open [the contract](../../../AGENTS.md),
+[the first-run guide](../../../docs/FIRST_RUN.md), and the [method index](../../../playbook/INDEX.md)
+at the checked-out revision. When using a standalone copy of this adapter,
+start at the [successor repository](https://github.com/BigCatMellow/MAPSL) and
+follow its README to the active or accepted revision. The repository's
+[wiki source](../../../docs/wiki/Home.md) provides optional orientation.
 
 Read only what the work needs. `AGENTS.md` governs work **inside MAPSL**;
 when piloting another project, that project's own instructions and approved scope

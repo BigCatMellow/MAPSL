@@ -8,7 +8,7 @@ It is an **operating system for work**, not a model and not a terminal program.
 A model supplies reasoning; MAPS_L supplies the surrounding structure that
 keeps work aligned across agents, tools, sessions, failures, and time.
 
-Back to [[Home]].
+Back to [Home](Home.md).
 
 ## The problem it addresses
 
@@ -107,7 +107,7 @@ MAPS_L contains both:
 
 A method may exist without a runtime guard. A guard may be implemented without
 the live evidence required to call the wider capability complete. See
-[[Capability Status]] before relying on a production path.
+[Capability Status](Capability-Status.md) before relying on a production path.
 
 ## What MAPS_L is not
 
@@ -119,5 +119,5 @@ the live evidence required to call the wider capability complete. See
   authority.
 
 Authoritative overview:
-[`README.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/README.md) and
-[`playbook/CONTROL_PLANE.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/CONTROL_PLANE.md).
+[`README.md`](../../README.md) and
+[`playbook/CONTROL_PLANE.md`](../../playbook/CONTROL_PLANE.md).

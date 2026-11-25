@@ -18,8 +18,8 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - run: python3 -m unittest discover -s tests -p 'test_migration*.py' -v
-      - run: python3 migration/check_inventory.py
-  runtime:
+      - run: python3 migration/check_inventory.py --cutover
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

@@ -4,7 +4,7 @@ MAPS_L treats context selection, memory trust, Skill loading, and actual
 delivery as separate decisions. That separation prevents a useful-looking
 record from becoming authority merely because it was retrieved or remembered.
 
-Back to [[Home]].
+Back to [Home](Home.md).
 
 ## Context plans
 
@@ -141,7 +141,7 @@ quarantined, retired, or superseded cannot be loaded as active procedure text.
 
 Once the authorized-operator registry is seeded, every lifecycle-transition
 verb requires an authorized `--actor`. With an empty registry, this identity
-gate is currently disabled; see [[Review, Authority and Merge Safety]].
+gate is currently disabled; see [Review, Authority and Merge Safety](Review,-Authority-and-Merge-Safety.md).
 
 Capability 6.10 remains **IN PROGRESS** because the wider supply-chain control
 model is not complete, including third-party manifest/countersign behavior and
@@ -180,8 +180,8 @@ Limits that should not be overstated:
 Capability 6.24 therefore remains **IN PROGRESS**.
 
 Sources: current
-[`runtime/context_builder.py`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/runtime/context_builder.py),
-[`runtime/context_delivery.py`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/runtime/context_delivery.py),
-[`runtime/skills/`](https://github.com/BigCatMellow/MAPS_Lean/tree/main/runtime/skills),
+[`runtime/context_builder.py`](../../runtime/context_builder.py),
+[`runtime/context_delivery.py`](../../runtime/context_delivery.py),
+[`runtime/skills/`](../../runtime/skills),
 and the
-[`capability checklist`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/work/roadmaps/CAPABILITY_CHECKLIST.md).
+[`capability checklist`](../../work/roadmaps/CAPABILITY_CHECKLIST.md).

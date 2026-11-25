@@ -3,12 +3,12 @@
 MAPS_L has many procedures, but they do not all carry the same authority.
 
 This page is **orientation only**, not another operating contract. Current
-[`AGENTS.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/AGENTS.md),
+[`AGENTS.md`](../../AGENTS.md),
 approved project/roadmap/task scope, canonical runtime/task state, and direct
 evidence remain stronger.
 
 The canonical reusable-method router is
-[`playbook/INDEX.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/INDEX.md).
+[`playbook/INDEX.md`](../../playbook/INDEX.md).
 Use its **Route by situation** table rather than treating this wiki page as a
 second method catalog.
 
@@ -31,23 +31,23 @@ scope merely because it exists.
 ## Choosing a method
 
 Start with the concern, then use the one trigger row in the
-[playbook index](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/INDEX.md)
+[playbook index](../../playbook/INDEX.md)
 that matches it.
 
 Typical examples:
 
 | Situation | Canonical method |
 | --- | --- |
-| Frame a durable project | [Project Bootstrap](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/PROJECT_BOOTSTRAP.md) |
-| Turn concise intent into bounded work | [Request Compilation](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/REQUEST_COMPILATION.md) |
-| Decide whether consequential work is ready | [AGI Standard](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/AGI_STANDARD.md) |
-| Execute/review/finish a bounded task | [Task Lifecycle](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/TASK_LIFECYCLE.md) |
-| Delegate or communicate across agents | [Helpers and Communication](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/HELPERS_AND_COMMUNICATION.md) |
-| Preserve exact run/review integrity | [Execution Integrity](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/EXECUTION_INTEGRITY.md) |
-| Choose the next task | [Program Steering](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/PROGRAM_STEERING.md) |
-| Recheck the roadmap itself | [Roadmap Trajectory Check](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/ROADMAP_TRAJECTORY_CHECK.md) |
-| Handle failure, friction, drift, or recurrence | [Repair and Learning](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/REPAIR_AND_LEARNING.md) |
-| Test consequential consensus with formal dissent | [10th Seat Review](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/TENTH_SEAT_REVIEW.md) |
+| Frame a durable project | [Project Bootstrap](../../playbook/PROJECT_BOOTSTRAP.md) |
+| Turn concise intent into bounded work | [Request Compilation](../../playbook/REQUEST_COMPILATION.md) |
+| Decide whether consequential work is ready | [AGI Standard](../../playbook/AGI_STANDARD.md) |
+| Execute/review/finish a bounded task | [Task Lifecycle](../../playbook/TASK_LIFECYCLE.md) |
+| Delegate or communicate across agents | [Helpers and Communication](../../playbook/HELPERS_AND_COMMUNICATION.md) |
+| Preserve exact run/review integrity | [Execution Integrity](../../playbook/EXECUTION_INTEGRITY.md) |
+| Choose the next task | [Program Steering](../../playbook/PROGRAM_STEERING.md) |
+| Recheck the roadmap itself | [Roadmap Trajectory Check](../../playbook/ROADMAP_TRAJECTORY_CHECK.md) |
+| Handle failure, friction, drift, or recurrence | [Repair and Learning](../../playbook/REPAIR_AND_LEARNING.md) |
+| Test consequential consensus with formal dissent | [10th Seat Review](../../playbook/TENTH_SEAT_REVIEW.md) |
 
 This table is illustrative, not exhaustive. The playbook index owns the complete
 trigger/boundary map.
@@ -63,32 +63,32 @@ separate top-level methods.
 ### Operational independence
 
 Repeatable work may trigger the operational-independence gate inside
-[Task Lifecycle](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/TASK_LIFECYCLE.md).
+[Task Lifecycle](../../playbook/TASK_LIFECYCLE.md).
 Parent success must not depend on the originating session still being present.
 
 ### Independent review and revision binding
 
 Consequential review must be genuinely independent when required and bound to the
 exact substantive revision. See
-[Execution Integrity](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/EXECUTION_INTEGRITY.md)
-and [Checks and Balances](https://github.com/BigCatMellow/MAPS_Lean/blob/main/docs/CHECKS_AND_BALANCES.md).
+[Execution Integrity](../../playbook/EXECUTION_INTEGRITY.md)
+and [Checks and Balances](../../docs/CHECKS_AND_BALANCES.md).
 
 ### MAPS_L merge gate
 
 Every merge to `main` uses `scripts/opcmd_merge.py`, not an ordinary GitHub
 merge path. The canonical rule lives in
-[`AGENTS.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/AGENTS.md).
+[`AGENTS.md`](../../AGENTS.md).
 
 ### Handoff loop closure
 
 Forward-looking handoffs are registered and reconciled through
-[`work/handoffs/README.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/work/handoffs/README.md).
+[`work/handoffs/README.md`](../../work/handoffs/README.md).
 A handoff transfers continuation context, not authority.
 
 ### Repeat-failure escalation
 
 Failures and friction route through
-[Repair and Learning](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/REPAIR_AND_LEARNING.md).
+[Repair and Learning](../../playbook/REPAIR_AND_LEARNING.md).
 A repeated same-root-cause failure requires a stronger mechanical countermeasure
 where feasible rather than another instruction paragraph.
 

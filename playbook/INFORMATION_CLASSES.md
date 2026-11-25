@@ -3,10 +3,9 @@
 MAPS distinguishes seven kinds of information so authority, procedure, and
 context never blur together. This is a naming/vocabulary reference, not a new
 mechanism — it names distinctions the runtime already makes (see "Where this
-shows up" below). It is the applied version of
-[`work/roadmaps/agent-harness-capabilities/02-procedural-knowledge-and-skills.md`](../work/roadmaps/agent-harness-capabilities/02-procedural-knowledge-and-skills.md)
-section 2 ("Information classes"); if that roadmap section changes, update
-both together.
+shows up" below). The
+[pinned source design](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/roadmaps/agent-harness-capabilities/02-procedural-knowledge-and-skills.md)
+describes the original classification in section 2.
 
 This is a different axis from [INFORMATION_LIFECYCLE.md](INFORMATION_LIFECYCLE.md):
 lifecycle classifies information by *temporal state* (active/retired/archived)

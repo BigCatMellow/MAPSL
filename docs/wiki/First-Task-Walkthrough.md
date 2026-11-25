@@ -1,12 +1,12 @@
 # First Task Walkthrough
 
 A concrete MAPS_L execution path for a fresh agent. This page is intentionally
-portable: use it whether the target is MAPS_Lean itself or another project using
+portable: use it whether the target is MAPSL itself or another project using
 MAPS_L methods.
 
-Back to [[Home]]. For the current executable lifecycle, see
-[[Task, Run and Flow Lifecycle]]. For recovery and worktree behavior, see
-[[Execution, Recovery and Worktrees]]. Check [[Capability Status]] before
+Back to [Home](Home.md). For the current executable lifecycle, see
+[Task, Run and Flow Lifecycle](Task,-Run-and-Flow-Lifecycle.md). For recovery and worktree behavior, see
+[Execution, Recovery and Worktrees](Execution,-Recovery-and-Worktrees.md). Check [Capability Status](Capability-Status.md) before
 depending on a runtime feature.
 
 ---
@@ -24,12 +24,12 @@ What would require fresh human reauthorization?
 ```
 
 If the target project has local agent instructions, read them. If working inside
-MAPS_Lean, the canonical entry route is
-[`docs/FIRST_RUN.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/docs/FIRST_RUN.md)
+MAPSL, the canonical entry route is
+[`docs/FIRST_RUN.md`](../../docs/FIRST_RUN.md)
 and the sole repository-wide contract is
-[`AGENTS.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/AGENTS.md).
+[`AGENTS.md`](../../AGENTS.md).
 
-Do not transplant MAPS_Lean-specific permissions into another repository.
+Do not transplant MAPSL-specific permissions into another repository.
 
 ---
 
@@ -55,7 +55,7 @@ next.
 ## Step 2 — Define DONE and shape the work
 
 If the project spans sessions, multiple tasks, or multiple agents, first use
-[`PROJECT_BOOTSTRAP.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/PROJECT_BOOTSTRAP.md)
+[`PROJECT_BOOTSTRAP.md`](../../playbook/PROJECT_BOOTSTRAP.md)
 to inspect reality, define the parent DONE condition, plan backward, build the
 working roadmap, and identify the first wave. Do not jump straight into isolated
 child tasks without a coherent parent destination.
@@ -78,10 +78,10 @@ REVIEW REQUIREMENT
 FAILURE / RECOVERY / ESCALATION
 ```
 
-Inside MAPS_Lean, the canonical template is
-[`templates/task.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/templates/task.md)
+Inside MAPSL, the canonical template is
+[`templates/task.md`](../../templates/task.md)
 and consequential work must be `AGI READY` under
-[`playbook/AGI_STANDARD.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/AGI_STANDARD.md).
+[`playbook/AGI_STANDARD.md`](../../playbook/AGI_STANDARD.md).
 
 The purpose is not longer prompts. It is removing consequential ambiguity.
 
@@ -118,12 +118,12 @@ stop condition, and integration owner.
 Use when concurrent/resumable work needs durable machine coordination. Then the
 active runtime can supply task claims/lifecycle, routing, communication,
 recovery, and execution-integrity state. Verify the needed capability is
-actually wired before depending on it; see [[Capability Status]].
+actually wired before depending on it; see [Capability Status](Capability-Status.md).
 
 The current `maps flow` commands are bounded compositions, not a one-command
 autonomous lifecycle. In particular, `flow start` stops before provider/session
 launch, `flow handoff` stops before the replacement claim, and `flow
-release-check` stops before the verdict. See [[Task, Run and Flow Lifecycle]].
+release-check` stops before the verdict. See [Task, Run and Flow Lifecycle](Task,-Run-and-Flow-Lifecycle.md).
 
 ---
 
@@ -255,15 +255,15 @@ If those answers are unclear, the orchestration state is not yet healthy.
 
 ---
 
-## When the target is the MAPS_Lean repository
+## When the target is the MAPSL repository
 
 Do not rely on this wiki for repo-specific commands or current queue state.
 Follow the live repo:
 
-- [`docs/FIRST_RUN.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/docs/FIRST_RUN.md)
-- [`AGENTS.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/AGENTS.md)
-- [`playbook/INDEX.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/INDEX.md)
-- [`docs/CHECKS_AND_BALANCES.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/docs/CHECKS_AND_BALANCES.md)
+- [`docs/FIRST_RUN.md`](../../docs/FIRST_RUN.md)
+- [`AGENTS.md`](../../AGENTS.md)
+- [`playbook/INDEX.md`](../../playbook/INDEX.md)
+- [`docs/CHECKS_AND_BALANCES.md`](../../docs/CHECKS_AND_BALANCES.md)
 - live GitHub/CI and the active roadmap/task
 
 Repository mechanics change faster than this orientation page. The linked live

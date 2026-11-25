@@ -15,6 +15,7 @@ The original [MAPS_Lean](https://github.com/BigCatMellow/MAPS_Lean) remains inta
 - [Capability checklist](work/roadmaps/CAPABILITY_CHECKLIST.md) — source and successor evidence.
 - [AGENTS.md](AGENTS.md) — single repository-wide operating contract, staged for review before acceptance.
 - [First run](docs/FIRST_RUN.md) and [playbook index](playbook/INDEX.md) — select only the relevant method.
+- [Wiki orientation](docs/wiki/Home.md) — optional worked example and runtime explanations.
 - [Work router](work/README.md) — durable evidence; live GitHub owns volatile PR/CI facts.
 - [Source inventory](migration/source-inventory.tsv) and [reconciliation evidence](migration/reconciliation.md) — migration accounting, not a second backlog.
 

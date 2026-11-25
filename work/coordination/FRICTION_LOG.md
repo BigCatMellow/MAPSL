@@ -29,3 +29,12 @@ Entry format:
 - countermeasure: separate migration plan from brief root router; restore purposeful owner routes and gated candidate workflows, preserve original tests.
 - verified: UNVERIFIED until next integrated CI.
 - follow-up: inspect exact new CI; no merge until review and governance ready.
+
+## 2026-11-25 — incomplete historical routes and evidence
+
+- opened: 2026-11-25
+- class: tool-gap
+- signal: Source #331 recorded indexed-search false negatives and truncated large-file replacements. Disconnected workers interrupted a grouped migration audit. The initial candidate also described inherited branch protection and installation routes as active.
+- countermeasure: recover from isolated on-disk clones, use direct owner files and pinned Git trees, verify complete ledger changes atomically. Check terminal adapted hashes, modes and exact original pointers in CI. Restore source review and direct-push checks. Inspect live successor settings and run the installer in a clean Linux clone.
+- verified: grouped source records and witnesses are linked from migration/reconciliation.md. Disposable install, continuation and denial evidence is in migration/operation-evidence.md. Source #331 remains under its original owner.
+- follow-up: corroborate any missing local originals or obtain explicit exclusion. Verify default-branch governance before activation.

@@ -5,7 +5,7 @@ uses RnS (Rise & Shine) for bounded recovery. The recovery system does not
 invent work, steal a live claim, or assume that a stopped session is safe to
 resume.
 
-Back to [[Home]]. See [[Task, Run and Flow Lifecycle]] for how runs and sessions
+Back to [Home](Home.md). See [Task, Run and Flow Lifecycle](Task,-Run-and-Flow-Lifecycle.md) for how runs and sessions
 are created and linked.
 
 ## What is implemented
@@ -24,7 +24,7 @@ The current production path can:
 8. record a real `resume_denied` instead of resuming when the canonical guard
    rejects the operation.
 
-The real-stall exercise merged in PR #298 demonstrated a genuinely live hcom
+The [original real-stall exercise](https://github.com/BigCatMellow/MAPS_Lean/pull/298) demonstrated a genuinely live hcom
 session becoming stopped, resolving to its bound run, and producing
 `HOOK_DENIED` with underlying `LEASE_EXPIRED`. That closed the core
 canonical-resume exposure required by H5. It did **not** prove every Hook path.
@@ -59,7 +59,7 @@ the denial result into a successful recovery.
 An expired task lease is repaired through claim recovery under the manifest's
 original worker identity. `maps heartbeat` cannot revive an already expired
 lease. See
-[`docs/CONTROL_PLANE_SETUP.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/docs/CONTROL_PLANE_SETUP.md)
+[`docs/CONTROL_PLANE_SETUP.md`](../../docs/CONTROL_PLANE_SETUP.md)
 for the current operator runbook.
 
 ## Stopped and tagged hcom sessions
@@ -123,7 +123,7 @@ branch. The worktree prevents one agent from switching, cleaning, or resetting
 another lane's checkout. It does not grant merge authority.
 
 The procedural owner is
-[`playbook/WORKTREE_ISOLATION.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/WORKTREE_ISOLATION.md).
+[`playbook/WORKTREE_ISOLATION.md`](../../playbook/WORKTREE_ISOLATION.md).
 Do not duplicate its command recipe here.
 
 ## Still incomplete
@@ -137,7 +137,7 @@ Do not duplicate its command recipe here.
 - Snapshot/rehydration support is not implemented.
 
 Sources: current
-[`runtime/recovery/`](https://github.com/BigCatMellow/MAPS_Lean/tree/main/runtime/recovery),
-[`CanonicalRunGuard`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/runtime/policy/harness_guard.py),
+[`runtime/recovery/`](../../runtime/recovery),
+[`CanonicalRunGuard`](../../runtime/policy/harness_guard.py),
 and the
-[`capability checklist`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/work/roadmaps/CAPABILITY_CHECKLIST.md).
+[`capability checklist`](../../work/roadmaps/CAPABILITY_CHECKLIST.md).

@@ -21,6 +21,15 @@ Evaluate each change by autonomy, reliability, reasoning/planning quality, conti
 
 Direction and continuity are the immediate cross-program priority during migration. Safety/reliability are mandatory constraints, not optional later phases. Prioritize actual unresolved problems and dependency gates over historical feature order. Continue only until the relevant outcome is met.
 
+## Recovered requirements and dependencies
+
+Use these conditions when the owning program becomes eligible. The detailed evidence lives in the [branch audit](../../migration/branch-evidence.md#forward-requirements-recovered-from-divergent-branches), [work audit](../../migration/work-evidence.md#open-obligations-and-historical-proofs) and [historical audit](../../migration/history-evidence.md).
+
+- Direction and continuity owns fresh-session recovery and the missing September PLAN handoff. Reproduce retrieval of the parent outcome, authority, owner and next action for a code and a non-code task before closing #247. Treat any live roadmap sheet as a projection of the checklist.
+- Execution and safety own consequential-call validation, isolation, lease recovery, ambiguous external effects, and reviewer identity. Preserve refusal for an uncertain prior side effect. Verify an eligible trusted producer before promoting reviewer-execution attestation.
+- Reasoning and learning own the failed retrieval experiments, production configuration identity and bounded uptake of lessons. The source shipped TASK-223 despite the incomplete promotion record. Check that scoped lessons reach the actual startup path. Reconsider retrieval only on frozen hard negatives, exact anchors, acceptable alternatives and blind scoring.
+- Portability owns preview, initialization and repeat-safe upgrades. The [Linux operation evidence](../../migration/operation-evidence.md) covers a disposable target. External piloting, fleet automation, and publication each require their own trigger and authority.
+
 ## Full-system acceptance dimensions
 
 Preserve the original [ten program definitions of DONE](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md#15-program-definitions-of-done) and [six end-state scenarios](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md#16-end-state-scenarios). The recovered [Harada candidate](https://github.com/BigCatMellow/MAPS_Lean/tree/f5f2e21bb0cfa5872d86baaafc1f8c89378e0a7c/work/roadmaps/harada-full-map) reinforces full-system acceptance, not another competing planning tree.

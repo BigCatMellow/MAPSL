@@ -163,7 +163,15 @@ def check(pr_number: str, repo_root: Path) -> tuple[bool, str]:
     actual_head = _current_head_sha(repo_root)
     reviewed_head = _reviewed_code_head(repo_root, actual_head)
     claimed_head = fields["head_sha"].strip()
+    if not re.fullmatch(r"[0-9a-f]{40}", claimed_head):
+        return False, "review-evidence head_sha does not match a full commit ID"
     if claimed_head != reviewed_head:
+        obj = subprocess.run(
+            ["git", "-C", str(repo_root), "cat-file", "-t", claimed_head],
+            capture_output=True, text=True,
+        )
+        if obj.returncode != 0 or obj.stdout.strip() != "commit":
+            return False, "review-evidence head_sha does not match a commit object"
         if _diff_is_empty(repo_root, claimed_head, reviewed_head):
             return True, (
                 f"review-evidence OK for {evidence_path}: revalidated by "

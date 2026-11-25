@@ -135,12 +135,7 @@ MAPS borrows useful ideas, not whole corporate systems:
 Use the principle that solves the problem. Do not copy company-specific ritual
 when a simpler MAPS rule does the same job.
 
-For the legacy ProjectUpdater app, import with its command tool:
-
-```bash
-python3 legacy/MAP-System/Projects/ProjectUpdater/scripts/project_updater_command.py \
-  update "Project Name" --steps-file path/to/roadmap.md
-```
-
-The full parser conventions are preserved in
-`legacy/MAP-System/Projects/ProjectUpdater/shared/steps-outline-guide.md`.
+If a project uses the legacy ProjectUpdater app, the pinned source contains
+the [import command](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/legacy/MAP-System/Projects/ProjectUpdater/scripts/project_updater_command.py)
+and [parser conventions](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/legacy/MAP-System/Projects/ProjectUpdater/shared/steps-outline-guide.md).
+Run that command in the checkout that owns the app and its authorized target.

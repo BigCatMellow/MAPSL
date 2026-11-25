@@ -8,7 +8,7 @@ MAPS_L has two related improvement loops:
 Neither loop silently changes project authority or promotes a suggestion into
 implementation.
 
-Back to [[Home]].
+Back to [Home](Home.md).
 
 ## Emergence lifecycle
 
@@ -73,7 +73,7 @@ Capture or Promote authority.
 
 ## Established-mechanism supersession authority is current behavior
 
-[PR #319](https://github.com/BigCatMellow/MAPS_Lean/pull/319) is **merged**
+[Source PR #319](https://github.com/BigCatMellow/MAPS_Lean/pull/319) is **merged**
 (commit `69d6497`, 2026-09-09). Emergence may now explicitly challenge,
 redesign, or propose replacement of an established MAPS_L mechanism while the
 existing authority gates are retained: proposal authority stays distinct from
@@ -148,7 +148,7 @@ into startup guidance automatically. Promotion and retirement remain deliberate
 operator decisions.
 
 Sources:
-[`playbook/EMERGENCE.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/EMERGENCE.md),
-[`playbook/REPAIR_AND_LEARNING.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/REPAIR_AND_LEARNING.md),
+[`playbook/EMERGENCE.md`](../../playbook/EMERGENCE.md),
+[`playbook/REPAIR_AND_LEARNING.md`](../../playbook/REPAIR_AND_LEARNING.md),
 and
-[`tools/triage_status.py`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/tools/triage_status.py).
+[`tools/triage_status.py`](../../tools/triage_status.py).

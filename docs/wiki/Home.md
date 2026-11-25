@@ -9,19 +9,19 @@ interface.
 This Wiki is the **orientation surface for a fresh agent** and an explanation
 layer. It is **not an authority store** or a source of live task state. For work
 in this repository, current
-[`AGENTS.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/AGENTS.md),
+[`AGENTS.md`](../../AGENTS.md),
 approved roadmap/task scope, runtime state, merged code/tests, and current
 GitHub evidence take precedence.
 
 ## Start here
 
-- New to the system: [[What MAPS_L Is]]
-- Need to understand the method/protocol structure: [[Methods and Protocols]]
-- Want a practical example: [[First Task Walkthrough]]
-- Need current development status: [[Development]]
-- Need to know whether a capability is actually complete: [[Capability Status]]
+- New to the system: [What MAPS_L Is](What-MAPS_L-Is.md)
+- Need to understand the method/protocol structure: [Methods and Protocols](Methods-and-Protocols.md)
+- Want a practical example: [First Task Walkthrough](First-Task-Walkthrough.md)
+- Need current development status: [Development](Development.md)
+- Need to know whether a capability is actually complete: [Capability Status](Capability-Status.md)
 - Working in this repository: follow
-  [`docs/FIRST_RUN.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/docs/FIRST_RUN.md)
+  [`docs/FIRST_RUN.md`](../../docs/FIRST_RUN.md)
 
 The normal repository reading budget is:
 
@@ -59,7 +59,7 @@ Use only as much MAPS_L as the work needs.
 | --- | --- | --- |
 | **Method-only** | Small or single-agent work | objective, DONE condition, boundary, verification, one playbook method |
 | **Orchestrated** | Multi-task, multi-agent, or long-lived work | roadmap, bounded workers, task records, handoffs, independent review |
-| **Runtime-backed** | Concurrent or resumable work needs machine-enforced state | SQLite, LangGraph, hcom, RnS recovery, run binding, Hooks |
+| **Runtime-backed** | Concurrent or resumable work needs machine-enforced state | SQLite, LangGraph, run binding, Hooks, optional hcom session transport for RnS recovery |
 
 The existence of a runtime feature is not a reason to use it. Choose the
 smallest mechanism that removes a real coordination, authority, recovery, or
@@ -67,20 +67,20 @@ verification failure mode.
 
 ## Core pages
 
-- [[What MAPS_L Is]] — purpose, concepts, and responsibility boundaries
-- [[Methods and Protocols]] — how global authority, reusable methods, important
+- [What MAPS_L Is](What-MAPS_L-Is.md) — purpose, concepts, and responsibility boundaries
+- [Methods and Protocols](Methods-and-Protocols.md) — how global authority, reusable methods, important
   subprotocols, and project-specific procedures fit together
-- [[Task, Run and Flow Lifecycle]] — task states, immutable runs, and every
+- [Task, Run and Flow Lifecycle](Task,-Run-and-Flow-Lifecycle.md) — task states, immutable runs, and every
   current `maps flow` verb
-- [[Execution, Recovery and Worktrees]] — session lineage, guarded recovery,
+- [Execution, Recovery and Worktrees](Execution,-Recovery-and-Worktrees.md) — session lineage, guarded recovery,
   lease expiry, and Git worktree enforcement
-- [[Context, Memory, Skills and Capabilities]] — context plans, trust classes,
+- [Context, Memory, Skills and Capabilities](Context,-Memory,-Skills-and-Capabilities.md) — context plans, trust classes,
   progressive Skill loading, manifests, and known enforcement limits
-- [[Review, Authority and Merge Safety]] — independent review, operators,
+- [Review, Authority and Merge Safety](Review,-Authority-and-Merge-Safety.md) — independent review, operators,
   release checks, and the mandatory merge route
-- [[Emergence, Triage and Learning]] — cross-root synthesis, improvement
+- [Emergence, Triage and Learning](Emergence,-Triage-and-Learning.md) — cross-root synthesis, improvement
   capture, recurrence handling, and frozen regression cases
-- [[Operator and Developer Tools]] — installation, tests, housekeeping,
+- [Operator and Developer Tools](Operator-and-Developer-Tools.md) — installation, tests, housekeeping,
   Spiderweb, and common operator surfaces
 
 ## Rules that prevent common failures
@@ -101,7 +101,7 @@ verification failure mode.
 ## Optional `/pilot` entry point
 
 The repository includes a thin Agent Skill at
-[`/.claude/skills/pilot/SKILL.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/.claude/skills/pilot/SKILL.md).
+[`/.claude/skills/pilot/SKILL.md`](../../.claude/skills/pilot/SKILL.md).
 When a client discovers it, `/pilot` invokes the MAPS_L operating method. It is
-not another authority source and does not import MAPS_Lean-specific permission
+not another authority source and does not import MAPSL-specific permission
 into the target project.

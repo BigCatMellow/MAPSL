@@ -8,7 +8,7 @@ related, but they are not interchangeable.
 - A **provider session** is the actual hcom/provider process used to execute.
 - A **review** records an independent decision about a submitted result.
 
-Back to [[Home]].
+Back to [Home](Home.md).
 
 ## Canonical task lifecycle
 
@@ -29,7 +29,7 @@ the parent roadmap is complete. The orchestration operator reconciles the child
 result and continues with the next eligible work inside the approved scope.
 
 Canonical lifecycle details live in
-[`playbook/TASK_LIFECYCLE.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/playbook/TASK_LIFECYCLE.md).
+[`playbook/TASK_LIFECYCLE.md`](../../playbook/TASK_LIFECYCLE.md).
 
 ## Task contract and AGI readiness
 
@@ -121,4 +121,4 @@ evidence; the reviewer/operator must still judge those gaps. The flow does not
 create a separate universal `RELEASED` task state.
 
 Source: current CLI and
-[`CAPABILITY_CHECKLIST.md`](https://github.com/BigCatMellow/MAPS_Lean/blob/main/work/roadmaps/CAPABILITY_CHECKLIST.md).
+[`CAPABILITY_CHECKLIST.md`](../../work/roadmaps/CAPABILITY_CHECKLIST.md).
