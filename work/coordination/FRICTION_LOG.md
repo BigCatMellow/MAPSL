@@ -40,3 +40,12 @@ Entry format:
 - follow-up: corroborate any missing local originals or obtain explicit exclusion. Verify default-branch governance before activation.
 
 The integrated review caught conflicting wiki prose about zero-diff rebases. Route the wiki explanation to the tested verifier and canonical review method. The original review-evidence regression covers a rebase with identical content and different ancestry.
+
+## 2026-11-25 — capability progress did not show a path to completion
+
+- opened: 2026-11-25
+- class: drift
+- signal: Historical status and blanket successor PENDING entries gave the operator no way to distinguish working components, missing integration proof and optional work.
+- countermeasure: Record candidate evidence and a finish test or trigger for each ID in the [existing checklist](../roadmaps/CAPABILITY_CHECKLIST.md). Use the [master delivery order](../roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md#delivery-order) for sequencing.
+- verified: The [coverage test](../../tests/test_migration_coverage.py) checks original ID retention, unique ownership and the required evidence and next-step fields.
+- follow-up: Update the row when proof, a blocker or an activation trigger changes. Use the normal trajectory check to reconcile drift.

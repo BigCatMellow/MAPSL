@@ -7,7 +7,7 @@ Do not open every roadmap. Use the shortest route to the owner.
 | Need | Owner |
 | --- | --- |
 | Overall objectives and priorities | [Master capability roadmap](00-MASTER-MAPS-CAPABILITY-ROADMAP.md) |
-| Technical status and source evidence | [Capability checklist](CAPABILITY_CHECKLIST.md) |
+| Capability evidence, owner and finish test | [Capability checklist](CAPABILITY_CHECKLIST.md) |
 | Migration sequence | [Authorized migration plan](../../migration/PLAN.md) |
 | Current PR/CI/ownership facts | [Coordination](../coordination/README.md), then live GitHub |
 
