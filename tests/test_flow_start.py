@@ -1,17 +1,22 @@
 from __future__ import annotations
 
-from contextlib import redirect_stdout
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import closing, redirect_stdout
+from datetime import timedelta
 import hashlib
 import io
 import json
 from pathlib import Path
 import tempfile
+from threading import Barrier
 import unittest
 from unittest.mock import patch
 
 from runtime.cli import main
+from runtime.context_builder import build_context_plan
 from runtime.flow_start import flow_start
 from runtime.state import TaskStore
+from runtime.state.common import utc_now
 
 RUNTIME_ROOT = Path(__file__).resolve().parents[1]
 CI_SPEC = RUNTIME_ROOT / "runtime" / "environment" / "specs" / "maps-runtime-ci.json"
@@ -141,9 +146,11 @@ class FlowStartTests(unittest.TestCase):
 
     def test_binding_revalidates_context_after_successful_preflight(self):
         task_id = self.make_ready()
+        before = self.store.get_task(task_id)
+        events = self.store.list_events(task_id)
         context_path = self.repo / "ephemeral.md"
         context_path.write_text("context\n", encoding="utf-8")
-        claim_task = self.store.claim_task
+        claim_task = self.store._claim_task_conn
 
         def claim_and_remove_context(*args, **kwargs):
             claim = claim_task(*args, **kwargs)
@@ -151,7 +158,7 @@ class FlowStartTests(unittest.TestCase):
             context_path.unlink()
             return claim
 
-        with patch.object(self.store, "claim_task", side_effect=claim_and_remove_context):
+        with patch.object(self.store, "_claim_task_conn", side_effect=claim_and_remove_context):
             result = flow_start(
                 self.store,
                 task_id,
@@ -164,6 +171,8 @@ class FlowStartTests(unittest.TestCase):
         self.assertEqual(result["failed_step"], "run_manifest")
         self.assertEqual(result["step_result"]["code"], "INVALID_CONTEXT")
         self.assertEqual(self.store.trace_task(task_id)["runs"], [])
+        self.assertEqual(self.store.get_task(task_id), before)
+        self.assertEqual(self.store.list_events(task_id), events)
 
     def test_flow_start_can_require_worktree_binding(self):
         task_id = self.make_ready()
@@ -310,15 +319,136 @@ class FlowStartTests(unittest.TestCase):
         self.assertEqual(self.store.list_run_environment_evidence(run_id), [])
 
     def test_flow_start_fails_when_environment_spec_ref_is_missing(self):
-        task_id = self._make_ready_with_environment(
-            "runtime/environment/specs/absent.json"
-        )
-        result = flow_start(
-            self.store, task_id, worker_id="worker-1", repo_root=self.repo,
-            created_by="tester",
-        )
+        task_id = self._make_ready_with_environment("environment.json")
+        before = self.store.get_task(task_id)
+        events = self.store.list_events(task_id)
+        options = {"worker_id": "worker-1", "repo_root": self.repo, "created_by": "tester"}
+        result = flow_start(self.store, task_id, **options)
+
         self.assertFalse(result["ok"])
         self.assertEqual(result["failed_step"], "environment_evidence")
+        self.assertEqual(self.store.get_task(task_id), before)
+        self.assertEqual(self.store.list_events(task_id), events)
+        self.assertEqual(self.store.trace_task(task_id)["runs"], [])
+
+        (self.repo / "environment.json").write_bytes(CI_SPEC.read_bytes())
+        retried = flow_start(self.store, task_id, **options)
+        self.assertTrue(retried["ok"], retried)
+        self.assertEqual(retried["claim"]["task"]["attempt"], 1)
+        run_id = retried["run_manifest"]["run_id"]
+        self.assertEqual(len(self.store.list_run_environment_evidence(run_id)), 1)
+
+    def test_failed_environment_write_leaves_the_expired_claim_and_no_new_run(self):
+        spec_ref = "environment.json"
+        (self.repo / spec_ref).write_bytes(CI_SPEC.read_bytes())
+        task_id = self._make_ready_with_environment(spec_ref)
+        old = self.store.claim_task(
+            task_id, "old", lease_seconds=1, now=utc_now() - timedelta(minutes=2),
+        )
+        self.assertTrue(old.ok, old)
+        before = self.store.get_task(task_id)
+        events = self.store.list_events(task_id)
+        with closing(self.store._connect()) as conn:
+            conn.execute("""
+                CREATE TRIGGER fail_startup_evidence BEFORE INSERT ON run_environment_evidence
+                BEGIN SELECT RAISE(ABORT, 'simulated evidence writer failure'); END
+            """)
+
+        result = flow_start(self.store, task_id, worker_id="replacement", repo_root=self.repo)
+        self.assertEqual(result["failed_step"], "environment_evidence")
+        self.assertEqual(result["step_result"]["code"], "STARTUP_TRANSACTION_FAILED")
+        self.assertEqual(self.store.get_task(task_id), before)
+        self.assertEqual(self.store.list_events(task_id), events)
+        self.assertEqual(self.store.trace_task(task_id)["runs"], [])
+
+        with closing(self.store._connect()) as conn:
+            conn.execute("DROP TRIGGER fail_startup_evidence")
+        retry = flow_start(self.store, task_id, worker_id="replacement", repo_root=self.repo)
+        self.assertTrue(retry["ok"], retry)
+        self.assertEqual(retry["claim"]["code"], "RECOVERED")
+        self.assertEqual(retry["claim"]["task"]["attempt"], 2)
+
+    def test_concurrent_startups_commit_only_one_claim_and_manifest(self):
+        task_id = self.make_ready()
+        prepared = Barrier(2, timeout=5)
+
+        def rendezvous(*args, **kwargs):
+            plan = build_context_plan(*args, **kwargs)
+            prepared.wait()
+            return plan
+
+        def start(worker_id):
+            store = TaskStore(self.store.db_path)
+            return flow_start(store, task_id, worker_id=worker_id, repo_root=self.repo)
+
+        with patch("runtime.flow_start.build_context_plan", side_effect=rendezvous):
+            with ThreadPoolExecutor(max_workers=2) as workers:
+                results = list(workers.map(start, ("worker-1", "worker-2")))
+
+        self.assertEqual(sum(result["ok"] for result in results), 1, results)
+        winner = next(result for result in results if result["ok"])
+        loser = next(result for result in results if not result["ok"])
+        self.assertEqual(loser["step_result"]["code"], "LEASE_ACTIVE")
+        self.assertEqual(self.store.get_task(task_id)["claimed_by"], winner["worker_id"])
+        self.assertEqual(self.store.get_task(task_id)["attempt"], 1)
+        self.assertEqual(
+            [run["run_id"] for run in self.store.trace_task(task_id)["runs"]],
+            [winner["run_manifest"]["run_id"]],
+        )
+
+    def test_reshaped_task_refuses_the_prepared_context(self):
+        task_id = self.make_ready()
+
+        def revise_after_planning(*args, **kwargs):
+            plan = build_context_plan(*args, **kwargs)
+            # Simulate a definition migration without an intervening attempt.
+            with closing(self.store._connect()) as conn:
+                conn.execute("UPDATE tasks SET title = ? WHERE task_id = ?", ("Reshaped", task_id))
+            return plan
+
+        with patch("runtime.flow_start.build_context_plan", side_effect=revise_after_planning):
+            result = flow_start(self.store, task_id, worker_id="worker-1", repo_root=self.repo)
+
+        self.assertEqual(result["step_result"]["code"], "STARTUP_TASK_CHANGED")
+        current = self.store.get_task(task_id)
+        self.assertEqual((current["title"], current["status"], current["attempt"]), ("Reshaped", "READY", 0))
+        self.assertEqual(self.store.trace_task(task_id)["runs"], [])
+
+    def test_stale_preparation_cannot_recover_an_intervening_claim(self):
+        task_id = self.make_ready()
+
+        def claim_after_planning(*args, **kwargs):
+            plan = build_context_plan(*args, **kwargs)
+            other_claim = self.store.claim_task(
+                task_id, "other", lease_seconds=1, now=utc_now() - timedelta(minutes=2),
+            )
+            self.assertTrue(other_claim.ok, other_claim)
+            return plan
+
+        with patch("runtime.flow_start.build_context_plan", side_effect=claim_after_planning):
+            result = flow_start(self.store, task_id, worker_id="worker-1", repo_root=self.repo)
+
+        self.assertEqual(result["step_result"]["code"], "STARTUP_TASK_CHANGED")
+        current = self.store.get_task(task_id)
+        self.assertEqual((current["claimed_by"], current["attempt"]), ("other", 1))
+        self.assertEqual(self.store.trace_task(task_id)["runs"], [])
+        self.assertNotIn(
+            "TASK_CLAIM_RECOVERED", [event["event_type"] for event in self.store.list_events(task_id)],
+        )
+
+    def test_lease_expired_before_commit_rolls_back_startup(self):
+        task_id = self.make_ready()
+        before = self.store.get_task(task_id)
+        events = self.store.list_events(task_id)
+        with patch("runtime.flow_start.utc_now", return_value=utc_now() + timedelta(minutes=2)):
+            result = flow_start(
+                self.store, task_id, worker_id="worker-1", repo_root=self.repo, lease_seconds=30,
+            )
+
+        self.assertEqual(result["step_result"]["code"], "LEASE_EXPIRED")
+        self.assertEqual(self.store.get_task(task_id), before)
+        self.assertEqual(self.store.list_events(task_id), events)
+        self.assertEqual(self.store.trace_task(task_id)["runs"], [])
 
     def test_flow_start_without_a_skills_dir_is_unchanged(self):
         task_id = self.make_ready()

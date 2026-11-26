@@ -1,12 +1,15 @@
 from __future__ import annotations
 
+from contextlib import closing
 from dataclasses import asdict
 from pathlib import Path
+import sqlite3
 from typing import Any, Mapping, Sequence
 
 from runtime.context_builder import build_context_plan
 from runtime.skills import SkillCatalogError, SkillParseError, build_project_skill_catalog
 from runtime.state import MutationResult, TaskStore
+from runtime.state.common import parse_time, utc_now
 
 
 def _mutation_payload(result: MutationResult) -> dict[str, Any]:
@@ -23,13 +26,11 @@ def _failed(step: str, result: MutationResult | Mapping[str, Any]) -> dict[str, 
     }
 
 
-def _record_environment_evidence(
-    store: TaskStore,
-    run_id: str,
+def _prepare_environment_evidence(
     contract: Mapping[str, Any],
     repo_root: str | Path,
-) -> MutationResult:
-    """Wire E2 inspection + E3 recording for a contracted task's run.
+) -> dict[str, Any] | MutationResult:
+    """Inspect a contracted environment before taking the startup write lock.
 
     Uses ``runtime.environment.safety.inspect_local_environment`` -- the
     containment-checked wrapper that will not follow dependency inputs outside
@@ -47,13 +48,20 @@ def _record_environment_evidence(
         fingerprint = inspect_local_environment(spec, repo_root=root)
     except (EnvironmentSpecError, OSError, ValueError, RuntimeError) as exc:
         return MutationResult(False, "ENVIRONMENT_INSPECTION_FAILED", str(exc))
-    return store.record_run_environment_evidence(
-        run_id,
-        spec=spec,
-        fingerprint=fingerprint,
-        spec_ref=spec_ref,
-        recorded_by="maps-flow-start",
-    )
+    return {
+        "spec": spec,
+        "fingerprint": fingerprint,
+        "spec_ref": spec_ref,
+        "recorded_by": "maps-flow-start",
+    }
+
+
+def _startup_changed() -> dict[str, Any]:
+    return _failed("claim", MutationResult(
+        False,
+        "STARTUP_TASK_CHANGED",
+        "task definition or claim attempt changed during preparation; retry from current task state",
+    ))
 
 
 def _parse_runtime_limits(items: Sequence[str]) -> dict[str, int] | MutationResult:
@@ -98,13 +106,12 @@ def flow_start(
 ) -> dict[str, Any]:
     """Start a deterministic local execution flow without provider launch.
 
-    The flow composes existing guarded operations in order:
-
-    1. check declared context paths, then claim the task for an explicit worker;
-    2. discover the project's bundled Skills into a durable catalog, then build
-       a read-only context plan including the Skills matched to this task,
-       gated by their recorded lifecycle state (a QUARANTINED Skill is dropped);
-    3. validate the claimed run and bind an immutable manifest using current bytes.
+    Check declared paths and claim eligibility, then prepare the context plan
+    and any required environment observation. Bundled Skill discovery can
+    register content-addressed catalog metadata independently of startup.
+    Recheck the claim and task revision, then commit the claim, manifest and
+    contracted environment evidence in one transaction. A failed write discards
+    the entire new attempt.
 
     Invalid declared paths surface before a claim attempt, including when the
     same request would also fail to claim the task.
@@ -129,9 +136,11 @@ def flow_start(
         step = "context" if preflight.code == "INVALID_REPO_ROOT" else "run_manifest"
         return _failed(step, preflight)
 
-    claim = store.claim_task(task_id, worker_id, lease_seconds=lease_seconds)
-    if not claim.ok:
-        return _failed("claim", claim)
+    preview = store.preview_start_claim(task_id, worker_id, lease_seconds=lease_seconds)
+    if not preview.ok:
+        return _failed("claim", preview)
+    task = preview.task
+    revision = task["task_revision"]
 
     try:
         skill_catalog = build_project_skill_catalog(repo_root, store)
@@ -155,38 +164,76 @@ def flow_start(
             "context",
             MutationResult(False, "NOT_FOUND", f"{task_id} does not exist"),
         )
+    if context_plan["task_revision"] != revision:
+        return _startup_changed()
 
-    run = store.create_run_manifest(
-        task_id,
+    preparation = store._prepare_run_manifest(
         worker_id,
         repo_root=repo_root,
         created_by=created_by,
-        context_paths=context_paths,
         readable_paths=readable_paths,
-        writable_paths=writable_paths,
         forbidden_paths=forbidden_paths,
         runtime_limits=runtime_limits,
         base_revision=base_revision,
         require_worktree_binding=require_worktree_binding,
-        require_write_scope_binding=require_write_scope_binding,
     )
-    if not run.ok:
-        return _failed("run_manifest", run)
+    if isinstance(preparation, MutationResult):
+        return _failed("run_manifest", preparation)
 
-    # 4. when the task carries an environment contract, record production
-    #    environment evidence for this run (the task_environment row is itself
-    #    the opt-in -- a task with no contract records nothing and routes
-    #    exactly as before).
-    task_record = store.get_task(task_id)
-    environment_contract = (
-        task_record.get("environment") if task_record is not None else None
-    )
-    if environment_contract is not None:
-        evidence = _record_environment_evidence(
-            store, run.task["run_id"], environment_contract, repo_root
-        )
-        if not evidence.ok:
-            return _failed("environment_evidence", evidence)
+    environment = None
+    if task["environment"] is not None:
+        environment = _prepare_environment_evidence(task["environment"], repo_root)
+        if isinstance(environment, MutationResult):
+            return _failed("environment_evidence", environment)
+
+    step = "claim"
+    try:
+        # Each writer uses this connection without committing. Closing the
+        # connection rolls back every new task write on failed checks or errors.
+        with closing(store._connect()) as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            claim = store._claim_task_conn(
+                conn, task_id, worker_id, lease_seconds=lease_seconds,
+            )
+            if not claim.ok:
+                return _failed(step, claim)
+            if (
+                claim.task["attempt"] != task["attempt"] + 1
+                or store._task_revision_conn(conn, task_id) != revision
+            ):
+                return _startup_changed()
+
+            step = "run_manifest"
+            run = store._create_run_manifest_conn(
+                conn,
+                task_id,
+                worker_id,
+                preparation,
+                created_by=created_by,
+                context_paths=context_paths,
+                writable_paths=writable_paths,
+                require_write_scope_binding=require_write_scope_binding,
+            )
+            if not run.ok:
+                return _failed(step, run)
+            if environment is not None:
+                step = "environment_evidence"
+                evidence = store._record_run_environment_evidence_conn(
+                    conn, run.task["run_id"], **environment,
+                )
+                if not evidence.ok:
+                    return _failed(step, evidence)
+            step = "commit"
+            expiry = parse_time(claim.task["lease_expires_at"])
+            if expiry is None or expiry <= utc_now():
+                return _failed(step, MutationResult(
+                    False, "LEASE_EXPIRED", "startup exceeded the requested lease before commit",
+                ))
+            conn.commit()
+    except sqlite3.Error:
+        return _failed(step, MutationResult(
+            False, "STARTUP_TRANSACTION_FAILED", "could not commit startup to the task database",
+        ))
 
     return {
         "ok": True,

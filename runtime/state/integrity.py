@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from contextlib import closing
+from dataclasses import dataclass
 import hashlib
 import json
 from pathlib import Path
@@ -11,6 +12,16 @@ from uuid import uuid4
 from runtime.integrity.git_scope import collect_git_worktree_identity
 
 from .common import MutationResult, iso_z, utc_now
+
+
+@dataclass(frozen=True)
+class _RunPreparation:
+    root: Path
+    readable: tuple[str, ...]
+    forbidden: tuple[str, ...]
+    limits: dict[str, int]
+    base_revision: str | None
+    worktree_identity: dict[str, str] | None
 
 
 class ExecutionIntegrityMixin:
@@ -231,6 +242,48 @@ class ExecutionIntegrityMixin:
         require_worktree_binding: bool = False,
         require_write_scope_binding: bool = False,
     ) -> MutationResult:
+        preparation = self._prepare_run_manifest(
+            worker_id,
+            repo_root=repo_root,
+            created_by=created_by,
+            readable_paths=readable_paths,
+            forbidden_paths=forbidden_paths,
+            runtime_limits=runtime_limits,
+            base_revision=base_revision,
+            require_worktree_binding=require_worktree_binding,
+        )
+        if isinstance(preparation, MutationResult):
+            return preparation
+        with closing(self._connect()) as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            result = self._create_run_manifest_conn(
+                conn,
+                task_id,
+                worker_id,
+                preparation,
+                created_by=created_by,
+                session_id=session_id,
+                context_paths=context_paths,
+                writable_paths=writable_paths,
+                require_write_scope_binding=require_write_scope_binding,
+            )
+            if result.ok:
+                conn.commit()
+            return result
+
+    def _prepare_run_manifest(
+        self,
+        worker_id: str,
+        *,
+        repo_root: str | Path,
+        created_by: str,
+        readable_paths: Sequence[str | Path],
+        forbidden_paths: Sequence[str | Path],
+        runtime_limits: Mapping[str, int] | None,
+        base_revision: str | None,
+        require_worktree_binding: bool,
+    ) -> _RunPreparation | MutationResult:
+        """Resolve caller inputs and collect local Git identity before writing."""
         if not worker_id.strip() or not created_by.strip():
             return MutationResult(
                 False, "INVALID_RUN", "worker_id and created_by are required"
@@ -281,163 +334,180 @@ class ExecutionIntegrityMixin:
                 )
             limits[key] = value
 
-        with closing(self._connect()) as conn:
-            conn.execute("BEGIN IMMEDIATE")
-            task = conn.execute(
-                "SELECT * FROM tasks WHERE task_id = ?", (task_id,)
-            ).fetchone()
-            if task is None:
-                conn.rollback()
-                return MutationResult(False, "NOT_FOUND", f"{task_id} does not exist")
-            if task["status"] != "ACTIVE" or task["claimed_by"] != worker_id:
-                conn.rollback()
-                return MutationResult(
-                    False,
-                    "RUN_NOT_OWNED",
-                    "run manifest requires the current ACTIVE claimant",
-                    dict(task),
-                )
-            if task["agi_status"] != "AGI READY":
-                conn.rollback()
-                return MutationResult(False, "AGI_NOT_READY", "ACTIVE task is not AGI READY")
+        return _RunPreparation(root, readable, forbidden, limits, base_revision, worktree_identity)
 
-            parent_outputs = tuple(
-                sorted(
-                    row["path"]
-                    for row in conn.execute(
-                        "SELECT path FROM task_output_paths WHERE task_id = ?",
-                        (task_id,),
-                    ).fetchall()
-                )
+    def _create_run_manifest_conn(
+        self,
+        conn: sqlite3.Connection,
+        task_id: str,
+        worker_id: str,
+        preparation: _RunPreparation,
+        *,
+        created_by: str,
+        session_id: str | None = None,
+        context_paths: Sequence[str | Path] = (),
+        writable_paths: Sequence[str | Path] | None = None,
+        require_write_scope_binding: bool = False,
+    ) -> MutationResult:
+        """Bind the run in an existing write transaction owned by the caller."""
+        root = preparation.root
+        readable = preparation.readable
+        forbidden = preparation.forbidden
+        if not root.is_dir():
+            return MutationResult(False, "INVALID_RUN", "repo_root must be a directory")
+
+        task = conn.execute(
+            "SELECT * FROM tasks WHERE task_id = ?", (task_id,)
+        ).fetchone()
+        if task is None:
+            return MutationResult(False, "NOT_FOUND", f"{task_id} does not exist")
+        if task["status"] != "ACTIVE" or task["claimed_by"] != worker_id:
+            return MutationResult(
+                False,
+                "RUN_NOT_OWNED",
+                "run manifest requires the current ACTIVE claimant",
+                dict(task),
             )
+        if task["agi_status"] != "AGI READY":
+            return MutationResult(False, "AGI_NOT_READY", "ACTIVE task is not AGI READY")
+
+        parent_outputs = tuple(
+            sorted(
+                row["path"]
+                for row in conn.execute(
+                    "SELECT path FROM task_output_paths WHERE task_id = ?",
+                    (task_id,),
+                ).fetchall()
+            )
+        )
+        try:
+            normalized_parent = self._normalize_scopes(parent_outputs, root)
+            writable = self._normalize_scopes(
+                writable_paths if writable_paths is not None else parent_outputs,
+                root,
+            )
+        except ValueError as exc:
+            return MutationResult(False, "INVALID_SCOPE", str(exc))
+        if not normalized_parent:
+            return MutationResult(False, "INVALID_SCOPE", "task has no output paths")
+        escaped = [
+            path
+            for path in writable
+            if not self._covered_by_any(path, normalized_parent)
+        ]
+        if escaped:
+            return MutationResult(
+                False,
+                "WRITE_SCOPE_EXCEEDS_TASK",
+                "run writable scope exceeds task output paths: " + ", ".join(escaped),
+            )
+        issues = self._validate_scope_contract(
+            readable=readable, writable=writable, forbidden=forbidden
+        )
+        if issues:
+            return MutationResult(False, "INVALID_SCOPE", "; ".join(issues))
+
+        context_refs: list[tuple[str, str]] = []
+        for raw in context_paths:
             try:
-                normalized_parent = self._normalize_scopes(parent_outputs, root)
-                writable = self._normalize_scopes(
-                    writable_paths if writable_paths is not None else parent_outputs,
-                    root,
-                )
-            except ValueError as exc:
-                conn.rollback()
-                return MutationResult(False, "INVALID_SCOPE", str(exc))
-            if not normalized_parent:
-                conn.rollback()
-                return MutationResult(False, "INVALID_SCOPE", "task has no output paths")
-            escaped = [
-                path
-                for path in writable
-                if not self._covered_by_any(path, normalized_parent)
-            ]
-            if escaped:
-                conn.rollback()
-                return MutationResult(
-                    False,
-                    "WRITE_SCOPE_EXCEEDS_TASK",
-                    "run writable scope exceeds task output paths: " + ", ".join(escaped),
-                )
-            issues = self._validate_scope_contract(
-                readable=readable, writable=writable, forbidden=forbidden
-            )
-            if issues:
-                conn.rollback()
-                return MutationResult(False, "INVALID_SCOPE", "; ".join(issues))
+                relative = self._run_context_path(raw, root, readable, forbidden)
+                content_hash = hashlib.sha256((root / relative).read_bytes()).hexdigest()
+            except (ValueError, OSError) as exc:
+                return MutationResult(False, "INVALID_CONTEXT", str(exc))
+            context_refs.append((relative, content_hash))
 
-            context_refs: list[tuple[str, str]] = []
-            for raw in context_paths:
-                try:
-                    relative = self._run_context_path(raw, root, readable, forbidden)
-                    content_hash = hashlib.sha256((root / relative).read_bytes()).hexdigest()
-                except (ValueError, OSError) as exc:
-                    conn.rollback()
-                    return MutationResult(False, "INVALID_CONTEXT", str(exc))
-                context_refs.append((relative, content_hash))
-
-            run_id = f"RUN-{uuid4().hex}"
-            task_revision = self._task_revision_conn(conn, task_id)
-            created_at = iso_z(utc_now())
+        run_id = f"RUN-{uuid4().hex}"
+        task_revision = self._task_revision_conn(conn, task_id)
+        created_at = iso_z(utc_now())
+        conn.execute(
+            """
+            INSERT INTO run_manifests(
+                run_id, task_id, task_revision, worker_id, session_id,
+                readable_scope, writable_scope, forbidden_scope,
+                runtime_limits, base_revision, write_scope_binding_required,
+                created_by, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                run_id,
+                task_id,
+                task_revision,
+                worker_id,
+                session_id,
+                json.dumps(readable, separators=(",", ":")),
+                json.dumps(writable, separators=(",", ":")),
+                json.dumps(forbidden, separators=(",", ":")),
+                json.dumps(preparation.limits, sort_keys=True, separators=(",", ":")),
+                preparation.base_revision,
+                1 if require_write_scope_binding else 0,
+                created_by.strip(),
+                created_at,
+            ),
+        )
+        worktree_identity = preparation.worktree_identity
+        if worktree_identity is not None:
             conn.execute(
                 """
-                INSERT INTO run_manifests(
-                    run_id, task_id, task_revision, worker_id, session_id,
-                    readable_scope, writable_scope, forbidden_scope,
-                    runtime_limits, base_revision, write_scope_binding_required,
-                    created_by, created_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO run_worktree_bindings(
+                    run_id, repo_root, git_common_dir, git_dir,
+                    worktree_private_dir, head_revision, bound_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     run_id,
-                    task_id,
-                    task_revision,
-                    worker_id,
-                    session_id,
-                    json.dumps(readable, separators=(",", ":")),
-                    json.dumps(writable, separators=(",", ":")),
-                    json.dumps(forbidden, separators=(",", ":")),
-                    json.dumps(limits, sort_keys=True, separators=(",", ":")),
-                    base_revision,
-                    1 if require_write_scope_binding else 0,
-                    created_by.strip(),
+                    worktree_identity["repo_root"],
+                    worktree_identity["git_common_dir"],
+                    worktree_identity["git_dir"],
+                    worktree_identity["worktree_private_dir"],
+                    worktree_identity["head_revision"],
                     created_at,
                 ),
             )
-            if worktree_identity is not None:
-                conn.execute(
-                    """
-                    INSERT INTO run_worktree_bindings(
-                        run_id, repo_root, git_common_dir, git_dir,
-                        worktree_private_dir, head_revision, bound_at
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?)
-                    """,
-                    (
-                        run_id,
-                        worktree_identity["repo_root"],
-                        worktree_identity["git_common_dir"],
-                        worktree_identity["git_dir"],
-                        worktree_identity["worktree_private_dir"],
-                        worktree_identity["head_revision"],
-                        created_at,
-                    ),
-                )
-            conn.executemany(
-                "INSERT INTO run_context_refs(run_id, path, sha256) VALUES (?, ?, ?)",
-                ((run_id, path, sha) for path, sha in sorted(context_refs)),
-            )
-            self._append_event(
-                conn,
-                task_id,
-                "RUN_MANIFEST_CREATED",
-                created_by.strip(),
-                f"{run_id} bound to {worker_id}",
-            )
-            conn.commit()
-        manifest = self.get_run_manifest(run_id)
+        conn.executemany(
+            "INSERT INTO run_context_refs(run_id, path, sha256) VALUES (?, ?, ?)",
+            ((run_id, path, sha) for path, sha in sorted(context_refs)),
+        )
+        self._append_event(
+            conn,
+            task_id,
+            "RUN_MANIFEST_CREATED",
+            created_by.strip(),
+            f"{run_id} bound to {worker_id}",
+        )
+        manifest = self._get_run_manifest_conn(conn, run_id)
         return MutationResult(True, "RUN_BOUND", f"created {run_id}", manifest)
 
     def get_run_manifest(self, run_id: str) -> dict[str, Any] | None:
         with closing(self._connect()) as conn:
-            row = conn.execute(
-                "SELECT * FROM run_manifests WHERE run_id = ?", (run_id,)
-            ).fetchone()
-            if row is None:
-                return None
-            record = dict(row)
-            for field in ("readable_scope", "writable_scope", "forbidden_scope", "runtime_limits"):
-                record[field] = json.loads(record[field])
-            record["write_scope_binding_required"] = bool(
-                record["write_scope_binding_required"]
-            )
-            record["context_refs"] = [
-                dict(item)
-                for item in conn.execute(
-                    "SELECT path, sha256 FROM run_context_refs WHERE run_id = ? ORDER BY path",
-                    (run_id,),
-                ).fetchall()
-            ]
-            worktree = conn.execute(
-                "SELECT * FROM run_worktree_bindings WHERE run_id = ?",
+            return self._get_run_manifest_conn(conn, run_id)
+
+    def _get_run_manifest_conn(
+        self, conn: sqlite3.Connection, run_id: str
+    ) -> dict[str, Any] | None:
+        row = conn.execute(
+            "SELECT * FROM run_manifests WHERE run_id = ?", (run_id,)
+        ).fetchone()
+        if row is None:
+            return None
+        record = dict(row)
+        for field in ("readable_scope", "writable_scope", "forbidden_scope", "runtime_limits"):
+            record[field] = json.loads(record[field])
+        record["write_scope_binding_required"] = bool(
+            record["write_scope_binding_required"]
+        )
+        record["context_refs"] = [
+            dict(item)
+            for item in conn.execute(
+                "SELECT path, sha256 FROM run_context_refs WHERE run_id = ? ORDER BY path",
                 (run_id,),
-            ).fetchone()
-            record["worktree"] = dict(worktree) if worktree is not None else None
-            return record
+            ).fetchall()
+        ]
+        worktree = conn.execute(
+            "SELECT * FROM run_worktree_bindings WHERE run_id = ?",
+            (run_id,),
+        ).fetchone()
+        record["worktree"] = dict(worktree) if worktree is not None else None
+        return record
 
     def check_run_stale(
         self, run_id: str, *, repo_root: str | Path

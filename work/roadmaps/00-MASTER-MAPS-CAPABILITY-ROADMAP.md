@@ -109,7 +109,7 @@ Review eligibility when its evidence changes or a meaningful work arc ends.
 Prime and other provider studies remain research inputs. Promote a bounded
 adapter trial only for a demonstrated integration gap under the applicable authority.
 
-- #341 benchmark: remain parked pending Gate 1/4/5 and explicit execution authority; [source PR](https://github.com/BigCatMellow/MAPS_Lean/pull/341).
+- #341 benchmark: the generic control text passed its exact-text Gate 1 review. Full revision-3 package review, selection and corpus custody gates, and explicit execution authority remain. [R&D status](../research/2026-11-26-rd-status.md#research)
 - [#247](https://github.com/BigCatMellow/MAPS_Lean/issues/247) memory and [#248](https://github.com/BigCatMellow/MAPS_Lean/issues/248) context compilation: reasoning/continuity, compare existing mechanisms first. [#331](https://github.com/BigCatMellow/MAPS_Lean/issues/331) tool friction: reliability, reproduce and repair proportionally.
 
 ## Source design and evidence

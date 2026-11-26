@@ -8,6 +8,14 @@ from .common import MutationResult, iso_z, parse_time, utc_now
 
 
 class ExecutionMixin:
+    @staticmethod
+    def _validate_claim_inputs(worker_id: str, lease_seconds: int) -> MutationResult | None:
+        if not worker_id.strip():
+            return MutationResult(False, "INVALID_WORKER", "worker_id is required")
+        if lease_seconds <= 0:
+            return MutationResult(False, "INVALID_LEASE", "lease_seconds must be > 0")
+        return None
+
     def claim_task(
         self,
         task_id: str,
@@ -16,88 +24,116 @@ class ExecutionMixin:
         lease_seconds: int = 900,
         now: datetime | None = None,
         ) -> MutationResult:
-        if not worker_id.strip():
-            return MutationResult(False, "INVALID_WORKER", "worker_id is required")
-        if lease_seconds <= 0:
-            return MutationResult(False, "INVALID_LEASE", "lease_seconds must be > 0")
-        current = (now or utc_now()).astimezone(timezone.utc)
-        expires = current + timedelta(seconds=lease_seconds)
-
+        invalid = self._validate_claim_inputs(worker_id, lease_seconds)
+        if invalid is not None:
+            return invalid
         with closing(self._connect()) as conn:
             conn.execute("BEGIN IMMEDIATE")
-            row = conn.execute(
-                "SELECT * FROM tasks WHERE task_id = ?", (task_id,)
-            ).fetchone()
-            if row is None:
-                conn.rollback()
-                return MutationResult(False, "NOT_FOUND", f"{task_id} does not exist")
+            claim = self._claim_task_conn(
+                conn, task_id, worker_id, lease_seconds=lease_seconds, now=now
+            )
+            if claim.ok:
+                conn.commit()
+            return claim
 
-            recover = False
-            if row["status"] in {"READY", "CHANGES_REQUESTED"} and not row["claimed_by"]:
-                pass
-            elif row["status"] == "ACTIVE":
-                lease = parse_time(row["lease_expires_at"])
-                if row["claimed_by"] == worker_id and lease and lease > current:
-                    conn.rollback()
-                    return MutationResult(
-                        False,
-                        "ALREADY_CLAIMED",
-                        f"{worker_id} already holds a live claim",
-                        dict(row),
-                    )
-                if lease is None or lease > current:
-                    conn.rollback()
-                    return MutationResult(
-                        False,
-                        "LEASE_ACTIVE",
-                        f"live claim held by {row['claimed_by']}",
-                        dict(row),
-                    )
-                if row["attempt"] >= row["max_attempts"]:
-                    conn.rollback()
-                    return MutationResult(
-                        False,
-                        "ATTEMPT_LIMIT",
-                        "expired claim cannot be recovered: max attempts reached",
-                        dict(row),
-                    )
-                recover = True
-            else:
-                conn.rollback()
+    def preview_start_claim(
+        self,
+        task_id: str,
+        worker_id: str,
+        *,
+        lease_seconds: int = 900,
+    ) -> MutationResult:
+        """Read a claimable task and its revision before startup preparation."""
+        with self._read_snapshot() as conn:
+            decision = self._claim_decision_conn(
+                conn, task_id, worker_id, lease_seconds=lease_seconds, current=utc_now()
+            )
+            if not decision.ok:
+                return decision
+            task = self._get_task(conn, task_id)
+            task["task_revision"] = self._task_revision_conn(conn, task_id)
+            return MutationResult(True, "CLAIM_ELIGIBLE", "task is eligible for claim", task)
+
+    def _claim_decision_conn(
+        self,
+        conn: sqlite3.Connection,
+        task_id: str,
+        worker_id: str,
+        *,
+        lease_seconds: int,
+        current: datetime,
+    ) -> MutationResult:
+        invalid = self._validate_claim_inputs(worker_id, lease_seconds)
+        if invalid is not None:
+            return invalid
+        row = conn.execute(
+            "SELECT * FROM tasks WHERE task_id = ?", (task_id,)
+        ).fetchone()
+        if row is None:
+            return MutationResult(False, "NOT_FOUND", f"{task_id} does not exist")
+        if row["status"] in {"READY", "CHANGES_REQUESTED"} and not row["claimed_by"]:
+            return MutationResult(True, "CLAIMED", f"claimed by {worker_id}")
+        if row["status"] == "ACTIVE":
+            lease = parse_time(row["lease_expires_at"])
+            if row["claimed_by"] == worker_id and lease and lease > current:
                 return MutationResult(
                     False,
-                    "NOT_CLAIMABLE",
-                    f"task status is {row['status']}",
+                    "ALREADY_CLAIMED",
+                    f"{worker_id} already holds a live claim",
                     dict(row),
                 )
-
-            event = "TASK_CLAIM_RECOVERED" if recover else "TASK_CLAIMED"
-            if recover:
-                summary = f"claim moved from {row['claimed_by']} to {worker_id}"
-            else:
-                summary = f"claimed by {worker_id}"
-            conn.execute(
-                """
-                UPDATE tasks
-                SET status = 'ACTIVE', claimed_by = ?, lease_expires_at = ?,
-                    heartbeat_at = ?, attempt = attempt + 1, updated_at = ?
-                WHERE task_id = ?
-                """,
-                (
-                    worker_id,
-                    iso_z(expires),
-                    iso_z(current),
-                    iso_z(current),
-                    task_id,
-                ),
+            if lease is None or lease > current:
+                return MutationResult(
+                    False,
+                    "LEASE_ACTIVE",
+                    f"live claim held by {row['claimed_by']}",
+                    dict(row),
+                )
+            if row["attempt"] >= row["max_attempts"]:
+                return MutationResult(
+                    False,
+                    "ATTEMPT_LIMIT",
+                    "expired claim cannot be recovered: max attempts reached",
+                    dict(row),
+                )
+            return MutationResult(
+                True, "RECOVERED", f"claim moved from {row['claimed_by']} to {worker_id}"
             )
-            self._append_event(conn, task_id, event, worker_id, summary)
-            conn.commit()
         return MutationResult(
-            True,
-            "RECOVERED" if recover else "CLAIMED",
-            summary,
-            self.get_task(task_id),
+            False, "NOT_CLAIMABLE", f"task status is {row['status']}", dict(row)
+        )
+
+    def _claim_task_conn(
+        self,
+        conn: sqlite3.Connection,
+        task_id: str,
+        worker_id: str,
+        *,
+        lease_seconds: int = 900,
+        now: datetime | None = None,
+    ) -> MutationResult:
+        """Apply a claim inside the caller's write transaction."""
+        current = (now or utc_now()).astimezone(timezone.utc)
+        decision = self._claim_decision_conn(
+            conn, task_id, worker_id, lease_seconds=lease_seconds, current=current
+        )
+        if not decision.ok:
+            return decision
+        expires = current + timedelta(seconds=lease_seconds)
+        timestamp = iso_z(current)
+        conn.execute(
+            """
+            UPDATE tasks
+            SET status = 'ACTIVE', claimed_by = ?, lease_expires_at = ?,
+                heartbeat_at = ?, attempt = attempt + 1, updated_at = ?
+            WHERE task_id = ?
+            """,
+            (worker_id, iso_z(expires), timestamp, timestamp, task_id),
+        )
+        event = "TASK_CLAIM_RECOVERED" if decision.code == "RECOVERED" else "TASK_CLAIMED"
+        self._append_event(conn, task_id, event, worker_id, decision.message)
+        return MutationResult(
+            True, decision.code, decision.message, self._get_task(conn, task_id)
         )
 
     def heartbeat(

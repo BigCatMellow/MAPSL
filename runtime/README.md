@@ -10,7 +10,7 @@ when a task needs durable ownership, routing, recovery or review.
 | --- | --- |
 | State and policy | [TaskStore](state/store.py) owns scope, readiness, claims, leases, submissions and review. Its guarded transitions apply task policy. |
 | Routing | [Routing CLI](routing/cli.py) uses canonical state and worker constraints to recommend a next action. The optional LangGraph checkpoint records routing history. Claims still go through TaskStore. |
-| Startup and context | [Flow start](flow_start.py) validates declared context, claims eligible work, assembles explicit context and eligible Skills, and binds an immutable run manifest before provider launch. |
+| Startup and context | [Flow start](flow_start.py) checks eligibility, then prepares explicit context, eligible Skills and contracted environment evidence. It rechecks the task and commits the claim, immutable run manifest and evidence together before provider launch. Failed startup leaves the previous claim and attempt intact. |
 | Environment and integrity | [Environment specs](environment/) record contracted run observations. [Integrity checks](integrity/) verify bound inputs and write scope. Explicit recovery can run quick-tier validation. Review-time and immediate post-edit integration remain open. |
 | Handoff and inspection | [Flow handoff](flow_handoff.py) records continuity under existing lease and review rules. `show TASK --waits` reads canonical waits from one snapshot. |
 | Submission, review and evidence | `submit --run-id` supplies an exact run to the canonical submission path. [Review flow](flow_review.py) checks eligibility and binds the submitted revision and artifact. [Run Record](run_record.py) exports available evidence and names its limits. |

@@ -56,12 +56,14 @@ bounded worker assignments. Verify remote candidate head before any update.
   actual Skill selection and flow commands. [Run Record tests](../../tests/test_run_record.py)
   cover missing and malformed configuration evidence. A fresh-process test
   isolates the former learning import cycle.
+- [Atomic startup](atomic-flow-start.md) combines claim, manifest and required
+  evidence. The rollback, retry and competing-worker tests cover the local
+  path before provider launch.
 
 ## Remaining framework integrations
 
 | Boundary | Next implementation and proof |
 | --- | --- |
-| Failure after successful claim | Complete an attempt-bound startup recovery design for catalog, manifest and environment failures after claim. Prove an immediate corrected retry and that a stale worker cannot affect the current claim. The preflight change covers deterministic declared paths. |
 | Validation and recovery | H4/E4/E5/SEC3 own post-edit and review validation and incompatible-resume behavior. Close these at the supported caller, with a passing path and a refusal before the relevant effect. |
 | Context and service evidence | 6.11 owns required context and downstream budgets. L6 must bind the configuration of the actual guarded service operation to its run. Startup stops before a service is selected, so unbound runs have missing evidence. |
 | Learning promotion | Context Builder reads governed guidance. Prove a supported candidate-to-review-to-promotion path with authenticated authority before exposing a normal operator promotion route. |

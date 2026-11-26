@@ -58,3 +58,12 @@ The integrated review caught conflicting wiki prose about zero-diff rebases. Rou
 - countermeasure: Connect the canonical waits and submission paths, preflight declared context before claim, and run a connected disposable smoke and a fresh-process learning import.
 - verified: See [framework operating evidence](../tasks/framework-operating-workflow.md#operating-evidence).
 - follow-up: Complete the [remaining integration boundaries](../tasks/framework-operating-workflow.md#remaining-framework-integrations) at their normal entry points.
+
+## 2026-11-26 — later setup failures retained a claim
+
+- opened: 2026-11-26
+- class: drift
+- signal: A missing contracted environment spec left a task active with a consumed attempt and an orphaned startup manifest.
+- countermeasure: Claim, run binding and contracted evidence now commit together. SQLite fault injection and competing-start regressions exercise the same path used by the operator CLI.
+- verified: [Atomic startup evidence](../tasks/atomic-flow-start.md#verification).
+- follow-up: Verify incompatible-resume refusal and validation at actual execution and review boundaries.
