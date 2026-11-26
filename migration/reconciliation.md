@@ -14,18 +14,36 @@ The dated checkpoints below record earlier states. The following evidence supers
 | --- | --- |
 | Was the pinned tree preserved? | Migration operator compared the 3,515 Git paths, blob IDs, modes and sizes, and all 102 branch witnesses. See [branches](branch-evidence.md), [historical files](history-evidence.md), [work records](work-evidence.md) and [file dispositions](source-inventory.tsv). Recheck the source delta before cutover. |
 | Does the ordinary workflow work? | [Disposable operations](operation-evidence.md) exercised method selection, isolated delegation, Linux installation, authority denials, interrupted work and restart. The [candidate PR](https://github.com/BigCatMellow/MAPSL/pull/2/checks) holds the latest checks. |
-| Which primary records remain missing? | The source register names `MAPS_Lean_Handoff_2026-09-15-session-bobo-plan-calibration.md` outside Git. The earlier cross-project handoff inventory predates this entry. TASK-311's `ws2-output-collision-resolution.md` was reported from a remote worker. Original Git refs, the applicable archive catalog, registered handoff evidence and available file/attachment searches did not yield either original. Historical TASK-297 approval lacks a located operator sign-off. The migration owner can reconcile an original, a matching dated receipt, or an explicit owner exclusion of each missing claim. No private runtime databases are required. |
+| Do the missing historical records block preparation? | The owner resolved this gate on 2026-11-25. See the [historical evidence decision](#historical-evidence-decision) for the three unverified claims and their retained evidence. |
 | Can this be integrated? | The source's September 5 merge-friction entry was subsequently closed. Successor governance is separate. Public GitHub branch/ruleset reads reported successor main unprotected and no rulesets. The default branch lacks a trusted gate. The owner must authorize bootstrap design/installation and decide cutover under the [successor controls](../docs/CHECKS_AND_BALANCES.md#successor-merge-controls). Standing authority is revoked; wiki publication is gated. |
 | What remains conditional? | [Work audit](work-evidence.md) routes the five reported concerns and open source issues. [Branch audit](branch-evidence.md) preserves unmerged work, including #341 and its custody gates. The [master roadmap](../work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md) sets the priorities and tests for reopening. |
+
+## Historical evidence decision
+
+On 2026-11-25 the owner approved retaining the following three claims as
+**unverified historical records** and continuing migration preparation. Keep
+the supporting evidence and its limitations. No completion or final sign-off
+is credited for any of the three. Reassess a claim if its original or a
+matching dated receipt is recovered. Bootstrap and cutover authority are separate.
+
+The earlier cross-project handoff inventory predates the September 15 entry.
+Git refs, the archive catalog, and the available handoff, file and attachment
+searches did not yield either missing original.
+
+| Claim | Retained evidence and gap |
+| --- | --- |
+| September 15 PLAN calibration handoff | [Source register and trajectory evidence](work-evidence.md#open-obligations-and-historical-proofs) confirm registration of the external handoff `MAPS_Lean_Handoff_2026-09-15-session-bobo-plan-calibration.md`. Its original and any matching review or continuation receipt remain unlocated. |
+| TASK-311 collision-resolution report | [Historical review and separate collision check](history-evidence.md#tasks-and-repairs) remain available. The review reported indirect custody. The primary `ws2-output-collision-resolution.md` remains unlocated. |
+| TASK-297 operator's final sign-off | [Historical task audit](history-evidence.md#tasks-and-repairs) records reviewer approval and implementation evidence. The final operator sign-off remains unlocated. |
 
 ## Verified baseline
 
 - Pinned source main 605ce610e0be3334d1da7af2a7c6f5912b6cc05f; exact inventory 3,515 files, 31 executable, no symlink or submodule entries in the returned tree.
 - Source runtime CI [success](https://github.com/BigCatMellow/MAPS_Lean/actions/runs/45405604013). No successor runtime parity assertion.
 - All 35 master capability IDs and 45 subsystem milestone IDs recovered from the source checklist and mapped to objective programs. Source DONE is not successor DONE.
-- 51 original foundation files staged by exact Git blob and mode, including 25 playbooks and 18 templates; the roadmap router has since been deliberately replaced with a concise route. No fresh independent review. Secret-pattern screening of transferred text is limited, not a comprehensive security audit.
+- Initial staging included 51 original foundation files by exact Git blob and mode, including 25 playbooks and 18 templates. The roadmap router was later replaced with a concise route. The [independent review receipt](../work/reviews/pr-2-review-evidence.md) records subsequent review. Secret-pattern screening of transferred text is limited, not a comprehensive security audit.
 - The successor retains existing work/roadmaps paths, rather than renaming to roadmap/, to avoid breaking tooling and references without benefit. Original detailed designs remain reachable through pinned source links. Consolidation is a candidate until reviewed.
-- Source checkout unavailable: container DNS cannot resolve github.com. Connected GitHub reads/writes work. Local runtime execution and external machine paths are not available. CI can verify repository-only checks when configured.
+- Initial staging relied on the GitHub connector and CI because the session could not clone from GitHub. The later integrated review used an isolated clone. External machine paths remain outside the repository.
 
 ## Previously hidden or competing planning sources
 
@@ -39,7 +57,7 @@ The dated checkpoints below record earlier states. The following evidence supers
 | [#341](https://github.com/BigCatMellow/MAPS_Lean/pull/341) | Only open source PR; head 3f5e6fb332ac5d7f51031f3c0bac2be857d974e5. Benchmark parked; selection revision still needs review, Gate 1 Arm C and Gate 4/5 custody unresolved. Preserve pinned branch and evidence; no run, spend or approval. |
 | [#247](https://github.com/BigCatMellow/MAPS_Lean/issues/247), [#248](https://github.com/BigCatMellow/MAPS_Lean/issues/248), [#331](https://github.com/BigCatMellow/MAPS_Lean/issues/331) | Routed to continuity/reasoning and operational reliability; actual implementation still conditional/pending. |
 | [Ideas](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas), [insights](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights), [friction](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/coordination/FRICTION_LOG.md) | 8 ideas, 12 insights and dated friction records retained; full dispositions require checking promoted/stale/resolved evidence and open records. The source log later closed the September incident. Verify successor governance independently before use. |
-| [Handoff register](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/handoffs/README.md) | 64 recorded handoffs (55 continued, 7 closed, 1 open, 1 acknowledged in prior audit). Open external bobo PLAN calibration file inaccessible; acknowledged legacy navigation/simulation handoff needs successor decision. Verify continued pointers; cannot treat as closed. |
+| [Handoff register](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/handoffs/README.md) | 64 recorded handoffs (55 continued, 7 closed, 1 open, 1 acknowledged in prior audit). The external PLAN calibration handoff has an [approved historical disposition](#historical-evidence-decision). See the [work audit](work-evidence.md#open-obligations-and-historical-proofs) for the acknowledged navigation/simulation handoff. |
 | [Review queue](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/review_queue/README.md) | Five old QUEUED packets; reconcile to live source review/merge and tests; do not blindly restart or mark done. |
 | [Research index](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/research/README.md), [legacy audit](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/LEGACY_KNOWLEDGE_AUDIT.md), [idea recovery audit](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/LEGACY_IDEA_RECOVERY_AUDIT.md), [promotion ledger](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/LEGACY_PROMOTION_LEDGER.md), [future backlog](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/FUTURE_IDEAS_BACKLOG.md) | Existing audits support keeping historical source trees in place. The older idea recovery audit has explicit remaining audit work; do not mark all 2,474 historical files semantically resolved from their classification. Preserve candidate triggers, examine unresolved lessons, then disposition by group. |
 | Pilot Project Folder, competitor add-ons, Map the System, HCOM messages, Wiki update | Reported open concerns, original requirements need recovery. Route to portability, learning, continuity, coordination and usability; no speculative closure. |
@@ -48,12 +66,9 @@ The dated checkpoints below record earlier states. The following evidence supers
 
 The source AGENTS.md is staged byte-for-byte, including its repository-specific
 OPCMD policy. It is not yet activated on main. Old standing authorization and
-repository configuration do not transfer. The source review/merge process must
-be mapped into a usable successor gate without weakening human authority,
-exact-head independent review, CI or fail-closed HOLD. No independent reviewer
-is available in this session; do not self-approve. Preserve and prepare
-independent slices while this is unresolved. The owner need not review
-technical detail personally.
+repository configuration do not transfer. The [independent technical review](../work/reviews/pr-2-review-evidence.md)
+records the reviewed revision and scope. Default-branch integration still
+requires the [successor merge controls](../docs/CHECKS_AND_BALANCES.md#successor-merge-controls).
 
 ## Dependencies and next verification
 

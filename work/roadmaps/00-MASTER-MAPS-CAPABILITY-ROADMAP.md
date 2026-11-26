@@ -8,6 +8,24 @@ A capable AI worker completes real work inside human-defined boundaries with min
 
 Evaluate each change by autonomy, reliability, reasoning/planning quality, continuity, efficiency, adaptability, controlled learning, usability and safety. The owner reports that the old system works in practice; relative performance against ordinary agent-assisted work is unknown. Preserve what works; do not make another external pilot the central objective of the project.
 
+## Delivery order
+
+1. **Finish migration preparation.** Verify the integrated candidate, its
+   evidence and the source delta under the [migration plan](../../migration/PLAN.md).
+   [Current state](../../state/CURRENT.md) owns the next action. Integration
+   requires [authorized bootstrap and review controls](../../docs/CHECKS_AND_BALANCES.md#successor-merge-controls).
+   Cutover requires the owner's decision.
+2. **Prove continuity in ordinary work.** After cutover, make Direction and
+   continuity the first outcome to verify. In a fresh session, recover the
+   outcome, authority, owner, next action and blocker for a code and a non-code
+   task through the normal entry points. Use the existing trajectory and
+   handoff methods to diagnose any failure.
+3. **Use evidence to pick the next improvement.** Prioritize failures and
+   dependency gates that jeopardize the parent outcome. Keep authority and
+   reliability requirements in force at every step. The programs below own
+   improvements and their proof. Conditional capabilities become eligible
+   when their stated trigger is met.
+
 ## Outcome-driven priorities after migration
 
 | Program | Outcome | Next useful work and proof |
@@ -19,13 +37,11 @@ Evaluate each change by autonomy, reliability, reasoning/planning quality, conti
 | Learning and evaluation | Repeated mistakes cause measurable, reviewed improvements | Verify L6 real-run config identity before comparisons; retain evaluation and operational learning; test failure localization, lean-vs-helper routing, and narrow candidates through JUDGE/LEARN before considering GROW. |
 | Usability and portability | Easy to install, use and maintain across appropriate contexts | Verify #378 target preflight and init, documentation and method-only operation; external task or comparative test only when useful and separately authorized. |
 
-Direction and continuity are the immediate cross-program priority during migration. Safety/reliability are mandatory constraints, not optional later phases. Prioritize actual unresolved problems and dependency gates over historical feature order. Continue only until the relevant outcome is met.
-
 ## Recovered requirements and dependencies
 
 Use these conditions when the owning program becomes eligible. The detailed evidence lives in the [branch audit](../../migration/branch-evidence.md#forward-requirements-recovered-from-divergent-branches), [work audit](../../migration/work-evidence.md#open-obligations-and-historical-proofs) and [historical audit](../../migration/history-evidence.md).
 
-- Direction and continuity owns fresh-session recovery and the missing September PLAN handoff. Reproduce retrieval of the parent outcome, authority, owner and next action for a code and a non-code task before closing #247. Treat any live roadmap sheet as a projection of the checklist.
+- Direction and continuity owns fresh-session recovery. Apply the continuity proof above before closing #247. Treat any live roadmap sheet as a projection of the checklist. The September PLAN handoff has an [approved historical disposition](../../migration/reconciliation.md#historical-evidence-decision).
 - Execution and safety own consequential-call validation, isolation, lease recovery, ambiguous external effects, and reviewer identity. Preserve refusal for an uncertain prior side effect. Verify an eligible trusted producer before promoting reviewer-execution attestation.
 - Reasoning and learning own the failed retrieval experiments, production configuration identity and bounded uptake of lessons. The source shipped TASK-223 despite the incomplete promotion record. Check that scoped lessons reach the actual startup path. Reconsider retrieval only on frozen hard negatives, exact anchors, acceptable alternatives and blind scoring.
 - Portability owns preview, initialization and repeat-safe upgrades. The [Linux operation evidence](../../migration/operation-evidence.md) covers a disposable target. External piloting, fleet automation, and publication each require their own trigger and authority.
