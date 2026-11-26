@@ -1,30 +1,34 @@
 # Independent technical review of migration PR 2
 
-reviewer: Codex independent review worker /root/migration_review
-head_sha: 179daf691f5867fc7b8313505365aebfab2d1abe
+reviewer: Codex independent review worker /root/completion_review
+head_sha: cfc137e3ba86c358d0b953767315f4144215eec6
 independent: true
-summary: APPROVED for reversible migration preparation. The scoped documentation and inventory changes preserve the three evidence gaps and clarify the delivery order. Default-branch integration and cutover require separate authority.
+summary: APPROVED for reversible planning on the draft candidate. All 80 original capability IDs have a checked evidence route and a finish test or conditional trigger. Integration and cutover remain subject to the existing controls.
 
-## Review scope
+## Capability roadmap review
 
-The reviewer used an isolated checkout and made no implementation or GitHub
-changes. The reviewed local commit was `189d56bc5548e02bc16b7b559abbd194ccf209b5`.
-Git readback verified that the published substantive commit has the same parent
-(`94e2b48368896c27863d06c0d748f84c150a9c2e`) and tree (`a23420584fa75d1d147e924854becf16b8f4a5cc`).
+The reviewer used an isolated clone and did not implement the changes or
+mutate GitHub. The reviewed local commit was `f43faa65afdab3dcc3afffcba76fbbb290f7ca38`.
+Git readback verified the candidate commit has the same parent
+(`d5352101c3407b4587674eb99a59e0f6c04de096`) and tree (`649062ea8ee088d9df27652386d573a09fb39ca5`).
 
-- All three historical claims remain unverified. Their supporting evidence,
-  limits and search scope are retained. The owner decision allows preparation.
-- The roadmap keeps one delivery order and all 80 capability owners. The
-  existing entry points still reach the roadmap, decision and next action.
-- The reviewer checked 75 local links, 23 documentation tests, 12 migration
-  tests and the 3,515-row inventory with zero pending rows or errors. An
-  initial review finding about a broken roadmap anchor was fixed and rechecked.
+- Confirmed all 80 original IDs, names, status labels, source links and owners.
+  The three VERIFIED rows are backed by the documented disposable operations
+  and are scoped to their specific outcomes. The other rows have verification,
+  closure or conditional plans.
+- Sampled runtime call sites and remaining gaps, including explainable waits,
+  harness limits, hook wiring and configuration evidence. Checked delivery
+  dependencies and conditional authority against the existing roadmap.
+- Checked 195 affected links at the initial review and two additional local
+  links after task closure, with zero unresolved. At the final reviewed SHA,
+  36 migration and documentation tests, the 3,515-row inventory, and
+  whitespace checks passed. A further 147 targeted runtime tests passed on
+  the preceding review tree. The final scope included no runtime changes.
 
-## Prior integrated review
+## Prior reviews
 
-The [original independent receipt](https://github.com/BigCatMellow/MAPSL/blob/94e2b48368896c27863d06c0d748f84c150a9c2e/work/reviews/pr-2-review-evidence.md)
-records full-suite, Linux operation, source and branch reconciliation review
-for the runtime baseline at `ff0eca461fc63cfa98434d04a5a5b6f530aad777`.
-The later delta review covers the documentation and ledger changes only.
-Authenticated GitHub approval and [successor merge controls](../../docs/CHECKS_AND_BALANCES.md#successor-merge-controls)
-remain separate from this technical receipt.
+The [historical disposition and delivery-order review](https://github.com/BigCatMellow/MAPSL/blob/d5352101c3407b4587674eb99a59e0f6c04de096/work/reviews/pr-2-review-evidence.md)
+covers the earlier documentation delta and links the full independent
+integrated runtime review. An authenticated approval and the [successor merge
+controls](../../docs/CHECKS_AND_BALANCES.md#successor-merge-controls) remain
+separate from this technical receipt.
