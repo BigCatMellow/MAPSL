@@ -9,6 +9,7 @@ for direction, and [live GitHub](https://github.com/BigCatMellow/MAPSL/pulls) fo
 | Roadmaps and capability evidence | [roadmaps](roadmaps/) |
 | Task contract | [tasks](tasks/) |
 | Coordination and friction | [coordination](coordination/) |
+| Independent review evidence | [reviews](reviews/) |
 | Handoff receipts | [handoffs](handoffs/) |
 | Supporting research | [research](research/) |
 | Evaluation evidence | [evals](evals/) |
