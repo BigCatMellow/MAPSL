@@ -40,16 +40,15 @@ history.
 Review evidence is bound to the code state the reviewer inspected. If a PR is
 rebased or merged onto newer `main`, the evidence normally must be refreshed.
 
-A narrow zero-diff revalidation tier exists for a purely mechanical update. It
-requires proof that:
+The verifier resolves the reviewed code commit by skipping trailing
+review-evidence-only commits. A prior review can carry across a mechanical
+rebase when its recorded full commit ID identifies the same complete tree.
+This also covers rebases that changed parentage. Any substantive change
+needs fresh review. The standing merge gate separately requires authenticated
+GitHub approval on the live PR head.
 
-1. the old reviewed commit is an ancestor of the new head; and
-2. the diff between those states is empty for the reviewed content.
-
-If anything relevant changed, a full review is required. This exception does
-not apply to an ordinary author-fix/review round. The repository check
-[`scripts/check_review_evidence.py`](../../scripts/check_review_evidence.py)
-implements the exact-head/evidence-only and tree-equality rules used by CI.
+See [the verifier](../../scripts/check_review_evidence.py) and
+[the review method](../../playbook/MODEL_CAPABILITY_ROUTING.md).
 
 ## Authorized operators
 

@@ -38,3 +38,5 @@ Entry format:
 - countermeasure: recover from isolated on-disk clones, use direct owner files and pinned Git trees, verify complete ledger changes atomically. Check terminal adapted hashes, modes and exact original pointers in CI. Restore source review and direct-push checks. Inspect live successor settings and run the installer in a clean Linux clone.
 - verified: grouped source records and witnesses are linked from migration/reconciliation.md. Disposable install, continuation and denial evidence is in migration/operation-evidence.md. Source #331 remains under its original owner.
 - follow-up: corroborate any missing local originals or obtain explicit exclusion. Verify default-branch governance before activation.
+
+The integrated review caught conflicting wiki prose about zero-diff rebases. Route the wiki explanation to the tested verifier and canonical review method. The original review-evidence regression covers a rebase with identical content and different ancestry.

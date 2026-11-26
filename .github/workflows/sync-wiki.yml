@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - docs/wiki/**
+      - tools/project_wiki_links.py
       - .github/workflows/sync-wiki.yml
   workflow_dispatch:
 
