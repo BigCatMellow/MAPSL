@@ -1,0 +1,13 @@
+# Independent technical review of migration PR 2
+
+reviewer: Codex independent review worker /root/independent
+head_sha: d6ac7ed7989fa35df766d3f87802a22bc3cd7f5a
+independent: true
+summary: APPROVED for reversible migration preparation. The substantive tree addresses the inventory, routing, revision-binding and governance findings. Overall migration acceptance and default-branch integration remain BLOCKED.
+
+I reviewed the public PR branch from an isolated clone. Its Git tree is `ea97ebec7b176b9ae05b7ceea7b5888990c228ee`. I was assigned review only and made no implementation changes. This receipt records that review. Authenticated GitHub approval is a separate control.
+
+- **Source and routing.** Compared the inventory to all 3,515 blobs in source Git, including path, mode, object ID and byte count. Checked the successor destinations and pinned references. Independently checked all 102 branch IDs, the 21 ancestry witnesses, 64 whole-tree witnesses, and four changed-path witnesses. Read the dispositions of the divergent work, including Harada, the November proposal and deferred benchmark #341. All 80 capability IDs have roadmap owners. Checked that historical evidence links resolve in the original Git trees.
+- **Operation.** Inspected [practical checks](../../migration/operation-evidence.md) for the method-only, isolated-worker and Linux installation/lifecycle paths. At the final substantive SHA I independently ran the full suite (1,507 run, 5 skipped, zero failures), the cutover-mode file check (zero pending, zero errors) and the SQLite/LangGraph smoke (task DONE, routing checkpoint exercised). Live HCOM and non-Linux installation were outside this exercise.
+- **Review findings.** Verified the final wiki revision describes full-commit, identical-tree revalidation accurately. The tested verifier requires an immutable commit ID. Terminal adaptations retain hash and mode checks. Candidate CI now has the runtime and review-evidence jobs required by the gate. The corrected entry points lead to the checked-out candidate and the governance guide discloses the disabled protection. Checked the source main ref remained at the pinned revision.
+- **Open acceptance.** The September 15 PLAN calibration handoff, TASK-311 primary artifact and TASK-297 operator sign-off require originals, matching receipts or an explicit historical disposition. Successor default-branch protection and trusted bootstrap require separate owner action. Standing authority remains revoked. This receipt confers no authority for merge, wiki publication or cutover. See the [remaining acceptance gates](../../migration/reconciliation.md#remaining-acceptance-gates).
