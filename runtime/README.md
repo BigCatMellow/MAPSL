@@ -1,7 +1,25 @@
-# MAPS Lean Runtime
+# MAPSL runtime
 
-This directory is the active provider-neutral MAPS runtime merged to `main` by
-PR #16.
+This is the provider-neutral runtime in the MAPSL migration candidate. The
+[operating contract](../AGENTS.md) supports method-only work. Use the runtime
+when a task needs durable ownership, routing, recovery or review.
+
+## How the framework connects
+
+| Component | Role in the supported workflow |
+| --- | --- |
+| State and policy | [TaskStore](state/store.py) owns scope, readiness, claims, leases, submissions and review. Its guarded transitions apply task policy. |
+| Routing | [Routing CLI](routing/cli.py) uses canonical state and worker constraints to recommend a next action. The optional LangGraph checkpoint records routing history. Claims still go through TaskStore. |
+| Startup and context | [Flow start](flow_start.py) validates declared context, claims eligible work, assembles explicit context and eligible Skills, and binds an immutable run manifest before provider launch. |
+| Environment and integrity | [Environment specs](environment/) record contracted run observations. [Integrity checks](integrity/) verify bound inputs and write scope. Explicit recovery can run quick-tier validation. Review-time and immediate post-edit integration remain open. |
+| Handoff and inspection | [Flow handoff](flow_handoff.py) records continuity under existing lease and review rules. `show TASK --waits` reads canonical waits from one snapshot. |
+| Submission, review and evidence | `submit --run-id` supplies an exact run to the canonical submission path. [Review flow](flow_review.py) checks eligibility and binds the submitted revision and artifact. [Run Record](run_record.py) exports available evidence and names its limits. |
+| Recovery and providers | [Harness service](harness/service.py) normalizes supported adapter operations. [Recovery](recovery/production.py) applies to already-bound sessions. HCOM and one-shot helper providers are optional. |
+| Learning and evaluation | [Operational learning](operational_learning.py) scopes guidance. Frozen cases and separately authorized comparisons support changes to the framework. |
+
+The [disposable smoke](smoke.py) exercises the connected local lifecycle. The
+[framework task](../work/tasks/framework-operating-workflow.md) records what
+it proves and the integrations still open.
 
 Implemented components:
 
@@ -33,10 +51,8 @@ Implemented components:
   staleness checks, writable/forbidden Git scope proof, run-budget checks,
   continuity-aware review support, and optional criterion evidence.
 - `runtime/environment/` — EnvironmentSpec/EnvironmentFingerprint declaration
-  and compatibility evaluation; advisory only, never task authority.
-  `validation.py` executes a spec's declared quick/normal/full validation-tier
-  commands and exposes a Hook-callback factory so a `HookRegistry` can gate on
-  the result; no production call site invokes it yet.
+  and compatibility evaluation. Flow start records evidence for contracted
+  tasks. An explicit recovery pass can run quick-tier validation before resume.
 - `runtime/operational_learning.py` — lesson record validation and
   guidance-only projection; `runtime/outcome_lesson_candidate.py` builds
   CANDIDATE snapshots from task outcomes. Promotion/retirement is
@@ -256,6 +272,16 @@ It reports:
 A later successful outcome removes an older post-completion failure from the
 current attention view because status uses the latest outcome observation while
 preserving the older append-only record in history.
+
+Inspect the reason a specific task is waiting:
+
+```bash
+python -m runtime.cli show TASK-0042 --waits
+```
+
+The command opens the existing database read-only and derives dependency,
+approval and review reasons from one snapshot. Unknown causes remain unknown.
+Plain `show TASK-0042` returns the existing task view.
 
 v1 deliberately does not poll, retry, kill, reassign, approve, recover, or infer
 state from communication. Those actions remain with their existing guarded

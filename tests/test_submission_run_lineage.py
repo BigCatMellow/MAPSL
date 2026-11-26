@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+from contextlib import redirect_stdout
+from io import StringIO
+import json
 from pathlib import Path
 import sqlite3
 import tempfile
 import unittest
 
+from runtime.cli import main as cli_main
 from runtime.state import TaskStore
 from runtime.state.common import utc_now
 
@@ -80,6 +84,37 @@ class SubmissionRunLineageTests(unittest.TestCase):
         self.assertTrue(reviewed.ok, reviewed.message)
         reclaimed = self.store.claim_task(task_id, worker, lease_seconds=600)
         self.assertTrue(reclaimed.ok, reclaimed.message)
+
+    def test_cli_passes_explicit_run_without_inferring_a_missing_or_invalid_link(self):
+        task_id = self.make_active()
+        run = self.make_run(task_id)
+        stdout = StringIO()
+        command = [
+            "--db", str(self.store.db_path), "submit", task_id, "worker",
+            "--evidence", "verified artifact", "--run-id",
+        ]
+        with redirect_stdout(stdout):
+            code = cli_main([*command, "RUN-missing"])
+        self.assertEqual(code, 2)
+        self.assertFalse(json.loads(stdout.getvalue())["ok"])
+        self.assertEqual(self.store.get_task(task_id)["status"], "ACTIVE")
+        self.assertIsNone(self.store.get_submission_run_link(task_id, 1))
+
+        stdout = StringIO()
+        with redirect_stdout(stdout):
+            code = cli_main([*command, run["run_id"]])
+        self.assertEqual(code, 0)
+        self.assertEqual(self.store.get_task(task_id)["status"], "READY_FOR_REVIEW")
+        self.assertEqual(
+            self.store.get_submission_run_link(task_id, 1)["run_id"], run["run_id"],
+        )
+        stdout = StringIO()
+        with redirect_stdout(stdout):
+            code = cli_main(["--db", str(self.store.db_path), "show", task_id, "--waits"])
+        self.assertEqual(code, 0)
+        report = json.loads(stdout.getvalue())
+        self.assertEqual(report["reasons"][0]["code"], "WAIT_REVIEW_UNCLAIMED")
+        self.assertEqual(report["authority"], "DERIVED_READ_ONLY")
 
     def test_explicit_first_submission_links_attempt_one_atomically(self):
         task_id = self.make_active()

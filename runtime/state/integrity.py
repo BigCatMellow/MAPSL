@@ -174,6 +174,46 @@ class ExecutionIntegrityMixin:
 
     # ---------- Run manifests ----------
 
+    def _run_context_path(
+        self,
+        path: str | Path,
+        root: Path,
+        readable: Sequence[str],
+        forbidden: Sequence[str],
+    ) -> str:
+        relative = self._repo_relative(path, root)
+        if not (root / relative).is_file():
+            raise ValueError(f"context is not a file: {relative}")
+        if not self._covered_by_any(relative, readable):
+            raise ValueError(f"context is outside readable scope: {relative}")
+        if self._covered_by_any(relative, forbidden):
+            raise ValueError(f"context is forbidden: {relative}")
+        return relative
+
+    def preflight_run_context(
+        self,
+        *,
+        repo_root: str | Path,
+        context_paths: Sequence[str | Path],
+        readable_paths: Sequence[str | Path],
+        forbidden_paths: Sequence[str | Path],
+    ) -> MutationResult | None:
+        """Check declared paths without claiming a task or reading file contents."""
+        root = Path(repo_root).resolve()
+        if not root.is_dir():
+            return MutationResult(False, "INVALID_REPO_ROOT", "repo_root must be a directory")
+        try:
+            readable = self._normalize_scopes(readable_paths, root)
+            forbidden = self._normalize_scopes(forbidden_paths, root)
+        except ValueError as exc:
+            return MutationResult(False, "INVALID_SCOPE", str(exc))
+        try:
+            for path in context_paths:
+                self._run_context_path(path, root, readable, forbidden)
+        except ValueError as exc:
+            return MutationResult(False, "INVALID_CONTEXT", str(exc))
+        return None
+
     def create_run_manifest(
         self,
         task_id: str,
@@ -304,29 +344,12 @@ class ExecutionIntegrityMixin:
             context_refs: list[tuple[str, str]] = []
             for raw in context_paths:
                 try:
-                    relative = self._repo_relative(raw, root)
-                except ValueError as exc:
+                    relative = self._run_context_path(raw, root, readable, forbidden)
+                    content_hash = hashlib.sha256((root / relative).read_bytes()).hexdigest()
+                except (ValueError, OSError) as exc:
                     conn.rollback()
                     return MutationResult(False, "INVALID_CONTEXT", str(exc))
-                full = root / relative
-                if not full.is_file():
-                    conn.rollback()
-                    return MutationResult(
-                        False, "INVALID_CONTEXT", f"context is not a file: {relative}"
-                    )
-                if not self._covered_by_any(relative, readable):
-                    conn.rollback()
-                    return MutationResult(
-                        False, "INVALID_CONTEXT", f"context is outside readable scope: {relative}"
-                    )
-                if self._covered_by_any(relative, forbidden):
-                    conn.rollback()
-                    return MutationResult(
-                        False, "INVALID_CONTEXT", f"context is forbidden: {relative}"
-                    )
-                context_refs.append(
-                    (relative, hashlib.sha256(full.read_bytes()).hexdigest())
-                )
+                context_refs.append((relative, content_hash))
 
             run_id = f"RUN-{uuid4().hex}"
             task_revision = self._task_revision_conn(conn, task_id)

@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 from contextlib import redirect_stdout
+import hashlib
 import io
 import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from runtime.cli import main
 from runtime.flow_start import flow_start
@@ -108,21 +110,60 @@ class FlowStartTests(unittest.TestCase):
         self.assertEqual(result["failed_step"], "claim")
         self.assertEqual(result["step_result"]["code"], "NOT_CLAIMABLE")
 
-    def test_flow_start_stops_when_context_path_cannot_be_bound(self):
+    def test_invalid_context_leaves_task_eligible_for_immediate_retry(self):
         task_id = self.make_ready()
-
-        result = flow_start(
-            self.store,
-            task_id,
+        before = self.store.get_task(task_id)
+        options = dict(
             worker_id="worker-1",
             repo_root=self.repo,
             created_by="tester",
             context_paths=["missing.md"],
         )
 
+        result = flow_start(self.store, task_id, **options)
+
         self.assertFalse(result["ok"])
         self.assertEqual(result["failed_step"], "run_manifest")
         self.assertEqual(result["step_result"]["code"], "INVALID_CONTEXT")
+        self.assertEqual(self.store.get_task(task_id), before)
+        self.assertEqual(self.store.trace_task(task_id)["runs"], [])
+
+        content = b"corrected context\n"
+        (self.repo / "missing.md").write_bytes(content)
+        retried = flow_start(self.store, task_id, **options)
+
+        self.assertTrue(retried["ok"], retried)
+        self.assertEqual(retried["claim"]["task"]["attempt"], 1)
+        self.assertEqual(
+            retried["run_manifest"]["context_refs"],
+            [{"path": "missing.md", "sha256": hashlib.sha256(content).hexdigest()}],
+        )
+
+    def test_binding_revalidates_context_after_successful_preflight(self):
+        task_id = self.make_ready()
+        context_path = self.repo / "ephemeral.md"
+        context_path.write_text("context\n", encoding="utf-8")
+        claim_task = self.store.claim_task
+
+        def claim_and_remove_context(*args, **kwargs):
+            claim = claim_task(*args, **kwargs)
+            self.assertTrue(claim.ok, claim)
+            context_path.unlink()
+            return claim
+
+        with patch.object(self.store, "claim_task", side_effect=claim_and_remove_context):
+            result = flow_start(
+                self.store,
+                task_id,
+                worker_id="worker-1",
+                repo_root=self.repo,
+                context_paths=["ephemeral.md"],
+            )
+
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["failed_step"], "run_manifest")
+        self.assertEqual(result["step_result"]["code"], "INVALID_CONTEXT")
+        self.assertEqual(self.store.trace_task(task_id)["runs"], [])
 
     def test_flow_start_can_require_worktree_binding(self):
         task_id = self.make_ready()

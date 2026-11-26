@@ -4,6 +4,7 @@ import argparse
 from dataclasses import asdict
 import json
 from pathlib import Path
+import sqlite3
 import sys
 
 from runtime.context_builder import build_context_plan
@@ -114,6 +115,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     show = sub.add_parser('show', help='show canonical task state')
     show.add_argument('task_id')
+    show.add_argument(
+        '--waits', action='store_true', help='explain waits from the existing task database',
+    )
 
     trace = sub.add_parser(
         'trace',
@@ -381,6 +385,7 @@ def build_parser() -> argparse.ArgumentParser:
     submit.add_argument('task_id')
     submit.add_argument('worker_id')
     submit.add_argument('--evidence', required=True)
+    submit.add_argument('--run-id', help='explicit run ID from flow start')
 
     review_claim = sub.add_parser('review-claim', help='claim review work')
     review_claim.add_argument('task_id')
@@ -878,6 +883,16 @@ def _dispatch_skill(store, args) -> int:
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command == 'show' and args.waits:
+        try:
+            waits = TaskStore(args.db, read_only=True).task_waits(args.task_id)
+        except sqlite3.Error:
+            return _emit(MutationResult(
+                False, 'WAIT_VIEW_UNAVAILABLE', 'Cannot read an initialized task database',
+            ))
+        if waits is None:
+            return _emit(MutationResult(False, 'NOT_FOUND', f'{args.task_id} does not exist'))
+        return _emit(waits)
     store = TaskStore(args.db)
 
     if args.command == 'init':
@@ -1043,7 +1058,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == 'heartbeat':
         return _emit(store.heartbeat(args.task_id, args.worker_id, lease_seconds=args.lease_seconds))
     if args.command == 'submit':
-        return _emit(store.submit_task(args.task_id, args.worker_id, args.evidence))
+        return _emit(store.submit_task(
+            args.task_id, args.worker_id, args.evidence, run_id=args.run_id,
+        ))
     if args.command == 'review-claim':
         return _emit(store.claim_review(args.task_id, args.reviewer_id))
     if args.command == 'review-record':

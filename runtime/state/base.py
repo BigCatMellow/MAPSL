@@ -1,17 +1,20 @@
 from __future__ import annotations
 
-from contextlib import closing
+from contextlib import closing, contextmanager
 from pathlib import Path
 import re
 import sqlite3
-from typing import Iterable, Mapping, Sequence
+from typing import Iterable, Iterator, Mapping, Sequence
 
 from .common import MutationResult, iso_z, utc_now
 
 
 class BaseStore:
-    def __init__(self, db_path: str | Path):
+    def __init__(self, db_path: str | Path, *, read_only: bool = False):
         self.db_path = Path(db_path)
+        self._read_only = read_only
+        if read_only:
+            return
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         schema_path = Path(__file__).with_name("schema.sql")
         self._schema = schema_path.read_text(encoding="utf-8")
@@ -19,12 +22,24 @@ class BaseStore:
             conn.executescript(self._schema)
 
     def _connect(self) -> sqlite3.Connection:
-        conn = sqlite3.connect(self.db_path, timeout=5.0, isolation_level=None)
+        if self._read_only:
+            uri = self.db_path.absolute().as_uri() + "?mode=ro"
+            conn = sqlite3.connect(uri, uri=True, timeout=5.0, isolation_level=None)
+        else:
+            conn = sqlite3.connect(self.db_path, timeout=5.0, isolation_level=None)
         conn.row_factory = sqlite3.Row
         conn.execute("PRAGMA foreign_keys = ON")
-        conn.execute("PRAGMA journal_mode = WAL")
+        if not self._read_only:
+            conn.execute("PRAGMA journal_mode = WAL")
         conn.execute("PRAGMA busy_timeout = 5000")
         return conn
+
+    @contextmanager
+    def _read_snapshot(self) -> Iterator[sqlite3.Connection]:
+        """Keep related reads on one SQLite transaction."""
+        with closing(self._connect()) as conn:
+            conn.execute("BEGIN")
+            yield conn
 
     def _contract_shaping_hooks(self):
         """Return mixin hooks to apply within a contract-shaping transaction."""
@@ -247,31 +262,32 @@ class BaseStore:
         return MutationResult(True, "UPDATED", f"updated {task_id}", self.get_task(task_id))
 
     def get_task(self, task_id: str) -> dict | None:
-        with closing(self._connect()) as conn:
-            row = conn.execute(
-                "SELECT * FROM tasks WHERE task_id = ?", (task_id,)
-            ).fetchone()
-            if row is None:
-                return None
-            task = dict(row)
-            task["inputs"] = self._values(conn, "task_inputs", "value", task_id)
-            task["sources"] = self._values(conn, "task_sources", "value", task_id)
-            task["dependencies"] = self._values(
-                conn, "task_dependencies", "depends_on", task_id
-            )
-            task["output_paths"] = self._values(
-                conn, "task_output_paths", "path", task_id
-            )
-            task["non_goals"] = self._values(
-                conn, "task_non_goals", "value", task_id
-            )
-            task["acceptance_criteria"] = self._values(
-                conn, "task_acceptance_criteria", "criterion", task_id
-            )
-            task["stop_conditions"] = self._values(
-                conn, "task_stop_conditions", "condition", task_id
-            )
-            return task
+        with self._read_snapshot() as conn:
+            return self._get_task(conn, task_id)
+
+    def _get_task(self, conn: sqlite3.Connection, task_id: str) -> dict | None:
+        row = conn.execute(
+            "SELECT * FROM tasks WHERE task_id = ?", (task_id,)
+        ).fetchone()
+        if row is None:
+            return None
+        task = dict(row)
+        task["inputs"] = self._values(conn, "task_inputs", "value", task_id)
+        task["sources"] = self._values(conn, "task_sources", "value", task_id)
+        task["dependencies"] = self._values(
+            conn, "task_dependencies", "depends_on", task_id
+        )
+        task["output_paths"] = self._values(
+            conn, "task_output_paths", "path", task_id
+        )
+        task["non_goals"] = self._values(conn, "task_non_goals", "value", task_id)
+        task["acceptance_criteria"] = self._values(
+            conn, "task_acceptance_criteria", "criterion", task_id
+        )
+        task["stop_conditions"] = self._values(
+            conn, "task_stop_conditions", "condition", task_id
+        )
+        return task
 
     def get_submission(self, task_id: str) -> dict | None:
         with closing(self._connect()) as conn:
@@ -282,13 +298,16 @@ class BaseStore:
 
     def list_reviews(self, task_id: str) -> list[dict]:
         with closing(self._connect()) as conn:
-            return [
-                dict(row)
-                for row in conn.execute(
-                    "SELECT * FROM reviews WHERE task_id = ? ORDER BY id",
-                    (task_id,),
-                ).fetchall()
-            ]
+            return self._list_reviews(conn, task_id)
+
+    def _list_reviews(self, conn: sqlite3.Connection, task_id: str) -> list[dict]:
+        return [
+            dict(row)
+            for row in conn.execute(
+                "SELECT * FROM reviews WHERE task_id = ? ORDER BY id",
+                (task_id,),
+            ).fetchall()
+        ]
 
     def list_events(self, task_id: str) -> list[dict]:
         with closing(self._connect()) as conn:

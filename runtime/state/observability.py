@@ -65,18 +65,11 @@ class ObservabilityMixin:
             ]
         return _redact_value(rows)
 
-    def list_reviews(self, task_id: str) -> list[dict[str, Any]]:
+    def _list_reviews(
+        self, conn: sqlite3.Connection, task_id: str
+    ) -> list[dict[str, Any]]:
         """Return redacted review text while preserving canonical review rows."""
-
-        with closing(self._connect()) as conn:
-            rows = [
-                dict(row)
-                for row in conn.execute(
-                    "SELECT * FROM reviews WHERE task_id = ? ORDER BY id",
-                    (task_id,),
-                ).fetchall()
-            ]
-        return _redact_value(rows)
+        return _redact_value(super()._list_reviews(conn, task_id))
 
     @staticmethod
     def _decode_json_fields(record: dict[str, Any], fields: tuple[str, ...]) -> None:

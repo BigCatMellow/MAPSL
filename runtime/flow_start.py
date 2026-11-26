@@ -100,11 +100,14 @@ def flow_start(
 
     The flow composes existing guarded operations in order:
 
-    1. claim the task for an explicit worker;
+    1. check declared context paths, then claim the task for an explicit worker;
     2. discover the project's bundled Skills into a durable catalog, then build
        a read-only context plan including the Skills matched to this task,
        gated by their recorded lifecycle state (a QUARANTINED Skill is dropped);
-    3. bind an immutable run manifest.
+    3. validate the claimed run and bind an immutable manifest using current bytes.
+
+    Invalid declared paths surface before a claim attempt, including when the
+    same request would also fail to claim the task.
 
     It intentionally stops before choosing or launching a provider session.
     Per roadmap 6.9 / S6, a matched Skill whose trust-gate decision is `LOAD`
@@ -115,6 +118,16 @@ def flow_start(
     and resource *content* is only ever pulled on demand by a downstream
     consumer via `runtime.skills.load_skill_resource`.
     """
+
+    preflight = store.preflight_run_context(
+        repo_root=repo_root,
+        context_paths=context_paths,
+        readable_paths=readable_paths,
+        forbidden_paths=forbidden_paths,
+    )
+    if preflight is not None:
+        step = "context" if preflight.code == "INVALID_REPO_ROOT" else "run_manifest"
+        return _failed(step, preflight)
 
     claim = store.claim_task(task_id, worker_id, lease_seconds=lease_seconds)
     if not claim.ok:

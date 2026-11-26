@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from contextlib import closing
 from pathlib import PurePosixPath
 import sqlite3
 from typing import Mapping
@@ -147,19 +146,18 @@ class EnvironmentContractMixin:
             ),
         )
 
-    def get_task(self, task_id: str) -> dict | None:
-        task = super().get_task(task_id)
+    def _get_task(self, conn: sqlite3.Connection, task_id: str) -> dict | None:
+        task = super()._get_task(conn, task_id)
         if task is None:
             return None
-        with closing(self._connect()) as conn:
-            row = conn.execute(
-                """
-                SELECT spec_ref, max_age_seconds, required_for_routing,
-                       allow_older_task_revision
-                FROM task_environment WHERE task_id = ?
-                """,
-                (task_id,),
-            ).fetchone()
+        row = conn.execute(
+            """
+            SELECT spec_ref, max_age_seconds, required_for_routing,
+                   allow_older_task_revision
+            FROM task_environment WHERE task_id = ?
+            """,
+            (task_id,),
+        ).fetchone()
         task["environment"] = (
             None
             if row is None

@@ -49,3 +49,12 @@ The integrated review caught conflicting wiki prose about zero-diff rebases. Rou
 - countermeasure: Record candidate evidence and a finish test or trigger for each ID in the [existing checklist](../roadmaps/CAPABILITY_CHECKLIST.md). Use the [master delivery order](../roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md#delivery-order) for sequencing.
 - verified: The [coverage test](../../tests/test_migration_coverage.py) checks original ID retention, unique ownership and the required evidence and next-step fields.
 - follow-up: Update the row when proof, a blocker or an activation trigger changes. Use the normal trajectory check to reconcile drift.
+
+## 2026-11-26 — framework components lacked a connected operating check
+
+- opened: 2026-11-26
+- class: drift
+- signal: Wait reasons and exact submission lineage lacked CLI routes. A bad declared context spent a claim, and aggregate imports masked a learning dependency cycle.
+- countermeasure: Connect the canonical waits and submission paths, preflight declared context before claim, and run a connected disposable smoke and a fresh-process learning import.
+- verified: See [framework operating evidence](../tasks/framework-operating-workflow.md#operating-evidence).
+- follow-up: Complete the [remaining integration boundaries](../tasks/framework-operating-workflow.md#remaining-framework-integrations) at their normal entry points.

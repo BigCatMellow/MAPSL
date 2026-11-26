@@ -3,6 +3,7 @@ from __future__ import annotations
 from enum import Enum
 import hashlib
 import json
+import re
 from typing import Any, Mapping, Protocol
 
 
@@ -197,7 +198,7 @@ def _coverage(
     run_id: str,
     environment_source_available: bool,
     environment_evidence_present: bool,
-    harness_config_hash_available: bool,
+    harness_configuration_state: CoverageState,
     worktree_binding_present: bool,
     worktree_binding_source_available: bool,
     reviews: list[dict[str, object]],
@@ -237,15 +238,15 @@ def _coverage(
         environment_state = CoverageState.MISSING.value
         environment_reason = "current accepted trace does not expose run environment evidence"
 
-    if harness_config_hash_available:
-        harness_configuration_state = CoverageState.VERIFIED.value
-        harness_configuration_included = True
+    if harness_configuration_state is CoverageState.VERIFIED:
         harness_configuration_reason = (
             "an exact-run harness/hook configuration identity is included"
         )
+    elif harness_configuration_state is CoverageState.UNKNOWN:
+        harness_configuration_reason = (
+            "the recorded harness configuration identity is not a valid SHA-256 digest"
+        )
     else:
-        harness_configuration_state = CoverageState.MISSING.value
-        harness_configuration_included = False
         harness_configuration_reason = (
             "current run manifest does not bind harness/hook configuration identity"
         )
@@ -294,8 +295,8 @@ def _coverage(
             "reason": "current run manifest does not bind selected Skill identities/hashes",
         },
         "harness_configuration": {
-            "state": harness_configuration_state,
-            "included": harness_configuration_included,
+            "state": harness_configuration_state.value,
+            "included": harness_configuration_state is CoverageState.VERIFIED,
             "reason": harness_configuration_reason,
         },
         "environment": {
@@ -359,7 +360,15 @@ def build_run_record(
         raise RunRecordError("run environment_evidence must be a list when exposed")
     environment_list = environment if isinstance(environment, list) else []
     environment_evidence_present = bool(environment_list)
-    harness_config_hash_available = "harness_config_hash" in run
+    config_hash = run.get("harness_config_hash")
+    if config_hash is None:
+        harness_configuration_state = CoverageState.MISSING
+    elif isinstance(config_hash, str) and re.fullmatch(r"(?:sha256:)?[0-9a-fA-F]{64}", config_hash):
+        harness_configuration_state = CoverageState.VERIFIED
+    else:
+        harness_configuration_state = CoverageState.UNKNOWN
+    if harness_configuration_state is not CoverageState.VERIFIED:
+        run.pop("harness_config_hash", None)
 
     raw_reviews = trace.get("reviews")
     reviews = (
@@ -459,7 +468,7 @@ def build_run_record(
             run_id=run_id,
             environment_source_available=environment_source_available,
             environment_evidence_present=environment_evidence_present,
-            harness_config_hash_available=harness_config_hash_available,
+            harness_configuration_state=harness_configuration_state,
             worktree_binding_present=worktree_binding_present,
             worktree_binding_source_available=worktree_binding_source_available,
             reviews=reviews,

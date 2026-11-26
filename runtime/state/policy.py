@@ -92,44 +92,43 @@ class PolicyStateMixin:
             "Policy contract updated; any recorded human reauthorization reset",
         )
 
-    def get_task(self, task_id: str) -> dict | None:
-        task = super().get_task(task_id)
+    def _get_task(self, conn: sqlite3.Connection, task_id: str) -> dict | None:
+        task = super()._get_task(conn, task_id)
         if task is None:
             return None
-        with closing(self._connect()) as conn:
-            row = conn.execute(
-                "SELECT * FROM task_policy WHERE task_id = ?",
-                (task_id,),
-            ).fetchone()
-            if row is None:
-                policy = {
-                    "requires_operator_approval": False,
-                    "destructive_action": False,
-                    "external_side_effect": False,
-                    "security_sensitive": False,
-                    "broad_architecture": False,
-                    "paid_execution": True,
-                    "approved_by": None,
-                    "approved_at": None,
-                    "approval_note": "",
-                }
-            else:
-                policy = dict(row)
-                policy.pop("task_id", None)
-                for field in POLICY_FLAGS:
-                    policy[field] = bool(policy[field])
-            task["policy"] = policy
-            submission = conn.execute(
-                "SELECT * FROM task_submissions WHERE task_id = ?",
-                (task_id,),
-            ).fetchone()
-            task["submission"] = dict(submission) if submission else None
-            if submission is None:
-                task["review_disqualified_ids"] = []
-            else:
-                task["review_disqualified_ids"] = sorted(
-                    self._continuity_component_conn(conn, submission["author_id"])
-                )
+        row = conn.execute(
+            "SELECT * FROM task_policy WHERE task_id = ?",
+            (task_id,),
+        ).fetchone()
+        if row is None:
+            policy = {
+                "requires_operator_approval": False,
+                "destructive_action": False,
+                "external_side_effect": False,
+                "security_sensitive": False,
+                "broad_architecture": False,
+                "paid_execution": True,
+                "approved_by": None,
+                "approved_at": None,
+                "approval_note": "",
+            }
+        else:
+            policy = dict(row)
+            policy.pop("task_id", None)
+            for field in POLICY_FLAGS:
+                policy[field] = bool(policy[field])
+        task["policy"] = policy
+        submission = conn.execute(
+            "SELECT * FROM task_submissions WHERE task_id = ?",
+            (task_id,),
+        ).fetchone()
+        task["submission"] = dict(submission) if submission else None
+        if submission is None:
+            task["review_disqualified_ids"] = []
+        else:
+            task["review_disqualified_ids"] = sorted(
+                self._continuity_component_conn(conn, submission["author_id"])
+            )
         return task
 
     def list_tasks(

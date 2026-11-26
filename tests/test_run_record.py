@@ -316,6 +316,21 @@ class PortableRunRecordTests(unittest.TestCase):
         )
         self.assertTrue(record["coverage"]["harness_configuration"]["included"])
 
+    def test_missing_or_malformed_harness_hash_does_not_verify_configuration(self):
+        trace = self.store.trace_task("TASK-RR")
+        for value, expected in (
+            (None, CoverageState.MISSING),
+            ("", CoverageState.UNKNOWN),
+            ("sha256:" + "g" * 64, CoverageState.UNKNOWN),
+        ):
+            with self.subTest(value=value):
+                trace["runs"][0]["harness_config_hash"] = value
+                record = build_run_record(FakeTraceSource(trace), "TASK-RR", self.run_id)
+                coverage = record["coverage"]["harness_configuration"]
+                self.assertEqual(coverage["state"], expected.value)
+                self.assertFalse(coverage["included"])
+                self.assertNotIn("harness_config_hash", record["run"])
+
     def test_malformed_projected_environment_evidence_fails_explicitly(self):
         trace = self.store.trace_task("TASK-RR")
         self.assertIsNotNone(trace)

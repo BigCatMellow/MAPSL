@@ -91,17 +91,16 @@ own.
   field (decision authority, non-goals, stop conditions) stays under class 1,
   never class 2 or 3.
 - **Skills are loaded procedures, not authority.** `runtime/skills/format.py`
-  (`discover_skills`/`load_skill`) and `runtime/skills/catalog.py`
-  (`SkillCatalog`, `SkillTrustState`) treat a Skill (class 4) purely as a
-  reusable, hash-verified procedure body with provenance/trust metadata —
-  loading a Skill never grants it the standing of `AGENTS.md` authority, and
-  Context Builder does not currently load or select Skills at all (S6 in
-  [`work/roadmaps/CAPABILITY_CHECKLIST.md`](../work/roadmaps/CAPABILITY_CHECKLIST.md) is `NOT STARTED`).
-- **Flows are not yet mechanized.** No `maps flow` execution path exists yet
-  (`work/roadmaps/CAPABILITY_CHECKLIST.md` item 6.21); today's flow-shaped
-  sequences (e.g. the review/submission process in
-  [`playbook/TASK_LIFECYCLE.md`](TASK_LIFECYCLE.md)) are documented procedure,
-  not class 4 turned into deterministic class-5 execution.
+  and `runtime/skills/catalog.py` track each reusable procedure's provenance
+  and content identity. The [startup flow](../runtime/flow_start.py) supplies
+  the catalog to Context Builder. Eligible matches include a hash-verified
+  procedure body and a resource manifest. A downstream caller can load an
+  individual declared resource on demand. Task authority stays with the
+  operating contract and approved task.
+- **Flows compose guarded operations.** The [runtime CLI](../runtime/cli.py)
+  exposes flow commands for start, handoff, review and release checks.
+  They compose class-5 operations with explicit stopping points, while
+  [Task Lifecycle](TASK_LIFECYCLE.md) supplies the procedure for their use.
 - **Tools stay distinct from the guidance for using them.** `runtime/harness/`
   (adapter operations) and `runtime/helpers/` (Ollama/Aider lanes) are class 6
   capabilities; the safe-use guidance around them lives separately, as class

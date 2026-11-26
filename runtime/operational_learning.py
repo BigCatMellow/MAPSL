@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import PurePosixPath
 from typing import Mapping, Sequence
 
-from runtime.state.observability import redact_sensitive_text
+from runtime.text_redaction import redact_sensitive_text
 
 
 class OperationalLearningError(ValueError):

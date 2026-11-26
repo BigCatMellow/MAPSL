@@ -34,6 +34,7 @@ Do not browse directories to discover these paths:
 | Capability/roadmap question | [`work/roadmaps/README.md`](../work/roadmaps/README.md) before opening a large roadmap/checklist |
 | Legacy/reference research | [`migration/README.md`](../migration/README.md) for pinned source evidence |
 | Runtime/control-plane concern | [`playbook/CONTROL_PLANE.md`](../playbook/CONTROL_PLANE.md) |
+| Inspect why a runtime task is waiting | [Task status and waits](../runtime/README.md#status-surface-v1) |
 | Fresh runtime installation | [`docs/FRESH_INSTALL.md`](FRESH_INSTALL.md) |
 | Verification/review level | [`docs/CHECKS_AND_BALANCES.md`](CHECKS_AND_BALANCES.md) |
 

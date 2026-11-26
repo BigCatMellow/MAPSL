@@ -1,8 +1,11 @@
 import copy
-import tempfile
 from pathlib import Path
+import sqlite3
+import tempfile
 import unittest
+from unittest.mock import patch
 
+from runtime.smoke import smoke_contract
 from runtime.state import TaskStore
 from runtime.wait_projection import project_task_waits
 
@@ -401,20 +404,62 @@ class WaitProjectionTests(unittest.TestCase):
 
     def test_real_task_store_projection_is_read_only(self):
         with tempfile.TemporaryDirectory() as td:
-            store = TaskStore(Path(td) / "maps.db")
+            db = Path(td) / "maps #1?.db"
+            store = TaskStore(db)
             created = store.create_task(title="read-only projection")
             self.assertTrue(created.ok)
             task_id = created.task["task_id"]
             before_task = store.get_task(task_id)
             before_events = store.list_events(task_id)
 
-            report = project_task_waits(store, task_id)
+            reader = TaskStore(db, read_only=True)
+            report = reader.task_waits(task_id)
+            with self.assertRaisesRegex(sqlite3.OperationalError, "readonly"):
+                reader.create_task(title="readers cannot write")
 
             after_task = store.get_task(task_id)
             after_events = store.list_events(task_id)
             self.assertEqual(report["summary_state"], "NO_VERIFIED_WAIT")
             self.assertEqual(before_task, after_task)
             self.assertEqual(before_events, after_events)
+
+    def test_read_only_projection_does_not_initialize_a_missing_database(self):
+        with tempfile.TemporaryDirectory() as td:
+            db = Path(td) / "missing" / "maps.db"
+            reader = TaskStore(db, read_only=True)
+
+            with self.assertRaises(sqlite3.OperationalError):
+                reader.task_waits("TASK-MISSING")
+
+            self.assertFalse(db.parent.exists())
+
+    def test_read_snapshot_survives_a_racing_review_claim(self):
+        with tempfile.TemporaryDirectory() as td:
+            db = Path(td) / "maps.db"
+            writer = TaskStore(db)
+            task_id = "TASK-SNAPSHOT"
+            self.assertTrue(writer.create_task(task_id=task_id).ok)
+            self.assertTrue(writer.update_contract(task_id, smoke_contract()).ok)
+            self.assertTrue(writer.promote_ready(task_id, actor="shaper").ok)
+            self.assertTrue(writer.claim_task(task_id, "worker").ok)
+            self.assertTrue(writer.submit_task(task_id, "worker", "evidence").ok)
+            events_before = writer.list_events(task_id)
+
+            reader = TaskStore(db, read_only=True)
+            list_reviews = reader._list_reviews
+
+            def claim_before_review_read(conn, requested_task_id):
+                self.assertTrue(writer.claim_review(requested_task_id, "reviewer").ok)
+                return list_reviews(conn, requested_task_id)
+
+            with patch.object(reader, "_list_reviews", side_effect=claim_before_review_read):
+                snapshot = reader.task_waits(task_id)
+
+            self.assertEqual(codes(snapshot), ["WAIT_REVIEW_UNCLAIMED"])
+            self.assertEqual(codes(reader.task_waits(task_id)), ["WAIT_REVIEW_IN_PROGRESS"])
+            events_after = writer.list_events(task_id)
+            self.assertEqual(events_after[:-1], events_before)
+            self.assertEqual(events_after[-1]["event_type"], "REVIEW_CLAIMED")
 
 
 if __name__ == "__main__":
