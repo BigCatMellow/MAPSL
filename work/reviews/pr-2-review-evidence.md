@@ -1,25 +1,25 @@
 # Independent technical review of migration PR 2
 
-reviewer: Codex independent review worker /root/atomic_review
-head_sha: 5cdbac58012fefdafcd145e9fbefd2ed57e77fc4
+reviewer: Codex independent review worker /root/study_review
+head_sha: 18e90f7b6cc262e5caee4a083b272102de9fb6ca
 independent: true
-summary: APPROVED for reversible draft preparation of atomic startup and the R&D status report. Protected integration and cutover retain their separate controls.
+summary: APPROVED for reversible draft preparation of comparative work-system research. Research candidates and the identified learning gap go to existing roadmap owners for further evidence.
 
-The reviewer used an isolated checkout of `eed427053e767613b85edf46e815eed0c8d6e2ae`. Git readback
-confirmed the published substantive tree `2463e4fb193734d1567ddbe84d23b47579062f80` and parent `3b03e6a0e54ad4bb0528e076905785b3c0e93e30`.
+The reviewer used an isolated checkout of `b4be66fd13397a644a588c8fc04591d2a175b55f`. Git readback
+confirmed the same tree `3fc0e5a4eebc3aaf9e34385f93dc395fcb5ad1aa` and preceding draft `48edfaf66e9f8efbade9fc0db164de5941775e6e`.
 
-- Verified claim, immutable run manifest, required environment evidence and
-  their task events share one transaction. Preparation stays outside the write
-  transaction. Rollback, successful retry, expiry, concurrent ownership and
-  stale attempt and revision checks passed.
-- Verified standalone claim, manifest, evidence and submission paths retained
-  their guards. All 166 focused tests passed, along with connected LangGraph
-  smoke, the complete 3,515-row inventory and whitespace checks.
-- The [R&D report](../research/2026-11-26-rd-status.md) scopes the benchmark
-  approval to the exact generic control text and identifies the outstanding
-  package review, custody and execution requirements.
+- Reviewed study coverage, source attribution, proposed experiment criteria,
+  and the distinction between reproduced evidence and research hypotheses.
+- Independently replayed the context controls. The explicit baseline scored
+  11/16, the deterministic drift control scored 13/16, and the lexical
+  negative control scored 12/16 while failing both hard negatives.
+- Verified local links and headings, documentation checks, source inventory
+  coverage and review-caught copy corrections. The changed tree contains
+  research, roadmap evidence and supporting records.
 
-The [preceding technical review](https://github.com/BigCatMellow/MAPSL/blob/3b03e6a0e54ad4bb0528e076905785b3c0e93e30/work/reviews/pr-2-review-evidence.md)
-records the connected operating workflow and previous review chain. Follow
-the [successor merge controls](../../docs/CHECKS_AND_BALANCES.md#successor-merge-controls)
-for release integration.
+The [comparative study](../research/2026-11-26-work-system-research.md)
+routes the candidate experiments to current owners. The
+[preceding technical review](https://github.com/BigCatMellow/MAPSL/blob/48edfaf66e9f8efbade9fc0db164de5941775e6e/work/reviews/pr-2-review-evidence.md)
+records atomic startup and the earlier operating proof. Follow the
+[successor merge controls](../../docs/CHECKS_AND_BALANCES.md#successor-merge-controls)
+for protected integration and cutover.
