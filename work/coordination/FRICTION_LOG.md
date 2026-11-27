@@ -67,3 +67,12 @@ The integrated review caught conflicting wiki prose about zero-diff rebases. Rou
 - countermeasure: Claim, run binding and contracted evidence now commit together. SQLite fault injection and competing-start regressions exercise the same path used by the operator CLI.
 - verified: [Atomic startup evidence](../tasks/atomic-flow-start.md#verification).
 - follow-up: Verify incompatible-resume refusal and validation at actual execution and review boundaries.
+
+## 2026-11-26 — corrected outcome could still enter learning guidance
+
+- opened: 2026-11-26
+- class: drift
+- signal: A project-scoped lesson candidate stayed promotable after the supporting outcome was explicitly superseded. Context Builder projected it as guidance until retirement.
+- countermeasure: Reproduced the sequence with normal calls against disposable SQLite and tied the promotion and admission experiment to L5 and 6.30.
+- verified: [Comparative research and learning evidence](../research/2026-11-26-work-system-research.md#learn--turn-outcomes-into-scoped-reviewable-guidance).
+- follow-up: Freeze both correction timings and the current-source positive controls before testing the existing owners' freshness rules.
