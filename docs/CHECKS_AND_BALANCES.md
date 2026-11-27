@@ -77,30 +77,28 @@ A review can reject an unsafe implementation even when the action itself is
 preauthorized. Preauthorization removes redundant permission prompts; it does
 not remove verification, review, least privilege, or acceptance criteria.
 
-## Enforced `main` merge gate
+## Successor merge controls
 
-`main` is protected by GitHub branch protection (issue #61):
+The migration candidate includes the read-only `test` and `review-evidence`
+checks, a post-push alert for main, and the OPCMD workflow. The source
+repository's branch settings and standing authorization do not transfer.
+At inspection the successor default branch held only the migration entry
+and inventory. Its public branch record reported protection off. Review
+of the candidate does not install a trusted gate on the default branch.
 
-- pull requests only; direct pushes rejected;
-- required up-to-date checks:
-  - `test` — Runtime stack CI;
-  - `review-evidence` — `scripts/check_review_evidence.py`, requiring committed
-    `work/reviews/pr-<N>-review-evidence.md` bound to the reviewed code head;
-- force-push and branch deletion disabled.
+Before the first integration, the owner must establish an explicitly
+authorized bootstrap with a trusted policy revision, required up-to-date
+checks, PR-only protection, protected deletion/force-push settings and
+independent approval bound to the live head. Verify the actual settings
+and test refusal in the successor before relying on them. Keep the
+standing record revoked during preparation. The migration does not
+authorize a direct main push, an admin override or a trial merge.
 
-The connected GitHub identity may also be the repository/PR author identity, so
-GitHub cannot prove reviewer independence through identity alone.
-`review-evidence` proves the review artifact is bound to the reviewed commit; it
-does not prove a distinct reviewer. Dispatch a fresh independent reviewer and
-do not self-certify.
-
-`enforce_admins=false` permits owner emergency bypass for genuine recovery such
-as CI infrastructure failure. Routine work uses the standard gate. Record any
-bypass so it is not mistaken for a normal reviewed merge.
-
-Passing automated/independent review gates is authorization to continue the
-already approved roadmap; it is not a reason to ask the human whether to merge
-or start the next task unless the roadmap explicitly names a human checkpoint.
+The review artifact records the reviewed substantive commit. The standing
+gate also requires authenticated GitHub approval from the identified
+reviewer on the exact live SHA and the repository HOLD variable to be
+exactly OFF. A missing value refuses the merge. See the
+[candidate gate](../work/notes/2026-10-20-github-native-opcmd-merge.md).
 
 ## High-risk completion summary
 

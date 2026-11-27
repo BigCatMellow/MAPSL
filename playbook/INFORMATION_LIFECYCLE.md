@@ -38,10 +38,15 @@ GitHub, Obsidian, and ordinary agent tooling.
 Prefer:
 
 ```markdown
-Related decision: [DEC-001](../work/decisions/DEC-001-example.md)
+Related method: [Task lifecycle](TASK_LIFECYCLE.md)
 ```
 
-over copying the decision rationale into another file.
+over copying the method into another file.
+
+In Obsidian, open the repository root as a vault. Start the Local Graph at
+[First run](../docs/FIRST_RUN.md), the [method index](INDEX.md), or the
+[work router](../work/README.md). Filter archived paths when exploring
+current work. Link counts measure connectivity, not decision authority.
 
 ### Route-quality rules
 

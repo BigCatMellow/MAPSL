@@ -6,12 +6,11 @@ fully solve. They are retained. WezTerm is not part of their authority model.
 Need to install or rebuild them on a fresh clone? Follow
 [Control-Plane Setup](../docs/CONTROL_PLANE_SETUP.md).
 
-The proven legacy implementation needed for migration has been curated into
-[`migration/legacy-runtime-source/`](../migration/legacy-runtime-source/README.md).
-Use that staging source when rebuilding a retained subsystem; do not depend on
-`legacy/` remaining present and do not import staging code directly into the
-active runtime. The extraction/promotion checklist is
-[here](../migration/LEGACY_RUNTIME_EXTRACTION.md).
+The [active runtime](../runtime/) is the implementation used in this checkout.
+When a port needs provenance, consult the
+[pinned source extraction](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/LEGACY_RUNTIME_EXTRACTION.md)
+and its [archived implementation](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/legacy-runtime-source/README.md).
+Use these as evidence for a specific behavior or regression.
 
 ## First-run takeaway
 

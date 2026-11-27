@@ -21,7 +21,7 @@ is defined by [the playbook index](INDEX.md), under [`AGENTS.md`](../AGENTS.md).
 | `RISK_SYSTEM.md`, `CHANGE_CONTROL_SYSTEM.md`, `templates/RISK_REGISTER_TEMPLATE.md`, `templates/release-checklist.md` | `RISK_AND_CHANGE.md`, `DECISIONS_AND_SAFETY.md` | Risk ownership, proportional release evidence, rollback. |
 | `DECISION_AUTHORITY_SYSTEM.md`, `DECISION_CLASSES.md`, `DESTRUCTIVE_ACTION_POLICY.md`, `SECURITY_PERMISSIONS_SYSTEM.md` | `DECISIONS_AND_SAFETY.md`, `templates/decision.md` | Proper escalation, explicit decisions, safety boundaries. |
 | `emergence/*`, `RETROSPECTIVE_SYSTEM.md`, `SELF_REPAIR_SYSTEM.md`, `notes/operational-learning-guide.md` | `EMERGENCE.md`, `REPAIR_AND_LEARNING.md` | Discovery without scope creep; repair and prevention loops. |
-| `CONTEXT_SYSTEM.md`, `notes/context-routing-guide.md`, `notes/brain-compaction-guide.md`, `ARCHIVE_RETENTION_SYSTEM.md`, `notes/retrieval-capsule-guide.md`, `notes/documentation-style-guide.md` | `docs/CONTEXT.md`, `INFORMATION_LIFECYCLE.md` | Small, trustworthy continuation context and retained history. |
+| `CONTEXT_SYSTEM.md`, `notes/context-routing-guide.md`, `notes/brain-compaction-guide.md`, `ARCHIVE_RETENTION_SYSTEM.md`, `notes/retrieval-capsule-guide.md`, `notes/documentation-style-guide.md` | [Information Lifecycle](INFORMATION_LIFECYCLE.md) | Small, trustworthy continuation context and retained history. |
 | `Projects/ProjectUpdater/shared/steps-outline-guide.md` | `ROADMAP_AND_PROJECTUPDATER.md` | Markdown plan as both roadmap and import-ready checklist. |
 
 ## Retained as reference-only implementation

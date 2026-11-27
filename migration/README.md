@@ -1,6 +1,6 @@
 # Migration and source reference
 
-The old repository remains intact. During migration use the [authorized plan](../README.md),
+The old repository remains intact. During migration use the [authorized plan](PLAN.md),
 [exact inventory](source-inventory.tsv) and [reconciliation evidence](reconciliation.md).
 Current development direction belongs to the [master roadmap](../work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md).
 

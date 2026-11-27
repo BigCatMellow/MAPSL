@@ -1,19 +1,49 @@
 # Migration reconciliation evidence
 
 **In progress — not acceptance or a second roadmap.** 2026-11-24.
-Parent: [authorized migration](../README.md); current direction:
+Parent: [authorized migration](PLAN.md); current direction:
 [master roadmap](../work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md).
 The source stays read-only. This record tracks remaining M0/M1 evidence;
 the file-level ledger is [source inventory](source-inventory.tsv).
+
+## Remaining acceptance gates
+
+The dated checkpoints below record earlier states. The following evidence supersedes their open totals and historical access limitations.
+
+| Question | Owner, evidence and remaining condition |
+| --- | --- |
+| Was the pinned tree preserved? | Migration operator compared the 3,515 Git paths, blob IDs, modes and sizes, and all 102 branch witnesses. See [branches](branch-evidence.md), [historical files](history-evidence.md), [work records](work-evidence.md) and [file dispositions](source-inventory.tsv). Recheck the source delta before cutover. |
+| Does the ordinary workflow work? | [Disposable operations](operation-evidence.md) exercised method selection, isolated delegation, Linux installation, authority denials, interrupted work and restart. The [candidate PR](https://github.com/BigCatMellow/MAPSL/pull/2/checks) holds the latest checks. |
+| Do the missing historical records block preparation? | The owner resolved this gate on 2026-11-25. See the [historical evidence decision](#historical-evidence-decision) for the three unverified claims and their retained evidence. |
+| Can this be integrated? | The source's September 5 merge-friction entry was subsequently closed. Successor governance is separate. Public GitHub branch/ruleset reads reported successor main unprotected and no rulesets. The default branch lacks a trusted gate. The owner must authorize bootstrap design/installation and decide cutover under the [successor controls](../docs/CHECKS_AND_BALANCES.md#successor-merge-controls). Standing authority is revoked; wiki publication is gated. |
+| What remains conditional? | [Work audit](work-evidence.md) routes the five reported concerns and open source issues. [Branch audit](branch-evidence.md) preserves unmerged work, including #341 and its custody gates. The [master roadmap](../work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md) sets the priorities and tests for reopening. |
+
+## Historical evidence decision
+
+On 2026-11-25 the owner approved retaining the following three claims as
+**unverified historical records** and continuing migration preparation. Keep
+the supporting evidence and its limitations. No completion or final sign-off
+is credited for any of the three. Reassess a claim if its original or a
+matching dated receipt is recovered. Bootstrap and cutover authority are separate.
+
+The earlier cross-project handoff inventory predates the September 15 entry.
+Git refs, the archive catalog, and the available handoff, file and attachment
+searches did not yield either missing original.
+
+| Claim | Retained evidence and gap |
+| --- | --- |
+| September 15 PLAN calibration handoff | [Source register and trajectory evidence](work-evidence.md#open-obligations-and-historical-proofs) confirm registration of the external handoff `MAPS_Lean_Handoff_2026-09-15-session-bobo-plan-calibration.md`. Its original and any matching review or continuation receipt remain unlocated. |
+| TASK-311 collision-resolution report | [Historical review and separate collision check](history-evidence.md#tasks-and-repairs) remain available. The review reported indirect custody. The primary `ws2-output-collision-resolution.md` remains unlocated. |
+| TASK-297 operator's final sign-off | [Historical task audit](history-evidence.md#tasks-and-repairs) records reviewer approval and implementation evidence. The final operator sign-off remains unlocated. |
 
 ## Verified baseline
 
 - Pinned source main 605ce610e0be3334d1da7af2a7c6f5912b6cc05f; exact inventory 3,515 files, 31 executable, no symlink or submodule entries in the returned tree.
 - Source runtime CI [success](https://github.com/BigCatMellow/MAPS_Lean/actions/runs/45405604013). No successor runtime parity assertion.
 - All 35 master capability IDs and 45 subsystem milestone IDs recovered from the source checklist and mapped to objective programs. Source DONE is not successor DONE.
-- 51 original foundation files staged by exact Git blob and mode, including 25 playbooks and 18 templates; the roadmap router has since been deliberately replaced with a concise route. No fresh independent review. Secret-pattern screening of transferred text is limited, not a comprehensive security audit.
+- Initial staging included 51 original foundation files by exact Git blob and mode, including 25 playbooks and 18 templates. The roadmap router was later replaced with a concise route. The [independent review receipt](../work/reviews/pr-2-review-evidence.md) records subsequent review. Secret-pattern screening of transferred text is limited, not a comprehensive security audit.
 - The successor retains existing work/roadmaps paths, rather than renaming to roadmap/, to avoid breaking tooling and references without benefit. Original detailed designs remain reachable through pinned source links. Consolidation is a candidate until reviewed.
-- Source checkout unavailable: container DNS cannot resolve github.com. Connected GitHub reads/writes work. Local runtime execution and external machine paths are not available. CI can verify repository-only checks when configured.
+- Initial staging relied on the GitHub connector and CI because the session could not clone from GitHub. The later integrated review used an isolated clone. External machine paths remain outside the repository.
 
 ## Previously hidden or competing planning sources
 
@@ -24,10 +54,10 @@ the file-level ledger is [source inventory](source-inventory.tsv).
 | [October goal remap](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/research/evaluation-and-reliability/2026-10-20-think-plan-maps-goal-remap.md) | Preserve source rationale, not external-pilot-first mandate. |
 | [November reconciliation proposal](https://github.com/BigCatMellow/MAPS_Lean/tree/a4f9becb20eecb4090790d777454872aeca0ec96) | Eight changed paths, unmerged. Adopt objective/coverage lessons as appropriate; external pilot priority no longer matches operator direction. Regression check candidate requires execution/review. |
 | docs/method-selection-no-sprawl-20261021 | Two commits ahead of divergence; candidate PROJECT_BOOTSTRAP/roadmap router, compare against merged native THINK/PLAN and avoid duplicate rules. |
-| [#341](https://github.com/BigCatMellow/MAPS_Lean/pull/341) | Only open source PR; head 3f5e6fb332ac5d7f51031f3c0bac2be857d974e5. Benchmark parked; selection revision still needs review, Gate 1 Arm C and Gate 4/5 custody unresolved. Preserve pinned branch and evidence; no run, spend or approval. |
+| [#341](https://github.com/BigCatMellow/MAPS_Lean/pull/341) | Open source PR at `3f5e6fb`. The [branch evidence](branch-evidence.md#forward-requirements-recovered-from-divergent-branches) records exact control-text approval. Revision-3 review, selection and corpus custody remain open. Preserve the evidence and parked execution boundary. |
 | [#247](https://github.com/BigCatMellow/MAPS_Lean/issues/247), [#248](https://github.com/BigCatMellow/MAPS_Lean/issues/248), [#331](https://github.com/BigCatMellow/MAPS_Lean/issues/331) | Routed to continuity/reasoning and operational reliability; actual implementation still conditional/pending. |
-| [Ideas](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas), [insights](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights), [friction](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/coordination/FRICTION_LOG.md) | 8 ideas, 12 insights and dated friction records retained; full dispositions require checking promoted/stale/resolved evidence and open records. Source merge authorization friction UNVERIFIED: verify new successor governance before use. |
-| [Handoff register](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/handoffs/README.md) | 64 recorded handoffs (55 continued, 7 closed, 1 open, 1 acknowledged in prior audit). Open external bobo PLAN calibration file inaccessible; acknowledged legacy navigation/simulation handoff needs successor decision. Verify continued pointers; cannot treat as closed. |
+| [Ideas](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas), [insights](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights), [friction](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/coordination/FRICTION_LOG.md) | 8 ideas, 12 insights and dated friction records retained; full dispositions require checking promoted/stale/resolved evidence and open records. The source log later closed the September incident. Verify successor governance independently before use. |
+| [Handoff register](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/handoffs/README.md) | 64 recorded handoffs (55 continued, 7 closed, 1 open, 1 acknowledged in prior audit). The external PLAN calibration handoff has an [approved historical disposition](#historical-evidence-decision). See the [work audit](work-evidence.md#open-obligations-and-historical-proofs) for the acknowledged navigation/simulation handoff. |
 | [Review queue](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/review_queue/README.md) | Five old QUEUED packets; reconcile to live source review/merge and tests; do not blindly restart or mark done. |
 | [Research index](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/research/README.md), [legacy audit](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/LEGACY_KNOWLEDGE_AUDIT.md), [idea recovery audit](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/LEGACY_IDEA_RECOVERY_AUDIT.md), [promotion ledger](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/LEGACY_PROMOTION_LEDGER.md), [future backlog](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/FUTURE_IDEAS_BACKLOG.md) | Existing audits support keeping historical source trees in place. The older idea recovery audit has explicit remaining audit work; do not mark all 2,474 historical files semantically resolved from their classification. Preserve candidate triggers, examine unresolved lessons, then disposition by group. |
 | Pilot Project Folder, competitor add-ons, Map the System, HCOM messages, Wiki update | Reported open concerns, original requirements need recovery. Route to portability, learning, continuity, coordination and usability; no speculative closure. |
@@ -36,12 +66,9 @@ the file-level ledger is [source inventory](source-inventory.tsv).
 
 The source AGENTS.md is staged byte-for-byte, including its repository-specific
 OPCMD policy. It is not yet activated on main. Old standing authorization and
-repository configuration do not transfer. The source review/merge process must
-be mapped into a usable successor gate without weakening human authority,
-exact-head independent review, CI or fail-closed HOLD. No independent reviewer
-is available in this session; do not self-approve. Preserve and prepare
-independent slices while this is unresolved. The owner need not review
-technical detail personally.
+repository configuration do not transfer. The [independent technical review](../work/reviews/pr-2-review-evidence.md)
+records the reviewed revision and scope. Default-branch integration still
+requires the [successor merge controls](../docs/CHECKS_AND_BALANCES.md#successor-merge-controls).
 
 ## Dependencies and next verification
 
@@ -61,6 +88,110 @@ dependency order; verify actual wiring, not just unit-test existence. External
 target state, old local .maps databases and uncommitted files remain UNKNOWN.
 Recover through the owner's environment if needed; no transfer of credentials,
 live databases or paid execution is authorized.
+
+## Idea and insight dispositions (candidate, source evidence inspected)
+
+All 20 current source records were read at their disposition sections. These routes preserve open issues and prior closure decisions without treating the successor as verified. Promoted-but-unverified items require direct evidence, and open candidates do not become new tasks automatically.
+
+| Source record | Proposed disposition / owning concern |
+| --- | --- |
+| [IDEA-582cc671](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-08-19-name-a-low-effort-zero-diff-re-review-tier-in-model-capabili-IDEA-582cc671.md) | Source stale/implemented #297, residual #345. Preserve review revalidation regression, no duplicate task. |
+| [IDEA-20615e4d](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-08-19-standardize-per-agent-isolated-git-worktrees-as-the-default--IDEA-20615e4d.md) | Source superseded by worktree method plus #350 contract link. Preserve isolation rule and executed guard tests. |
+| [IDEA-bc6cd243](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-03-a-stale-worktree-prune-report-step-in-coordination-housekeep-IDEA-bc6cd243.md) | Promoted in coordination tooling branch; verify landed prune/report behavior. Reliability; no destructive prune without boundary. |
+| [IDEA-968eb261](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-03-check-review-evidence-py-should-tolerate-a-pure-rebase-onto--IDEA-968eb261.md) | Source stale/implemented #297; #345 resolves rebase residual. Safety/evidence regression. |
+| [IDEA-a134ad7c](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-03-exclude-claude-worktrees-from-check-spiderweb-py-by-default-IDEA-a134ad7c.md) | Promoted in tooling fixes; verify scanner excludes transient worktrees without hiding actual source. Continuity. |
+| [IDEA-9e7014fa](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-03-fix-coordination-housekeeping-py-it-crashes-on-gh-pr-list-IDEA-9e7014fa.md) | Promoted in tooling fixes; reproduce actual housekeeping call on successor with no external effects. Reliability. |
+| [IDEA-fe6c0f0f](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-05-revalidation-review-tier-s-ancestor-check-never-fires-on-a-p-IDEA-fe6c0f0f.md) | Source implemented and reviewed #345; preserve diff-equivalence acceptance tests. Safety/evidence. |
+| [IDEA-497fca2f](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/ideas/2026-09-10-track-rows-awaiting-a-first-exposure-exercise-in-a-standing--IDEA-497fca2f.md) | Open first-exposure tracking idea: use existing capability evidence row and tests, not another standing list. Reliability and continuity. |
+| [INSIGHT-29a10ad4](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-08-19-check-review-evidence-py-s-head-sha-walk-back-stops-silently-INSIGHT-29a10ad4.md) | Known merge-commit review-evidence walkback constraint; retain provenance/verification tests and document limits, not weaken gate. |
+| [INSIGHT-e0b448a6](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-08-19-recoverysupervisor-tick-has-zero-production-invocation-anywh-INSIGHT-e0b448a6.md) | Source resolved trigger #165; preserve recovery-tick and claim behavior tests, recheck HCOM optionality. |
+| [INSIGHT-75785aae](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-08-19-the-harness-layer-h4-h5-l6-sec4-waves-has-zero-production-ca-INSIGHT-75785aae.md) | Source resolved production caller #277, actual default/guard coverage still separate H4/SEC3. Reliability. |
+| [INSIGHT-102296b5](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-03-maps-recovery-tick-enforce-canonical-run-may-be-structurally-INSIGHT-102296b5.md) | Source resolved real-stall exercise DEC-003/#298; no automatic repetition, preserve regression evidence. |
+| [INSIGHT-651d8c62](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-03-the-7-row-security-cluster-has-been-one-step-from-done-for-1-INSIGHT-651d8c62.md) | Source resolved specific seven-row stall; original L6 status contradiction and guard coverage remain evidence questions. |
+| [INSIGHT-45727354](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-03-the-friction-log-behavioral-entry-path-lets-repeat-failures--INSIGHT-45727354.md) | Owner KEEP; no automatic task. Repeated drift must have mechanical safeguard; existing triage/repair owner. |
+| [INSIGHT-68a53a28](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-03-the-roadmap-trajectory-check-has-become-part-of-the-developm-INSIGHT-68a53a28.md) | Owner KEEP; trajectory cadence should track meaningful arcs, avoid constant checklist bureaucracy. |
+| [INSIGHT-ab696436](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-04-design-decision-notes-carry-stale-forward-references-to-work-INSIGHT-ab696436.md) | Specific DEC-003 resolved #284; general stale prerequisite references remain continuity gap, check actual accepted head before claiming blocked. |
+| [INSIGHT-a6406800](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-04-triage-status-py-earned-its-keep-on-its-first-real-trajector-INSIGHT-a6406800.md) | Retain existing triage_status.py and tests; confirms mechanical check caught omission. Learning/continuity. |
+| [INSIGHT-f095b669](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-10-outward-facing-representations-have-no-reconciliation-cadenc-INSIGHT-f095b669.md) | Open: reconcile wiki/README outward projections at meaningful arc, no parallel status tracker. Usability. |
+| [INSIGHT-2b8b9a4b](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-12-gh-cli-merge-authorship-cannot-distinguish-an-agent-from-the-INSIGHT-2b8b9a4b.md) | Promoted native review protection candidate; no settings mutation authorized. Verify successor exact-head independence and identity governance before activation. |
+| [INSIGHT-bbb3b845](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/insights/2026-09-12-new-standing-registers-created-without-a-named-reconciliatio-INSIGHT-bbb3b845.md) | Open: every standing register must have reconciliation owner/cadence. Use existing trajectory check. |
+
+Tool/environment friction this arc: local clone failed DNS; connector has bounded call count and one remote disconnect. Recovery: pinned-tree batches limited to 8–12 reads, source/destination SHA+mode checks before atomic ref update. No credentials moved; one pattern match in redaction test was an explicit synthetic fixture. Record remaining local state UNKNOWN. Future recurring tool friction belongs in existing repair/learning flow, not a new tracker.
+
+## Historical audit reconciliation checkpoint — 2026-11-24
+
+Corrected integration [CI run 45419052227](https://github.com/BigCatMellow/MAPSL/actions/runs/45419052227) completed successfully in both runtime and coverage jobs. Runtime log reports 1,502 tests, OK (5 skipped); compilation, lint, security analysis, dependencies, smoke and inventory checks passed. This is CI evidence, not independent review. Source main comparison against the pinned baseline returned identical (zero ahead/behind).
+
+The pinned legacy idea-recovery audit and promotion ledger were inspected again. Preserve their distinctions rather than resurrecting historical implementations. Route the recovered obligations into existing master roadmap programs:
+
+| Program | Historical evidence and required disposition |
+| --- | --- |
+| Direction and continuity | Audit items 8, 9, 11, 18: actual-use checks, single state authority, derived wait visibility, reachable/correctable state transitions. Preserve bounded audit practice; no permanent watcher or duplicate state. |
+| Reasoning and context | Items 4–6: frozen end-to-end context rubric, explicit authority boundaries, exact anchors, paraphrase and hard-negative tests. EXP-0006 was REVISE, not a successful retrieval implementation. |
+| Execution and reliability | Item 12: no-progress advisory only when measured need exists; no automatic kill or naive timeout. Preserve source atomic claim, isolation and terminal recovery regressions. |
+| Safety and evidence | Items 1, 13–17: durable write-surface secret safety, fresh/revision-bound evidence, behavioral security tests, risk-specific review, explicit ratification and prerequisite ordering. No proposal becomes authority by citation. |
+| Learning and evaluation | Items 2, 3, 7, 10, 19: three-layer evaluation, scoped lessons with expiry, bounded proposal-only discovery, end-to-end scenarios, measured review changes. No continuous discovery loop. |
+| Usability and portability | Preserve read-only status/replay concepts with completeness and provenance; old desktop/TUI/launchers and fixed rosters remain historical, not required infrastructure. |
+
+Source promotion ledger explicitly classifies old task/event/handoff/review datasets as historical and rejects obsolete presentation implementations. Preserve pinned originals; do not copy live state or restart old tasks by default. The curated snapshots remain in the source. The legacy audit explicitly leaves unresolved MAP-relevant Insights, unfinished promotions, retired task chains and referenced research unexamined. These remain PENDING; this checkpoint does not establish semantic coverage of all 2,474 historical files. Next pass should screen those targeted records and check the current runtime before closing each group.
+
+## Review queue and targeted insight reconciliation — 2026-11-24
+
+All five source review packets were read. They refer to [PR #19](https://github.com/BigCatMellow/MAPS_Lean/pull/19), now closed with zero recorded GitHub reviews. Its implementation commit 0776a6b45490d85487c725474e9d3bbf600524da is an ancestor of the pinned main (936 commits ahead, zero behind). The candidate ledger records exact staging of the four runtime surfaces and corresponding original tests. Preserve packets as historical review inputs; do not manufacture approval or restart five implementation tasks.
+
+| Packet | Successor review focus |
+| --- | --- |
+| Priority observability | Trace remains read-only, secret-safe boundaries and explicit coverage gaps; retain authority and risk-specific review rules. |
+| Outcome feedback | DONE-only observations, immutable supersession and task/run provenance; no task authority mutation. |
+| Context Builder v1 | Explicit input relationships, path confinement, hashes and coverage limits; no implicit retrieval authority. |
+| Status surface | Canonical read-only attention projection, correct outcome supersession, explicit gaps. |
+| PR CI | Read-only PR verification; confirm required checks and installer/legacy independence coverage before acceptance. |
+
+Eight targeted historical insights were read in full from the pinned source:
+
+- INS-0023 (RAW): inward infrastructure repeatedly displaced useful outcomes. Fold into Direction and continuity; current master outcome and actual-use acceptance address the concern in intent, not yet proven in practice. Do not impose an external pilot.
+- INS-0032 (OPEN), INS-0053 (OPEN): rules buried in prose were repeatedly missed. Fold into controlled learning and behavioral enforcement; prove applicable guidance actually reaches agents and consequential guards execute. No duplicate global rules.
+- INS-0054 (PROMOTED): remote authority network denial differs from local SQL denial; preserve explicit failure reasons, no classifier exemptions or automatic policy-denial retries. Old remote architecture remains historical.
+- INS-0055 (PROMOTED): a checked discovery box did not establish useful discovery. Preserve bounded event-triggered, proposal-only discovery; no automatic model invocation or blanket release ritual.
+- INS-0056 (PROMOTED): lessons from authorized method-only work can be lost without a formal task. Preserve opt-in learning without importing work into governance or expanding authority.
+- INS-0059 (RAW): privileged mutation review caught arbitrary restore and transactional snapshot races. Preserve adversarial security and concurrency review for applicable paths, not old cross-host implementation.
+- INS-0061 (RAW): scanner evidence pointed at unrelated events; separate uncommitted curation also caused duplicate processing. Preserve exact event attribution, source freshness and canonical reconciliation tests when implementing learning/eval signals; do not revive the legacy scanner.
+
+These are proposed semantic dispositions within the existing roadmap programs. Current runtime behavior beyond the staged tests still requires direct verification; other Insights, promotions and retired task chains remain pending.
+
+Migration friction: [CI run 45423585107](https://github.com/BigCatMellow/MAPSL/actions/runs/45423585107) caught a stale staged-adapted hash for state/CURRENT.md after the previous checkpoint edit. The ledger was repaired using the actual destination blob in commit 33e203673a5516f5561b860f496dfc23c7a1bece. Keep the existing fail-closed check. Future edits to staged destinations must reconcile the ledger in the same change; prefer atomic tree commits. Fresh CI remains required.
+
+## Branch comparison checkpoint — 2026-11-24
+
+[CI run 45423873562](https://github.com/BigCatMellow/MAPSL/actions/runs/45423873562) passed runtime and coverage after the ledger repair. The following comparisons were made against pinned source main, not against moving branch heads. All 17 checked branches diverge; divergence alone is not proof of unmerged functionality.
+
+| Branch | Ahead/behind | Observed disposition evidence |
+| --- | --- | --- |
+| agent/operational-learning-authority1-wave4 | 2/515 | Storage code contains all old lines and newer active-lesson read projection; preserve newer source, check schema/tests/brief before closing. |
+| agent/recovery-stage2-run-id-wiring | 1/515 | run_lineage.py exact; supervisor newer harness integration; check regression tests before closing. |
+| agent/repo-cleanup-status-fix | 1/519 | Sole changed async-work-pull document blob identical; no unique file content. |
+| agent/repair-record-stalled-worker | 1/513 | Sole changed note now includes explicit operator closure and sharded-test regression evidence; retain closed disposition, not new work. |
+| agent/pin-hcom-fork-source | 1/518 | Installer exact; install docs contain old lines plus portable-target guidance; retain optional HCOM, no installation/external action. |
+| agent/review-enforcement-design | 1/517 | Sole design note adds recorded Option B choice and limitation: evidence file cannot prove identity independence. Old standing authority does not transfer. |
+| agent/task-briefs-authority1-recovery2 | 1/516 | Two task briefs; compare current dispositions before closure. |
+| agent/stalled-work-triage-protocol | 1/514 | Coordination README; compare actual current guidance. |
+| ask1-control-plane-runbook | 3/276 | Runbook and review evidence; inspect current version and avoid activating old setup. |
+| agent/runtime-readme-refresh | 6/510 | Runtime README and review evidence; compare current version. |
+| agent/review-evidence-check | 5/511 | Newer script adds content-equivalent rebase validation; preserve newer safety tests; other changed files pending. |
+| canonical-denied-tick-state | 2/332 | Recovery store/supervisor/test, setup, review and checklist; compare current guarded denial behavior. |
+| ci/handoff-receipt-registration-check | 2/142 | Script and original test exact; workflow, trajectory and evidence remain to reconcile. |
+| chore/friction-log-triage-loop-20260831 | 6/343 | Legacy rotation plus active repair/trajectory/handoff/friction; distinguish obsolete code from lessons. |
+| chore/repository-organization-2026-10-06 | 20/122 | Organization, legacy retention and navigation; preserve source decisions, inspect remaining differences. |
+| chore/friction-rotation-followup-20260831 | 3/341 | Friction record and evidence; check later dispositions. |
+| canonical-enforcement-first-exposure-design | 4/339 | Design note exact; review evidence pending. |
+
+No older branch was merged. Remaining branch-only changes and semantic obligations stay pending. See the pinned refs below.
+
+## Reference dispositions and portability checkpoint — 2026-11-24
+
+The inventory now records 139 REFERENCE dispositions: 104 historical YAML handoff snapshots, one historical event dataset, six old review-queue documents, 20 already-reconciled current-source idea/insight records, and eight inspected legacy insight records. Each row points to its exact pinned original, rationale and evidence. Source legacy handoff/event/inbox indexes and the earlier audit were inspected; historical data must not become live state. This classifies file custody, not the completeness of all semantic obligations; unresolved retired task chains, promotions, current handoffs and other unique lessons remain PENDING. 343 files remain staged but not accepted; 3,033 additional source paths lack staging/disposition. See commit 5a729da8e1db794ff1d20849b7be7b9e1a7d0ec2.
+
+The [green integration run](https://github.com/BigCatMellow/MAPSL/actions/runs/45423873562) reports all 21 portable-target preflight/init tests passing, including explicit roots, wrong types, self-targets, symlink boundaries, preview nonmutation, idempotency and non-overwrite. The smoke test also passed its no-legacy-execution-dependency assertion. Comparing the original runtime-stack workflow with successor migration coverage revealed two missing explicit steps: the full active legacy-dependency scanner and installer syntax/preview. Restored both in commit 33b02fb2a3c6d9dff80655d03e605841793746a7, with preview checks for absent .venv/.maps/.hcom and clean tracked status. This is read-only CI verification; no external installation or target project mutation. Fresh CI for these changes and a disposable full fresh-install exercise remain required.
 
 ## Source branch inventory
 

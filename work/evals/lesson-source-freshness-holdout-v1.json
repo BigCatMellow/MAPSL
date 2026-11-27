@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "H01",
+      "family": "release-bundle-index",
+      "claim": "Include the archive index digest in the release evidence.",
+      "expected": ["PROMOTED", "ADMITTED"]
+    },
+    {
+      "id": "H02",
+      "family": "requirements-handoff",
+      "claim": "Include the acceptance criteria revision in the implementation handoff.",
+      "source": "outcome_without_run",
+      "expected": ["PROMOTED", "ADMITTED"]
+    },
+    {
+      "id": "H03",
+      "family": "schema-doc-review",
+      "claim": "Check the example record against the documented required fields.",
+      "scope": "task_type",
+      "expected": ["PROMOTED", "ADMITTED"]
+    },
+    {
+      "id": "H04",
+      "family": "maintainer-onboarding",
+      "claim": "Name the source of truth for ownership changes in the handoff.",
+      "scope": "global",
+      "expected": ["PROMOTED", "ADMITTED"]
+    },
+    {
+      "id": "H05",
+      "family": "chart-data-check",
+      "claim": "Reconcile displayed totals against the frozen input table.",
+      "events": ["unrelated_outcome", "promote"],
+      "expected": ["PROMOTED", "ADMITTED"]
+    },
+    {
+      "id": "H06",
+      "family": "draft-template-review",
+      "claim": "Preview an example using the template before sharing it for review.",
+      "scope": "task_type",
+      "events": ["promote", "unrelated_outcome"],
+      "expected": ["PROMOTED", "ADMITTED"]
+    },
+    {
+      "id": "H07",
+      "family": "bibliography-audit",
+      "claim": "Verify the cited edition before resolving a conflicting page reference.",
+      "source": "outcome_without_run",
+      "events": ["promote", "unrelated_outcome"],
+      "expected": ["PROMOTED", "ADMITTED"]
+    },
+    {
+      "id": "H08",
+      "family": "review-instructions",
+      "claim": "Attach the reviewed revision to the review decision.",
+      "source": "other",
+      "expected": ["PROMOTED", "ADMITTED"]
+    },
+    {
+      "id": "H09",
+      "family": "search-index-assessment",
+      "claim": "Record the normalization method used to prepare the index.",
+      "events": ["correct_source", "promote"],
+      "expected": ["REFUSED", "WITHHELD"]
+    },
+    {
+      "id": "H10",
+      "family": "report-format-evaluation",
+      "claim": "Run the page overflow check on the longest table.",
+      "events": ["promote", "correct_source"],
+      "expected": ["PROMOTED", "WITHHELD"]
+    },
+    {
+      "id": "H11",
+      "family": "design-asset-review",
+      "claim": "Compare generated labels with the approved symbol glossary.",
+      "mismatch": true,
+      "expected": ["PROMOTED", "WITHHELD"]
+    },
+    {
+      "id": "H12",
+      "family": "input-validation-retrospective",
+      "claim": "Record which empty fields are legal before building validation fixtures.",
+      "events": [],
+      "expected": ["SKIPPED", "WITHHELD"]
+    },
+    {
+      "id": "H13",
+      "family": "catalog-review-window",
+      "claim": "Verify archived links using a frozen list of known good destinations.",
+      "window": "expired",
+      "expected": ["PROMOTED", "WITHHELD"]
+    },
+    {
+      "id": "H14",
+      "family": "localization-style-check",
+      "claim": "Include a screenshot for each locale with wrapping constraints.",
+      "events": ["promote", "retire"],
+      "expected": ["PROMOTED", "WITHHELD"]
+    },
+    {
+      "id": "H15",
+      "family": "summary-reconciliation",
+      "claim": "Trace report totals to the same version of the input workbook.",
+      "source": "missing_outcome",
+      "expected": ["REFUSED", "WITHHELD"]
+    },
+    {
+      "id": "H16",
+      "family": "sample-data-rollup",
+      "claim": "Preserve group labels when combining sample measurements.",
+      "source": "missing_binding",
+      "expected": ["REFUSED", "WITHHELD"]
+    }
+  ]
+}

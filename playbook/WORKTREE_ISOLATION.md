@@ -31,7 +31,6 @@ From the shared checkout (read-only for this step — `fetch` never mutates
 branch state):
 
 ```bash
-cd ~/Projects/MAPS_Lean
 git fetch origin main
 git worktree add /tmp/<descriptive-name> -b <branch-name> origin/main
 ```
@@ -49,7 +48,7 @@ gh pr create --title "..." --body "..."
 Once the push/PR has succeeded, clean up:
 
 ```bash
-git worktree remove /tmp/<descriptive-name> --force
+git worktree remove /tmp/<descriptive-name>
 ```
 
 Do not remove the worktree before the push/PR succeeds — if something fails

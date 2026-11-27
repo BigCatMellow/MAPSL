@@ -2,8 +2,7 @@
 
 This index is **navigation, not a second operating contract**. Repository-wide
 authority/behavior live in [`AGENTS.md`](../AGENTS.md); these files are reusable
-methods inside that authority. Historical material lives under `migration/` or
-`legacy/` and is not part of the normal read path.
+methods inside that authority. The [migration evidence](../migration/reconciliation.md) links the pinned historical sources.
 
 ## Authority and reading budget
 
@@ -76,7 +75,7 @@ ownership.
 | Need | Route | Boundary |
 | --- | --- | --- |
 | Fresh control-plane install/verification | [Control-Plane Setup](../docs/CONTROL_PLANE_SETUP.md) | Setup/migration only; keep database/runtime responsibility separate from authority. |
-| Portable control-plane deployment planning | [Portable Deployment roadmap](../work/roadmaps/agent-harness-capabilities/06-portable-deployment.md) | Current deployment roadmap; not a global operating rule. |
+| Portable control-plane deployment planning | [Master roadmap](../work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md#outcome-driven-priorities-after-migration) | Usability and portability priorities; not a global operating rule. |
 | Session continuation/recovery | [Current state](../state/CURRENT.md) + [handoff template](../templates/handoff.md) | Continuation state/evidence only; does not expand task authority. |
 
 ## Adding or changing a method
@@ -95,10 +94,10 @@ not a reason to merge distinct responsibilities.
 
 ## Legacy audit and migration sources
 
-For historical provenance use [Legacy Knowledge Audit](../migration/LEGACY_KNOWLEDGE_AUDIT.md),
-[Legacy Promotion Ledger](../migration/LEGACY_PROMOTION_LEDGER.md),
-[Future Ideas Backlog](../migration/FUTURE_IDEAS_BACKLOG.md), and
-[Legacy Removal Checklist](../migration/LEGACY_REMOVAL_CHECKLIST.md).
+For historical provenance use [Legacy Knowledge Audit](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/LEGACY_KNOWLEDGE_AUDIT.md),
+[Legacy Promotion Ledger](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/LEGACY_PROMOTION_LEDGER.md),
+[Future Ideas Backlog](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/FUTURE_IDEAS_BACKLOG.md), and
+[Legacy Removal Checklist](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/migration/LEGACY_REMOVAL_CHECKLIST.md).
 Migration snapshots are reference only; active runtime code must not execute
 from them. Newer migration audit/ledger evidence outranks older source mapping
 for legacy-removal decisions.

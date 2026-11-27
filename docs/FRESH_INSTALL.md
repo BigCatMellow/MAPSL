@@ -1,6 +1,6 @@
 # Fresh Clone Setup
 
-For Linux/macOS, use the preview-first installer from the repository root:
+Start from the [migration candidate](https://github.com/BigCatMellow/MAPSL/tree/migration/runtime-core) while the migration is in draft. For a runtime installation on Linux/macOS, run the preview from the repository root. The Markdown operating method and bounded agent coordination work directly in the checkout.
 
 ```bash
 bash scripts/install_maps.sh
@@ -87,7 +87,7 @@ real project task database.
 
 ## External Git project: portable Markdown convention (candidate)
 
-From the MAPS_L clone, point both commands at **existing, distinct Git roots**.
+From the MAPSL clone, set `target` to the absolute path of the target checkout. Supply **existing, distinct Git roots**.
 Paths must be canonical, with no symlinked roots. This portable-v1 path is
 independent of the MAPS runtime installer above and does **not** set up SQLite,
 hcom, dependencies, Git hooks, CI, or target-project code execution.
@@ -95,20 +95,20 @@ hcom, dependencies, Git hooks, CI, or target-project code execution.
 Read-only inspection:
 
 ```bash
-python3 scripts/portable_target_preflight.py --maps-root /path/to/MAPS_Lean --target-repo /path/to/project
+python3 scripts/portable_target_preflight.py --maps-root . --target-repo "$target"
 ```
 
 Preview initialization (also read-only):
 
 ```bash
-python3 scripts/portable_target_init.py --maps-root /path/to/MAPS_Lean --target-repo /path/to/project
+python3 scripts/portable_target_init.py --maps-root . --target-repo "$target"
 ```
 
 Explicitly initialize missing `.maps/` Markdown and task/review/handoff
 directories only after inspecting the preview:
 
 ```bash
-python3 scripts/portable_target_init.py --maps-root /path/to/MAPS_Lean --target-repo /path/to/project --apply
+python3 scripts/portable_target_init.py --maps-root . --target-repo "$target" --apply
 ```
 
 Existing target files are never overwritten. Inspect generated files and
@@ -118,10 +118,25 @@ The first real external-project pilot (Roadmap D3) remains a separate gate.
 
 ## Windows
 
-The Bash installer is not the Windows installer. Follow
-`docs/CONTROL_PLANE_SETUP.md` manually from PowerShell for now. The Python
-runtime and smoke command remain portable once the virtual environment and
-dependencies are installed.
+From the clone root in PowerShell with Python 3.12 installed, create a local environment.
+
+```powershell
+py -3.12 -m venv .venv
+```
+
+```powershell
+$mapsPython = ".\.venv\Scripts\python.exe"
+```
+
+```powershell
+& $mapsPython -m pip install -r runtime/requirements.txt
+```
+
+```powershell
+& $mapsPython -m runtime.smoke --with-langgraph
+```
+
+The portable target initializer currently uses POSIX directory descriptors. Use Linux or macOS for its apply step.
 
 ## No legacy dependency
 

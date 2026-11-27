@@ -1,12 +1,13 @@
 # Current state
 
-Migration authorized 2026-11-24. Original MAPS_Lean remains untouched.
+The parent objective is a reversible migration from MAPS_Lean that preserves working behavior and gives the next operator one outcome-driven roadmap. The [migration plan](../migration/PLAN.md) owns acceptance. [PR #2](https://github.com/BigCatMellow/MAPSL/pull/2) contains the integrated candidate stacked on [foundation PR #1](https://github.com/BigCatMellow/MAPSL/pull/1). Review the integrated tree.
 
-- Parent: [migration plan](../README.md).
-- Current outcome: reconcile source and prepare the operating foundation for review.
-- Current candidate: [master roadmap](../work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md); [80-ID evidence view](../work/roadmaps/CAPABILITY_CHECKLIST.md).
-- Evidence: [source inventory](../migration/source-inventory.tsv), [reconciliation](../migration/reconciliation.md).
-- Next eligible work: resolve source-specific authority/merge and link assumptions; migrate dependency-complete runtime/test slices and verify; continue semantic reconciliation.
-- Blockers to acceptance: fresh independent review unavailable; successor merge gate not established; local source checkout and external records inaccessible. Do not self-approve, declare source proof successor proof, or change original repo.
+- **Coverage.** [File dispositions](../migration/source-inventory.tsv) cover the 3,515 files at source main `605ce610e0be3334d1da7af2a7c6f5912b6cc05f`. [Branch evidence](../migration/branch-evidence.md) accounts for all 102 pinned refs. The [work](../migration/work-evidence.md) and [history](../migration/history-evidence.md) audits identify retained obligations, negative results and evidence gaps.
+- **Operating evidence.** [Practical checks](../migration/operation-evidence.md) cover method-only work, isolated delegation and fresh Linux runtime installation without HCOM, target initialization, interrupted ownership, authorization and independent-review denials. [Live candidate checks](https://github.com/BigCatMellow/MAPSL/pull/2/checks) own the current CI result.
+- **Framework.** [Operating workflow verification](../work/tasks/framework-operating-workflow.md) records the connected runtime path and remaining framework integrations. The [runtime guide](../runtime/README.md#how-the-framework-connects) maps components to their actual entry points.
+- **Research and development.** [Current R&D report](../work/research/2026-11-26-rd-status.md) records what the startup fix proves, measured research results and the remaining integration order.
+- **Historical evidence.** The owner approved retaining all three missing claims as unverified history. [Decision and evidence](../migration/reconciliation.md#historical-evidence-decision).
+- **Next action.** Verify source drift, CI and review against live revisions before integration. Once checks are current, the next decision is whether to authorize the trusted bootstrap. Use the [master roadmap](../work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md#delivery-order) to resume after cutover.
+- **Integration boundary.** The owner's cutover decision, trusted default-branch bootstrap and real successor branch protection are outstanding. The standing merge record is revoked. A technical review of the candidate cannot confer deployment or merge authority. See [checks and balances](../docs/CHECKS_AND_BALANCES.md#successor-merge-controls).
 
-This is a restart pointer, not a second status database.
+The [master roadmap](../work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md) owns future priorities. Use its [evidence checklist](../work/roadmaps/CAPABILITY_CHECKLIST.md) for individual capabilities.

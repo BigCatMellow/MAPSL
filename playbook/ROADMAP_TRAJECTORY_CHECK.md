@@ -84,20 +84,16 @@ Record in the trajectory note that the log was reviewed and what was found
 
 ## Handoff-register reconciliation (every pass)
 
-`scripts/check_handoff_receipts.py` (CI, every PR) only covers the in-repo half
-of the durable-handoff system: [`work/handoffs/`](../work/handoffs/). The
-dated session-handoff files at `/home/home/MAPS_Lean_Handoff_*.md` are outside
-any git repo, so no CI can ever see them — this pass is the only mechanism
-that can. This exists because the very first two handoffs written after PR
-#340 introduced the register (sessions 42 and 43) both skipped it, caught only
-by a one-off manual audit, exactly the drift `INSIGHT-bbb3b845` predicted for
-a new standing register with no reconciliation owner.
+`scripts/check_handoff_receipts.py` checks the [in-repo register](../work/handoffs/README.md).
+For files stored elsewhere, check only the locations identified for the approved project.
+The original project used `/home/home/MAPS_Lean_Handoff_*.md`; the first two
+post-register handoffs omitted their receipts. A new checkout cannot verify those
+files. Record unavailable sources, custody and the condition for resolving them.
 
 Every trajectory-check pass:
 
-1. List `/home/home/MAPS_Lean_Handoff_*.md` newest-first
-   (`ls -1 /home/home/MAPS_Lean_Handoff_*.md | sort -V | tail -5` is usually
-   enough — only the files written since the last pass matter).
+1. List registered in-repo handoffs and any authorized external register or
+   location since the previous pass. Report unavailable locations as UNKNOWN.
 2. For each one written since the last trajectory check, confirm it carries the
    receipt block (`Handoff ID:` / `Handoff status:` / `Reviewed:` / `Continued
    at:` near its top) and has a matching row in

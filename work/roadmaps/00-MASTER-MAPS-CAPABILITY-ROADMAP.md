@@ -1,12 +1,55 @@
 # MAPSL master roadmap
 
-**Migration candidate — not accepted on main.** The [authorized migration plan](../../README.md) owns the current M0–M6 sequence. This document owns long-term outcome priorities, capability relationships and conditional triggers; [capability evidence](CAPABILITY_CHECKLIST.md) owns implementation/verification status. No second development queue.
+**Migration candidate.** The [authorized migration plan](../../migration/PLAN.md) owns M0–M6. This roadmap owns improvement priorities and dependencies. The [capability checklist](CAPABILITY_CHECKLIST.md) holds current evidence, the next action and the finish test for every capability.
 
 ## Permanent objective
 
 A capable AI worker completes real work inside human-defined boundaries with minimal unnecessary intervention. MAPSL provides the operating method and, when needed, coordination and deterministic control-plane machinery. Success is not more agents, protocols, tokens, files, or checklist closures.
 
 Evaluate each change by autonomy, reliability, reasoning/planning quality, continuity, efficiency, adaptability, controlled learning, usability and safety. The owner reports that the old system works in practice; relative performance against ordinary agent-assisted work is unknown. Preserve what works; do not make another external pilot the central objective of the project.
+
+## Delivery order
+
+1. **Finish migration preparation.** Verify the integrated candidate, its
+   evidence and the source delta under the [migration plan](../../migration/PLAN.md).
+   [Current state](../../state/CURRENT.md) owns the next action. Integration
+   requires [authorized bootstrap and review controls](../../docs/CHECKS_AND_BALANCES.md#successor-merge-controls).
+   Cutover requires the owner's decision.
+2. **Resume and finish ordinary work.** After cutover, use one coding task and
+   one non-coding task with the native [THINK and PLAN methods](../../playbook/INDEX.md#native-think-and-plan-routes)
+   as applicable. A fresh session can
+   recover the goal, authority, owner, next action, confirmed wait or blocker
+   and review evidence, then reach the agreed outcome. Use the normal routes
+   and the existing task store when runtime is needed. Start with 6.1, 6.7,
+   6.21 and 6.18. This is the continuity proof for #247.
+3. **Prove safe execution and recovery.** Exercise one normal runtime path
+   with explicit task and environment binding, isolated writable work, a
+   supported harness lifecycle and recovery. Verify actual guard and
+   validation boundaries, outcomes when they deny, and trace through review.
+   Resolve H4/6.4/6.5 with E4 and SEC3, E5 with E2/E3, and 6.24 with SEC4 and
+   recorded environment evidence. A safe refusal and an authorized completion
+   are both required proof.
+4. **Deliver the right context.** Use the same code/non-code cases to show
+   normal startup preserves required inputs and authority. Make progress on
+   6.11 and #248 against a measured baseline. S4/S6/6.9 share explicit-first
+   routing proof; SEC4/6.10 and SEC5/6.22 prove which Skills and lessons can
+   reach the worker. Use frozen retrieval evidence before considering 6.33.
+5. **Learn from evidence tied to real runs.** Connect one run to its outcome,
+   a reproducible case and an authorized guidance decision. Show the recorded
+   effective configuration survives into the exported Run Record (L6)
+   before relying on comparisons (L7). Keep new refinement proposals behind
+   reviewed evidence and authority.
+6. **Make the proven workflow portable.** Keep supported installation and
+   project-local setup working throughout. Reconcile D0/D2b/D2c, then prove
+   that a fresh user can set up and inspect an isolated target with the
+   documented method. External lifecycle proof (D3/6.35) depends on a useful
+   task and separate target authorization. Additional stacks, CI and fleet
+   features advance only on their triggers.
+
+Keep safety, evidence integrity and existing supported operation in force
+throughout. A defect blocking an earlier outcome or violating a safety
+boundary takes priority. Run shared checks once for overlapping IDs and
+retain the distinct exit test for each broader capability.
 
 ## Outcome-driven priorities after migration
 
@@ -19,28 +62,55 @@ Evaluate each change by autonomy, reliability, reasoning/planning quality, conti
 | Learning and evaluation | Repeated mistakes cause measurable, reviewed improvements | Verify L6 real-run config identity before comparisons; retain evaluation and operational learning; test failure localization, lean-vs-helper routing, and narrow candidates through JUDGE/LEARN before considering GROW. |
 | Usability and portability | Easy to install, use and maintain across appropriate contexts | Verify #378 target preflight and init, documentation and method-only operation; external task or comparative test only when useful and separately authorized. |
 
-Direction and continuity are the immediate cross-program priority during migration. Safety/reliability are mandatory constraints, not optional later phases. Prioritize actual unresolved problems and dependency gates over historical feature order. Continue only until the relevant outcome is met.
+## Recovered requirements and dependencies
+
+Use these conditions when the owning program becomes eligible. The detailed evidence lives in the [branch audit](../../migration/branch-evidence.md#forward-requirements-recovered-from-divergent-branches), [work audit](../../migration/work-evidence.md#open-obligations-and-historical-proofs) and [historical audit](../../migration/history-evidence.md).
+
+- Direction and continuity owns fresh-session recovery. Apply the continuity proof above before closing #247. Treat any live roadmap sheet as a projection of the checklist. The September PLAN handoff has an [approved historical disposition](../../migration/reconciliation.md#historical-evidence-decision).
+- Execution and safety own consequential-call validation, isolation, lease recovery, ambiguous external effects, and reviewer identity. Preserve refusal for an uncertain prior side effect. Verify an eligible trusted producer before promoting reviewer-execution attestation.
+- Reasoning and learning own the failed retrieval experiments, production configuration identity and bounded uptake of lessons. The source shipped TASK-223 despite the incomplete promotion record. Check that scoped lessons reach the actual startup path. Reconsider retrieval only on frozen hard negatives, exact anchors, acceptable alternatives and blind scoring.
+- Portability owns preview, initialization and repeat-safe upgrades. The [Linux operation evidence](../../migration/operation-evidence.md) covers a disposable target. External piloting, fleet automation, and publication each require their own trigger and authority.
+
+## Full-system acceptance dimensions
+
+Preserve the original [ten program definitions of DONE](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md#15-program-definitions-of-done) and [six end-state scenarios](https://github.com/BigCatMellow/MAPS_Lean/blob/605ce610e0be3334d1da7af2a7c6f5912b6cc05f/work/roadmaps/00-MASTER-MAPS-CAPABILITY-ROADMAP.md#16-end-state-scenarios). The recovered [Harada candidate](https://github.com/BigCatMellow/MAPS_Lean/tree/f5f2e21bb0cfa5872d86baaafc1f8c89378e0a7c/work/roadmaps/harada-full-map) reinforces full-system acceptance, not another competing planning tree.
+
+| Dimension | Observable proof |
+| --- | --- |
+| Control | Provider-neutral start/inspect/communicate/recover/stop for supported workers without authority expansion. |
+| Context | Minimal trustworthy, progressively loaded procedures and evidence with explicit authority. |
+| Reproducibility | Environment/context/revision lineage sufficient to explain differences and decide recovery compatibility. |
+| Safety | Actual consequential call paths enforce deterministic least-privilege checks; untrusted content cannot ratify policy. |
+| Coordination | Parallel/helper ownership, isolation and continuity remain correlated. |
+| Evidence | Task/run/session/helper/recovery/submission/exact review/outcome reconstructable. |
+| Review integrity | Approval bound to actual artifact/revision/evidence. |
+| Learning | Real failure becomes a frozen case and reviewed candidate comparison. |
+| Human authority | No self-authorization of consequential policy, safety or scope. |
+| Complexity control | Method-only default; orchestration and infrastructure earn their cost through observed needs. |
+
+Representative proofs: ordinary coding, prompt injection denial, interrupted worker, concurrent writable workers, imported Skill quarantine/activation, repeated real-world failure. Exercise relevant scenarios at risk-appropriate scope; a successful isolated component or one happy-path pilot cannot establish all ten properties. No mandatory paid/benchmark/external runs are implied.
 
 ## Complete capability ownership
 
-Every ID from the source checklist has exactly one primary objective program;
-cross-cutting dependencies remain in the source designs and evidence. This is
-coverage, not an instruction to implement every feature.
+Each capability has one accountable program. The groups below link directly to
+the same checklist that carries their evidence and finish tests.
 
-- **Direction and continuity:** 6.1, 6.7, 6.19, 6.20, 6.21, 6.34
-- **Reasoning and context:** S1, S2, S3, S4, S5, S6, S7, 6.8, 6.9, 6.10, 6.11, 6.12, 6.33
-- **Execution and reliability:** H1, H2, H3, H4, H5, H6, E1, E2, E3, E4, E5, E6, E7, 6.2, 6.3, 6.4, 6.5, 6.6, 6.13, 6.14, 6.15, 6.16, 6.17
-- **Safety and evidence:** SEC1, SEC2, SEC3, SEC4, SEC5, SEC6, SEC7, 6.18, 6.22, 6.23, 6.24, 6.25, 6.26
-- **Learning and evaluation:** L1, L2, L3, L4, L5, L6, L7, L8, L9, 6.27, 6.28, 6.29, 6.30, 6.31, 6.32
-- **Usability and portability:** D0, D1, D2a, D2b, D2c, D3, D4, D5, D6, 6.35
+- [Direction and continuity](CAPABILITY_CHECKLIST.md#direction-and-continuity)
+- [Reasoning and context](CAPABILITY_CHECKLIST.md#reasoning-and-context)
+- [Execution and reliability](CAPABILITY_CHECKLIST.md#execution-and-reliability)
+- [Safety and evidence](CAPABILITY_CHECKLIST.md#safety-and-evidence)
+- [Learning and evaluation](CAPABILITY_CHECKLIST.md#learning-and-evaluation)
+- [Usability and portability](CAPABILITY_CHECKLIST.md#usability-and-portability)
 
 ## Conditional work
 
-- S7/6.12 capability packs: repeated packaging need; E7/6.17 snapshots: actual reconstruction failures; SEC6/6.25 credential broker: real secret boundary; 6.19/6.20: measured helper continuity/stall need.
-- L7 comparative evaluation: comparable configuration/outcome evidence; L8/6.31 proposal-only refinement: measured need and reviewed candidates, never self-authorizing. L9/6.32 time travel: demonstrable debugging benefit.
-- D3 external pilot: meaningful task and target authority, not a mandatory repeat demonstration; D4/D5/D6: actual second stack, CI or fleet need.
-- 6.33 semantic retrieval: frozen evaluation evidence and security gate; 6.34 mission object: demonstrated multi-task need without duplicate task authority.
-- #341 benchmark: remain parked pending Gate 1/4/5 and explicit execution authority; [source PR](https://github.com/BigCatMellow/MAPS_Lean/pull/341).
+The checklist records each conditional trigger and the proof needed to proceed.
+Review eligibility when its evidence changes or a meaningful work arc ends.
+Prime and other provider studies remain research inputs. Promote a bounded
+adapter trial only for a demonstrated integration gap under the applicable authority.
+
+- [Work-system research](../research/2026-11-26-work-system-research.md#research-conclusions-and-development-routes) maps the external comparisons and measured gaps to the existing execution, evidence, context and learning owners.
+- #341 benchmark: the generic control text passed its exact-text Gate 1 review. Full revision-3 package review, selection and corpus custody gates, and explicit execution authority remain. [R&D status](../research/2026-11-26-rd-status.md#research)
 - [#247](https://github.com/BigCatMellow/MAPS_Lean/issues/247) memory and [#248](https://github.com/BigCatMellow/MAPS_Lean/issues/248) context compilation: reasoning/continuity, compare existing mechanisms first. [#331](https://github.com/BigCatMellow/MAPS_Lean/issues/331) tool friction: reliability, reproduce and repair proportionally.
 
 ## Source design and evidence

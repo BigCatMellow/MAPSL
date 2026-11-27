@@ -2,7 +2,7 @@
 """Read-only migration ledger coverage check; does not certify semantic parity."""
 import argparse
 import csv
-import re
+from urllib.parse import quote
 import subprocess
 from pathlib import Path, PurePosixPath
 
@@ -37,6 +37,11 @@ def local_path(value):
     return bool(value) and not path.is_absolute() and ".." not in path.parts
 
 
+def source_url(path):
+    return ("https://github.com/BigCatMellow/MAPS_Lean/blob/"
+            "605ce610e0be3334d1da7af2a7c6f5912b6cc05f/" + quote(path))
+
+
 def verify(baseline, current, tracked, cutover=False):
     errors = []
     if baseline.keys() != current.keys():
@@ -67,8 +72,12 @@ def verify(baseline, current, tracked, cutover=False):
                 errors.append(f"{path}: successor destination not tracked")
             if state == "MIGRATE" and tracked.get(pointer) != (row["git_mode"], row["blob_sha"]):
                 errors.append(f"{path}: exact migration differs from source")
+            if state == "IMPROVE":
+                mode, blob = tracked.get(pointer, ("", ""))
+                if mode != row["git_mode"] or evidence != "adapted:" + blob:
+                    errors.append(f"{path}: adapted destination hash or mode changed")
         elif state in {"REFERENCE", "RETIRE", "DEFER"}:
-            if not pointer.startswith("https://github.com/BigCatMellow/MAPS_Lean/") and pointer not in tracked:
+            if pointer != source_url(path) and pointer not in tracked:
                 errors.append(f"{path}: missing source or successor reference")
     return errors
 
