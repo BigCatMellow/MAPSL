@@ -164,6 +164,61 @@ Freeze eight development fixtures and sixteen held-out fixtures by task family b
 
 Count correctly admitted, withheld, or refused cases, record provenance and refusal reasons, and measure elapsed time and added database reads. Require 16/16 held-out decisions, all previously correct positives retained, zero authority changes, and closure of both supersession cases. Cap the first pass at one candidate revision, 48 fixture evaluations across development and held-out pairs, and zero provider calls. Stop on any authority regression, holdout leak, or budget overrun. Record the result for JUDGE. Evaluate real outcome improvements only after binding the effective harness configuration and establishing the operator path.
 
+### Local comparison result
+
+The offline comparator reruns the existing outcome candidate builder and
+checks that its source references still match the saved lesson. It checks
+before the normal promotion call and filters active lessons before the normal
+Context Builder projection. It leaves production entry points untouched.
+The comparator and [development fixtures](../evals/lesson-source-freshness-dev-v1.json)
+were frozen at comparator blob `356f5613d9ff0f98451ff6bb34598ecf28a8ff9e`
+before importing the independently authored
+[holdout](../evals/lesson-source-freshness-holdout-v1.json).
+
+| Cases scored on both promotion and admission | Current path | Recheck |
+| --- | ---: | ---: |
+| Development | 5/8 | 8/8 |
+| Held-out valid lessons | 8/8 | 8/8 |
+| Held-out hard negatives | 4/8 | 8/8 |
+| Held-out total | 12/16 | 16/16 |
+
+An explicit correction before promotion refused the fixture decision.
+A correction after promotion withheld the guidance and preserved the existing
+decision. Missing outcome and missing canonical binding each refused promotion.
+The current path admitted guidance in all four cases. An unrelated observation
+on the same task still allowed guidance. Scope mismatch, pending promotion,
+expiry and retirement remained effective. For all 48 evaluations, task state
+and authority were unchanged, stored source references were preserved, and
+each loaded lesson stayed `GUIDANCE_ONLY`. Every positive admission included
+its original promotion decision reference. No provider was called.
+
+| Held-out timing sample | Pairs | Current median | Recheck median | Added SELECTs total / maximum per pair |
+| --- | ---: | ---: | ---: | ---: |
+| Promotion attempt | 15 | 1.17 ms | 5.32 ms | 237 / 19 |
+| Context admission | 16 | 3.71 ms | 6.87 ms | 161 / 17 |
+
+Timing includes the observed call and SQLite tracing and excludes fixture
+setup. Cases alternate arm order. The extra SELECTs are net relative to the
+matched call. This one local run covers one lesson per fixture and gives no
+production latency or concurrency estimate. Reusing the full builder loads
+the outcome history and repeats source lookups. L5 / 6.30 retain a production
+finish test for promotion in the same transaction as the freshness check and
+canonical admission that reads the decision and freshness together. Include a
+concurrent correction test and verify bounded read cost on a backlog of
+lessons and outcomes. SEC5 still owns the authenticated operator route.
+
+Replay either split from the repository root with Python 3. The
+[comparator](../evals/lesson-source-freshness.py) emits each case's decisions,
+reasons and costs as JSON.
+
+```bash
+PYTHONPATH=. python3 work/evals/lesson-source-freshness.py dev
+```
+
+```bash
+PYTHONPATH=. python3 work/evals/lesson-source-freshness.py holdout
+```
+
 ## Governance and authority across the work system
 
 **Questions.** Can a reviewer tell which check permitted, refused or held an action, what evidence it used, and whether that evidence still applies? How much would clearer evidence cost? This keeps the existing MAPSL authority model as the baseline.
@@ -195,17 +250,7 @@ Freeze cases and labels before scoring. Require zero false permits, zero lost le
 | Execution and authority | Does a contracted run refuse an incompatible resume before dispatch, with a reviewable reason? | E5 and SEC3/6.24 |
 | Research and context | Does a compact handoff preserve every material claim, current source and authority boundary after a fresh session? | 6.11, #247 and #248 |
 | Judgment | Can an independent reviewer find the earliest actionable failure more accurately using the same captured evidence? | Review evidence and L2/L3 |
-| Learning | Do promotion and admission refuse or withhold guidance when its supporting evidence is superseded? | L5 / 6.30 and SEC5 |
-
-The learning finding is a reproducible development gap. On disposable
-SQLite, complete a local task with an explicit run link. Record an outcome,
-derive a project-scoped candidate with `build_outcome_lesson_candidate`, then
-record a correction with `supersedes_outcome_id`. Promote through the
-existing API using a fixture decision. Context Builder projects the
-candidate as `GUIDANCE_ONLY` for a shaped same-project task. Recording a
-retirement removes it. Run the same sequence with the correction after
-promotion as a separate case in the proposed study. The result belongs to
-the learning lifecycle owner and its existing authority checks.
+| Learning | The local recheck passed. Can the canonical paths preserve the same decisions across concurrent corrections and bound the read cost? | L5 / 6.30 and SEC5 |
 
 The local startup-to-review smoke also passed on the common baseline. These
 separate test groups overlap, so their counts should be read by area. Keep

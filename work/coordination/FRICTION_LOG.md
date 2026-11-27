@@ -75,4 +75,4 @@ The integrated review caught conflicting wiki prose about zero-diff rebases. Rou
 - signal: A project-scoped lesson candidate stayed promotable after the supporting outcome was explicitly superseded. Context Builder projected it as guidance until retirement.
 - countermeasure: Reproduced the sequence with normal calls against disposable SQLite and tied the promotion and admission experiment to L5 and 6.30.
 - verified: [Comparative research and learning evidence](../research/2026-11-26-work-system-research.md#learn--turn-outcomes-into-scoped-reviewable-guidance).
-- follow-up: Freeze both correction timings and the current-source positive controls before testing the existing owners' freshness rules.
+- follow-up: The [frozen LEARN replay](../research/2026-11-26-work-system-research.md#local-comparison-result) caught both correction timings and retained every valid control. Reusing the full builder repeats reads and leaves a race between check and write. L5 / 6.30 own the transactional check and a bounded history-cost test.

@@ -43,3 +43,9 @@ scores from hard-negative quality and reproduced the superseded-source lesson
 gap through normal SQLite and Context Builder calls. L5 and 6.30 own that
 finding and the same follow-up experiment. The master roadmap owns delivery
 order.
+
+The [LEARN comparison](../research/2026-11-26-work-system-research.md#local-comparison-result)
+used disposable state and the existing canonical builder as a recheck. The
+48-evaluation run used a frozen comparator and independent holdout. It met
+the fixture threshold and exposed added read cost. Send the result through
+independent review and route production completion to L5 / 6.30 and SEC5.
