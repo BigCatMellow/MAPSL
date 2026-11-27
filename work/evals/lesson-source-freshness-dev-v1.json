@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "cases": [
+    {"id": "D01", "family": "import", "claim": "Check the input count before a retry.", "expected": ["PROMOTED", "ADMITTED"]},
+    {"id": "D02", "family": "compaction", "claim": "Read the retained manifest before compaction.", "source": "outcome_without_run", "scope": "task_type", "expected": ["PROMOTED", "ADMITTED"]},
+    {"id": "D03", "family": "formatting", "claim": "Use the pinned format when rendering the example.", "source": "other", "scope": "global", "expected": ["PROMOTED", "ADMITTED"]},
+    {"id": "D04", "family": "logging", "claim": "Check the record count before rotating the log.", "events": ["unrelated_outcome", "promote"], "expected": ["PROMOTED", "ADMITTED"]},
+    {"id": "D05", "family": "parsing", "claim": "Inspect the original parse failure before adding a retry.", "events": ["correct_source", "promote"], "expected": ["REFUSED", "WITHHELD"]},
+    {"id": "D06", "family": "indexing", "claim": "Check the batch marker when rebuilding the index.", "events": ["promote", "correct_source"], "expected": ["PROMOTED", "WITHHELD"]},
+    {"id": "D07", "family": "preview", "claim": "Check the target before publishing the sample preview.", "mismatch": true, "expected": ["PROMOTED", "WITHHELD"]},
+    {"id": "D08", "family": "export", "claim": "Revalidate the export manifest after changing the schema.", "source": "missing_binding", "expected": ["REFUSED", "WITHHELD"]}
+  ]
+}
